@@ -9,10 +9,32 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
 use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends Controller
 {
+    /**
+     * Create session and XSRF-Token
+     *
+     * Required to initialise a new Cookie-Session for SPAs.
+     * Do not use this endpoint if you want to use Token-Auth.
+     *
+     * @group Authentication
+     * @unauthenticated
+     *
+     * @header Referer {URL of your SPA}
+     * @response status=204
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Laravel\Sanctum\Http\Controllers\CsrfCookieController $controller
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
+    public function handshake(Request $request, CsrfCookieController $controller)
+    {
+        return $controller->show($request);
+    }
+
     /**
      * Login with SPA-Session (Cookies)
      *
