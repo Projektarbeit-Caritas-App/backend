@@ -1,0 +1,2370 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/handshake:
+    get:
+      summary: 'Create session and XSRF-Token'
+      description: "Required to initialise a new Cookie-Session for SPAs.\nDo not use this endpoint if you want to use Token-Auth."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Referer
+          description: ''
+          example: '{URL of your SPA}'
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - Authentication
+      security: []
+  /api/auth/login:
+    post:
+      summary: 'Login with SPA-Session (Cookies)'
+      description: "After you send a GET-request to <code>/api/handshake</code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;</code></pre>\n  </p>\n</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Referer
+          description: ''
+          example: '{URL of your SPA}'
+          schema:
+            type: string
+        -
+          in: header
+          name: X-XSRF-TOKEN
+          description: ''
+          example: '{Your XSRF-Token}'
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Valid credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  user:
+                    id: 1
+                    name: 'Example User'
+                    email: example@localhost.test
+                    roles:
+                      - instance_manager
+                    permissions:
+                      - card.external
+                      - card.manage
+                      - card.view
+                      - limits.manage
+                      - organisation.manage
+                      - organisation.view
+                      - shop.manage
+                      - shop.view
+                      - stats.view
+                      - user.manage
+                      - user.view
+                    instance:
+                      id: 1
+                      name: 'Example Instance'
+                      street: 'Teststreet 123'
+                      postcode: '12345'
+                      city: Test
+                      contact: example@localhost.test
+                      created_at: '2022-08-02T11:59:43.000000Z'
+                      updated_at: '2022-08-02T11:59:43.000000Z'
+                    organization:
+                      id: 1
+                      name: 'Example Organisation'
+                      street: 'Teststreet 123'
+                      postcode: '12345'
+                      city: Test
+                      contact: example@localhost.test
+                      created_at: '2022-08-02T11:59:44.000000Z'
+                      updated_at: '2022-08-02T11:59:44.000000Z'
+                    created_at: '2022-08-02T11:59:44.000000Z'
+                    updated_at: '2022-08-02T11:59:44.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'Example User'
+                      email: example@localhost.test
+                      roles:
+                        - instance_manager
+                      permissions:
+                        - card.external
+                        - card.manage
+                        - card.view
+                        - limits.manage
+                        - organisation.manage
+                        - organisation.view
+                        - shop.manage
+                        - shop.view
+                        - stats.view
+                        - user.manage
+                        - user.view
+                      instance:
+                        id: 1
+                        name: 'Example Instance'
+                        street: 'Teststreet 123'
+                        postcode: '12345'
+                        city: Test
+                        contact: example@localhost.test
+                        created_at: '2022-08-02T11:59:43.000000Z'
+                        updated_at: '2022-08-02T11:59:43.000000Z'
+                      organization:
+                        id: 1
+                        name: 'Example Organisation'
+                        street: 'Teststreet 123'
+                        postcode: '12345'
+                        city: Test
+                        contact: example@localhost.test
+                        created_at: '2022-08-02T11:59:44.000000Z'
+                        updated_at: '2022-08-02T11:59:44.000000Z'
+                      created_at: '2022-08-02T11:59:44.000000Z'
+                      updated_at: '2022-08-02T11:59:44.000000Z'
+        401:
+          description: 'Invalid credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'E-Mail of the user. Must be a valid email address.'
+                  example: purdy.otto@example.net
+                password:
+                  type: string
+                  description: 'Password of the user.'
+                  example: eos
+              required:
+                - email
+                - password
+      security: []
+  /api/auth/token:
+    post:
+      summary: 'Login with Bearer Token (Authorization Header)'
+      description: "If you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>/admin</code> path will not be available for Applications using Token-Auth.\n</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Valid credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  token: '{YOUR_AUTH_KEY}'
+                  user:
+                    id: 1
+                    name: 'Example User'
+                    email: example@localhost.test
+                    roles:
+                      - instance_manager
+                    permissions:
+                      - card.external
+                      - card.manage
+                      - card.view
+                      - limits.manage
+                      - organisation.manage
+                      - organisation.view
+                      - shop.manage
+                      - shop.view
+                      - stats.view
+                      - user.manage
+                      - user.view
+                    instance:
+                      id: 1
+                      name: 'Example Instance'
+                      street: 'Teststreet 123'
+                      postcode: '12345'
+                      city: Test
+                      contact: example@localhost.test
+                      created_at: '2022-08-02T11:59:43.000000Z'
+                      updated_at: '2022-08-02T11:59:43.000000Z'
+                    organization:
+                      id: 1
+                      name: 'Example Organisation'
+                      street: 'Teststreet 123'
+                      postcode: '12345'
+                      city: Test
+                      contact: example@localhost.test
+                      created_at: '2022-08-02T11:59:44.000000Z'
+                      updated_at: '2022-08-02T11:59:44.000000Z'
+                    created_at: '2022-08-02T11:59:44.000000Z'
+                    updated_at: '2022-08-02T11:59:44.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  token:
+                    type: string
+                    example: '{YOUR_AUTH_KEY}'
+                  user:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'Example User'
+                      email: example@localhost.test
+                      roles:
+                        - instance_manager
+                      permissions:
+                        - card.external
+                        - card.manage
+                        - card.view
+                        - limits.manage
+                        - organisation.manage
+                        - organisation.view
+                        - shop.manage
+                        - shop.view
+                        - stats.view
+                        - user.manage
+                        - user.view
+                      instance:
+                        id: 1
+                        name: 'Example Instance'
+                        street: 'Teststreet 123'
+                        postcode: '12345'
+                        city: Test
+                        contact: example@localhost.test
+                        created_at: '2022-08-02T11:59:43.000000Z'
+                        updated_at: '2022-08-02T11:59:43.000000Z'
+                      organization:
+                        id: 1
+                        name: 'Example Organisation'
+                        street: 'Teststreet 123'
+                        postcode: '12345'
+                        city: Test
+                        contact: example@localhost.test
+                        created_at: '2022-08-02T11:59:44.000000Z'
+                        updated_at: '2022-08-02T11:59:44.000000Z'
+                      created_at: '2022-08-02T11:59:44.000000Z'
+                      updated_at: '2022-08-02T11:59:44.000000Z'
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'E-Mail of the user. Must be a valid email address.'
+                  example: jane91@example.net
+                password:
+                  type: string
+                  description: 'Password of the user.'
+                  example: accusamus
+                device_name:
+                  type: string
+                  description: 'Name of the device, used for identification of the token.'
+                  example: ut
+              required:
+                - email
+                - password
+                - device_name
+      security: []
+  /api/auth/logout:
+    post:
+      summary: Logout
+      description: 'Invalidate your current session/token'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+      tags:
+        - Authentication
+  /api/admin/limitation/limits:
+    get:
+      summary: 'List all Limitation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Limitation
+    post:
+      summary: 'Create new Limitation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Limitation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_type_id:
+                  type: string
+                  description: 'ID of the product type the limitation is attached to.'
+                  example: asperiores
+                limitation_set_id:
+                  type: string
+                  description: 'ID of the limitation set the limitation is attached to.'
+                  example: culpa
+                limit:
+                  type: integer
+                  description: 'Number that determines the limit.'
+                  example: 7
+              required:
+                - product_type_id
+                - limitation_set_id
+  '/api/admin/limitation/limits/{limitation_id}':
+    get:
+      summary: 'Show specified Limitation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Limitation
+    put:
+      summary: 'Update specified Limitation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Limitation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_type_id:
+                  type: string
+                  description: 'ID of the product type the limitation is attached to.'
+                  example: quae
+                limitation_set_id:
+                  type: string
+                  description: 'ID of the limitation set the limitation is attached to.'
+                  example: et
+                limit:
+                  type: integer
+                  description: 'Number that determines the limit.'
+                  example: 1
+              required:
+                - product_type_id
+                - limitation_set_id
+    delete:
+      summary: 'Delete specified Limitation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Limitation
+    parameters:
+      -
+        in: path
+        name: limitation_id
+        description: 'The ID of the limitation.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+  /api/admin/limitation/sets:
+    get:
+      summary: 'List all LimitationSets'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - LimitationSet
+    post:
+      summary: 'Create new LimitationSet'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - LimitationSet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the limitation set.'
+                  example: quo
+                valid_from:
+                  type: string
+                  description: 'Date and time of the expiry of the limitation set. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+                valid_until:
+                  type: string
+                  description: 'Date and time of the expiry of the limitation set. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+              required:
+                - name
+                - valid_from
+  '/api/admin/limitation/sets/{limitationSet_id}':
+    get:
+      summary: 'Show specified LimitationSet'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - LimitationSet
+    put:
+      summary: 'Update specified LimitationSet'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - LimitationSet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the limitation set.'
+                  example: quia
+                valid_from:
+                  type: string
+                  description: 'Date and time of the expiry of the limitation set. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+                valid_until:
+                  type: string
+                  description: 'Date and time of the expiry of the limitation set. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+              required:
+                - name
+                - valid_from
+    delete:
+      summary: 'Delete specified LimitationSet'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - LimitationSet
+    parameters:
+      -
+        in: path
+        name: limitationSet_id
+        description: 'The ID of the limitationSet.'
+        example: 14
+        required: true
+        schema:
+          type: integer
+  /api/admin/organization:
+    get:
+      summary: 'List all Organization'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Organization
+    post:
+      summary: 'Create new Organization'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Organization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the organization is attached to.'
+                  example: eaque
+                name:
+                  type: string
+                  description: 'Name of the organization.'
+                  example: rerum
+                street:
+                  type: string
+                  description: 'Street where the organization is located.'
+                  example: reprehenderit
+                postcode:
+                  type: string
+                  description: 'Postcode where the organization is located.'
+                  example: ipsam
+                city:
+                  type: string
+                  description: 'City where the organization is located.'
+                  example: et
+                contact:
+                  type: string
+                  description: 'Contact information from the organization.'
+                  example: eos
+              required:
+                - instance_id
+                - name
+                - street
+                - postcode
+                - city
+                - contact
+  '/api/admin/organization/{id}':
+    get:
+      summary: 'Show specified Organization'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Organization
+    put:
+      summary: 'Update specified Organization'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Organization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the organization is attached to.'
+                  example: est
+                name:
+                  type: string
+                  description: 'Name of the organization.'
+                  example: dolorum
+                street:
+                  type: string
+                  description: 'Street where the organization is located.'
+                  example: sit
+                postcode:
+                  type: string
+                  description: 'Postcode where the organization is located.'
+                  example: officia
+                city:
+                  type: string
+                  description: 'City where the organization is located.'
+                  example: aut
+                contact:
+                  type: string
+                  description: 'Contact information from the organization.'
+                  example: explicabo
+              required:
+                - instance_id
+                - name
+                - street
+                - postcode
+                - city
+                - contact
+    delete:
+      summary: 'Delete specified Organization'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Organization
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the organization.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/admin/product-types:
+    get:
+      summary: 'List all ProductTypes'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - ProductType
+    post:
+      summary: 'Create new ProductType'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - ProductType
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the product type.'
+                  example: ipsam
+                icon:
+                  type: string
+                  description: 'Icon of the product type.'
+                  example: voluptatem
+              required:
+                - name
+  '/api/admin/product-types/{productType_id}':
+    get:
+      summary: 'Show specified ProductType'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - ProductType
+    put:
+      summary: 'Update specified ProductType'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - ProductType
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the product type.'
+                  example: iure
+                icon:
+                  type: string
+                  description: 'Icon of the product type.'
+                  example: qui
+              required:
+                - name
+    delete:
+      summary: 'Delete specified ProductType'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - ProductType
+    parameters:
+      -
+        in: path
+        name: productType_id
+        description: 'The ID of the productType.'
+        example: 15
+        required: true
+        schema:
+          type: integer
+  /api/reservations:
+    get:
+      summary: 'List all Reservations'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Reservation
+    post:
+      summary: 'Create new Reservation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Reservation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: string
+                  description: 'ID of the card the reservation is attached to.'
+                  example: voluptatem
+                shop_id:
+                  type: string
+                  description: 'ID of the shop the reservation is for.'
+                  example: amet
+                time:
+                  type: string
+                  description: 'Date and Time for the reservation. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+              required:
+                - card_id
+                - shop_id
+                - time
+  '/api/reservations/{id}':
+    get:
+      summary: 'Show specified Reservation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Reservation
+    put:
+      summary: 'Update specified Reservation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Reservation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: string
+                  description: 'ID of the card the reservation is attached to.'
+                  example: officia
+                shop_id:
+                  type: string
+                  description: 'ID of the shop the reservation is for.'
+                  example: recusandae
+                time:
+                  type: string
+                  description: 'Date and Time for the reservation. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+              required:
+                - card_id
+                - shop_id
+                - time
+    delete:
+      summary: 'Delete specified Reservation'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Reservation
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the reservation.'
+        example: 12
+        required: true
+        schema:
+          type: integer
+  /api/admin/shop:
+    get:
+      summary: 'List all Shops'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Shop
+    post:
+      summary: 'Create new Shop'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Shop
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organization_id:
+                  type: string
+                  description: 'ID of the organization the shop is attached to.'
+                  example: optio
+                name:
+                  type: string
+                  description: 'Name of the shop.'
+                  example: assumenda
+                street:
+                  type: string
+                  description: 'Street where the shop is located.'
+                  example: hic
+                postcode:
+                  type: string
+                  description: 'Postcode where the shop is located.'
+                  example: odio
+                city:
+                  type: string
+                  description: 'City where the shop is located.'
+                  example: quis
+                contact:
+                  type: string
+                  description: 'Contact information from the shop.'
+                  example: iste
+                opening_hours:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    monday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Monday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Monday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Monday. Must be at least 1.'
+                            example: 1
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    tuesday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Tuesday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Tuesday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Tuesday. Must be at least 1.'
+                            example: 1
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    wednesday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Wednesday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Wednesday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Wednesday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    thursday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Thursday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Thursday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Thursday. Must be at least 1.'
+                            example: 1
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    friday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Friday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Friday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Friday. Must be at least 1.'
+                            example: 1
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    saturday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Saturday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Saturday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Saturday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    sunday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Sunday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Sunday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Sunday. Must be at least 1.'
+                            example: 1
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+              required:
+                - organization_id
+                - name
+                - street
+                - postcode
+                - city
+                - contact
+  '/api/admin/shop/{id}':
+    get:
+      summary: 'Show specified Shop'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Shop
+    put:
+      summary: 'Update specified Shop'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Shop
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organization_id:
+                  type: string
+                  description: 'ID of the organization the shop is attached to.'
+                  example: neque
+                name:
+                  type: string
+                  description: 'Name of the shop.'
+                  example: reiciendis
+                street:
+                  type: string
+                  description: 'Street where the shop is located.'
+                  example: labore
+                postcode:
+                  type: string
+                  description: 'Postcode where the shop is located.'
+                  example: labore
+                city:
+                  type: string
+                  description: 'City where the shop is located.'
+                  example: deserunt
+                contact:
+                  type: string
+                  description: 'Contact information from the shop.'
+                  example: sed
+                opening_hours:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    monday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Monday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Monday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Monday. Must be at least 1.'
+                            example: 1
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    tuesday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Tuesday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Tuesday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Tuesday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    wednesday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Wednesday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Wednesday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Wednesday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    thursday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Thursday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Thursday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Thursday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    friday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Friday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Friday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Friday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    saturday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Saturday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Saturday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Saturday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+                    sunday:
+                      type: array
+                      description: ''
+                      example:
+                        - []
+                      items:
+                        type: object
+                        properties:
+                          opens_at:
+                            type: string
+                            description: 'Time of opening of the store on Sunday. The value format is invalid.'
+                            example: '07:30'
+                          closes_at:
+                            type: string
+                            description: 'Time of closing of the store on Sunday. The value format is invalid.'
+                            example: '19:00'
+                          slots:
+                            type: integer
+                            description: 'Number of slots of the store for Sunday. Must be at least 1.'
+                            example: 0
+                        required:
+                          - opens_at
+                          - closes_at
+                          - slots
+              required:
+                - organization_id
+                - name
+                - street
+                - postcode
+                - city
+                - contact
+    delete:
+      summary: 'Delete specified Shop'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Shop
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the shop.'
+        example: 19
+        required: true
+        schema:
+          type: integer
+  /api/admin/user:
+    get:
+      summary: 'List all Users'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - User
+    post:
+      summary: 'Create new User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the user is attached to.'
+                  example: dolorem
+                organization_id:
+                  type: string
+                  description: 'ID of the organization the user is attached to.'
+                  example: aut
+                name:
+                  type: string
+                  description: 'Name of the user.'
+                  example: eveniet
+                email:
+                  type: string
+                  description: 'Email of the user. Must be a valid email address.'
+                  example: strosin.kip@example.com
+                password:
+                  type: string
+                  description: 'Password of the user.'
+                  example: tempora
+              required:
+                - instance_id
+                - organization_id
+                - name
+                - email
+                - password
+  '/api/admin/user/{id}':
+    get:
+      summary: 'Show specified User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - User
+    put:
+      summary: 'Update specified User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the user is attached to.'
+                  example: incidunt
+                organization_id:
+                  type: string
+                  description: 'ID of the organization the user is attached to.'
+                  example: deleniti
+                name:
+                  type: string
+                  description: 'Name of the user.'
+                  example: quia
+                email:
+                  type: string
+                  description: 'Email of the user. Must be a valid email address.'
+                  example: pagac.westley@example.net
+                password:
+                  type: string
+                  description: 'Password of the user.'
+                  example: dolorum
+              required:
+                - instance_id
+                - organization_id
+                - name
+                - email
+                - password
+    delete:
+      summary: 'Delete specified User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - User
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: Limitation
+    description: ''
+  -
+    name: LimitationSet
+    description: ''
+  -
+    name: Organization
+    description: ''
+  -
+    name: ProductType
+    description: ''
+  -
+    name: Reservation
+    description: ''
+  -
+    name: Shop
+    description: ''
+  -
+    name: User
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

@@ -1,0 +1,1596 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "3393d1c0-2f59-47d5-9d68-ff479cb7eb78",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create session and XSRF-Token",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/handshake",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/handshake"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Referer",
+                                "value": "{URL of your SPA}"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Required to initialise a new Cookie-Session for SPAs.\nDo not use this endpoint if you want to use Token-Auth.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Login with SPA-Session (Cookies)",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Referer",
+                                "value": "{URL of your SPA}"
+                            },
+                            {
+                                "key": "X-XSRF-TOKEN",
+                                "value": "{Your XSRF-Token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"purdy.otto@example.net\",\"password\":\"eos\"}"
+                        },
+                        "description": "After you send a GET-request to <code>\/api\/handshake<\/code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;<\/code><\/pre>\n  <\/p>\n<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true,\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"Example User\",\n    \"email\": \"example@localhost.test\",\n    \"roles\": [\n      \"instance_manager\"\n    ],\n    \"permissions\": [\n      \"card.external\",\n      \"card.manage\",\n      \"card.view\",\n      \"limits.manage\",\n      \"organisation.manage\",\n      \"organisation.view\",\n      \"shop.manage\",\n      \"shop.view\",\n      \"stats.view\",\n      \"user.manage\",\n      \"user.view\"\n    ],\n    \"instance\": {\n      \"id\": 1,\n      \"name\": \"Example Instance\",\n      \"street\": \"Teststreet 123\",\n      \"postcode\": \"12345\",\n      \"city\": \"Test\",\n      \"contact\": \"example@localhost.test\",\n      \"created_at\": \"2022-08-02T11:59:43.000000Z\",\n      \"updated_at\": \"2022-08-02T11:59:43.000000Z\"\n    },\n    \"organization\": {\n      \"id\": 1,\n      \"name\": \"Example Organisation\",\n      \"street\": \"Teststreet 123\",\n      \"postcode\": \"12345\",\n      \"city\": \"Test\",\n      \"contact\": \"example@localhost.test\",\n      \"created_at\": \"2022-08-02T11:59:44.000000Z\",\n      \"updated_at\": \"2022-08-02T11:59:44.000000Z\"\n    },\n    \"created_at\": \"2022-08-02T11:59:44.000000Z\",\n    \"updated_at\": \"2022-08-02T11:59:44.000000Z\"\n  }\n}",
+                            "name": "Valid credentials"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n  \"success\": false\n}",
+                            "name": "Invalid credentials"
+                        }
+                    ]
+                },
+                {
+                    "name": "Login with Bearer Token (Authorization Header)",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/token",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/token"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"jane91@example.net\",\"password\":\"accusamus\",\"device_name\":\"ut\"}"
+                        },
+                        "description": "If you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true,\n  \"token\": \"{YOUR_AUTH_KEY}\",\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"Example User\",\n    \"email\": \"example@localhost.test\",\n    \"roles\": [\n      \"instance_manager\"\n    ],\n    \"permissions\": [\n      \"card.external\",\n      \"card.manage\",\n      \"card.view\",\n      \"limits.manage\",\n      \"organisation.manage\",\n      \"organisation.view\",\n      \"shop.manage\",\n      \"shop.view\",\n      \"stats.view\",\n      \"user.manage\",\n      \"user.view\"\n    ],\n    \"instance\": {\n      \"id\": 1,\n      \"name\": \"Example Instance\",\n      \"street\": \"Teststreet 123\",\n      \"postcode\": \"12345\",\n      \"city\": \"Test\",\n      \"contact\": \"example@localhost.test\",\n      \"created_at\": \"2022-08-02T11:59:43.000000Z\",\n      \"updated_at\": \"2022-08-02T11:59:43.000000Z\"\n    },\n    \"organization\": {\n      \"id\": 1,\n      \"name\": \"Example Organisation\",\n      \"street\": \"Teststreet 123\",\n      \"postcode\": \"12345\",\n      \"city\": \"Test\",\n      \"contact\": \"example@localhost.test\",\n      \"created_at\": \"2022-08-02T11:59:44.000000Z\",\n      \"updated_at\": \"2022-08-02T11:59:44.000000Z\"\n    },\n    \"created_at\": \"2022-08-02T11:59:44.000000Z\",\n    \"updated_at\": \"2022-08-02T11:59:44.000000Z\"\n  }\n}",
+                            "name": "Valid credentials"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Invalidate your current session\/token"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Limitation",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Limitation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/limits",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Limitation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/limits",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"product_type_id\":\"asperiores\",\"limitation_set_id\":\"culpa\",\"limit\":7}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Limitation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/limits\/:limitation_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits\/:limitation_id",
+                            "variable": [
+                                {
+                                    "id": "limitation_id",
+                                    "key": "limitation_id",
+                                    "value": "5",
+                                    "description": "The ID of the limitation."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Limitation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/limits\/:limitation_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits\/:limitation_id",
+                            "variable": [
+                                {
+                                    "id": "limitation_id",
+                                    "key": "limitation_id",
+                                    "value": "15",
+                                    "description": "The ID of the limitation."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"product_type_id\":\"quae\",\"limitation_set_id\":\"et\",\"limit\":1}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Limitation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/limits\/:limitation_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits\/:limitation_id",
+                            "variable": [
+                                {
+                                    "id": "limitation_id",
+                                    "key": "limitation_id",
+                                    "value": "11",
+                                    "description": "The ID of the limitation."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "LimitationSet",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all LimitationSets",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/sets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new LimitationSet",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/sets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"quo\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified LimitationSet",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "variable": [
+                                {
+                                    "id": "limitationSet_id",
+                                    "key": "limitationSet_id",
+                                    "value": "14",
+                                    "description": "The ID of the limitationSet."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified LimitationSet",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "variable": [
+                                {
+                                    "id": "limitationSet_id",
+                                    "key": "limitationSet_id",
+                                    "value": "20",
+                                    "description": "The ID of the limitationSet."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"quia\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified LimitationSet",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "variable": [
+                                {
+                                    "id": "limitationSet_id",
+                                    "key": "limitationSet_id",
+                                    "value": "6",
+                                    "description": "The ID of the limitationSet."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Organization",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Organization",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/organization",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/organization"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Organization",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/organization",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/organization"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"instance_id\":\"eaque\",\"name\":\"rerum\",\"street\":\"reprehenderit\",\"postcode\":\"ipsam\",\"city\":\"et\",\"contact\":\"eos\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Organization",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/organization\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/organization\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the organization."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Organization",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/organization\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/organization\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the organization."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"instance_id\":\"est\",\"name\":\"dolorum\",\"street\":\"sit\",\"postcode\":\"officia\",\"city\":\"aut\",\"contact\":\"explicabo\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Organization",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/organization\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/organization\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the organization."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "ProductType",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all ProductTypes",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/product-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/product-types"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new ProductType",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/product-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/product-types"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"ipsam\",\"icon\":\"voluptatem\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified ProductType",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/product-types\/:productType_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/product-types\/:productType_id",
+                            "variable": [
+                                {
+                                    "id": "productType_id",
+                                    "key": "productType_id",
+                                    "value": "15",
+                                    "description": "The ID of the productType."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified ProductType",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/product-types\/:productType_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/product-types\/:productType_id",
+                            "variable": [
+                                {
+                                    "id": "productType_id",
+                                    "key": "productType_id",
+                                    "value": "8",
+                                    "description": "The ID of the productType."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"iure\",\"icon\":\"qui\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified ProductType",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/product-types\/:productType_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/product-types\/:productType_id",
+                            "variable": [
+                                {
+                                    "id": "productType_id",
+                                    "key": "productType_id",
+                                    "value": "17",
+                                    "description": "The ID of the productType."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Reservation",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Reservations",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reservations",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reservations"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Reservation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reservations",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reservations"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"card_id\":\"voluptatem\",\"shop_id\":\"amet\",\"time\":\"2022-08-04 12:00:00\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Reservation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reservations\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reservations\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "12",
+                                    "description": "The ID of the reservation."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Reservation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reservations\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reservations\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "6",
+                                    "description": "The ID of the reservation."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"card_id\":\"officia\",\"shop_id\":\"recusandae\",\"time\":\"2022-08-04 12:00:00\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Reservation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reservations\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reservations\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the reservation."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Shop",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Shops",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/shop",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/shop"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Shop",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/shop",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/shop"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"organization_id\":\"optio\",\"name\":\"assumenda\",\"street\":\"hic\",\"postcode\":\"odio\",\"city\":\"quis\",\"contact\":\"iste\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Shop",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/shop\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/shop\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "19",
+                                    "description": "The ID of the shop."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Shop",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/shop\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/shop\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "3",
+                                    "description": "The ID of the shop."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"organization_id\":\"neque\",\"name\":\"reiciendis\",\"street\":\"labore\",\"postcode\":\"labore\",\"city\":\"deserunt\",\"contact\":\"sed\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Shop",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/shop\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/shop\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "3",
+                                    "description": "The ID of the shop."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/user"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"instance_id\":\"dolorem\",\"organization_id\":\"aut\",\"name\":\"eveniet\",\"email\":\"strosin.kip@example.com\",\"password\":\"tempora\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/user\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/user\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/user\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/user\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"instance_id\":\"incidunt\",\"organization_id\":\"deleniti\",\"name\":\"quia\",\"email\":\"pagac.westley@example.net\",\"password\":\"dolorum\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/user\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/user\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}
