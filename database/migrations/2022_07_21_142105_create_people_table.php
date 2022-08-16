@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('limitation_set_people', function (Blueprint $table) {
+        Schema::create('limitation_set_person', function (Blueprint $table) {
             $table->foreignId('person_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('limitation_set_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
@@ -35,7 +35,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('limitation_set_people');
+        Schema::dropIfExists('limitation_set_person');
         Schema::dropIfExists('people');
     }
 };

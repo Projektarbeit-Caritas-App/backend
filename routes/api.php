@@ -41,8 +41,8 @@ Route::controller(AuthController::class)
 //region Limitations
 Route::middleware('auth:sanctum')
     ->controller(LimitationManagerController::class)
-    ->prefix('admin/limitation/limits')
-    ->name('admin.limitation.limits.')
+    ->prefix('admin/limitation/limit')
+    ->name('admin.limitation.limit.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -55,8 +55,8 @@ Route::middleware('auth:sanctum')
 //region LimitationSets
 Route::middleware('auth:sanctum')
     ->controller(LimitationSetManagerController::class)
-    ->prefix('admin/limitation/sets')
-    ->name('admin.limitation.sets.')
+    ->prefix('admin/limitation/set')
+    ->name('admin.limitation.set.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -83,8 +83,8 @@ Route::middleware('auth:sanctum')
 //region ProductTypes
 Route::middleware('auth:sanctum')
     ->controller(ProductTypeManagerController::class)
-    ->prefix('admin/product-types')
-    ->name('admin.product-types.')
+    ->prefix('admin/product-type')
+    ->name('admin.product-type.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -97,8 +97,8 @@ Route::middleware('auth:sanctum')
 //region Reservations
 Route::middleware('auth:sanctum')
     ->controller(ReservationController::class)
-    ->prefix('reservations')
-    ->name('reservations.')
+    ->prefix('reservation')
+    ->name('reservation.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');

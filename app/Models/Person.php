@@ -20,7 +20,7 @@ class Person extends Model
         return $this->belongsTo(Card::class);
     }
 
-    public function limitationSet(): BelongsToMany
+    public function limitationSets(): BelongsToMany
     {
         return $this->belongsToMany(LimitationSet::class);
     }
