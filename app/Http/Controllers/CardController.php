@@ -20,7 +20,7 @@ class CardController extends Controller
     /**
      * Create new Card
      *
-     * @param  \App\Http\Requests\CardRequest  $request
+     * @param \App\Http\Requests\CardRequest $request
      * @return \App\Models\Card
      */
     public function store(CardRequest $request)
@@ -31,7 +31,7 @@ class CardController extends Controller
     /**
      * Show specified Card
      *
-     * @param  \App\Models\Card  $card
+     * @param \App\Models\Card $card
      * @return \App\Models\Card
      */
     public function show(Card $card)
@@ -42,8 +42,8 @@ class CardController extends Controller
     /**
      * Update specified Card
      *
-     * @param  \App\Http\Requests\CardRequest  $request
-     * @param  \App\Models\Card  $card
+     * @param \App\Http\Requests\CardRequest $request
+     * @param \App\Models\Card $card
      * @return \App\Models\Card
      */
     public function update(CardRequest $request, Card $card)
@@ -55,7 +55,7 @@ class CardController extends Controller
     /**
      * Delete specified Card
      *
-     * @param  \App\Models\Card  $card
+     * @param \App\Models\Card $card
      * @return array
      */
     public function destroy(Card $card)

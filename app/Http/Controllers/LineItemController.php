@@ -20,7 +20,7 @@ class LineItemController extends Controller
     /**
      * Create new LineItem
      *
-     * @param  \App\Http\Requests\LineItemRequest  $request
+     * @param \App\Http\Requests\LineItemRequest $request
      * @return \App\Models\LineItem
      */
     public function store(LineItemRequest $request)
@@ -31,7 +31,7 @@ class LineItemController extends Controller
     /**
      * Show specified LineItem
      *
-     * @param  \App\Models\LineItem  $lineItem
+     * @param \App\Models\LineItem $lineItem
      * @return \App\Models\LineItem
      */
     public function show(LineItem $lineItem)
@@ -43,8 +43,8 @@ class LineItemController extends Controller
     /**
      * Update specified LineItem
      *
-     * @param  \App\Http\Requests\LineItemRequest  $request
-     * @param  \App\Models\LineItem  $lineItem
+     * @param \App\Http\Requests\LineItemRequest $request
+     * @param \App\Models\LineItem $lineItem
      * @return \App\Models\LineItem
      */
     public function update(LineItemRequest $request, LineItem $lineItem)
@@ -56,7 +56,7 @@ class LineItemController extends Controller
     /**
      * Delete specified LineItem
      *
-     * @param  \App\Models\LineItem  $lineItem
+     * @param \App\Models\LineItem $lineItem
      * @return array
      */
     public function destroy(LineItem $lineItem)

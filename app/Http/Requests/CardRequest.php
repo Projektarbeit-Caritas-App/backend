@@ -35,7 +35,8 @@ class CardRequest extends FormRequest
         ];
     }
 
-    public function bodyParameters() {
+    public function bodyParameters()
+    {
         return [
             'last_name' => [
                 'description' => 'Last name of the cardholder'
