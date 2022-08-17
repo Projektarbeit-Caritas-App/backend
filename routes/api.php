@@ -163,3 +163,17 @@ Route::middleware('auth:sanctum')
         Route::delete('/{lineItem}', 'destroy')->name('destroy');
     });
 //endregion
+
+//region Persons
+Route::middleware('auth:sanctum')
+    ->controller(UserManagerController::class)
+    ->prefix('person')
+    ->name('person.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{person}', 'show')->name('show');
+        Route::put('/{person}', 'update')->name('update');
+        Route::delete('/{person}', 'destroy')->name('destroy');
+    });
+//endregion
