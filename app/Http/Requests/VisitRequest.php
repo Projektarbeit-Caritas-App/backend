@@ -30,4 +30,19 @@ class VisitRequest extends FormRequest
             'lineItems.*.amount' => 'int|min:1|required'
         ];
     }
+
+    public function bodyParameters()
+    {
+        return [
+            'lineItems.*.person_id' => [
+                'description' => 'ID of the person the lineItem is for'
+            ],
+            'lineItems.*.product_type_id' => [
+                'description' => 'ID of the product_type of the lineItem',
+            ],
+            'lineItems.*.amount' => [
+                'description' => 'The amount of purchased lineItems of the same product_type',
+            ]
+        ];
+    }
 }
