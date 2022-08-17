@@ -14,7 +14,11 @@ use Illuminate\Http\Response;
 class VisitController extends Controller
 {
     /**
-     * TODO description
+     * Show specified Card and related Persons
+     *
+     * Endpoint shows the specified card, the associated people and the limitation_state.
+     * The limitation_state shows for the persons the limit for a productType and how
+     * many of them have already been used by a person
      *
      * @param Card $card
      * @return Application|ResponseFactory|Response
@@ -38,7 +42,9 @@ class VisitController extends Controller
     }
 
     /**
-     * TODO Description
+     * Create new Visit, LineItems
+     *
+     * Endpoint creates a new Visit entry and stores the submitted lineItems
      *
      * @param \App\Http\Requests\VisitRequest $request
      * @param Shop $shop
@@ -69,6 +75,11 @@ class VisitController extends Controller
     }
 
     /**
+     * Helper function to create limitation_states
+     *
+     * Returns information about productTypes,
+     * the associated limit value and how many are already used up
+     *
      * @param Person $person
      * @return array
      */
