@@ -137,6 +137,61 @@ Route::middleware('auth:sanctum')
     });
 //endregion
 
+//region Cards
+Route::middleware('auth:sanctum')
+    ->controller(UserManagerController::class)
+    ->prefix('admin/card')
+    ->name('admin.card.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{card}', 'show')->name('show');
+        Route::put('/{card}', 'update')->name('update');
+        Route::delete('/{card}', 'destroy')->name('destroy');
+    });
+//endregion
+
+//region LineItems
+Route::middleware('auth:sanctum')
+    ->controller(UserManagerController::class)
+    ->prefix('admin/lineItem')
+    ->name('admin.lineItem.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{lineItem}', 'show')->name('show');
+        Route::put('/{lineItem}', 'update')->name('update');
+        Route::delete('/{lineItem}', 'destroy')->name('destroy');
+    });
+//endregion
+
+//region Persons
+Route::middleware('auth:sanctum')
+    ->controller(UserManagerController::class)
+    ->prefix('admin/person')
+    ->name('admin.person.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{person}', 'show')->name('show');
+        Route::put('/{person}', 'update')->name('update');
+        Route::delete('/{person}', 'destroy')->name('destroy');
+    });
+//endregion
+
+//region Visits
+Route::middleware('auth:sanctum')
+    ->controller(UserManagerController::class)
+    ->prefix('admin/visit')
+    ->name('admin.visit.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{visit}', 'show')->name('show');
+        Route::put('/{visit}', 'update')->name('update');
+        Route::delete('/{visit}', 'destroy')->name('destroy');
+    });
+
 //region AppVisits
 Route::middleware('auth:sanctum')
     ->controller(AppVisitController::class)
