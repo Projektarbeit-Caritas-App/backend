@@ -139,8 +139,8 @@ Route::middleware('auth:sanctum')
 //region Cards
 Route::middleware('auth:sanctum')
     ->controller(UserManagerController::class)
-    ->prefix('card')
-    ->name('card.')
+    ->prefix('admin/card')
+    ->name('admin.card.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -153,8 +153,8 @@ Route::middleware('auth:sanctum')
 //region LineItems
 Route::middleware('auth:sanctum')
     ->controller(UserManagerController::class)
-    ->prefix('lineItem')
-    ->name('lineItem.')
+    ->prefix('admin/lineItem')
+    ->name('admin.lineItem.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -167,8 +167,8 @@ Route::middleware('auth:sanctum')
 //region Persons
 Route::middleware('auth:sanctum')
     ->controller(UserManagerController::class)
-    ->prefix('person')
-    ->name('person.')
+    ->prefix('admin/person')
+    ->name('admin.person.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -181,8 +181,8 @@ Route::middleware('auth:sanctum')
 //region Visits
 Route::middleware('auth:sanctum')
     ->controller(UserManagerController::class)
-    ->prefix('visit')
-    ->name('visit.')
+    ->prefix('admin/visit')
+    ->name('admin.visit.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
