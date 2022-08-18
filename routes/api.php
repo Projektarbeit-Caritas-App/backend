@@ -177,3 +177,17 @@ Route::middleware('auth:sanctum')
         Route::delete('/{person}', 'destroy')->name('destroy');
     });
 //endregion
+
+//region Visits
+Route::middleware('auth:sanctum')
+    ->controller(UserManagerController::class)
+    ->prefix('visit')
+    ->name('visit.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{visit}', 'show')->name('show');
+        Route::put('/{visit}', 'update')->name('update');
+        Route::delete('/{visit}', 'destroy')->name('destroy');
+    });
+//endregion
