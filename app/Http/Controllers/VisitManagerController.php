@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VisitRequest;
+use App\Http\Requests\ManageVisitRequest;
 use App\Models\Visit;
 
-class VisitController extends Controller
+class VisitManagerController extends Controller
 {
     /**
      * List all Visits
@@ -20,10 +20,10 @@ class VisitController extends Controller
     /**
      * Create new Visit
      *
-     * @param \App\Http\Requests\VisitRequest $request
+     * @param \App\Http\Requests\ManageVisitRequest $request
      * @return \App\Models\Visit
      */
-    public function store(VisitRequest $request)
+    public function store(ManageVisitRequest $request)
     {
         return Visit::create($request->validated());
     }
@@ -42,11 +42,11 @@ class VisitController extends Controller
     /**
      * Update specified Visit
      *
-     * @param \App\Http\Requests\VisitRequest $request
+     * @param \App\Http\Requests\ManageVisitRequest $request
      * @param \App\Models\Visit $visit
      * @return \App\Models\Visit
      */
-    public function update(VisitRequest $request, Visit $visit)
+    public function update(ManageVisitRequest $request, Visit $visit)
     {
         $visit->update($request->validated());
         return $visit;

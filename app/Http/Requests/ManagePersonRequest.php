@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VisitRequest extends FormRequest
+class ManagePersonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class VisitRequest extends FormRequest
     {
         return [
             'card_id' => 'exists:cards,id|required',
-            'user_id' => 'exists:users,id|required'
+            'gender' => 'string|required',
+            'age' => 'int|required'
         ];
     }
 
@@ -33,10 +34,13 @@ class VisitRequest extends FormRequest
     {
         return [
             'card_id' => [
-                'description' => 'ID of the card the visit is attached to'
+                'description' => 'ID of the card the person is attached to'
             ],
-            'user_id' => [
-                'description' => 'ID of the user the visit is attached to'
+            'gender' => [
+                'description' => 'Gender of the person'
+            ],
+            'age' => [
+                'description' => 'Age of the Person'
             ]
         ];
     }

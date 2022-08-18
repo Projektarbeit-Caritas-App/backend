@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CardRequest;
+use App\Http\Requests\ManageCardRequest;
 use App\Models\Card;
 
-class CardController extends Controller
+class CardManagerController extends Controller
 {
     /**
      * List all Cards
@@ -20,10 +20,10 @@ class CardController extends Controller
     /**
      * Create new Card
      *
-     * @param \App\Http\Requests\CardRequest $request
+     * @param \App\Http\Requests\ManageCardRequest $request
      * @return \App\Models\Card
      */
-    public function store(CardRequest $request)
+    public function store(ManageCardRequest $request)
     {
         return Card::create($request->validated());
     }
@@ -42,11 +42,11 @@ class CardController extends Controller
     /**
      * Update specified Card
      *
-     * @param \App\Http\Requests\CardRequest $request
+     * @param \App\Http\Requests\ManageCardRequest $request
      * @param \App\Models\Card $card
      * @return \App\Models\Card
      */
-    public function update(CardRequest $request, Card $card)
+    public function update(ManageCardRequest $request, Card $card)
     {
         $card->update($request->validated());
         return $card;

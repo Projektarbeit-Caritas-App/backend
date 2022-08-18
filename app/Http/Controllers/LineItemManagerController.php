@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LineItemRequest;
+use App\Http\Requests\ManageLineItemRequest;
 use App\Models\LineItem;
 
-class LineItemController extends Controller
+class LineItemManagerController extends Controller
 {
     /**
      * List all LineItems
@@ -20,10 +20,10 @@ class LineItemController extends Controller
     /**
      * Create new LineItem
      *
-     * @param \App\Http\Requests\LineItemRequest $request
+     * @param \App\Http\Requests\ManageLineItemRequest $request
      * @return \App\Models\LineItem
      */
-    public function store(LineItemRequest $request)
+    public function store(ManageLineItemRequest $request)
     {
         return LineItem::create($request->validated());
     }
@@ -43,11 +43,11 @@ class LineItemController extends Controller
     /**
      * Update specified LineItem
      *
-     * @param \App\Http\Requests\LineItemRequest $request
+     * @param \App\Http\Requests\ManageLineItemRequest $request
      * @param \App\Models\LineItem $lineItem
      * @return \App\Models\LineItem
      */
-    public function update(LineItemRequest $request, LineItem $lineItem)
+    public function update(ManageLineItemRequest $request, LineItem $lineItem)
     {
         $lineItem->update($request->validated());
         return $lineItem;

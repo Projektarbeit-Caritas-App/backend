@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PersonRequest;
+use App\Http\Requests\ManagePersonRequest;
 use App\Models\Person;
 
-class PersonController extends Controller
+class PersonManagerController extends Controller
 {
     /**
      * List all persons
@@ -20,10 +20,10 @@ class PersonController extends Controller
     /**
      * Create new Person
      *
-     * @param \App\Http\Requests\PersonRequest $request
+     * @param \App\Http\Requests\ManagePersonRequest $request
      * @return \App\Models\Person
      */
-    public function store(PersonRequest $request)
+    public function store(ManagePersonRequest $request)
     {
         return Person::create($request->validated());
     }
@@ -42,11 +42,11 @@ class PersonController extends Controller
     /**
      * Update specified Person
      *
-     * @param \App\Http\Requests\PersonRequest $request
+     * @param \App\Http\Requests\ManagePersonRequest $request
      * @param \App\Models\Person $person
      * @return \App\Models\Person
      */
-    public function update(PersonRequest $request, Person $person)
+    public function update(ManagePersonRequest $request, Person $person)
     {
         $person->update($request->validated());
         return $person;
