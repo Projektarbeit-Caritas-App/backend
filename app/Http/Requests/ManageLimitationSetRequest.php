@@ -37,7 +37,7 @@ class ManageLimitationSetRequest extends FormRequest
                 'description' => 'Name of the limitation set'
             ],
             'valid_from' => [
-                'description' => 'Date and time of the expiry of the limitation set',
+                'description' => 'Date and time of the start of the validity of the limitation set.',
                 'example' => '2022-08-04 12:00:00'
             ],
             'valid_until' => [
