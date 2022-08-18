@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LimitationManagerController;
 use App\Http\Controllers\LimitationSetManagerController;
 use App\Http\Controllers\OrganizationManagerController;
+use App\Http\Controllers\PdfGenerationController;
 use App\Http\Controllers\ProductTypeManagerController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopManagerController;
@@ -200,5 +201,15 @@ Route::middleware('auth:sanctum')
     ->group(function () {
         Route::get('/{card}', 'show')->name('show');
         Route::post('/{card}', 'store')->name('store');
+    });
+//endregion
+
+//region PDFs
+Route::middleware('auth:sanctum')
+    ->controller(PdfGenerationController::class)
+    ->prefix('pdf')
+    ->name('pdf.')
+    ->group(function () {
+        Route::get('/card/{card}', 'printCard')->name('card');
     });
 //endregion
