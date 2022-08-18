@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductTypeManagerController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopManagerController;
 use App\Http\Controllers\UserManagerController;
+use App\Http\Controllers\AppVisitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -189,5 +190,15 @@ Route::middleware('auth:sanctum')
         Route::get('/{visit}', 'show')->name('show');
         Route::put('/{visit}', 'update')->name('update');
         Route::delete('/{visit}', 'destroy')->name('destroy');
+    });
+
+//region AppVisits
+Route::middleware('auth:sanctum')
+    ->controller(AppVisitController::class)
+    ->prefix('card/visit')
+    ->name('app.card.visit.')
+    ->group(function () {
+        Route::get('/{card}', 'show')->name('show');
+        Route::post('/{card}', 'store')->name('store');
     });
 //endregion
