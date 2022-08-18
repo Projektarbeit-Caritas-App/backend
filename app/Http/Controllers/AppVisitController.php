@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VisitRequest;
+use App\Http\Requests\AppVisitRequest;
 use App\Models\Card;
 use App\Models\Person;
 use App\Models\Shop;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
 
-class VisitController extends Controller
+class AppVisitController extends Controller
 {
     /**
      * Show specified Card and related Persons
@@ -46,12 +46,12 @@ class VisitController extends Controller
      *
      * Endpoint creates a new Visit entry and stores the submitted lineItems
      *
-     * @param \App\Http\Requests\VisitRequest $request
+     * @param \App\Http\Requests\AppVisitRequest $request
      * @param Shop $shop
      * @param Card $card
      * @return Application|ResponseFactory|Response
      */
-    public function store(VisitRequest $request, Card $card): Response|Application|ResponseFactory
+    public function store(AppVisitRequest $request, Card $card): Response|Application|ResponseFactory
     {
         $visit = new Visit();
         $visit->card_id = $card->id;
