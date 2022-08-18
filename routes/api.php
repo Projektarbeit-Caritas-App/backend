@@ -140,10 +140,10 @@ Route::middleware('auth:sanctum')
 //region AppVisits
 Route::middleware('auth:sanctum')
     ->controller(AppVisitController::class)
-    ->prefix('card/app-visit')
-    ->name('card.app-visit.')
+    ->prefix('card/visit')
+    ->name('app.card.visit.')
     ->group(function () {
-        Route::get('/{appVisit}', 'show')->name('show');
-        Route::post('/{appVisit}', 'store')->name('store');
+        Route::get('/{card}', 'show')->name('show');
+        Route::post('/{card}', 'store')->name('store');
     });
 //endregion
