@@ -1,15 +1,19 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CardManagerController;
 use App\Http\Controllers\LimitationManagerController;
 use App\Http\Controllers\LimitationSetManagerController;
+use App\Http\Controllers\LineItemManagerController;
 use App\Http\Controllers\OrganizationManagerController;
 use App\Http\Controllers\PdfGenerationController;
+use App\Http\Controllers\PersonManagerController;
 use App\Http\Controllers\ProductTypeManagerController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopManagerController;
 use App\Http\Controllers\UserManagerController;
 use App\Http\Controllers\AppVisitController;
+use App\Http\Controllers\VisitManagerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -140,7 +144,7 @@ Route::middleware('auth:sanctum')
 
 //region Cards
 Route::middleware('auth:sanctum')
-    ->controller(UserManagerController::class)
+    ->controller(CardManagerController::class)
     ->prefix('admin/card')
     ->name('admin.card.')
     ->group(function () {
@@ -154,7 +158,7 @@ Route::middleware('auth:sanctum')
 
 //region LineItems
 Route::middleware('auth:sanctum')
-    ->controller(UserManagerController::class)
+    ->controller(LineItemManagerController::class)
     ->prefix('admin/lineItem')
     ->name('admin.lineItem.')
     ->group(function () {
@@ -168,7 +172,7 @@ Route::middleware('auth:sanctum')
 
 //region Persons
 Route::middleware('auth:sanctum')
-    ->controller(UserManagerController::class)
+    ->controller(PersonManagerController::class)
     ->prefix('admin/person')
     ->name('admin.person.')
     ->group(function () {
@@ -182,7 +186,7 @@ Route::middleware('auth:sanctum')
 
 //region Visits
 Route::middleware('auth:sanctum')
-    ->controller(UserManagerController::class)
+    ->controller(VisitManagerController::class)
     ->prefix('admin/visit')
     ->name('admin.visit.')
     ->group(function () {
