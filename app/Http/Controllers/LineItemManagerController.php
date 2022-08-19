@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ManageLineItemRequest;
 use App\Models\LineItem;
 
+/**
+ * @group Line Item
+ * @authenticated
+ */
 class LineItemManagerController extends Controller
 {
     /**

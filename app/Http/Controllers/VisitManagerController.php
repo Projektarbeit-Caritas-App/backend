@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ManageVisitRequest;
 use App\Models\Visit;
 
+/**
+ * @group Visit
+ * @authenticated
+ */
 class VisitManagerController extends Controller
 {
     /**
