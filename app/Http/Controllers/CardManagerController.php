@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ManageCardRequest;
 use App\Models\Card;
 
+/**
+ * @group Card
+ * @authenticated
+ */
 class CardManagerController extends Controller
 {
     /**

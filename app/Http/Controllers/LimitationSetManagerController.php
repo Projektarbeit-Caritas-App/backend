@@ -6,7 +6,7 @@ use App\Http\Requests\ManageLimitationSetRequest;
 use App\Models\LimitationSet;
 
 /**
- * @group LimitationSet
+ * @group Limitation Set
  * @authenticated
  */
 class LimitationSetManagerController extends Controller

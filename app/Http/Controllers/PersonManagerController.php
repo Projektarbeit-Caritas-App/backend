@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ManagePersonRequest;
 use App\Models\Person;
 
+/**
+ * @group Person
+ * @authenticated
+ */
 class PersonManagerController extends Controller
 {
     /**
