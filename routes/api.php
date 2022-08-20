@@ -9,6 +9,7 @@ use App\Http\Controllers\OrganizationManagerController;
 use App\Http\Controllers\PdfGenerationController;
 use App\Http\Controllers\PersonManagerController;
 use App\Http\Controllers\ProductTypeManagerController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopManagerController;
 use App\Http\Controllers\UserManagerController;
@@ -97,6 +98,18 @@ Route::middleware('auth:sanctum')
         Route::get('/{productType}', 'show')->name('show');
         Route::put('/{productType}', 'update')->name('update');
         Route::delete('/{productType}', 'destroy')->name('destroy');
+    });
+//endregion
+
+//region Schedule
+Route::middleware('auth:sanctum')
+    ->controller(ScheduleController::class)
+    ->prefix('schedule')
+    ->name('schedule.')
+    ->group(function () {
+        Route::get('/', 'shops')->name('shops');
+        Route::get('/{shop}', 'today')->name('reservations');
+
     });
 //endregion
 
