@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AppVisitRequest;
+use App\Http\Requests\CheckoutRequest;
 use App\Models\Card;
 use App\Models\Person;
 use App\Models\Shop;
@@ -50,12 +50,12 @@ class CheckoutController extends Controller
      *
      * Endpoint creates a new Visit entry and stores the submitted lineItems
      *
-     * @param \App\Http\Requests\AppVisitRequest $request
+     * @param \App\Http\Requests\CheckoutRequest $request
      * @param Shop $shop
      * @param Card $card
      * @return Application|ResponseFactory|Response
      */
-    public function store(AppVisitRequest $request, Card $card): Response|Application|ResponseFactory
+    public function store(CheckoutRequest $request, Card $card): Response|Application|ResponseFactory
     {
         $visit = new Visit();
         $visit->card_id = $card->id;
