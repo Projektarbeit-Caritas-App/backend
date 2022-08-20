@@ -22,6 +22,11 @@ class Card extends Model
         'creator_id'
     ];
 
+    protected $casts = [
+        'valid_from' => 'date',
+        'valid_until' => 'date'
+    ];
+
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');

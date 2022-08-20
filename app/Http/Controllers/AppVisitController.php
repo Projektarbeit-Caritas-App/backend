@@ -11,6 +11,10 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
 
+/**
+ * @group Checkout
+ * @authenticated
+ */
 class AppVisitController extends Controller
 {
     /**

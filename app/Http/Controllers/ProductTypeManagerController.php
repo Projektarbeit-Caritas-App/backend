@@ -6,7 +6,7 @@ use App\Http\Requests\ManageProductTypeRequest;
 use App\Models\ProductType;
 
 /**
- * @group ProductType
+ * @group Product Type
  * @authenticated
  */
 class ProductTypeManagerController extends Controller
