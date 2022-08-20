@@ -186,12 +186,12 @@ paths:
               properties:
                 email:
                   type: string
-                  description: 'E-Mail of the user. Must be a valid email address.'
-                  example: purdy.otto@example.net
+                  description: 'E-Mail of the user.'
+                  example: optio
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: eos
+                  example: neque
               required:
                 - email
                 - password
@@ -199,7 +199,7 @@ paths:
   /api/auth/token:
     post:
       summary: 'Login with Bearer Token (Authorization Header)'
-      description: "If you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>/admin</code> path will not be available for Applications using Token-Auth.\n</aside>"
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nIf you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>/admin</code> path will not be available for Applications using Token-Auth.\n</aside>"
       parameters:
         -
           in: header
@@ -322,15 +322,15 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user. Must be a valid email address.'
-                  example: jane91@example.net
+                  example: trenton.wehner@example.com
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: accusamus
+                  example: maiores
                 device_name:
                   type: string
                   description: 'Name of the device, used for identification of the token.'
-                  example: ut
+                  example: officia
               required:
                 - email
                 - password
@@ -339,7 +339,7 @@ paths:
   /api/auth/logout:
     post:
       summary: Logout
-      description: 'Invalidate your current session/token'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nInvalidate your current session/token"
       parameters:
         -
           in: header
@@ -377,7 +377,381 @@ paths:
                     example: true
       tags:
         - Authentication
-  /api/admin/limitation/limits:
+  /api/admin/card:
+    get:
+      summary: 'List all Cards'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Card
+    post:
+      summary: 'Create new Card'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Card
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                last_name:
+                  type: string
+                  description: 'Last name of the cardholder.'
+                  example: accusamus
+                first_name:
+                  type: string
+                  description: 'First name of the cardholder.'
+                  example: reiciendis
+                street:
+                  type: string
+                  description: 'Street where the cardholder is located.'
+                  example: veniam
+                postcode:
+                  type: string
+                  description: 'Postcode where the cardholder is located.'
+                  example: cum
+                city:
+                  type: string
+                  description: 'City where the cardholder is located.'
+                  example: voluptatem
+                valid_from:
+                  type: string
+                  description: 'Date and time of the start of validity of the card. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+                valid_until:
+                  type: string
+                  description: 'Date and time of the expiry of the card. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+                creator_id:
+                  type: string
+                  description: 'ID of the User the card is attached to.'
+                  example: corrupti
+              required:
+                - last_name
+                - first_name
+                - valid_from
+                - valid_until
+                - creator_id
+  '/api/admin/card/{id}':
+    get:
+      summary: 'Show specified Card'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Card
+    put:
+      summary: 'Update specified Card'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Card
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                last_name:
+                  type: string
+                  description: 'Last name of the cardholder.'
+                  example: in
+                first_name:
+                  type: string
+                  description: 'First name of the cardholder.'
+                  example: soluta
+                street:
+                  type: string
+                  description: 'Street where the cardholder is located.'
+                  example: maiores
+                postcode:
+                  type: string
+                  description: 'Postcode where the cardholder is located.'
+                  example: iusto
+                city:
+                  type: string
+                  description: 'City where the cardholder is located.'
+                  example: voluptates
+                valid_from:
+                  type: string
+                  description: 'Date and time of the start of validity of the card. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+                valid_until:
+                  type: string
+                  description: 'Date and time of the expiry of the card. Must be a valid date.'
+                  example: '2022-08-04 12:00:00'
+                creator_id:
+                  type: string
+                  description: 'ID of the User the card is attached to.'
+                  example: enim
+              required:
+                - last_name
+                - first_name
+                - valid_from
+                - valid_until
+                - creator_id
+    delete:
+      summary: 'Delete specified Card'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Card
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the card.'
+        example: 4
+        required: true
+        schema:
+          type: integer
+  '/api/card/visit/{card_id}':
+    get:
+      summary: 'Show specified Card and related Persons'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nEndpoint shows the specified card, the associated people and the limitation_state.\nThe limitation_state shows for the persons the limit for a productType and how\nmany of them have already been used by a person"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Checkout
+    post:
+      summary: 'Create new Visit, LineItems'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nEndpoint creates a new Visit entry and stores the submitted lineItems"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Checkout
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lineItems:
+                  type: array
+                  description: ''
+                  example:
+                    - []
+                  items:
+                    type: object
+                    properties:
+                      person_id:
+                        type: string
+                        description: 'ID of the person the lineItem is for.'
+                        example: autem
+                      product_type_id:
+                        type: string
+                        description: 'ID of the product_type of the lineItem.'
+                        example: ducimus
+                      amount:
+                        type: integer
+                        description: 'The amount of purchased lineItems of the same product_type. Must be at least 1.'
+                        example: 0
+                    required:
+                      - person_id
+                      - product_type_id
+                      - amount
+    parameters:
+      -
+        in: path
+        name: card_id
+        description: 'The ID of the card.'
+        example: 19
+        required: true
+        schema:
+          type: integer
+  /api/admin/limitation/limit:
     get:
       summary: 'List all Limitation'
       description: ''
@@ -456,19 +830,19 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: asperiores
+                  example: quia
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: culpa
+                  example: qui
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 7
+                  example: 17
               required:
                 - product_type_id
                 - limitation_set_id
-  '/api/admin/limitation/limits/{limitation_id}':
+  '/api/admin/limitation/limit/{limitation_id}':
     get:
       summary: 'Show specified Limitation'
       description: ''
@@ -547,15 +921,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: quae
+                  example: veniam
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: et
+                  example: velit
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 1
+                  example: 2
               required:
                 - product_type_id
                 - limitation_set_id
@@ -592,11 +966,11 @@ paths:
         in: path
         name: limitation_id
         description: 'The ID of the limitation.'
-        example: 5
+        example: 20
         required: true
         schema:
           type: integer
-  /api/admin/limitation/sets:
+  /api/admin/limitation/set:
     get:
       summary: 'List all LimitationSets'
       description: ''
@@ -636,7 +1010,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - LimitationSet
+        - 'Limitation Set'
     post:
       summary: 'Create new LimitationSet'
       description: ''
@@ -664,7 +1038,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - LimitationSet
+        - 'Limitation Set'
       requestBody:
         required: true
         content:
@@ -675,10 +1049,10 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: quo
+                  example: aut
                 valid_from:
                   type: string
-                  description: 'Date and time of the expiry of the limitation set. Must be a valid date.'
+                  description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
                   example: '2022-08-04 12:00:00'
                 valid_until:
                   type: string
@@ -687,7 +1061,7 @@ paths:
               required:
                 - name
                 - valid_from
-  '/api/admin/limitation/sets/{limitationSet_id}':
+  '/api/admin/limitation/set/{limitationSet_id}':
     get:
       summary: 'Show specified LimitationSet'
       description: ''
@@ -727,7 +1101,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - LimitationSet
+        - 'Limitation Set'
     put:
       summary: 'Update specified LimitationSet'
       description: ''
@@ -755,7 +1129,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - LimitationSet
+        - 'Limitation Set'
       requestBody:
         required: true
         content:
@@ -766,10 +1140,10 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: quia
+                  example: ab
                 valid_from:
                   type: string
-                  description: 'Date and time of the expiry of the limitation set. Must be a valid date.'
+                  description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
                   example: '2022-08-04 12:00:00'
                 valid_until:
                   type: string
@@ -805,13 +1179,234 @@ paths:
             type: string
       responses: {  }
       tags:
-        - LimitationSet
+        - 'Limitation Set'
     parameters:
       -
         in: path
         name: limitationSet_id
         description: 'The ID of the limitationSet.'
-        example: 14
+        example: 11
+        required: true
+        schema:
+          type: integer
+  /api/admin/lineItem:
+    get:
+      summary: 'List all LineItems'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Line Item'
+    post:
+      summary: 'Create new LineItem'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Line Item'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                visit_id:
+                  type: string
+                  description: 'ID of the visit the lineItem is attached to.'
+                  example: omnis
+                person_id:
+                  type: string
+                  description: 'ID of the person the lineItem is attached to.'
+                  example: necessitatibus
+                product_type_id:
+                  type: string
+                  description: 'ID of the product_type the lineItem is attached to.'
+                  example: iusto
+              required:
+                - visit_id
+                - person_id
+                - product_type_id
+  '/api/admin/lineItem/{id}':
+    get:
+      summary: 'Show specified LineItem'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Line Item'
+    put:
+      summary: 'Update specified LineItem'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Line Item'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                visit_id:
+                  type: string
+                  description: 'ID of the visit the lineItem is attached to.'
+                  example: id
+                person_id:
+                  type: string
+                  description: 'ID of the person the lineItem is attached to.'
+                  example: quia
+                product_type_id:
+                  type: string
+                  description: 'ID of the product_type the lineItem is attached to.'
+                  example: quia
+              required:
+                - visit_id
+                - person_id
+                - product_type_id
+    delete:
+      summary: 'Delete specified LineItem'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Line Item'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the lineItem.'
+        example: 13
         required: true
         schema:
           type: integer
@@ -894,27 +1489,27 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the organization is attached to.'
-                  example: eaque
+                  example: et
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: rerum
+                  example: sint
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: reprehenderit
+                  example: praesentium
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: ipsam
+                  example: nostrum
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: et
+                  example: placeat
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: eos
+                  example: voluptatem
               required:
                 - instance_id
                 - name
@@ -1001,27 +1596,27 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the organization is attached to.'
-                  example: est
+                  example: repellat
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: dolorum
+                  example: et
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: sit
+                  example: aut
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: officia
+                  example: aspernatur
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: aut
+                  example: vel
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: explicabo
+                  example: maxime
               required:
                 - instance_id
                 - name
@@ -1066,7 +1661,298 @@ paths:
         required: true
         schema:
           type: integer
-  /api/admin/product-types:
+  '/api/pdf/card/{card_id}':
+    get:
+      summary: 'Print specified Card'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nGenerate PDF for the given Card-ID. You can control the response with the Query-Params listed below.\nIf none is given it will generate a json with the base64 encoded PDF-File."
+      parameters:
+        -
+          in: query
+          name: download
+          description: 'Download generated PDF'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Download generated PDF'
+            example: null
+        -
+          in: query
+          name: raw
+          description: 'Show PDF in Browser'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Show PDF in Browser'
+            example: null
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - PDF
+    parameters:
+      -
+        in: path
+        name: card_id
+        description: 'The ID of the card.'
+        example: 7
+        required: true
+        schema:
+          type: integer
+  /api/admin/person:
+    get:
+      summary: 'List all persons'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Person
+    post:
+      summary: 'Create new Person'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Person
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: string
+                  description: 'ID of the card the person is attached to.'
+                  example: aut
+                gender:
+                  type: string
+                  description: 'Gender of the person.'
+                  example: sit
+                age:
+                  type: integer
+                  description: 'Age of the Person.'
+                  example: 19
+              required:
+                - card_id
+                - gender
+                - age
+  '/api/admin/person/{id}':
+    get:
+      summary: 'Show specified Person'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Person
+    put:
+      summary: 'Update specified Person'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Person
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: string
+                  description: 'ID of the card the person is attached to.'
+                  example: neque
+                gender:
+                  type: string
+                  description: 'Gender of the person.'
+                  example: in
+                age:
+                  type: integer
+                  description: 'Age of the Person.'
+                  example: 9
+              required:
+                - card_id
+                - gender
+                - age
+    delete:
+      summary: 'Delete specified Person'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Person
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the person.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+  /api/admin/product-type:
     get:
       summary: 'List all ProductTypes'
       description: ''
@@ -1106,7 +1992,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - ProductType
+        - 'Product Type'
     post:
       summary: 'Create new ProductType'
       description: ''
@@ -1134,7 +2020,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - ProductType
+        - 'Product Type'
       requestBody:
         required: true
         content:
@@ -1145,14 +2031,14 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: ipsam
+                  example: deserunt
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: voluptatem
+                  example: suscipit
               required:
                 - name
-  '/api/admin/product-types/{productType_id}':
+  '/api/admin/product-type/{productType_id}':
     get:
       summary: 'Show specified ProductType'
       description: ''
@@ -1192,7 +2078,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - ProductType
+        - 'Product Type'
     put:
       summary: 'Update specified ProductType'
       description: ''
@@ -1220,7 +2106,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - ProductType
+        - 'Product Type'
       requestBody:
         required: true
         content:
@@ -1231,11 +2117,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: iure
+                  example: ut
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: qui
+                  example: ex
               required:
                 - name
     delete:
@@ -1265,17 +2151,17 @@ paths:
             type: string
       responses: {  }
       tags:
-        - ProductType
+        - 'Product Type'
     parameters:
       -
         in: path
         name: productType_id
         description: 'The ID of the productType.'
-        example: 15
+        example: 2
         required: true
         schema:
           type: integer
-  /api/reservations:
+  /api/reservation:
     get:
       summary: 'List all Reservations'
       description: ''
@@ -1354,11 +2240,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: voluptatem
+                  example: cumque
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: amet
+                  example: quia
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -1367,7 +2253,7 @@ paths:
                 - card_id
                 - shop_id
                 - time
-  '/api/reservations/{id}':
+  '/api/reservation/{id}':
     get:
       summary: 'Show specified Reservation'
       description: ''
@@ -1446,11 +2332,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: officia
+                  example: ipsa
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: recusandae
+                  example: ipsum
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -1492,7 +2378,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the reservation.'
-        example: 12
+        example: 8
         required: true
         schema:
           type: integer
@@ -1575,27 +2461,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: optio
+                  example: totam
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: assumenda
+                  example: voluptas
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: hic
+                  example: eum
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: odio
+                  example: aut
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: quis
+                  example: atque
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: iste
+                  example: id
                 opening_hours:
                   type: object
                   description: ''
@@ -1692,7 +2578,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -1855,27 +2741,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: neque
+                  example: delectus
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: reiciendis
+                  example: assumenda
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: labore
+                  example: rerum
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: labore
+                  example: est
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: deserunt
+                  example: ut
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: sed
+                  example: iste
                 opening_hours:
                   type: object
                   description: ''
@@ -1972,7 +2858,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -2089,7 +2975,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the shop.'
-        example: 19
+        example: 12
         required: true
         schema:
           type: integer
@@ -2172,23 +3058,23 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the user is attached to.'
-                  example: dolorem
+                  example: facilis
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: aut
+                  example: dicta
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: eveniet
+                  example: quos
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: strosin.kip@example.com
+                  example: kaitlyn88@example.org
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: tempora
+                  example: omnis
               required:
                 - instance_id
                 - organization_id
@@ -2274,23 +3160,23 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the user is attached to.'
-                  example: incidunt
+                  example: et
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: deleniti
+                  example: eligendi
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: quia
+                  example: natus
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: pagac.westley@example.net
+                  example: corwin.citlalli@example.com
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: dolorum
+                  example: reprehenderit
               required:
                 - instance_id
                 - organization_id
@@ -2334,21 +3220,247 @@ paths:
         required: true
         schema:
           type: integer
+  /api/admin/visit:
+    get:
+      summary: 'List all Visits'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Visit
+    post:
+      summary: 'Create new Visit'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Visit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: string
+                  description: 'ID of the card the visit is attached to.'
+                  example: fugiat
+                user_id:
+                  type: string
+                  description: 'ID of the user the visit is attached to.'
+                  example: ea
+              required:
+                - card_id
+                - user_id
+  '/api/admin/visit/{id}':
+    get:
+      summary: 'Show specified Visit'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Visit
+    put:
+      summary: 'Update specified Visit'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Visit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: string
+                  description: 'ID of the card the visit is attached to.'
+                  example: quod
+                user_id:
+                  type: string
+                  description: 'ID of the user the visit is attached to.'
+                  example: consectetur
+              required:
+                - card_id
+                - user_id
+    delete:
+      summary: 'Delete specified Visit'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Visit
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the visit.'
+        example: 1
+        required: true
+        schema:
+          type: integer
 tags:
   -
     name: Authentication
     description: ''
   -
+    name: Card
+    description: ''
+  -
+    name: Checkout
+    description: ''
+  -
     name: Limitation
     description: ''
   -
-    name: LimitationSet
+    name: 'Limitation Set'
+    description: ''
+  -
+    name: 'Line Item'
     description: ''
   -
     name: Organization
     description: ''
   -
-    name: ProductType
+    name: PDF
+    description: ''
+  -
+    name: Person
+    description: ''
+  -
+    name: 'Product Type'
     description: ''
   -
     name: Reservation
@@ -2358,6 +3470,9 @@ tags:
     description: ''
   -
     name: User
+    description: ''
+  -
+    name: Visit
     description: ''
 components:
   securitySchemes:

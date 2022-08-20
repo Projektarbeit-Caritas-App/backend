@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "3393d1c0-2f59-47d5-9d68-ff479cb7eb78",
+        "_postman_id": "e9075198-94d8-446a-8da1-1e2e14e8a0a2",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -88,7 +88,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"purdy.otto@example.net\",\"password\":\"eos\"}"
+                            "raw": "{\"email\":\"optio\",\"password\":\"neque\"}"
                         },
                         "description": "After you send a GET-request to <code>\/api\/handshake<\/code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;<\/code><\/pre>\n  <\/p>\n<\/aside>",
                         "auth": {
@@ -132,9 +132,9 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"jane91@example.net\",\"password\":\"accusamus\",\"device_name\":\"ut\"}"
+                            "raw": "{\"email\":\"trenton.wehner@example.com\",\"password\":\"maiores\",\"device_name\":\"officia\"}"
                         },
-                        "description": "If you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nIf you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
                         "auth": {
                             "type": "noauth"
                         }
@@ -169,7 +169,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "Invalidate your current session\/token"
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nInvalidate your current session\/token"
                     },
                     "response": [
                         {
@@ -183,6 +183,302 @@
             ]
         },
         {
+            "name": "Card",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Cards",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/card",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/card"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Card",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/card",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/card"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"last_name\":\"accusamus\",\"first_name\":\"reiciendis\",\"street\":\"veniam\",\"postcode\":\"cum\",\"city\":\"voluptatem\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"corrupti\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Card",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/card\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/card\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "4",
+                                    "description": "The ID of the card."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Card",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/card\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/card\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "16",
+                                    "description": "The ID of the card."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"last_name\":\"in\",\"first_name\":\"soluta\",\"street\":\"maiores\",\"postcode\":\"iusto\",\"city\":\"voluptates\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"enim\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Card",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/card\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/card\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "20",
+                                    "description": "The ID of the card."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Checkout",
+            "description": "",
+            "item": [
+                {
+                    "name": "Show specified Card and related Persons",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/card\/visit\/:card_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/card\/visit\/:card_id",
+                            "variable": [
+                                {
+                                    "id": "card_id",
+                                    "key": "card_id",
+                                    "value": "19",
+                                    "description": "The ID of the card."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nEndpoint shows the specified card, the associated people and the limitation_state.\nThe limitation_state shows for the persons the limit for a productType and how\nmany of them have already been used by a person"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Visit, LineItems",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/card\/visit\/:card_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/card\/visit\/:card_id",
+                            "variable": [
+                                {
+                                    "id": "card_id",
+                                    "key": "card_id",
+                                    "value": "7",
+                                    "description": "The ID of the card."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"lineItems\":[{\"person_id\":\"autem\",\"product_type_id\":\"ducimus\",\"amount\":0}]}"
+                        },
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nEndpoint creates a new Visit entry and stores the submitted lineItems"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
             "name": "Limitation",
             "description": "",
             "item": [
@@ -191,9 +487,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/limits",
+                            "path": "api\/admin\/limitation\/limit",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit"
                         },
                         "method": "GET",
                         "header": [
@@ -236,9 +532,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/limits",
+                            "path": "api\/admin\/limitation\/limit",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit"
                         },
                         "method": "POST",
                         "header": [
@@ -253,7 +549,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"asperiores\",\"limitation_set_id\":\"culpa\",\"limit\":7}"
+                            "raw": "{\"product_type_id\":\"quia\",\"limitation_set_id\":\"qui\",\"limit\":17}"
                         },
                         "description": ""
                     },
@@ -264,14 +560,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/limits\/:limitation_id",
+                            "path": "api\/admin\/limitation\/limit\/:limitation_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits\/:limitation_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit\/:limitation_id",
                             "variable": [
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "5",
+                                    "value": "20",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -317,14 +613,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/limits\/:limitation_id",
+                            "path": "api\/admin\/limitation\/limit\/:limitation_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits\/:limitation_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit\/:limitation_id",
                             "variable": [
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "15",
+                                    "value": "4",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -342,7 +638,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"quae\",\"limitation_set_id\":\"et\",\"limit\":1}"
+                            "raw": "{\"product_type_id\":\"veniam\",\"limitation_set_id\":\"velit\",\"limit\":2}"
                         },
                         "description": ""
                     },
@@ -353,14 +649,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/limits\/:limitation_id",
+                            "path": "api\/admin\/limitation\/limit\/:limitation_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limits\/:limitation_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit\/:limitation_id",
                             "variable": [
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "11",
+                                    "value": "16",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -384,7 +680,7 @@
             ]
         },
         {
-            "name": "LimitationSet",
+            "name": "Limitation Set",
             "description": "",
             "item": [
                 {
@@ -392,9 +688,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/sets",
+                            "path": "api\/admin\/limitation\/set",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set"
                         },
                         "method": "GET",
                         "header": [
@@ -437,9 +733,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/sets",
+                            "path": "api\/admin\/limitation\/set",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set"
                         },
                         "method": "POST",
                         "header": [
@@ -454,7 +750,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quo\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"aut\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -465,14 +761,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "path": "api\/admin\/limitation\/set\/:limitationSet_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set\/:limitationSet_id",
                             "variable": [
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "14",
+                                    "value": "11",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -518,14 +814,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "path": "api\/admin\/limitation\/set\/:limitationSet_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set\/:limitationSet_id",
                             "variable": [
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "20",
+                                    "value": "12",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -543,7 +839,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quia\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"ab\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -554,15 +850,216 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "path": "api\/admin\/limitation\/set\/:limitationSet_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/sets\/:limitationSet_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set\/:limitationSet_id",
                             "variable": [
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "6",
+                                    "value": "7",
                                     "description": "The ID of the limitationSet."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Line Item",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all LineItems",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/lineItem",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new LineItem",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/lineItem",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"visit_id\":\"omnis\",\"person_id\":\"necessitatibus\",\"product_type_id\":\"iusto\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified LineItem",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/lineItem\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "13",
+                                    "description": "The ID of the lineItem."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified LineItem",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/lineItem\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "20",
+                                    "description": "The ID of the lineItem."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"visit_id\":\"id\",\"person_id\":\"quia\",\"product_type_id\":\"quia\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified LineItem",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/lineItem\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "4",
+                                    "description": "The ID of the lineItem."
                                 }
                             ]
                         },
@@ -655,7 +1152,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"eaque\",\"name\":\"rerum\",\"street\":\"reprehenderit\",\"postcode\":\"ipsam\",\"city\":\"et\",\"contact\":\"eos\"}"
+                            "raw": "{\"instance_id\":\"et\",\"name\":\"sint\",\"street\":\"praesentium\",\"postcode\":\"nostrum\",\"city\":\"placeat\",\"contact\":\"voluptatem\"}"
                         },
                         "description": ""
                     },
@@ -744,7 +1241,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"est\",\"name\":\"dolorum\",\"street\":\"sit\",\"postcode\":\"officia\",\"city\":\"aut\",\"contact\":\"explicabo\"}"
+                            "raw": "{\"instance_id\":\"repellat\",\"name\":\"et\",\"street\":\"aut\",\"postcode\":\"aspernatur\",\"city\":\"vel\",\"contact\":\"maxime\"}"
                         },
                         "description": ""
                     },
@@ -786,7 +1283,280 @@
             ]
         },
         {
-            "name": "ProductType",
+            "name": "PDF",
+            "description": "",
+            "item": [
+                {
+                    "name": "Print specified Card",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/pdf\/card\/:card_id",
+                            "query": [
+                                {
+                                    "key": "download",
+                                    "value": "",
+                                    "description": "Download generated PDF",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "raw",
+                                    "value": "",
+                                    "description": "Show PDF in Browser",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/pdf\/card\/:card_id?download=&raw=",
+                            "variable": [
+                                {
+                                    "id": "card_id",
+                                    "key": "card_id",
+                                    "value": "7",
+                                    "description": "The ID of the card."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nGenerate PDF for the given Card-ID. You can control the response with the Query-Params listed below.\nIf none is given it will generate a json with the base64 encoded PDF-File."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Person",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all persons",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/person",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/person"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Person",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/person",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/person"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"card_id\":\"aut\",\"gender\":\"sit\",\"age\":19}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Person",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/person\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/person\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of the person."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Person",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/person\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/person\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "14",
+                                    "description": "The ID of the person."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"card_id\":\"neque\",\"gender\":\"in\",\"age\":9}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Person",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/person\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/person\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "11",
+                                    "description": "The ID of the person."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Product Type",
             "description": "",
             "item": [
                 {
@@ -794,9 +1564,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/product-types",
+                            "path": "api\/admin\/product-type",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-types"
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type"
                         },
                         "method": "GET",
                         "header": [
@@ -839,9 +1609,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/product-types",
+                            "path": "api\/admin\/product-type",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-types"
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type"
                         },
                         "method": "POST",
                         "header": [
@@ -856,7 +1626,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ipsam\",\"icon\":\"voluptatem\"}"
+                            "raw": "{\"name\":\"deserunt\",\"icon\":\"suscipit\"}"
                         },
                         "description": ""
                     },
@@ -867,14 +1637,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/product-types\/:productType_id",
+                            "path": "api\/admin\/product-type\/:productType_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-types\/:productType_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type\/:productType_id",
                             "variable": [
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "15",
+                                    "value": "2",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -920,14 +1690,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/product-types\/:productType_id",
+                            "path": "api\/admin\/product-type\/:productType_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-types\/:productType_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type\/:productType_id",
                             "variable": [
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "8",
+                                    "value": "18",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -945,7 +1715,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"iure\",\"icon\":\"qui\"}"
+                            "raw": "{\"name\":\"ut\",\"icon\":\"ex\"}"
                         },
                         "description": ""
                     },
@@ -956,14 +1726,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/admin\/product-types\/:productType_id",
+                            "path": "api\/admin\/product-type\/:productType_id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-types\/:productType_id",
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type\/:productType_id",
                             "variable": [
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "17",
+                                    "value": "4",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -995,9 +1765,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservations",
+                            "path": "api\/reservation",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservations"
+                            "raw": "{{baseUrl}}\/api\/reservation"
                         },
                         "method": "GET",
                         "header": [
@@ -1040,9 +1810,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservations",
+                            "path": "api\/reservation",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservations"
+                            "raw": "{{baseUrl}}\/api\/reservation"
                         },
                         "method": "POST",
                         "header": [
@@ -1057,7 +1827,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"voluptatem\",\"shop_id\":\"amet\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"cumque\",\"shop_id\":\"quia\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1068,14 +1838,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservations\/:id",
+                            "path": "api\/reservation\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservations\/:id",
+                            "raw": "{{baseUrl}}\/api\/reservation\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "8",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1121,14 +1891,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservations\/:id",
+                            "path": "api\/reservation\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservations\/:id",
+                            "raw": "{{baseUrl}}\/api\/reservation\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "6",
+                                    "value": "19",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1146,7 +1916,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"officia\",\"shop_id\":\"recusandae\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"ipsa\",\"shop_id\":\"ipsum\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1157,14 +1927,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservations\/:id",
+                            "path": "api\/reservation\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservations\/:id",
+                            "raw": "{{baseUrl}}\/api\/reservation\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "4",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1258,7 +2028,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"optio\",\"name\":\"assumenda\",\"street\":\"hic\",\"postcode\":\"odio\",\"city\":\"quis\",\"contact\":\"iste\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
+                            "raw": "{\"organization_id\":\"totam\",\"name\":\"voluptas\",\"street\":\"eum\",\"postcode\":\"aut\",\"city\":\"atque\",\"contact\":\"id\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
                         },
                         "description": ""
                     },
@@ -1276,7 +2046,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "19",
+                                    "value": "12",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -1329,7 +2099,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -1347,7 +2117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"neque\",\"name\":\"reiciendis\",\"street\":\"labore\",\"postcode\":\"labore\",\"city\":\"deserunt\",\"contact\":\"sed\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
+                            "raw": "{\"organization_id\":\"delectus\",\"name\":\"assumenda\",\"street\":\"rerum\",\"postcode\":\"est\",\"city\":\"ut\",\"contact\":\"iste\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
                         },
                         "description": ""
                     },
@@ -1365,7 +2135,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "8",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -1459,7 +2229,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"dolorem\",\"organization_id\":\"aut\",\"name\":\"eveniet\",\"email\":\"strosin.kip@example.com\",\"password\":\"tempora\"}"
+                            "raw": "{\"instance_id\":\"facilis\",\"organization_id\":\"dicta\",\"name\":\"quos\",\"email\":\"kaitlyn88@example.org\",\"password\":\"omnis\"}"
                         },
                         "description": ""
                     },
@@ -1548,7 +2318,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"incidunt\",\"organization_id\":\"deleniti\",\"name\":\"quia\",\"email\":\"pagac.westley@example.net\",\"password\":\"dolorum\"}"
+                            "raw": "{\"instance_id\":\"et\",\"organization_id\":\"eligendi\",\"name\":\"natus\",\"email\":\"corwin.citlalli@example.com\",\"password\":\"reprehenderit\"}"
                         },
                         "description": ""
                     },
@@ -1568,6 +2338,207 @@
                                     "key": "id",
                                     "value": "1",
                                     "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Visit",
+            "description": "",
+            "item": [
+                {
+                    "name": "List all Visits",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/visit",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/visit"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new Visit",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/visit",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/visit"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"card_id\":\"fugiat\",\"user_id\":\"ea\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show specified Visit",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/visit\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/visit\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the visit."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update specified Visit",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/visit\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/visit\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "9",
+                                    "description": "The ID of the visit."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"card_id\":\"quod\",\"user_id\":\"consectetur\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete specified Visit",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/visit\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/admin\/visit\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the visit."
                                 }
                             ]
                         },
