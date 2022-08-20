@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductTypeManagerController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShopManagerController;
 use App\Http\Controllers\UserManagerController;
-use App\Http\Controllers\AppVisitController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\VisitManagerController;
 use Illuminate\Support\Facades\Route;
 
@@ -199,7 +199,7 @@ Route::middleware('auth:sanctum')
 
 //region AppVisits
 Route::middleware('auth:sanctum')
-    ->controller(AppVisitController::class)
+    ->controller(CheckoutController::class)
     ->prefix('card/visit')
     ->name('app.card.visit.')
     ->group(function () {

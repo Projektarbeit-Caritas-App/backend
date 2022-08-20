@@ -15,7 +15,7 @@ use Illuminate\Http\Response;
  * @group Checkout
  * @authenticated
  */
-class AppVisitController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Show specified Card and related Persons
