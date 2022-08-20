@@ -20,6 +20,8 @@ class CheckoutController extends Controller
     /**
      * Show specified Card and related Persons
      *
+     * <small class="badge badge-purple">App authorization available</small>
+     *
      * Endpoint shows the specified card, the associated people and the limitation_state.
      * The limitation_state shows for the persons the limit for a productType and how
      * many of them have already been used by a person
@@ -47,6 +49,8 @@ class CheckoutController extends Controller
 
     /**
      * Create new Visit, LineItems
+     *
+     * <small class="badge badge-purple">App authorization available</small>
      *
      * Endpoint creates a new Visit entry and stores the submitted lineItems
      *

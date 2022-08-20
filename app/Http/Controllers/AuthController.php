@@ -140,6 +140,8 @@ class AuthController extends Controller
     /**
      * Login with Bearer Token (Authorization Header)
      *
+     * <small class="badge badge-purple">App authorization available</small>
+     *
      * If you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.
      * Tokens will be valid for 20 hours before they expire.
      *
@@ -234,6 +236,8 @@ class AuthController extends Controller
 
     /**
      * Logout
+     *
+     * <small class="badge badge-purple">App authorization available</small>
      *
      * Invalidate your current session/token
      *
