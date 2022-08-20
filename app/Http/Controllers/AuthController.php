@@ -114,7 +114,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             // E-Mail of the user
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|string',
 
             // Password of the user
             'password' => 'required|string'
@@ -263,10 +263,10 @@ class AuthController extends Controller
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param $user
      * @return array
      */
-    private function getUserData(User $user): array
+    private function getUserData($user): array
     {
         return [
             'id' => $user->id,
