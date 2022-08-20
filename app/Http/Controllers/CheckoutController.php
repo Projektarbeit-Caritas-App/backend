@@ -37,6 +37,7 @@ class CheckoutController extends Controller
             'card' => $card,
             'persons' => $data->people->map(function ($person) {
                 return [
+                    'id' => $person->id,
                     'gender' => $person->gender,
                     'age' => $person->age,
                     'created_at' => $person->created_at,
