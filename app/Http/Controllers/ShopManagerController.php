@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageShopRequest;
 use App\Models\Shop;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Shop
@@ -14,11 +16,49 @@ class ShopManagerController extends Controller
     /**
      * List all Shops
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return Shop::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Organization
+            'organization_id' => 'exists:organizations,id|nullable',
+
+            // Name contains
+            'name' => 'string|nullable',
+
+            // Street contains
+            'street' => 'string|nullable',
+
+            // Postcode contains
+            'postcode' => 'string|nullable',
+
+            // City contains
+            'city' => 'string|nullable',
+
+            // Contact contains
+            'contact' => 'string|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,organization_id,name,street,postcode,city,contact|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Shop::query(), [
+            'organization_id' => 'match',
+            'name' => 'contains',
+            'street' => 'contains',
+            'postcode' => 'contains',
+            'city' => 'contains',
+            'contact' => 'contains'
+        ], $filters));
     }
 
     /**

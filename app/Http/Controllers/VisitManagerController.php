@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageVisitRequest;
 use App\Models\Visit;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Visit
@@ -14,11 +16,33 @@ class VisitManagerController extends Controller
     /**
      * List all Visits
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return Visit::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Card
+            'card_id' => 'exists:cards,id|nullable',
+
+            // User
+            'user_id' => 'exists:users,id|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,card_id,user_id|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Visit::query(), [
+            'card_id' => 'match',
+            'user_id' => 'match'
+        ], $filters));
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageLineItemRequest;
 use App\Models\LineItem;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Line Item
@@ -14,11 +16,37 @@ class LineItemManagerController extends Controller
     /**
      * List all LineItems
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return LineItem::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Visit
+            'visit_id' => 'exists:visits,id|nullable',
+
+            // Person
+            'person_id' => 'exists:people,id|nullable',
+
+            // Product Type
+            'product_type_id' => 'exists:product_types,id|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,visit_id,person_id,product_type_id|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LineItem::query(), [
+            'visit_id' => 'match',
+            'person_id' => 'match',
+            'product_type_id' => 'match'
+        ], $filters));
     }
 
     /**

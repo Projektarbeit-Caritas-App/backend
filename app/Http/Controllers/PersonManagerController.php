@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManagePersonRequest;
 use App\Models\Person;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Person
@@ -14,11 +16,37 @@ class PersonManagerController extends Controller
     /**
      * List all persons
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return Person::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Card
+            'card_id' => 'exists:cards,id|nullable',
+
+            // Gender contains
+            'gender' => 'string|nullable',
+
+            // Age is
+            'age' => 'integer|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,card_id,gender,age|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Person::query(), [
+            'card_id' => 'match',
+            'gender' => 'contains',
+            'age' => 'match'
+        ], $filters));
     }
 
     /**

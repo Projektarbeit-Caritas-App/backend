@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageProductTypeRequest;
 use App\Models\ProductType;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Product Type
@@ -14,11 +16,33 @@ class ProductTypeManagerController extends Controller
     /**
      * List all ProductTypes
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return ProductType::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Name contains
+            'name' => 'string|nullable',
+
+            // Icon contains
+            'icon' => 'string|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,name,icon|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(ProductType::query(), [
+            'name' => 'contains',
+            'icon' => 'contains'
+        ], $filters));
     }
 
     /**
