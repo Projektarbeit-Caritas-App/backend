@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageUserRequest;
 use App\Models\User;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group User
@@ -14,11 +16,37 @@ class UserManagerController extends Controller
     /**
      * List all Users
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return User::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Organization
+            'organization_id' => 'exists:organizations,id|nullable',
+
+            // Name contains
+            'name' => 'string|nullable',
+
+            // E-Mail contains
+            'email' => 'string|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,organization_id,name,email|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(User::where('instance_id', $request->user()->instance_id), [
+            'organization_id' => 'match',
+            'name' => 'contains',
+            'email' => 'contains'
+        ], $filters));
     }
 
     /**
