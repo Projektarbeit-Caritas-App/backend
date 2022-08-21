@@ -26,6 +26,103 @@ class CheckoutController extends Controller
      * The limitation_state shows for the persons the limit for a productType and how
      * many of them have already been used by a person
      *
+     * @response status=200 {
+     *  "card":
+     *      {
+     *          "id": 1,
+     *          "last_name": "Mustermann",
+     *          "first_name": "Müller",
+     *          "street": "Mühlenstraße 5",
+     *          "postcode": "12345",
+     *          "city": "Würzburg",
+     *          "valid_from": "2022-01-01T00:00:00.000000Z",
+     *          "valid_until": "2022-03-31T00:00:00.000000Z",
+     *          "creator_id": 1,
+     *          "created_at": null,
+     *          "updated_at": null
+     *      },
+     *      "persons": [
+     *      {
+     *          "id": 1,
+     *          "gender": "male",
+     *          "age": 18,
+     *          "created_at": null,
+     *          "updated_at": null,
+     *          "limitation_states": [
+     *          {
+     *              "product_type":
+     *              {
+     *                  "id": 1,
+     *                  "name": "t-shirt",
+     *              "icon": "t-shirt icon"
+     *              },
+     *          "limit": 3,
+     *          "used": 4
+     *          },
+     *          {
+     *              "product_type":
+     *              {
+     *                  "id": 2,
+     *                  "name": "shoe",
+     *                  "icon": "shoe icon"
+     *              },
+     *              "limit": 5,
+     *              "used": 0
+     *          },
+     *          {
+     *              "product_type":
+     *              {
+     *                  "id": 3,
+     *                  "name": "sock",
+     *                  "icon": "sock icon"
+     *               },
+     *              "limit": 2,
+     *              "used": 1
+     *          }
+     *          ]
+     *      },
+     *      {
+     *          "id": 2,
+     *          "gender": "female",
+     *          "age": 15,
+     *          "created_at": null,
+     *          "updated_at": null,
+     *          "limitation_states": [
+     *          {
+     *              "product_type":
+     *              {
+     *                  "id": 1,
+     *                  "name": "t-shirt",
+     *                  "icon": "t-shirt icon"
+     *              },
+     *              "limit": 3,
+     *              "used": 0
+     *          },
+     *          {
+     *              "product_type":
+     *              {
+     *                  "id": 2,
+     *                  "name": "shoe",
+     *                  "icon": "shoe icon"
+     *              },
+     *              "limit": 5,
+     *              "used": 1
+     *          },
+     *          {
+     *              "product_type":
+     *              {
+     *                  "id": 3,
+     *                  "name": "sock",
+     *                  "icon": "sock icon"
+     *              },
+     *              "limit": 2,
+     *              "used": 0
+     *          }
+     *          ]
+     *          }
+     *      ]
+     * }
+     *
      * @param Card $card
      * @return Application|ResponseFactory|Response
      */
