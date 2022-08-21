@@ -19,29 +19,44 @@ class ProductTypeManagerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return array
      * @response status=200
-     * [
+     * {
+     *  "items:
+     *  [
+     *   {
+     *       "id": 1,
+     *       "name": "t-shirt",
+     *       "icon": "t-shirt icon",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 2,
+     *       "name": "shoe",
+     *       "icon": "shoe icon",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 3,
+     *       "name": "sock",
+     *       "icon": "sock icon",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 1,
-     *      "name": "t-shirt",
-     *      "icon": "t-shirt icon",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 3
      *  },
+     *  "links":
      *  {
-     *      "id": 2,
-     *      "name": "shoe",
-     *      "icon": "shoe icon",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
-     *  },
-     *  {
-     *      "id": 3,
-     *      "name": "sock",
-     *      "icon": "sock icon",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
