@@ -17,35 +17,50 @@ class PersonManagerController extends Controller
      * List all persons
      *
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
+     *   {
+     *       "id": 1,
+     *       "card_id": 1,
+     *       "gender": "male",
+     *       "age": 18,
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 2,
+     *       "card_id": 1,
+     *       "gender": "female",
+     *       "age": 15,
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 3,
+     *       "card_id": 49394739894111,
+     *       "gender": "male",
+     *       "age": 23,
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 1,
-     *      "card_id": 1,
-     *      "gender": "male",
-     *      "age": 18,
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 3
      *  },
+     *  "links":
      *  {
-     *      "id": 2,
-     *      "card_id": 1,
-     *      "gender": "female",
-     *      "age": 15,
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
-     *  },
-     *  {
-     *      "id": 3,
-     *      "card_id": 49394739894111,
-     *      "gender": "male",
-     *      "age": 23,
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
