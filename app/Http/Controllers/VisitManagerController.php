@@ -17,32 +17,47 @@ class VisitManagerController extends Controller
      * List all Visits
      *
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
+     *   {
+     *       "id": 6,
+     *       "card_id": 1,
+     *       "user_id": 1,
+     *       "created_at": "2022-08-16T16:32:52.000000Z",
+     *       "updated_at": "2022-08-16T16:32:52.000000Z"
+     *   },
+     *   {
+     *       "id": 7,
+     *       "card_id": 1,
+     *       "user_id": 1,
+     *       "created_at": "2022-08-17T13:52:35.000000Z",
+     *       "updated_at": "2022-08-17T13:52:35.000000Z"
+     *   },
+     *   {
+     *       "id": 8,
+     *       "card_id": 1,
+     *       "user_id": 3,
+     *       "created_at": "2022-08-21T11:50:35.000000Z",
+     *       "updated_at": "2022-08-21T11:50:35.000000Z"
+     *   }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 6,
-     *      "card_id": 1,
-     *      "user_id": 1,
-     *      "created_at": "2022-08-16T16:32:52.000000Z",
-     *      "updated_at": "2022-08-16T16:32:52.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 2
      *  },
+     *  "links":
      *  {
-     *      "id": 7,
-     *      "card_id": 1,
-     *      "user_id": 1,
-     *      "created_at": "2022-08-17T13:52:35.000000Z",
-     *      "updated_at": "2022-08-17T13:52:35.000000Z"
-     *  },
-     *  {
-     *      "id": 8,
-     *      "card_id": 1,
-     *      "user_id": 3,
-     *      "created_at": "2022-08-21T11:50:35.000000Z",
-     *      "updated_at": "2022-08-21T11:50:35.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
