@@ -173,6 +173,11 @@ class CardManagerController extends Controller
     /**
      * Delete specified Card
      *
+     * @response status=200
+     * {
+     *  "success": true
+     * }
+     *
      * @param \App\Models\Card $card
      * @return array
      */

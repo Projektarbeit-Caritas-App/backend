@@ -115,6 +115,11 @@ class UserManagerController extends Controller
     /**
      * Delete specified User
      *
+     * @response status=200
+     * {
+     *  "success": true
+     * }
+     *
      * @param \App\Models\User $user
      * @return array
      */
