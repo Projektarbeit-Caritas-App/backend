@@ -7,6 +7,7 @@ use Auth;
 use Hash;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
@@ -30,7 +31,7 @@ class AuthController extends Controller
      * @param \Laravel\Sanctum\Http\Controllers\CsrfCookieController $controller
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
-    public function handshake(Request $request, CsrfCookieController $controller)
+    public function handshake(Request $request, CsrfCookieController $controller): Response|JsonResponse
     {
         return $controller->show($request);
     }
@@ -218,6 +219,7 @@ class AuthController extends Controller
 
         $user = User::with(['permissions', 'roles', 'instance', 'organization'])
             ->where('email', $credentials['email'])
+            ->get()
             ->first();
 
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
@@ -267,10 +269,10 @@ class AuthController extends Controller
     }
 
     /**
-     * @param $user
+     * @param \App\Models\User $user
      * @return array
      */
-    private function getUserData($user): array
+    private function getUserData(User $user): array
     {
         return [
             'id' => $user->id,
