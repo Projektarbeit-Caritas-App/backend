@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageLimitationSetRequest;
+use App\Models\Instance;
 use App\Models\LimitationSet;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -48,7 +50,7 @@ class LimitationSetManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LimitationSet::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LimitationSet::where('instance_id', $request->user()->instance_id), [
             'name' => 'contains',
             'valid_from' => 'range',
             'valid_until' => 'range'
@@ -59,11 +61,12 @@ class LimitationSetManagerController extends Controller
      * Create new LimitationSet
      *
      * @param \App\Http\Requests\ManageLimitationSetRequest $request
-     * @return \App\Models\LimitationSet
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageLimitationSetRequest $request): LimitationSet
+    public function store(ManageLimitationSetRequest $request): Model
     {
-        return LimitationSet::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->limitationSets()->create($request->validated());
     }
 
     /**

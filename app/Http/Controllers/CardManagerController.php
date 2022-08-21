@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageCardRequest;
 use App\Models\Card;
+use App\Models\Instance;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -63,7 +65,7 @@ class CardManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Card::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Card::where('instance_id', $request->user()->instance_id), [
             'last_name' => 'contains',
             'first_name' => 'contains',
             'street' => 'contains',
@@ -79,11 +81,12 @@ class CardManagerController extends Controller
      * Create new Card
      *
      * @param \App\Http\Requests\ManageCardRequest $request
-     * @return \App\Models\Card
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageCardRequest $request): Card
+    public function store(ManageCardRequest $request): Model
     {
-        return Card::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->cards()->create($request->validated());
     }
 
     /**

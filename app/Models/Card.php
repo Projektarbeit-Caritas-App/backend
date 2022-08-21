@@ -27,6 +27,11 @@ class Card extends Model
         'valid_until' => 'date'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');

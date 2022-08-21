@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageProductTypeRequest;
+use App\Models\Instance;
 use App\Models\ProductType;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -39,7 +41,7 @@ class ProductTypeManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(ProductType::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(ProductType::where('instance_id', $request->user()->instance_id), [
             'name' => 'contains',
             'icon' => 'contains'
         ], $filters));
@@ -49,11 +51,12 @@ class ProductTypeManagerController extends Controller
      * Create new ProductType
      *
      * @param  \App\Http\Requests\ManageProductTypeRequest  $request
-     * @return \App\Models\ProductType
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageProductTypeRequest $request): ProductType
+    public function store(ManageProductTypeRequest $request): Model
     {
-        return ProductType::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->productTypes()->create($request->validated());
     }
 
     /**

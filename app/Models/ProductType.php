@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductType extends Model
@@ -11,6 +12,11 @@ class ProductType extends Model
         'name',
         'icon'
     ];
+
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
 
     public function limitations(): HasMany
     {

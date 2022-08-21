@@ -13,6 +13,11 @@ class Reservation extends Model
         'time'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     protected $casts = [
         'time' => 'datetime'
     ];

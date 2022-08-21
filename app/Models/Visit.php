@@ -13,6 +13,11 @@ class Visit extends Model
         'user_id'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     public function card(): BelongsTo
     {
         return $this->belongsTo(Card::class);
