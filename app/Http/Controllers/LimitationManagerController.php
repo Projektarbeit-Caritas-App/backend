@@ -17,43 +17,58 @@ class LimitationManagerController extends Controller
      * List all Limitation
      *
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
+     *      {
+     *          "id": 1,
+     *          "product_type_id": 1,
+     *          "limitation_set_id": 1,
+     *          "limit": 3,
+     *          "created_at": "2022-08-16T16:32:23.000000Z",
+     *          "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      },
+     *      {
+     *          "id": 3,
+     *          "product_type_id": 2,
+     *          "limitation_set_id": 2,
+     *          "limit": 5,
+     *          "created_at": "2022-08-16T16:32:23.000000Z",
+     *          "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      },
+     *      {
+     *          "id": 4,
+     *          "product_type_id": 2,
+     *          "limitation_set_id": 1,
+     *          "limit": 5,
+     *          "created_at": "2022-08-16T16:32:23.000000Z",
+     *          "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      },
+     *      {
+     *          "id": 5,
+     *          "product_type_id": 3,
+     *          "limitation_set_id": 1,
+     *          "limit": 2,
+     *          "created_at": "2022-08-16T16:32:23.000000Z",
+     *          "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 1,
-     *      "product_type_id": 1,
-     *      "limitation_set_id": 1,
-     *      "limit": 3,
-     *      "created_at": "2022-08-16T16:32:23.000000Z",
-     *      "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 4
      *  },
+     *  "links":
      *  {
-     *      "id": 3,
-     *      "product_type_id": 2,
-     *      "limitation_set_id": 2,
-     *      "limit": 5,
-     *      "created_at": "2022-08-16T16:32:23.000000Z",
-     *      "updated_at": "2022-08-16T16:32:23.000000Z"
-     *  },
-     *  {
-     *      "id": 4,
-     *      "product_type_id": 2,
-     *      "limitation_set_id": 1,
-     *      "limit": 5,
-     *      "created_at": "2022-08-16T16:32:23.000000Z",
-     *      "updated_at": "2022-08-16T16:32:23.000000Z"
-     *  },
-     *  {
-     *      "id": 5,
-     *      "product_type_id": 3,
-     *      "limitation_set_id": 1,
-     *      "limit": 2,
-     *      "created_at": "2022-08-16T16:32:23.000000Z",
-     *      "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
