@@ -7,6 +7,97 @@ servers:
   -
     url: 'http://localhost'
 paths:
+  /api/schedule:
+    get:
+      summary: 'List available shops'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nList all shops that are in the same organization as the user"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Schedule
+  '/api/schedule/{shop_id}':
+    get:
+      summary: 'List today´s reservations'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nList all today's reservations for a specified store"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Schedule
+    parameters:
+      -
+        in: path
+        name: shop_id
+        description: 'The ID of the shop.'
+        example: 1
+        required: true
+        schema:
+          type: integer
   /api/handshake:
     get:
       summary: 'Create session and XSRF-Token'
@@ -187,11 +278,11 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user.'
-                  example: optio
+                  example: vero
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: neque
+                  example: animi
               required:
                 - email
                 - password
@@ -322,15 +413,15 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user. Must be a valid email address.'
-                  example: trenton.wehner@example.com
+                  example: kertzmann.glennie@example.net
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: maiores
+                  example: a
                 device_name:
                   type: string
                   description: 'Name of the device, used for identification of the token.'
-                  example: officia
+                  example: earum
               required:
                 - email
                 - password
@@ -456,23 +547,23 @@ paths:
                 last_name:
                   type: string
                   description: 'Last name of the cardholder.'
-                  example: accusamus
+                  example: numquam
                 first_name:
                   type: string
                   description: 'First name of the cardholder.'
-                  example: reiciendis
+                  example: necessitatibus
                 street:
                   type: string
                   description: 'Street where the cardholder is located.'
-                  example: veniam
+                  example: consequuntur
                 postcode:
                   type: string
                   description: 'Postcode where the cardholder is located.'
-                  example: cum
+                  example: quo
                 city:
                   type: string
                   description: 'City where the cardholder is located.'
-                  example: voluptatem
+                  example: cupiditate
                 valid_from:
                   type: string
                   description: 'Date and time of the start of validity of the card. Must be a valid date.'
@@ -484,7 +575,7 @@ paths:
                 creator_id:
                   type: string
                   description: 'ID of the User the card is attached to.'
-                  example: corrupti
+                  example: voluptatum
               required:
                 - last_name
                 - first_name
@@ -570,23 +661,23 @@ paths:
                 last_name:
                   type: string
                   description: 'Last name of the cardholder.'
-                  example: in
+                  example: repellat
                 first_name:
                   type: string
                   description: 'First name of the cardholder.'
-                  example: soluta
+                  example: excepturi
                 street:
                   type: string
                   description: 'Street where the cardholder is located.'
-                  example: maiores
+                  example: consequatur
                 postcode:
                   type: string
                   description: 'Postcode where the cardholder is located.'
-                  example: iusto
+                  example: sint
                 city:
                   type: string
                   description: 'City where the cardholder is located.'
-                  example: voluptates
+                  example: rerum
                 valid_from:
                   type: string
                   description: 'Date and time of the start of validity of the card. Must be a valid date.'
@@ -598,7 +689,7 @@ paths:
                 creator_id:
                   type: string
                   description: 'ID of the User the card is attached to.'
-                  example: enim
+                  example: fuga
               required:
                 - last_name
                 - first_name
@@ -638,7 +729,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the card.'
-        example: 4
+        example: 1
         required: true
         schema:
           type: integer
@@ -729,15 +820,15 @@ paths:
                       person_id:
                         type: string
                         description: 'ID of the person the lineItem is for.'
-                        example: autem
+                        example: enim
                       product_type_id:
                         type: string
                         description: 'ID of the product_type of the lineItem.'
-                        example: ducimus
+                        example: quis
                       amount:
                         type: integer
                         description: 'The amount of purchased lineItems of the same product_type. Must be at least 1.'
-                        example: 0
+                        example: 1
                     required:
                       - person_id
                       - product_type_id
@@ -747,7 +838,7 @@ paths:
         in: path
         name: card_id
         description: 'The ID of the card.'
-        example: 19
+        example: 1
         required: true
         schema:
           type: integer
@@ -830,15 +921,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: quia
+                  example: sed
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: qui
+                  example: fugiat
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 17
+                  example: 4
               required:
                 - product_type_id
                 - limitation_set_id
@@ -921,15 +1012,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: veniam
+                  example: magni
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: velit
+                  example: sed
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 2
+                  example: 1
               required:
                 - product_type_id
                 - limitation_set_id
@@ -966,7 +1057,7 @@ paths:
         in: path
         name: limitation_id
         description: 'The ID of the limitation.'
-        example: 20
+        example: 1
         required: true
         schema:
           type: integer
@@ -1049,7 +1140,7 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: aut
+                  example: est
                 valid_from:
                   type: string
                   description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
@@ -1140,7 +1231,7 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: ab
+                  example: iure
                 valid_from:
                   type: string
                   description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
@@ -1185,7 +1276,7 @@ paths:
         in: path
         name: limitationSet_id
         description: 'The ID of the limitationSet.'
-        example: 11
+        example: 1
         required: true
         schema:
           type: integer
@@ -1268,15 +1359,15 @@ paths:
                 visit_id:
                   type: string
                   description: 'ID of the visit the lineItem is attached to.'
-                  example: omnis
+                  example: incidunt
                 person_id:
                   type: string
                   description: 'ID of the person the lineItem is attached to.'
-                  example: necessitatibus
+                  example: non
                 product_type_id:
                   type: string
                   description: 'ID of the product_type the lineItem is attached to.'
-                  example: iusto
+                  example: ut
               required:
                 - visit_id
                 - person_id
@@ -1360,15 +1451,15 @@ paths:
                 visit_id:
                   type: string
                   description: 'ID of the visit the lineItem is attached to.'
-                  example: id
+                  example: consequatur
                 person_id:
                   type: string
                   description: 'ID of the person the lineItem is attached to.'
-                  example: quia
+                  example: quos
                 product_type_id:
                   type: string
                   description: 'ID of the product_type the lineItem is attached to.'
-                  example: quia
+                  example: quis
               required:
                 - visit_id
                 - person_id
@@ -1406,7 +1497,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the lineItem.'
-        example: 13
+        example: 3
         required: true
         schema:
           type: integer
@@ -1489,27 +1580,27 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the organization is attached to.'
-                  example: et
+                  example: aut
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: sint
+                  example: nulla
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: praesentium
+                  example: vel
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: nostrum
+                  example: facere
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: placeat
+                  example: molestiae
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: voluptatem
+                  example: dicta
               required:
                 - instance_id
                 - name
@@ -1596,27 +1687,27 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the organization is attached to.'
-                  example: repellat
+                  example: nihil
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: et
+                  example: officia
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: aut
+                  example: nesciunt
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: aspernatur
+                  example: est
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: vel
+                  example: qui
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: maxime
+                  example: illum
               required:
                 - instance_id
                 - name
@@ -1727,7 +1818,7 @@ paths:
         in: path
         name: card_id
         description: 'The ID of the card.'
-        example: 7
+        example: 1
         required: true
         schema:
           type: integer
@@ -1810,15 +1901,15 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the person is attached to.'
-                  example: aut
+                  example: et
                 gender:
                   type: string
                   description: 'Gender of the person.'
-                  example: sit
+                  example: porro
                 age:
                   type: integer
                   description: 'Age of the Person.'
-                  example: 19
+                  example: 7
               required:
                 - card_id
                 - gender
@@ -1902,15 +1993,15 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the person is attached to.'
-                  example: neque
+                  example: illo
                 gender:
                   type: string
                   description: 'Gender of the person.'
-                  example: in
+                  example: facilis
                 age:
                   type: integer
                   description: 'Age of the Person.'
-                  example: 9
+                  example: 12
               required:
                 - card_id
                 - gender
@@ -1948,7 +2039,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the person.'
-        example: 5
+        example: 1
         required: true
         schema:
           type: integer
@@ -2031,11 +2122,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: deserunt
+                  example: ut
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: suscipit
+                  example: fugiat
               required:
                 - name
   '/api/admin/product-type/{productType_id}':
@@ -2117,11 +2208,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: ut
+                  example: ea
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: ex
+                  example: impedit
               required:
                 - name
     delete:
@@ -2157,7 +2248,7 @@ paths:
         in: path
         name: productType_id
         description: 'The ID of the productType.'
-        example: 2
+        example: 1
         required: true
         schema:
           type: integer
@@ -2240,11 +2331,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: cumque
+                  example: quia
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: quia
+                  example: sed
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -2332,11 +2423,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: ipsa
+                  example: consectetur
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: ipsum
+                  example: ullam
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -2378,7 +2469,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the reservation.'
-        example: 8
+        example: 2
         required: true
         schema:
           type: integer
@@ -2461,27 +2552,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: totam
+                  example: harum
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: voluptas
+                  example: assumenda
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: eum
+                  example: quas
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: aut
+                  example: vero
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: atque
+                  example: in
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: id
+                  example: quisquam
                 opening_hours:
                   type: object
                   description: ''
@@ -2506,7 +2597,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Monday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -2578,7 +2669,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -2602,7 +2693,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Friday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -2650,7 +2741,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Sunday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -2741,27 +2832,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: delectus
+                  example: voluptates
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: assumenda
+                  example: qui
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: rerum
+                  example: aliquid
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: est
+                  example: exercitationem
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: ut
+                  example: id
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: iste
+                  example: temporibus
                 opening_hours:
                   type: object
                   description: ''
@@ -2786,7 +2877,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Monday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -2858,7 +2949,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -2906,7 +2997,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Saturday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -2930,7 +3021,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Sunday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -2975,7 +3066,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the shop.'
-        example: 12
+        example: 1
         required: true
         schema:
           type: integer
@@ -3058,23 +3149,23 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the user is attached to.'
-                  example: facilis
+                  example: quo
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: dicta
+                  example: fugiat
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: quos
+                  example: consequatur
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: kaitlyn88@example.org
+                  example: uhodkiewicz@example.com
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: omnis
+                  example: sit
               required:
                 - instance_id
                 - organization_id
@@ -3160,23 +3251,23 @@ paths:
                 instance_id:
                   type: string
                   description: 'ID of the instance the user is attached to.'
-                  example: et
+                  example: autem
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: eligendi
+                  example: quis
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: natus
+                  example: qui
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: corwin.citlalli@example.com
+                  example: jmitchell@example.net
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: reprehenderit
+                  example: dolores
               required:
                 - instance_id
                 - organization_id
@@ -3299,11 +3390,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the visit is attached to.'
-                  example: fugiat
+                  example: accusamus
                 user_id:
                   type: string
                   description: 'ID of the user the visit is attached to.'
-                  example: ea
+                  example: consequuntur
               required:
                 - card_id
                 - user_id
@@ -3386,11 +3477,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the visit is attached to.'
-                  example: quod
+                  example: magni
                 user_id:
                   type: string
                   description: 'ID of the user the visit is attached to.'
-                  example: consectetur
+                  example: ex
               required:
                 - card_id
                 - user_id
@@ -3432,6 +3523,9 @@ paths:
         schema:
           type: integer
 tags:
+  -
+    name: Schedule
+    description: ''
   -
     name: Authentication
     description: ''

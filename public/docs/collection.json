@@ -10,11 +10,115 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "e9075198-94d8-446a-8da1-1e2e14e8a0a2",
+        "_postman_id": "8052bda9-3a45-475d-a9ef-8d5a0b8fb406",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "Schedule",
+            "description": "",
+            "item": [
+                {
+                    "name": "List available shops",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/schedule",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/schedule"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nList all shops that are in the same organization as the user"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List today\u00b4s reservations",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/schedule\/:shop_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/schedule\/:shop_id",
+                            "variable": [
+                                {
+                                    "id": "shop_id",
+                                    "key": "shop_id",
+                                    "value": "1",
+                                    "description": "The ID of the shop."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nList all today's reservations for a specified store"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "Authentication",
             "description": "",
@@ -88,7 +192,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"optio\",\"password\":\"neque\"}"
+                            "raw": "{\"email\":\"vero\",\"password\":\"animi\"}"
                         },
                         "description": "After you send a GET-request to <code>\/api\/handshake<\/code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;<\/code><\/pre>\n  <\/p>\n<\/aside>",
                         "auth": {
@@ -132,7 +236,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"trenton.wehner@example.com\",\"password\":\"maiores\",\"device_name\":\"officia\"}"
+                            "raw": "{\"email\":\"kertzmann.glennie@example.net\",\"password\":\"a\",\"device_name\":\"earum\"}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nIf you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
                         "auth": {
@@ -253,7 +357,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"last_name\":\"accusamus\",\"first_name\":\"reiciendis\",\"street\":\"veniam\",\"postcode\":\"cum\",\"city\":\"voluptatem\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"corrupti\"}"
+                            "raw": "{\"last_name\":\"numquam\",\"first_name\":\"necessitatibus\",\"street\":\"consequuntur\",\"postcode\":\"quo\",\"city\":\"cupiditate\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"voluptatum\"}"
                         },
                         "description": ""
                     },
@@ -271,7 +375,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -324,7 +428,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "16",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -342,7 +446,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"last_name\":\"in\",\"first_name\":\"soluta\",\"street\":\"maiores\",\"postcode\":\"iusto\",\"city\":\"voluptates\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"enim\"}"
+                            "raw": "{\"last_name\":\"repellat\",\"first_name\":\"excepturi\",\"street\":\"consequatur\",\"postcode\":\"sint\",\"city\":\"rerum\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"fuga\"}"
                         },
                         "description": ""
                     },
@@ -360,7 +464,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -399,7 +503,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "19",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -452,7 +556,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -470,7 +574,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"lineItems\":[{\"person_id\":\"autem\",\"product_type_id\":\"ducimus\",\"amount\":0}]}"
+                            "raw": "{\"lineItems\":[{\"person_id\":\"enim\",\"product_type_id\":\"quis\",\"amount\":1}]}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nEndpoint creates a new Visit entry and stores the submitted lineItems"
                     },
@@ -549,7 +653,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"quia\",\"limitation_set_id\":\"qui\",\"limit\":17}"
+                            "raw": "{\"product_type_id\":\"sed\",\"limitation_set_id\":\"fugiat\",\"limit\":4}"
                         },
                         "description": ""
                     },
@@ -567,7 +671,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -620,7 +724,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -638,7 +742,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"veniam\",\"limitation_set_id\":\"velit\",\"limit\":2}"
+                            "raw": "{\"product_type_id\":\"magni\",\"limitation_set_id\":\"sed\",\"limit\":1}"
                         },
                         "description": ""
                     },
@@ -656,7 +760,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "16",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -750,7 +854,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"aut\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"est\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -768,7 +872,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "11",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -821,7 +925,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "12",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -839,7 +943,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ab\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"iure\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -857,7 +961,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -951,7 +1055,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"visit_id\":\"omnis\",\"person_id\":\"necessitatibus\",\"product_type_id\":\"iusto\"}"
+                            "raw": "{\"visit_id\":\"incidunt\",\"person_id\":\"non\",\"product_type_id\":\"ut\"}"
                         },
                         "description": ""
                     },
@@ -969,7 +1073,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "13",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1022,7 +1126,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1040,7 +1144,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"visit_id\":\"id\",\"person_id\":\"quia\",\"product_type_id\":\"quia\"}"
+                            "raw": "{\"visit_id\":\"consequatur\",\"person_id\":\"quos\",\"product_type_id\":\"quis\"}"
                         },
                         "description": ""
                     },
@@ -1058,7 +1162,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1152,7 +1256,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"et\",\"name\":\"sint\",\"street\":\"praesentium\",\"postcode\":\"nostrum\",\"city\":\"placeat\",\"contact\":\"voluptatem\"}"
+                            "raw": "{\"instance_id\":\"aut\",\"name\":\"nulla\",\"street\":\"vel\",\"postcode\":\"facere\",\"city\":\"molestiae\",\"contact\":\"dicta\"}"
                         },
                         "description": ""
                     },
@@ -1241,7 +1345,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"repellat\",\"name\":\"et\",\"street\":\"aut\",\"postcode\":\"aspernatur\",\"city\":\"vel\",\"contact\":\"maxime\"}"
+                            "raw": "{\"instance_id\":\"nihil\",\"name\":\"officia\",\"street\":\"nesciunt\",\"postcode\":\"est\",\"city\":\"qui\",\"contact\":\"illum\"}"
                         },
                         "description": ""
                     },
@@ -1311,7 +1415,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -1425,7 +1529,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"aut\",\"gender\":\"sit\",\"age\":19}"
+                            "raw": "{\"card_id\":\"et\",\"gender\":\"porro\",\"age\":7}"
                         },
                         "description": ""
                     },
@@ -1443,7 +1547,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "5",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1496,7 +1600,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "14",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1514,7 +1618,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"neque\",\"gender\":\"in\",\"age\":9}"
+                            "raw": "{\"card_id\":\"illo\",\"gender\":\"facilis\",\"age\":12}"
                         },
                         "description": ""
                     },
@@ -1532,7 +1636,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1626,7 +1730,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"deserunt\",\"icon\":\"suscipit\"}"
+                            "raw": "{\"name\":\"ut\",\"icon\":\"fugiat\"}"
                         },
                         "description": ""
                     },
@@ -1644,7 +1748,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "2",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1697,7 +1801,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "18",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1715,7 +1819,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ut\",\"icon\":\"ex\"}"
+                            "raw": "{\"name\":\"ea\",\"icon\":\"impedit\"}"
                         },
                         "description": ""
                     },
@@ -1733,7 +1837,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1827,7 +1931,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"cumque\",\"shop_id\":\"quia\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"quia\",\"shop_id\":\"sed\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1845,7 +1949,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1898,7 +2002,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "19",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1916,7 +2020,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"ipsa\",\"shop_id\":\"ipsum\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"consectetur\",\"shop_id\":\"ullam\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1934,7 +2038,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2028,7 +2132,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"totam\",\"name\":\"voluptas\",\"street\":\"eum\",\"postcode\":\"aut\",\"city\":\"atque\",\"contact\":\"id\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
+                            "raw": "{\"organization_id\":\"harum\",\"name\":\"assumenda\",\"street\":\"quas\",\"postcode\":\"vero\",\"city\":\"in\",\"contact\":\"quisquam\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
                         },
                         "description": ""
                     },
@@ -2046,7 +2150,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2117,7 +2221,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"delectus\",\"name\":\"assumenda\",\"street\":\"rerum\",\"postcode\":\"est\",\"city\":\"ut\",\"contact\":\"iste\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
+                            "raw": "{\"organization_id\":\"voluptates\",\"name\":\"qui\",\"street\":\"aliquid\",\"postcode\":\"exercitationem\",\"city\":\"id\",\"contact\":\"temporibus\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
                         },
                         "description": ""
                     },
@@ -2135,7 +2239,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2229,7 +2333,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"facilis\",\"organization_id\":\"dicta\",\"name\":\"quos\",\"email\":\"kaitlyn88@example.org\",\"password\":\"omnis\"}"
+                            "raw": "{\"instance_id\":\"quo\",\"organization_id\":\"fugiat\",\"name\":\"consequatur\",\"email\":\"uhodkiewicz@example.com\",\"password\":\"sit\"}"
                         },
                         "description": ""
                     },
@@ -2318,7 +2422,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"et\",\"organization_id\":\"eligendi\",\"name\":\"natus\",\"email\":\"corwin.citlalli@example.com\",\"password\":\"reprehenderit\"}"
+                            "raw": "{\"instance_id\":\"autem\",\"organization_id\":\"quis\",\"name\":\"qui\",\"email\":\"jmitchell@example.net\",\"password\":\"dolores\"}"
                         },
                         "description": ""
                     },
@@ -2430,7 +2534,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"fugiat\",\"user_id\":\"ea\"}"
+                            "raw": "{\"card_id\":\"accusamus\",\"user_id\":\"consequuntur\"}"
                         },
                         "description": ""
                     },
@@ -2501,7 +2605,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "1",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -2519,7 +2623,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"quod\",\"user_id\":\"consectetur\"}"
+                            "raw": "{\"card_id\":\"magni\",\"user_id\":\"ex\"}"
                         },
                         "description": ""
                     },
