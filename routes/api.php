@@ -10,7 +10,7 @@ use App\Http\Controllers\PdfGenerationController;
 use App\Http\Controllers\PersonManagerController;
 use App\Http\Controllers\ProductTypeManagerController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationManagerController;
 use App\Http\Controllers\ShopManagerController;
 use App\Http\Controllers\UserManagerController;
 use App\Http\Controllers\CheckoutController;
@@ -116,9 +116,9 @@ Route::middleware('auth:sanctum')
 
 //region Reservations
 Route::middleware('auth:sanctum')
-    ->controller(ReservationController::class)
-    ->prefix('reservation')
-    ->name('reservation.')
+    ->controller(ReservationManagerController::class)
+    ->prefix('admin/reservation')
+    ->name('admin.reservation.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -215,7 +215,7 @@ Route::middleware('auth:sanctum')
 Route::middleware('auth:sanctum')
     ->controller(CheckoutController::class)
     ->prefix('card/visit')
-    ->name('app.card.visit.')
+    ->name('card.visit.')
     ->group(function () {
         Route::get('/{card}', 'show')->name('show');
         Route::post('/{card}', 'store')->name('store');
