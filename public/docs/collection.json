@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "e9075198-94d8-446a-8da1-1e2e14e8a0a2",
+        "_postman_id": "85352ef4-2fbd-47a7-b783-5dbefa3506da",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -88,7 +88,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"optio\",\"password\":\"neque\"}"
+                            "raw": "{\"email\":\"et\",\"password\":\"consequatur\"}"
                         },
                         "description": "After you send a GET-request to <code>\/api\/handshake<\/code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;<\/code><\/pre>\n  <\/p>\n<\/aside>",
                         "auth": {
@@ -132,7 +132,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"trenton.wehner@example.com\",\"password\":\"maiores\",\"device_name\":\"officia\"}"
+                            "raw": "{\"email\":\"larkin.prudence@example.net\",\"password\":\"eos\",\"device_name\":\"sed\"}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nIf you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
                         "auth": {
@@ -253,7 +253,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"last_name\":\"accusamus\",\"first_name\":\"reiciendis\",\"street\":\"veniam\",\"postcode\":\"cum\",\"city\":\"voluptatem\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"corrupti\"}"
+                            "raw": "{\"last_name\":\"Kitsune\",\"first_name\":\"Yasu\",\"street\":\"Foxstreet 10\",\"postcode\":\"12345\",\"city\":\"Foxhole\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -271,7 +271,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -324,7 +324,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "16",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -342,7 +342,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"last_name\":\"in\",\"first_name\":\"soluta\",\"street\":\"maiores\",\"postcode\":\"iusto\",\"city\":\"voluptates\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"enim\"}"
+                            "raw": "{\"last_name\":\"Kitsune\",\"first_name\":\"Yasu\",\"street\":\"Foxstreet 10\",\"postcode\":\"12345\",\"city\":\"Foxhole\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -360,7 +360,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -399,7 +399,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "19",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -420,22 +420,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"card\":\n     {\n         \"id\": 1,\n         \"last_name\": \"Mustermann\",\n         \"first_name\": \"M\u00fcller\",\n         \"street\": \"M\u00fchlenstra\u00dfe 5\",\n         \"postcode\": \"12345\",\n         \"city\": \"W\u00fcrzburg\",\n         \"valid_from\": \"2022-01-01T00:00:00.000000Z\",\n         \"valid_until\": \"2022-03-31T00:00:00.000000Z\",\n         \"creator_id\": 1,\n         \"created_at\": null,\n         \"updated_at\": null\n     },\n     \"persons\": [\n     {\n         \"id\": 1,\n         \"gender\": \"male\",\n         \"age\": 18,\n         \"created_at\": null,\n         \"updated_at\": null,\n         \"limitation_states\": [\n         {\n             \"product_type\":\n             {\n                 \"id\": 1,\n                 \"name\": \"t-shirt\",\n             \"icon\": \"t-shirt icon\"\n             },\n         \"limit\": 3,\n         \"used\": 4\n         },\n         {\n             \"product_type\":\n             {\n                 \"id\": 2,\n                 \"name\": \"shoe\",\n                 \"icon\": \"shoe icon\"\n             },\n             \"limit\": 5,\n             \"used\": 0\n         },\n         {\n             \"product_type\":\n             {\n                 \"id\": 3,\n                 \"name\": \"sock\",\n                 \"icon\": \"sock icon\"\n              },\n             \"limit\": 2,\n             \"used\": 1\n         }\n         ]\n     },\n     {\n         \"id\": 2,\n         \"gender\": \"female\",\n         \"age\": 15,\n         \"created_at\": null,\n         \"updated_at\": null,\n         \"limitation_states\": [\n         {\n             \"product_type\":\n             {\n                 \"id\": 1,\n                 \"name\": \"t-shirt\",\n                 \"icon\": \"t-shirt icon\"\n             },\n             \"limit\": 3,\n             \"used\": 0\n         },\n         {\n             \"product_type\":\n             {\n                 \"id\": 2,\n                 \"name\": \"shoe\",\n                 \"icon\": \"shoe icon\"\n             },\n             \"limit\": 5,\n             \"used\": 1\n         },\n         {\n             \"product_type\":\n             {\n                 \"id\": 3,\n                 \"name\": \"sock\",\n                 \"icon\": \"sock icon\"\n             },\n             \"limit\": 2,\n             \"used\": 0\n         }\n         ]\n         }\n     ]\n}",
                             "name": ""
                         }
                     ]
@@ -452,7 +439,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -470,7 +457,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"lineItems\":[{\"person_id\":\"autem\",\"product_type_id\":\"ducimus\",\"amount\":0}]}"
+                            "raw": "{\"lineItems\":[{\"person_id\":\"50080528753334\",\"product_type_id\":\"50080528753334\",\"amount\":5}]}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nEndpoint creates a new Visit entry and stores the submitted lineItems"
                     },
@@ -507,22 +494,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"product_type_id\": 1,\n     \"limitation_set_id\": 1,\n     \"limit\": 3,\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n },\n {\n     \"id\": 3,\n     \"product_type_id\": 2,\n     \"limitation_set_id\": 2,\n     \"limit\": 5,\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n },\n {\n     \"id\": 4,\n     \"product_type_id\": 2,\n     \"limitation_set_id\": 1,\n     \"limit\": 5,\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n },\n {\n     \"id\": 5,\n     \"product_type_id\": 3,\n     \"limitation_set_id\": 1,\n     \"limit\": 2,\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -549,7 +523,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"quia\",\"limitation_set_id\":\"qui\",\"limit\":17}"
+                            "raw": "{\"product_type_id\":\"50080528753334\",\"limitation_set_id\":\"50080528753334\",\"limit\":3}"
                         },
                         "description": ""
                     },
@@ -567,7 +541,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -588,22 +562,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 1,\n     \"product_type_id\": 1,\n     \"limitation_set_id\": 1,\n     \"limit\": 3,\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -620,7 +581,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -638,7 +599,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"veniam\",\"limitation_set_id\":\"velit\",\"limit\":2}"
+                            "raw": "{\"product_type_id\":\"50080528753334\",\"limitation_set_id\":\"50080528753334\",\"limit\":3}"
                         },
                         "description": ""
                     },
@@ -656,7 +617,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "16",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -675,7 +636,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -708,22 +676,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"name\": \"limitation_set 1\",\n     \"valid_from\": \"1999-08-20 22:00:00\",\n     \"valid_until\": \"2016-08-20 22:00:00\",\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n },\n {\n     \"id\": 2,\n     \"name\": \"limitation_set 2\",\n     \"valid_from\": \"2020-02-14 00:00:00\",\n     \"valid_until\": \"2021-05-17 00:00:00\",\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -750,7 +705,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"aut\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"A set to limit them all ~ Tolkien II\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -768,7 +723,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "11",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -789,22 +744,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 1,\n     \"name\": \"limitation_set 1\",\n     \"valid_from\": \"1999-08-20 22:00:00\",\n     \"valid_until\": \"2016-08-20 22:00:00\",\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -821,7 +763,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "12",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -839,7 +781,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ab\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"A set to limit them all ~ Tolkien II\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -857,7 +799,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -876,7 +818,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -909,22 +858,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n     {\n          \"id\": 6,\n          \"visit_id\": 5,\n          \"person_id\": 1,\n          \"product_type_id\": 1,\n          \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n          \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n     },\n     {\n          \"id\": 7,\n          \"visit_id\": 6,\n          \"person_id\": 1,\n          \"product_type_id\": 1,\n          \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n          \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n     },\n]",
                             "name": ""
                         }
                     ]
@@ -951,7 +887,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"visit_id\":\"omnis\",\"person_id\":\"necessitatibus\",\"product_type_id\":\"iusto\"}"
+                            "raw": "{\"visit_id\":\"50080528753334\",\"person_id\":\"50080528753334\",\"product_type_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -969,7 +905,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "13",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -990,22 +926,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 6,\n     \"visit_id\": 5,\n     \"person_id\": 1,\n     \"product_type_id\": 1,\n     \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1022,7 +945,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1040,7 +963,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"visit_id\":\"id\",\"person_id\":\"quia\",\"product_type_id\":\"quia\"}"
+                            "raw": "{\"visit_id\":\"50080528753334\",\"person_id\":\"50080528753334\",\"product_type_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -1058,7 +981,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1077,7 +1000,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1110,22 +1040,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"instance_id\": 1,\n     \"name\": \"test\",\n     \"street\": \"abc\",\n     \"postcode\": \"12345\",\n     \"city\": \"abc\",\n     \"contact\": \"abc\",\n     \"created_at\": \"2022-08-15T17:23:12.000000Z\",\n     \"updated_at\": \"2022-08-15T17:23:12.000000Z\"\n },\n {\n     \"id\": 2,\n     \"instance_id\": 2,\n     \"name\": \"Instance\",\n     \"street\": \"Street\",\n     \"postcode\": \"Postcode\",\n     \"city\": \"City\",\n     \"contact\": \"Contact\",\n     \"created_at\": \"2022-08-21T11:34:14.000000Z\",\n     \"updated_at\": \"2022-08-21T11:34:14.000000Z\"\n },\n {\n     \"id\": 3,\n     \"instance_id\": 3,\n     \"name\": \"Instance\",\n     \"street\": \"Street\",\n     \"postcode\": \"Postcode\",\n     \"city\": \"City\",\n     \"contact\": \"Contact\",\n     \"created_at\": \"2022-08-21T11:34:55.000000Z\",\n     \"updated_at\": \"2022-08-21T11:34:55.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -1152,7 +1069,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"et\",\"name\":\"sint\",\"street\":\"praesentium\",\"postcode\":\"nostrum\",\"city\":\"placeat\",\"contact\":\"voluptatem\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
                         },
                         "description": ""
                     },
@@ -1191,22 +1108,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 2,\n     \"instance_id\": 2,\n     \"name\": \"Instance\",\n     \"street\": \"Street\",\n     \"postcode\": \"Postcode\",\n     \"city\": \"City\",\n     \"contact\": \"Contact\",\n     \"created_at\": \"2022-08-21T11:34:14.000000Z\",\n     \"updated_at\": \"2022-08-21T11:34:14.000000Z\"\n }",
                             "name": ""
                         }
                     ]
@@ -1241,7 +1145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"repellat\",\"name\":\"et\",\"street\":\"aut\",\"postcode\":\"aspernatur\",\"city\":\"vel\",\"contact\":\"maxime\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
                         },
                         "description": ""
                     },
@@ -1278,7 +1182,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1311,7 +1222,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -1383,22 +1294,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"card_id\": 1,\n     \"gender\": \"male\",\n     \"age\": 18,\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 2,\n     \"card_id\": 1,\n     \"gender\": \"female\",\n     \"age\": 15,\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 3,\n     \"card_id\": 49394739894111,\n     \"gender\": \"male\",\n     \"age\": 23,\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -1425,7 +1323,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"aut\",\"gender\":\"sit\",\"age\":19}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20}"
                         },
                         "description": ""
                     },
@@ -1443,7 +1341,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "5",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1464,22 +1362,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 2,\n     \"card_id\": 1,\n     \"gender\": \"female\",\n     \"age\": 15,\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1496,7 +1381,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "14",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1514,7 +1399,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"neque\",\"gender\":\"in\",\"age\":9}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20}"
                         },
                         "description": ""
                     },
@@ -1532,7 +1417,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1551,7 +1436,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1584,22 +1476,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"name\": \"t-shirt\",\n     \"icon\": \"t-shirt icon\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 2,\n     \"name\": \"shoe\",\n     \"icon\": \"shoe icon\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 3,\n     \"name\": \"sock\",\n     \"icon\": \"sock icon\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -1626,7 +1505,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"deserunt\",\"icon\":\"suscipit\"}"
+                            "raw": "{\"name\":\"T-Shirt\",\"icon\":\"Icon value\"}"
                         },
                         "description": ""
                     },
@@ -1644,7 +1523,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "2",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1665,22 +1544,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 1,\n     \"name\": \"t-shirt\",\n     \"icon\": \"t-shirt icon\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1697,7 +1563,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "18",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1715,7 +1581,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ut\",\"icon\":\"ex\"}"
+                            "raw": "{\"name\":\"T-Shirt\",\"icon\":\"Icon value\"}"
                         },
                         "description": ""
                     },
@@ -1733,7 +1599,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1752,7 +1618,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1785,22 +1658,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 2,\n     \"card_id\": 1,\n     \"shop_id\": 1,\n     \"time\": \"2022-08-20T16:30:00.000000Z\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 3,\n     \"card_id\": 1,\n     \"shop_id\": 1,\n     \"time\": \"2022-08-20T08:00:00.000000Z\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 4,\n     \"card_id\": 1,\n     \"shop_id\": 1,\n     \"time\": \"2022-08-21T08:00:00.000000Z\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": 5,\n     \"card_id\": 1,\n     \"shop_id\": 2,\n     \"time\": \"2022-08-21T15:00:00.000000Z\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -1827,7 +1687,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"cumque\",\"shop_id\":\"quia\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"shop_id\":\"50080528753334\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1845,7 +1705,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1866,22 +1726,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 2,\n     \"card_id\": 1,\n     \"shop_id\": 1,\n     \"time\": \"2022-08-20T16:30:00.000000Z\",\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1898,7 +1745,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "19",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1916,7 +1763,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"ipsa\",\"shop_id\":\"ipsum\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"shop_id\":\"50080528753334\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1934,7 +1781,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -1953,7 +1800,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1986,22 +1840,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"organization_id\": 1,\n     \"name\": \"organization\",\n     \"street\": \"organizations street\",\n     \"postcode\": \"12345\",\n     \"city\": \"oraganizations city\",\n     \"contact\": \"organizations contact\",\n     \"opening_hours\":\n     {\n         \"opening_hours\":\n         [\n             {\n                 \"monday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"tuesday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"wednesday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"thursday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"friday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"saturday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"sunday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             }\n         ]\n     },\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n },\n {\n     \"id\": \"\n     \"organization_id\": \u00a7,\n     \"name\": \"organization\",\n     \"street\": \"organizations street\",\n     \"postcode\": \"12345\",\n     \"city\": \"organizations city\",\n     \"contact\": \"organizations contact\",\n     \"opening_hours\":\n     {\n         \"opening_hours\":\n         [\n             {\n                 \"monday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"tuesday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"wednesday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"thursday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"friday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"saturday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"sunday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             }\n         ]\n     },\n     \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n     \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -2028,7 +1869,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"totam\",\"name\":\"voluptas\",\"street\":\"eum\",\"postcode\":\"aut\",\"city\":\"atque\",\"contact\":\"id\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
+                            "raw": "{\"organization_id\":\"50080528753334\",\"name\":\"The friendly shop around the corner\",\"street\":\"Around the corner\",\"postcode\":\"50080\",\"city\":\"Cornville\",\"contact\":\"You can call me under 1-603-413-4124\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
                         },
                         "description": ""
                     },
@@ -2046,7 +1887,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2067,22 +1908,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 1,\n     \"organization_id\": 1,\n     \"name\": \"organization\",\n     \"street\": \"organizations street\",\n     \"postcode\": \"12345\",\n     \"city\": \"oraganizations city\",\n     \"contact\": \"organizations contact\",\n     \"opening_hours\":\n     {\n         \"opening_hours\":\n         [\n             {\n                 \"monday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"tuesday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"wednesday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"thursday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"friday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"saturday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             },\n             {\n                 \"sunday\":\n                 {\n                     \"opens_at\": \"08:00\",\n                     \"closes_at\": \"17:00\"\n                 }\n             }\n         ]\n     },\n \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -2117,7 +1945,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"delectus\",\"name\":\"assumenda\",\"street\":\"rerum\",\"postcode\":\"est\",\"city\":\"ut\",\"contact\":\"iste\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
+                            "raw": "{\"organization_id\":\"50080528753334\",\"name\":\"The friendly shop around the corner\",\"street\":\"Around the corner\",\"postcode\":\"50080\",\"city\":\"Cornville\",\"contact\":\"You can call me under 1-603-413-4124\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
                         },
                         "description": ""
                     },
@@ -2135,7 +1963,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2154,7 +1982,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -2229,7 +2064,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"facilis\",\"organization_id\":\"dicta\",\"name\":\"quos\",\"email\":\"kaitlyn88@example.org\",\"password\":\"omnis\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\"}"
                         },
                         "description": ""
                     },
@@ -2318,7 +2153,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"et\",\"organization_id\":\"eligendi\",\"name\":\"natus\",\"email\":\"corwin.citlalli@example.com\",\"password\":\"reprehenderit\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\"}"
                         },
                         "description": ""
                     },
@@ -2388,22 +2223,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"id\": 6,\n     \"card_id\": 1,\n     \"user_id\": 1,\n     \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n },\n {\n     \"id\": 7,\n     \"card_id\": 1,\n     \"user_id\": 1,\n     \"created_at\": \"2022-08-17T13:52:35.000000Z\",\n     \"updated_at\": \"2022-08-17T13:52:35.000000Z\"\n },\n {\n     \"id\": 8,\n     \"card_id\": 1,\n     \"user_id\": 3,\n     \"created_at\": \"2022-08-21T11:50:35.000000Z\",\n     \"updated_at\": \"2022-08-21T11:50:35.000000Z\"\n }\n]",
                             "name": ""
                         }
                     ]
@@ -2430,7 +2252,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"fugiat\",\"user_id\":\"ea\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"user_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -2469,22 +2291,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"id\": 6,\n     \"card_id\": 1,\n     \"user_id\": 1,\n     \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n     \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -2501,7 +2310,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "1",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -2519,7 +2328,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"quod\",\"user_id\":\"consectetur\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"user_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -2556,7 +2365,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }
