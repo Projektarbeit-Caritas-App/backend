@@ -227,10 +227,9 @@ class AuthController extends Controller
                 'success' => false
             ], 401);
         } else {
-            // TODO: Add abilities for mobile-App
             return response([
                 'success' => true,
-                'token' => $user->createToken($credentials['device_name'], ['abilities'])->plainTextToken,
+                'token' => $user->createToken($credentials['device_name'], ['app'])->plainTextToken,
                 'user' => $this->getUserData($user)
             ], 200);
         }
