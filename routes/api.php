@@ -10,7 +10,7 @@ use App\Http\Controllers\PdfGenerationController;
 use App\Http\Controllers\PersonManagerController;
 use App\Http\Controllers\ProductTypeManagerController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationManagerController;
 use App\Http\Controllers\ShopManagerController;
 use App\Http\Controllers\UserManagerController;
 use App\Http\Controllers\CheckoutController;
@@ -42,11 +42,12 @@ Route::controller(AuthController::class)
         Route::post('/login', 'login')->name('login');
         Route::post('/token', 'token')->name('token');
         Route::post('/logout', 'logout')->name('logout')->middleware('auth:sanctum');
+        Route::get('/heartbeat', 'heartbeat')->name('heartbeat')->middleware('auth:sanctum');
     });
 //endregion
 
 //region Limitations
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(LimitationManagerController::class)
     ->prefix('admin/limitation/limit')
     ->name('admin.limitation.limit.')
@@ -60,7 +61,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region LimitationSets
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(LimitationSetManagerController::class)
     ->prefix('admin/limitation/set')
     ->name('admin.limitation.set.')
@@ -74,7 +75,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Organizations
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(OrganizationManagerController::class)
     ->prefix('admin/organization')
     ->name('admin.organization.')
@@ -88,7 +89,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region ProductTypes
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(ProductTypeManagerController::class)
     ->prefix('admin/product-type')
     ->name('admin.product-type.')
@@ -102,7 +103,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Schedule
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:app'])
     ->controller(ScheduleController::class)
     ->prefix('schedule')
     ->name('schedule.')
@@ -114,10 +115,10 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Reservations
-Route::middleware('auth:sanctum')
-    ->controller(ReservationController::class)
-    ->prefix('reservation')
-    ->name('reservation.')
+Route::middleware(['auth:sanctum', 'ability:admin'])
+    ->controller(ReservationManagerController::class)
+    ->prefix('admin/reservation')
+    ->name('admin.reservation.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -128,7 +129,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Shops
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(ShopManagerController::class)
     ->prefix('admin/shop')
     ->name('admin.shop.')
@@ -142,7 +143,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Users
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(UserManagerController::class)
     ->prefix('admin/user')
     ->name('admin.user.')
@@ -156,7 +157,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Cards
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(CardManagerController::class)
     ->prefix('admin/card')
     ->name('admin.card.')
@@ -170,7 +171,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region LineItems
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(LineItemManagerController::class)
     ->prefix('admin/lineItem')
     ->name('admin.lineItem.')
@@ -184,7 +185,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Persons
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(PersonManagerController::class)
     ->prefix('admin/person')
     ->name('admin.person.')
@@ -198,7 +199,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region Visits
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:admin'])
     ->controller(VisitManagerController::class)
     ->prefix('admin/visit')
     ->name('admin.visit.')
@@ -211,10 +212,10 @@ Route::middleware('auth:sanctum')
     });
 
 //region AppVisits
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:app'])
     ->controller(CheckoutController::class)
     ->prefix('card/visit')
-    ->name('app.card.visit.')
+    ->name('card.visit.')
     ->group(function () {
         Route::get('/{card}', 'show')->name('show');
         Route::post('/{card}', 'store')->name('store');
@@ -222,7 +223,7 @@ Route::middleware('auth:sanctum')
 //endregion
 
 //region PDFs
-Route::middleware('auth:sanctum')
+Route::middleware(['auth:sanctum', 'ability:app'])
     ->controller(PdfGenerationController::class)
     ->prefix('pdf')
     ->name('pdf.')

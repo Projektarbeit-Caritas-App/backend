@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ManageReservationRequest;
 use App\Models\Reservation;
 use App\Service\ModelFilterService;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
  * @group Reservation
  * @authenticated
  */
-class ReservationController extends Controller
+class ReservationManagerController extends Controller
 {
     /**
      * List all Reservations
@@ -55,10 +55,10 @@ class ReservationController extends Controller
     /**
      * Create new Reservation
      *
-     * @param  \App\Http\Requests\ReservationRequest  $request
+     * @param  \App\Http\Requests\ManageReservationRequest  $request
      * @return \App\Models\Reservation
      */
-    public function store(ReservationRequest $request): Reservation
+    public function store(ManageReservationRequest $request): Reservation
     {
         return Reservation::create($request->validated());
     }
@@ -77,11 +77,11 @@ class ReservationController extends Controller
     /**
      * Update specified Reservation
      *
-     * @param  \App\Http\Requests\ReservationRequest  $request
+     * @param  \App\Http\Requests\ManageReservationRequest  $request
      * @param  \App\Models\Reservation  $reservation
      * @return \App\Models\Reservation
      */
-    public function update(ReservationRequest $request, Reservation $reservation): Reservation
+    public function update(ManageReservationRequest $request, Reservation $reservation): Reservation
     {
         $reservation->update($request->validated());
         return $reservation;
