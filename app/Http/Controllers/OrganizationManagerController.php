@@ -17,44 +17,59 @@ class OrganizationManagerController extends Controller
      * List all Organization
      *
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
+     *   {
+     *       "id": 1,
+     *       "instance_id": 1,
+     *       "name": "test",
+     *       "street": "abc",
+     *       "postcode": "12345",
+     *       "city": "abc",
+     *       "contact": "abc",
+     *       "created_at": "2022-08-15T17:23:12.000000Z",
+     *       "updated_at": "2022-08-15T17:23:12.000000Z"
+     *   },
+     *   {
+     *       "id": 2,
+     *       "instance_id": 2,
+     *       "name": "Instance",
+     *       "street": "Street",
+     *       "postcode": "Postcode",
+     *       "city": "City",
+     *       "contact": "Contact",
+     *       "created_at": "2022-08-21T11:34:14.000000Z",
+     *       "updated_at": "2022-08-21T11:34:14.000000Z"
+     *   },
+     *   {
+     *       "id": 3,
+     *       "instance_id": 3,
+     *       "name": "Instance",
+     *       "street": "Street",
+     *       "postcode": "Postcode",
+     *       "city": "City",
+     *       "contact": "Contact",
+     *       "created_at": "2022-08-21T11:34:55.000000Z",
+     *       "updated_at": "2022-08-21T11:34:55.000000Z"
+     *   }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 1,
-     *      "instance_id": 1,
-     *      "name": "test",
-     *      "street": "abc",
-     *      "postcode": "12345",
-     *      "city": "abc",
-     *      "contact": "abc",
-     *      "created_at": "2022-08-15T17:23:12.000000Z",
-     *      "updated_at": "2022-08-15T17:23:12.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 1
      *  },
+     *  "links":
      *  {
-     *      "id": 2,
-     *      "instance_id": 2,
-     *      "name": "Instance",
-     *      "street": "Street",
-     *      "postcode": "Postcode",
-     *      "city": "City",
-     *      "contact": "Contact",
-     *      "created_at": "2022-08-21T11:34:14.000000Z",
-     *      "updated_at": "2022-08-21T11:34:14.000000Z"
-     *  },
-     *  {
-     *      "id": 3,
-     *      "instance_id": 3,
-     *      "name": "Instance",
-     *      "street": "Street",
-     *      "postcode": "Postcode",
-     *      "city": "City",
-     *      "contact": "Contact",
-     *      "created_at": "2022-08-21T11:34:55.000000Z",
-     *      "updated_at": "2022-08-21T11:34:55.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
