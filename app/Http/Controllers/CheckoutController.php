@@ -9,6 +9,7 @@ use App\Models\Visit;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 
 /**
  * @group Checkout
@@ -30,6 +31,22 @@ class CheckoutController extends Controller
      */
     public function show(Card $card): Response|Application|ResponseFactory
     {
+        $now = Carbon::now();
+
+        if ($now->lt($card->valid_from)) {
+            return response([
+                'message' => 'Card not yet valid',
+                'card' => $card
+            ], 423);
+        }
+
+        if ($now->gt($card->valid_until)) {
+            return response([
+                'message' => 'Card expired',
+                'card' => $card
+            ], 410);
+        }
+
         $data = Card::with('people.lineItems', 'people.limitationSets.limitations.productType')->find($card->id);
 
         return response([
@@ -60,6 +77,22 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request, Card $card): Response|Application|ResponseFactory
     {
+        $now = Carbon::now();
+
+        if ($now->lt($card->valid_from)) {
+            return response([
+                'message' => 'Card not yet valid',
+                'card' => $card
+            ], 423);
+        }
+
+        if ($now->gt($card->valid_until)) {
+            return response([
+                'message' => 'Card expired',
+                'card' => $card
+            ], 410);
+        }
+
         $visit = new Visit();
         $visit->card_id = $card->id;
         $visit->user_id = $request->user()->id;
