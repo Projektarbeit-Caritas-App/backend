@@ -346,16 +346,8 @@ class AuthController extends Controller
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
-            'roles' => $user->roles->map(function ($role) {
-                return $role->name;
-            }),
-            'permissions' => collect($user->permissions->map(function ($permission) {
-                return $permission->name;
-            }))->add($user->roles->map(function ($role) {
-                return $role->permissions->map(function ($permission) {
-                    return $permission->name;
-                });
-            }))->flatten()->unique()->sort()->values(),
+            'roles' => $user->roles->pluck('name'),
+            'permissions' => $user->getAllPermissions()->pluck('name'),
             'instance' => $user->instance,
             'organization' => $user->organization->makeHidden('instance_id'),
             'created_at' => $user->created_at,
