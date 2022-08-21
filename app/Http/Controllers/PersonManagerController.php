@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManagePersonRequest;
 use App\Models\Person;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Person
@@ -14,11 +16,37 @@ class PersonManagerController extends Controller
     /**
      * List all persons
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return Person::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Card
+            'card_id' => 'exists:cards,id|nullable',
+
+            // Gender contains
+            'gender' => 'string|nullable',
+
+            // Age is
+            'age' => 'integer|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,card_id,gender,age|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Person::query(), [
+            'card_id' => 'match',
+            'gender' => 'contains',
+            'age' => 'match'
+        ], $filters));
     }
 
     /**
@@ -27,7 +55,7 @@ class PersonManagerController extends Controller
      * @param \App\Http\Requests\ManagePersonRequest $request
      * @return \App\Models\Person
      */
-    public function store(ManagePersonRequest $request)
+    public function store(ManagePersonRequest $request): Person
     {
         return Person::create($request->validated());
     }
@@ -38,7 +66,7 @@ class PersonManagerController extends Controller
      * @param \App\Models\Person $person
      * @return \App\Models\Person
      */
-    public function show(Person $person)
+    public function show(Person $person): Person
     {
         return $person;
     }
@@ -50,7 +78,7 @@ class PersonManagerController extends Controller
      * @param \App\Models\Person $person
      * @return \App\Models\Person
      */
-    public function update(ManagePersonRequest $request, Person $person)
+    public function update(ManagePersonRequest $request, Person $person): Person
     {
         $person->update($request->validated());
         return $person;
@@ -62,7 +90,7 @@ class PersonManagerController extends Controller
      * @param \App\Models\Person $person
      * @return array
      */
-    public function destroy(Person $person)
+    public function destroy(Person $person): array
     {
         return ['success' => $person->delete()];
     }

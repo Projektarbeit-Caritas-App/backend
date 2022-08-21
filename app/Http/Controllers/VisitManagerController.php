@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageVisitRequest;
 use App\Models\Visit;
+use App\Service\ModelFilterService;
+use Illuminate\Http\Request;
 
 /**
  * @group Visit
@@ -14,11 +16,33 @@ class VisitManagerController extends Controller
     /**
      * List all Visits
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request): array
     {
-        return Visit::all();
+        // Query parameters
+        $filters = $request->validate([
+            // Card
+            'card_id' => 'exists:cards,id|nullable',
+
+            // User
+            'user_id' => 'exists:users,id|nullable',
+
+            // Sort by given field
+            'sort' => 'string|in:id,card_id,user_id|nullable',
+
+            // Sort ascending or descending
+            'order' => 'string|in:asc,desc|nullable',
+
+            // Page to load
+            'page' => 'integer|nullable'
+        ]);
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Visit::query(), [
+            'card_id' => 'match',
+            'user_id' => 'match'
+        ], $filters));
     }
 
     /**
@@ -27,7 +51,7 @@ class VisitManagerController extends Controller
      * @param \App\Http\Requests\ManageVisitRequest $request
      * @return \App\Models\Visit
      */
-    public function store(ManageVisitRequest $request)
+    public function store(ManageVisitRequest $request): Visit
     {
         return Visit::create($request->validated());
     }
@@ -38,7 +62,7 @@ class VisitManagerController extends Controller
      * @param \App\Models\Visit $visit
      * @return \App\Models\Visit
      */
-    public function show(Visit $visit)
+    public function show(Visit $visit): Visit
     {
         return $visit;
     }
@@ -50,7 +74,7 @@ class VisitManagerController extends Controller
      * @param \App\Models\Visit $visit
      * @return \App\Models\Visit
      */
-    public function update(ManageVisitRequest $request, Visit $visit)
+    public function update(ManageVisitRequest $request, Visit $visit): Visit
     {
         $visit->update($request->validated());
         return $visit;
@@ -62,7 +86,7 @@ class VisitManagerController extends Controller
      * @param \App\Models\Visit $visit
      * @return array
      */
-    public function destroy(Visit $visit)
+    public function destroy(Visit $visit): array
     {
         return ['success' => $visit->delete()];
     }
