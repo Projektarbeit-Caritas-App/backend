@@ -74,6 +74,19 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="schedule">
+                    <a href="#schedule">Schedule</a>
+                </li>
+                                    <ul id="tocify-subheader-schedule" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="schedule-GETapi-schedule">
+                        <a href="#schedule-GETapi-schedule">List available shops</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="schedule-GETapi-schedule--shop_id-">
+                        <a href="#schedule-GETapi-schedule--shop_id-">List today´s reservations</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="authentication">
                     <a href="#authentication">Authentication</a>
                 </li>
@@ -92,7 +105,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-3" class="tocify-header">
+                    <ul id="tocify-header-4" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="card">
                     <a href="#card">Card</a>
                 </li>
@@ -114,7 +127,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-4" class="tocify-header">
+                    <ul id="tocify-header-5" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="checkout">
                     <a href="#checkout">Checkout</a>
                 </li>
@@ -127,7 +140,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-5" class="tocify-header">
+                    <ul id="tocify-header-6" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="limitation">
                     <a href="#limitation">Limitation</a>
                 </li>
@@ -149,7 +162,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-6" class="tocify-header">
+                    <ul id="tocify-header-7" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="limitation-set">
                     <a href="#limitation-set">Limitation Set</a>
                 </li>
@@ -171,7 +184,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-7" class="tocify-header">
+                    <ul id="tocify-header-8" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="line-item">
                     <a href="#line-item">Line Item</a>
                 </li>
@@ -193,7 +206,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-8" class="tocify-header">
+                    <ul id="tocify-header-9" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="organization">
                     <a href="#organization">Organization</a>
                 </li>
@@ -215,7 +228,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-9" class="tocify-header">
+                    <ul id="tocify-header-10" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="pdf">
                     <a href="#pdf">PDF</a>
                 </li>
@@ -225,7 +238,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-10" class="tocify-header">
+                    <ul id="tocify-header-11" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="person">
                     <a href="#person">Person</a>
                 </li>
@@ -247,7 +260,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-11" class="tocify-header">
+                    <ul id="tocify-header-12" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="product-type">
                     <a href="#product-type">Product Type</a>
                 </li>
@@ -269,7 +282,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-12" class="tocify-header">
+                    <ul id="tocify-header-13" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="reservation">
                     <a href="#reservation">Reservation</a>
                 </li>
@@ -291,7 +304,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-13" class="tocify-header">
+                    <ul id="tocify-header-14" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="shop">
                     <a href="#shop">Shop</a>
                 </li>
@@ -313,7 +326,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-14" class="tocify-header">
+                    <ul id="tocify-header-15" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="user">
                     <a href="#user">User</a>
                 </li>
@@ -335,7 +348,7 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-15" class="tocify-header">
+                    <ul id="tocify-header-16" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="visit">
                     <a href="#visit">Visit</a>
                 </li>
@@ -384,9 +397,306 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://localhost</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>Alternatively to the Token-Auth you can also use Session-Auth with XSRF-Protection, which is useful for SPAs.</p>
+
+        <h1 id="schedule">Schedule</h1>
+
+    
+
+            <h2 id="schedule-GETapi-schedule">List available shops</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p><small class="badge badge-purple">App authorization available</small></p>
+<p>List all shops that are in the same organization as the user</p>
+
+<span id="example-requests-GETapi-schedule">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/schedule" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/schedule"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost/api/schedule',
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost/api/schedule'
+headers = {
+  'Authorization': 'Bearer {YOUR_AUTH_KEY}',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-schedule">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">[
+    {
+        &quot;id&quot;: 4,
+        &quot;card_id&quot;: 1,
+        &quot;shop_id&quot;: 1,
+        &quot;time&quot;: &quot;2022-08-21T08:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2022-08-19T08:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-19T08:00:00.000000Z&quot;
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-schedule" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-schedule"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-schedule"></code></pre>
+</span>
+<span id="execution-error-GETapi-schedule" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-schedule"></code></pre>
+</span>
+<form id="form-GETapi-schedule" data-method="GET"
+      data-path="api/schedule"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-schedule', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-schedule"
+                    onclick="tryItOut('GETapi-schedule');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-schedule"
+                    onclick="cancelTryOut('GETapi-schedule');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-schedule" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/schedule</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-schedule" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-schedule"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+            <h2 id="schedule-GETapi-schedule--shop_id-">List today´s reservations</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p><small class="badge badge-purple">App authorization available</small></p>
+<p>List all today's reservations for a specified store</p>
+
+<span id="example-requests-GETapi-schedule--shop_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/schedule/1" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/schedule/1"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost/api/schedule/1',
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost/api/schedule/1'
+headers = {
+  'Authorization': 'Bearer {YOUR_AUTH_KEY}',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-schedule--shop_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">[
+    {
+        &quot;id&quot;: 4,
+        &quot;card_id&quot;: 1,
+        &quot;shop_id&quot;: 1,
+        &quot;time&quot;: &quot;2022-08-21T08:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2022-08-19T08:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-19T08:00:00.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 6,
+        &quot;card_id&quot;: 2,
+        &quot;shop_id&quot;: 1,
+        &quot;time&quot;: &quot;2022-08-21T08:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2022-08-19T08:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-19T08:00:00.000000Z&quot;
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-schedule--shop_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-schedule--shop_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-schedule--shop_id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-schedule--shop_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-schedule--shop_id-"></code></pre>
+</span>
+<form id="form-GETapi-schedule--shop_id-" data-method="GET"
+      data-path="api/schedule/{shop_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-schedule--shop_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-schedule--shop_id-"
+                    onclick="tryItOut('GETapi-schedule--shop_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-schedule--shop_id-"
+                    onclick="cancelTryOut('GETapi-schedule--shop_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-schedule--shop_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/schedule/{shop_id}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-schedule--shop_id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-schedule--shop_id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>shop_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="shop_id"
+               data-endpoint="GETapi-schedule--shop_id-"
+               value="1"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the shop.</p>
+            </p>
+                    </form>
 
         <h1 id="authentication">Authentication</h1>
 
@@ -538,8 +848,8 @@ you can send your Credentials to this endpoint and authenticate your session.</p
     --header "Referer: {URL of your SPA}" \
     --header "X-XSRF-TOKEN: {Your XSRF-Token}" \
     --data "{
-    \"email\": \"et\",
-    \"password\": \"consequatur\"
+    \"email\": \"sit\",
+    \"password\": \"consequuntur\"
 }"
 </code></pre></div>
 
@@ -557,8 +867,8 @@ const headers = {
 };
 
 let body = {
-    "email": "et",
-    "password": "consequatur"
+    "email": "sit",
+    "password": "consequuntur"
 };
 
 fetch(url, {
@@ -580,8 +890,8 @@ $response = $client-&gt;post(
             'X-XSRF-TOKEN' =&gt; '{Your XSRF-Token}',
         ],
         'json' =&gt; [
-            'email' =&gt; 'et',
-            'password' =&gt; 'consequatur',
+            'email' =&gt; 'sit',
+            'password' =&gt; 'consequuntur',
         ],
     ]
 );
@@ -595,8 +905,8 @@ import json
 
 url = 'http://localhost/api/auth/login'
 payload = {
-    "email": "et",
-    "password": "consequatur"
+    "email": "sit",
+    "password": "consequuntur"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -718,7 +1028,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="et"
+               value="sit"
                data-component="body" hidden>
     <br>
 <p>E-Mail of the user.</p>
@@ -728,7 +1038,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="consequatur"
+               value="consequuntur"
                data-component="body" hidden>
     <br>
 <p>Password of the user.</p>
@@ -757,9 +1067,9 @@ Tokens will be valid for 20 hours before they expire.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"larkin.prudence@example.net\",
-    \"password\": \"eos\",
-    \"device_name\": \"sed\"
+    \"email\": \"emory.hegmann@example.net\",
+    \"password\": \"cupiditate\",
+    \"device_name\": \"dolor\"
 }"
 </code></pre></div>
 
@@ -775,9 +1085,9 @@ const headers = {
 };
 
 let body = {
-    "email": "larkin.prudence@example.net",
-    "password": "eos",
-    "device_name": "sed"
+    "email": "emory.hegmann@example.net",
+    "password": "cupiditate",
+    "device_name": "dolor"
 };
 
 fetch(url, {
@@ -797,9 +1107,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'larkin.prudence@example.net',
-            'password' =&gt; 'eos',
-            'device_name' =&gt; 'sed',
+            'email' =&gt; 'emory.hegmann@example.net',
+            'password' =&gt; 'cupiditate',
+            'device_name' =&gt; 'dolor',
         ],
     ]
 );
@@ -813,9 +1123,9 @@ import json
 
 url = 'http://localhost/api/auth/token'
 payload = {
-    "email": "larkin.prudence@example.net",
-    "password": "eos",
-    "device_name": "sed"
+    "email": "emory.hegmann@example.net",
+    "password": "cupiditate",
+    "device_name": "dolor"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -927,7 +1237,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-token"
-               value="larkin.prudence@example.net"
+               value="emory.hegmann@example.net"
                data-component="body" hidden>
     <br>
 <p>E-Mail of the user. Must be a valid email address.</p>
@@ -937,7 +1247,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-token"
-               value="eos"
+               value="cupiditate"
                data-component="body" hidden>
     <br>
 <p>Password of the user.</p>
@@ -947,7 +1257,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="device_name"
                data-endpoint="POSTapi-auth-token"
-               value="sed"
+               value="dolor"
                data-component="body" hidden>
     <br>
 <p>Name of the device, used for identification of the token.</p>
@@ -1102,7 +1412,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/card" \
+    --get "http://localhost/api/admin/card?last_name=quia&amp;first_name=dolor&amp;street=ut&amp;postcode=eum&amp;city=officiis&amp;valid_from[]=2022-08-21T14%3A36%3A44&amp;valid_until[]=2022-08-21T14%3A36%3A44&amp;sort=city&amp;order=desc&amp;page=13" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1112,6 +1422,21 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/card"
 );
+
+const params = {
+    "last_name": "quia",
+    "first_name": "dolor",
+    "street": "ut",
+    "postcode": "eum",
+    "city": "officiis",
+    "valid_from[]": "2022-08-21T14:36:44",
+    "valid_until[]": "2022-08-21T14:36:44",
+    "sort": "city",
+    "order": "desc",
+    "page": "13",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -1135,6 +1460,18 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'last_name'=&gt; 'quia',
+            'first_name'=&gt; 'dolor',
+            'street'=&gt; 'ut',
+            'postcode'=&gt; 'eum',
+            'city'=&gt; 'officiis',
+            'valid_from[]'=&gt; '2022-08-21T14:36:44',
+            'valid_until[]'=&gt; '2022-08-21T14:36:44',
+            'sort'=&gt; 'city',
+            'order'=&gt; 'desc',
+            'page'=&gt; '13',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -1146,33 +1483,74 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/card'
+params = {
+  'last_name': 'quia',
+  'first_name': 'dolor',
+  'street': 'ut',
+  'postcode': 'eum',
+  'city': 'officiis',
+  'valid_from[]': '2022-08-21T14:36:44',
+  'valid_until[]': '2022-08-21T14:36:44',
+  'sort': 'city',
+  'order': 'desc',
+  'page': '13',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
 
 <span id="example-responses-GETapi-admin-card">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-vary: Origin
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;last_name&quot;: &quot;Mustermann&quot;,
+            &quot;first_name&quot;: &quot;M&uuml;ller&quot;,
+            &quot;street&quot;: &quot;M&uuml;hlenstra&szlig;e 5&quot;,
+            &quot;postcode&quot;: &quot;12345&quot;,
+            &quot;city&quot;: &quot;W&uuml;rzburg&quot;,
+            &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+            &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+            &quot;creator_id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-08-16T15:00:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T15:00:00.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 49394739894111,
+            &quot;last_name&quot;: &quot;Kitsune&quot;,
+            &quot;first_name&quot;: &quot;Yasu&quot;,
+            &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+            &quot;postcode&quot;: &quot;12345&quot;,
+            &quot;city&quot;: &quot;Teststadt&quot;,
+            &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+            &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+            &quot;creator_id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 2
+    },
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
+    }
 }</code>
  </pre>
     </span>
@@ -1223,6 +1601,157 @@ vary: Origin
                                                                 data-endpoint="GETapi-admin-card"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>last_name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="last_name"
+               data-endpoint="GETapi-admin-card"
+               value="quia"
+               data-component="query" hidden>
+    <br>
+<p>Last name contains.</p>
+            </p>
+                    <p>
+                <b><code>first_name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="first_name"
+               data-endpoint="GETapi-admin-card"
+               value="dolor"
+               data-component="query" hidden>
+    <br>
+<p>First name contains.</p>
+            </p>
+                    <p>
+                <b><code>street</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="street"
+               data-endpoint="GETapi-admin-card"
+               value="ut"
+               data-component="query" hidden>
+    <br>
+<p>Street contains.</p>
+            </p>
+                    <p>
+                <b><code>postcode</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="postcode"
+               data-endpoint="GETapi-admin-card"
+               value="eum"
+               data-component="query" hidden>
+    <br>
+<p>Postcode contains.</p>
+            </p>
+                    <p>
+                <b><code>city</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="city"
+               data-endpoint="GETapi-admin-card"
+               value="officiis"
+               data-component="query" hidden>
+    <br>
+<p>City contains.</p>
+            </p>
+                    <p>
+                <b><code>valid_from</code></b>&nbsp;&nbsp;<small>object</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_from"
+               data-endpoint="GETapi-admin-card"
+               value=""
+               data-component="query" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>valid_from.0</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_from.0"
+               data-endpoint="GETapi-admin-card"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid from is after this date. Must be a valid date.</p>
+            </p>
+                    <p>
+                <b><code>valid_from.1</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_from.1"
+               data-endpoint="GETapi-admin-card"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.</p>
+            </p>
+                    <p>
+                <b><code>valid_until</code></b>&nbsp;&nbsp;<small>object</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_until"
+               data-endpoint="GETapi-admin-card"
+               value=""
+               data-component="query" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>valid_until.0</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_until.0"
+               data-endpoint="GETapi-admin-card"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid until is after this date. Must be a valid date.</p>
+            </p>
+                    <p>
+                <b><code>valid_until.1</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_until.1"
+               data-endpoint="GETapi-admin-card"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.</p>
+            </p>
+                    <p>
+                <b><code>creator_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="creator_id"
+               data-endpoint="GETapi-admin-card"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Created by user_id.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-card"
+               value="city"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-card"
+               value="desc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-card"
+               value="13"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="card-POSTapi-admin-card">Create new Card</h2>
@@ -1540,20 +2069,22 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-admin-card--id-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-vary: Origin
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;id&quot;: 49394739894111,
+    &quot;last_name&quot;: &quot;Kitsune&quot;,
+    &quot;first_name&quot;: &quot;Yasu&quot;,
+    &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+    &quot;postcode&quot;: &quot;12345&quot;,
+    &quot;city&quot;: &quot;Teststadt&quot;,
+    &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+    &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+    &quot;creator_id&quot;: 1,
+    &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -2465,7 +2996,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/limitation/limit" \
+    --get "http://localhost/api/admin/limitation/limit?sort=limitation_set_id&amp;order=asc&amp;page=11" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2475,6 +3006,14 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/limitation/limit"
 );
+
+const params = {
+    "sort": "limitation_set_id",
+    "order": "asc",
+    "page": "11",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -2498,6 +3037,11 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'sort'=&gt; 'limitation_set_id',
+            'order'=&gt; 'asc',
+            'page'=&gt; '11',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -2509,13 +3053,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/limitation/limit'
+params = {
+  'sort': 'limitation_set_id',
+  'order': 'asc',
+  'page': '11',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -2526,40 +3075,52 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 1,
-        &quot;product_type_id&quot;: 1,
-        &quot;limitation_set_id&quot;: 1,
-        &quot;limit&quot;: 3,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+<code class="language-json">{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;product_type_id&quot;: 1,
+            &quot;limitation_set_id&quot;: 1,
+            &quot;limit&quot;: 3,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;product_type_id&quot;: 2,
+            &quot;limitation_set_id&quot;: 2,
+            &quot;limit&quot;: 5,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;product_type_id&quot;: 2,
+            &quot;limitation_set_id&quot;: 1,
+            &quot;limit&quot;: 5,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;product_type_id&quot;: 3,
+            &quot;limitation_set_id&quot;: 1,
+            &quot;limit&quot;: 2,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 4
     },
-    {
-        &quot;id&quot;: 3,
-        &quot;product_type_id&quot;: 2,
-        &quot;limitation_set_id&quot;: 2,
-        &quot;limit&quot;: 5,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 4,
-        &quot;product_type_id&quot;: 2,
-        &quot;limitation_set_id&quot;: 1,
-        &quot;limit&quot;: 5,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 5,
-        &quot;product_type_id&quot;: 3,
-        &quot;limitation_set_id&quot;: 1,
-        &quot;limit&quot;: 2,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
     }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-limitation-limit" hidden>
@@ -2609,6 +3170,57 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-limitation-limit"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>limitation_set_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="limitation_set_id"
+               data-endpoint="GETapi-admin-limitation-limit"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Limitation Set.</p>
+            </p>
+                    <p>
+                <b><code>product_type_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="product_type_id"
+               data-endpoint="GETapi-admin-limitation-limit"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Product Type.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-limitation-limit"
+               value="limitation_set_id"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-limitation-limit"
+               value="asc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-limitation-limit"
+               value="11"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="limitation-POSTapi-admin-limitation-limit">Create new Limitation</h2>
@@ -3273,7 +3885,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/limitation/set" \
+    --get "http://localhost/api/admin/limitation/set?name=quasi&amp;valid_from[]=2022-08-21T14%3A36%3A44&amp;valid_until[]=2022-08-21T14%3A36%3A44&amp;sort=id&amp;order=desc&amp;page=14" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3283,6 +3895,17 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/limitation/set"
 );
+
+const params = {
+    "name": "quasi",
+    "valid_from[]": "2022-08-21T14:36:44",
+    "valid_until[]": "2022-08-21T14:36:44",
+    "sort": "id",
+    "order": "desc",
+    "page": "14",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -3306,6 +3929,14 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'name'=&gt; 'quasi',
+            'valid_from[]'=&gt; '2022-08-21T14:36:44',
+            'valid_until[]'=&gt; '2022-08-21T14:36:44',
+            'sort'=&gt; 'id',
+            'order'=&gt; 'desc',
+            'page'=&gt; '14',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -3317,13 +3948,21 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/limitation/set'
+params = {
+  'name': 'quasi',
+  'valid_from[]': '2022-08-21T14:36:44',
+  'valid_until[]': '2022-08-21T14:36:44',
+  'sort': 'id',
+  'order': 'desc',
+  'page': '14',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -3334,24 +3973,36 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;limitation_set 1&quot;,
-        &quot;valid_from&quot;: &quot;1999-08-20 22:00:00&quot;,
-        &quot;valid_until&quot;: &quot;2016-08-20 22:00:00&quot;,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+<code class="language-json">{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;limitation_set 1&quot;,
+            &quot;valid_from&quot;: &quot;1999-08-20 22:00:00&quot;,
+            &quot;valid_until&quot;: &quot;2016-08-20 22:00:00&quot;,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;limitation_set 2&quot;,
+            &quot;valid_from&quot;: &quot;2020-02-14 00:00:00&quot;,
+            &quot;valid_until&quot;: &quot;2021-05-17 00:00:00&quot;,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 2
     },
-    {
-        &quot;id&quot;: 2,
-        &quot;name&quot;: &quot;limitation_set 2&quot;,
-        &quot;valid_from&quot;: &quot;2020-02-14 00:00:00&quot;,
-        &quot;valid_until&quot;: &quot;2021-05-17 00:00:00&quot;,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
     }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-limitation-set" hidden>
@@ -3401,6 +4052,107 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-limitation-set"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="quasi"
+               data-component="query" hidden>
+    <br>
+<p>Filter by name.</p>
+            </p>
+                    <p>
+                <b><code>valid_from</code></b>&nbsp;&nbsp;<small>object</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_from"
+               data-endpoint="GETapi-admin-limitation-set"
+               value=""
+               data-component="query" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>valid_from.0</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_from.0"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid from is after this date. Must be a valid date.</p>
+            </p>
+                    <p>
+                <b><code>valid_from.1</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_from.1"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.</p>
+            </p>
+                    <p>
+                <b><code>valid_until</code></b>&nbsp;&nbsp;<small>object</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_until"
+               data-endpoint="GETapi-admin-limitation-set"
+               value=""
+               data-component="query" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>valid_until.0</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_until.0"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid until is after this date. Must be a valid date.</p>
+            </p>
+                    <p>
+                <b><code>valid_until.1</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="valid_until.1"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="id"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="desc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="14"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="limitation-set-POSTapi-admin-limitation-set">Create new LimitationSet</h2>
@@ -4065,7 +4817,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/lineItem" \
+    --get "http://localhost/api/admin/lineItem?sort=id&amp;order=desc&amp;page=20" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4075,6 +4827,14 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/lineItem"
 );
+
+const params = {
+    "sort": "id",
+    "order": "desc",
+    "page": "20",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -4098,6 +4858,11 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'sort'=&gt; 'id',
+            'order'=&gt; 'desc',
+            'page'=&gt; '20',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -4109,13 +4874,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/lineItem'
+params = {
+  'sort': 'id',
+  'order': 'desc',
+  'page': '20',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -4126,7 +4896,9 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
+<code class="language-json">{
+ &quot;items&quot;:
+ [
      {
           &quot;id&quot;: 6,
           &quot;visit_id&quot;: 5,
@@ -4143,7 +4915,20 @@ response.json()</code></pre></div>
           &quot;created_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;,
           &quot;updated_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;
      },
-]</code>
+ ],
+ &quot;meta&quot;:
+ {
+     &quot;current_page&quot;: 1,
+     &quot;last_page&quot;: 1,
+     &quot;per_page&quot;: 25,
+     &quot;item_count&quot;: 6
+ },
+ &quot;links&quot;:
+ {
+     &quot;prev_page_url&quot;: null,
+     &quot;next_page_url&quot;: null
+ }
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-lineItem" hidden>
@@ -4193,6 +4978,67 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-lineItem"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>visit_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="visit_id"
+               data-endpoint="GETapi-admin-lineItem"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Visit.</p>
+            </p>
+                    <p>
+                <b><code>person_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="person_id"
+               data-endpoint="GETapi-admin-lineItem"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Person.</p>
+            </p>
+                    <p>
+                <b><code>product_type_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="product_type_id"
+               data-endpoint="GETapi-admin-lineItem"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Product Type.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-lineItem"
+               value="id"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-lineItem"
+               value="desc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-lineItem"
+               value="20"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="line-item-POSTapi-admin-lineItem">Create new LineItem</h2>
@@ -4857,7 +5703,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/organization" \
+    --get "http://localhost/api/admin/organization?name=aut&amp;street=quae&amp;postcode=nostrum&amp;city=molestiae&amp;contact=cum&amp;sort=city&amp;order=asc&amp;page=11" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4867,6 +5713,19 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/organization"
 );
+
+const params = {
+    "name": "aut",
+    "street": "quae",
+    "postcode": "nostrum",
+    "city": "molestiae",
+    "contact": "cum",
+    "sort": "city",
+    "order": "asc",
+    "page": "11",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -4890,6 +5749,16 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'name'=&gt; 'aut',
+            'street'=&gt; 'quae',
+            'postcode'=&gt; 'nostrum',
+            'city'=&gt; 'molestiae',
+            'contact'=&gt; 'cum',
+            'sort'=&gt; 'city',
+            'order'=&gt; 'asc',
+            'page'=&gt; '11',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -4901,13 +5770,23 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/organization'
+params = {
+  'name': 'aut',
+  'street': 'quae',
+  'postcode': 'nostrum',
+  'city': 'molestiae',
+  'contact': 'cum',
+  'sort': 'city',
+  'order': 'asc',
+  'page': '11',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -4918,41 +5797,53 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 1,
-        &quot;instance_id&quot;: 1,
-        &quot;name&quot;: &quot;test&quot;,
-        &quot;street&quot;: &quot;abc&quot;,
-        &quot;postcode&quot;: &quot;12345&quot;,
-        &quot;city&quot;: &quot;abc&quot;,
-        &quot;contact&quot;: &quot;abc&quot;,
-        &quot;created_at&quot;: &quot;2022-08-15T17:23:12.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-15T17:23:12.000000Z&quot;
+<code class="language-json">{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;instance_id&quot;: 1,
+            &quot;name&quot;: &quot;test&quot;,
+            &quot;street&quot;: &quot;abc&quot;,
+            &quot;postcode&quot;: &quot;12345&quot;,
+            &quot;city&quot;: &quot;abc&quot;,
+            &quot;contact&quot;: &quot;abc&quot;,
+            &quot;created_at&quot;: &quot;2022-08-15T17:23:12.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-15T17:23:12.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;instance_id&quot;: 2,
+            &quot;name&quot;: &quot;Instance&quot;,
+            &quot;street&quot;: &quot;Street&quot;,
+            &quot;postcode&quot;: &quot;Postcode&quot;,
+            &quot;city&quot;: &quot;City&quot;,
+            &quot;contact&quot;: &quot;Contact&quot;,
+            &quot;created_at&quot;: &quot;2022-08-21T11:34:14.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-21T11:34:14.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;instance_id&quot;: 3,
+            &quot;name&quot;: &quot;Instance&quot;,
+            &quot;street&quot;: &quot;Street&quot;,
+            &quot;postcode&quot;: &quot;Postcode&quot;,
+            &quot;city&quot;: &quot;City&quot;,
+            &quot;contact&quot;: &quot;Contact&quot;,
+            &quot;created_at&quot;: &quot;2022-08-21T11:34:55.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-21T11:34:55.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 1
     },
-    {
-        &quot;id&quot;: 2,
-        &quot;instance_id&quot;: 2,
-        &quot;name&quot;: &quot;Instance&quot;,
-        &quot;street&quot;: &quot;Street&quot;,
-        &quot;postcode&quot;: &quot;Postcode&quot;,
-        &quot;city&quot;: &quot;City&quot;,
-        &quot;contact&quot;: &quot;Contact&quot;,
-        &quot;created_at&quot;: &quot;2022-08-21T11:34:14.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-21T11:34:14.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 3,
-        &quot;instance_id&quot;: 3,
-        &quot;name&quot;: &quot;Instance&quot;,
-        &quot;street&quot;: &quot;Street&quot;,
-        &quot;postcode&quot;: &quot;Postcode&quot;,
-        &quot;city&quot;: &quot;City&quot;,
-        &quot;contact&quot;: &quot;Contact&quot;,
-        &quot;created_at&quot;: &quot;2022-08-21T11:34:55.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-21T11:34:55.000000Z&quot;
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
     }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-organization" hidden>
@@ -5002,6 +5893,87 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-organization"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="GETapi-admin-organization"
+               value="aut"
+               data-component="query" hidden>
+    <br>
+<p>Name contains.</p>
+            </p>
+                    <p>
+                <b><code>street</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="street"
+               data-endpoint="GETapi-admin-organization"
+               value="quae"
+               data-component="query" hidden>
+    <br>
+<p>Street contains.</p>
+            </p>
+                    <p>
+                <b><code>postcode</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="postcode"
+               data-endpoint="GETapi-admin-organization"
+               value="nostrum"
+               data-component="query" hidden>
+    <br>
+<p>Postcode contains.</p>
+            </p>
+                    <p>
+                <b><code>city</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="city"
+               data-endpoint="GETapi-admin-organization"
+               value="molestiae"
+               data-component="query" hidden>
+    <br>
+<p>City contains.</p>
+            </p>
+                    <p>
+                <b><code>contact</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="contact"
+               data-endpoint="GETapi-admin-organization"
+               value="cum"
+               data-component="query" hidden>
+    <br>
+<p>Contact contains.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-organization"
+               value="city"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-organization"
+               value="asc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-organization"
+               value="11"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="organization-POSTapi-admin-organization">Create new Organization</h2>
@@ -5928,7 +6900,7 @@ vary: Origin
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/person" \
+    --get "http://localhost/api/admin/person?gender=et&amp;age=17&amp;sort=id&amp;order=asc&amp;page=12" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5938,6 +6910,16 @@ vary: Origin
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/person"
 );
+
+const params = {
+    "gender": "et",
+    "age": "17",
+    "sort": "id",
+    "order": "asc",
+    "page": "12",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -5961,6 +6943,13 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'gender'=&gt; 'et',
+            'age'=&gt; '17',
+            'sort'=&gt; 'id',
+            'order'=&gt; 'asc',
+            'page'=&gt; '12',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -5972,13 +6961,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/person'
+params = {
+  'gender': 'et',
+  'age': '17',
+  'sort': 'id',
+  'order': 'asc',
+  'page': '12',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -5989,32 +6985,44 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 1,
-        &quot;card_id&quot;: 1,
-        &quot;gender&quot;: &quot;male&quot;,
-        &quot;age&quot;: 18,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+<code class="language-json">{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;card_id&quot;: 1,
+            &quot;gender&quot;: &quot;male&quot;,
+            &quot;age&quot;: 18,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;card_id&quot;: 1,
+            &quot;gender&quot;: &quot;female&quot;,
+            &quot;age&quot;: 15,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;card_id&quot;: 49394739894111,
+            &quot;gender&quot;: &quot;male&quot;,
+            &quot;age&quot;: 23,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 3
     },
-    {
-        &quot;id&quot;: 2,
-        &quot;card_id&quot;: 1,
-        &quot;gender&quot;: &quot;female&quot;,
-        &quot;age&quot;: 15,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 3,
-        &quot;card_id&quot;: 49394739894111,
-        &quot;gender&quot;: &quot;male&quot;,
-        &quot;age&quot;: 23,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
     }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-person" hidden>
@@ -6064,6 +7072,67 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-person"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>card_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="card_id"
+               data-endpoint="GETapi-admin-person"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Card.</p>
+            </p>
+                    <p>
+                <b><code>gender</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="gender"
+               data-endpoint="GETapi-admin-person"
+               value="et"
+               data-component="query" hidden>
+    <br>
+<p>Gender contains.</p>
+            </p>
+                    <p>
+                <b><code>age</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="age"
+               data-endpoint="GETapi-admin-person"
+               value="17"
+               data-component="query" hidden>
+    <br>
+<p>Age is.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-person"
+               value="id"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>gender</code>, or <code>age</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-person"
+               value="asc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-person"
+               value="12"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="person-POSTapi-admin-person">Create new Person</h2>
@@ -6728,7 +7797,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/product-type" \
+    --get "http://localhost/api/admin/product-type?name=sequi&amp;icon=nobis&amp;sort=name&amp;order=desc&amp;page=10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6738,6 +7807,16 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/product-type"
 );
+
+const params = {
+    "name": "sequi",
+    "icon": "nobis",
+    "sort": "name",
+    "order": "desc",
+    "page": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -6761,6 +7840,13 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'name'=&gt; 'sequi',
+            'icon'=&gt; 'nobis',
+            'sort'=&gt; 'name',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -6772,13 +7858,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/product-type'
+params = {
+  'name': 'sequi',
+  'icon': 'nobis',
+  'sort': 'name',
+  'order': 'desc',
+  'page': '10',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -6789,29 +7882,44 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;t-shirt&quot;,
-        &quot;icon&quot;: &quot;t-shirt icon&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 2,
-        &quot;name&quot;: &quot;shoe&quot;,
-        &quot;icon&quot;: &quot;shoe icon&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 3,
-        &quot;name&quot;: &quot;sock&quot;,
-        &quot;icon&quot;: &quot;sock icon&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    }
-]</code>
+<code class="language-json">{
+ &quot;items:
+ [
+  {
+      &quot;id&quot;: 1,
+      &quot;name&quot;: &quot;t-shirt&quot;,
+      &quot;icon&quot;: &quot;t-shirt icon&quot;,
+      &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+  },
+  {
+      &quot;id&quot;: 2,
+      &quot;name&quot;: &quot;shoe&quot;,
+      &quot;icon&quot;: &quot;shoe icon&quot;,
+      &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+  },
+  {
+      &quot;id&quot;: 3,
+      &quot;name&quot;: &quot;sock&quot;,
+      &quot;icon&quot;: &quot;sock icon&quot;,
+      &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+  }
+ ],
+ &quot;meta&quot;:
+ {
+     &quot;current_page&quot;: 1,
+     &quot;last_page&quot;: 1,
+     &quot;per_page&quot;: 25,
+     &quot;item_count&quot;: 3
+ },
+ &quot;links&quot;:
+ {
+     &quot;prev_page_url&quot;: null,
+     &quot;next_page_url&quot;: null
+ }
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-product-type" hidden>
@@ -6861,6 +7969,57 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-product-type"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="GETapi-admin-product-type"
+               value="sequi"
+               data-component="query" hidden>
+    <br>
+<p>Name contains.</p>
+            </p>
+                    <p>
+                <b><code>icon</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="icon"
+               data-endpoint="GETapi-admin-product-type"
+               value="nobis"
+               data-component="query" hidden>
+    <br>
+<p>Icon contains.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-product-type"
+               value="name"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-product-type"
+               value="desc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-product-type"
+               value="10"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="product-type-POSTapi-admin-product-type">Create new ProductType</h2>
@@ -7496,7 +8655,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/reservation" \
+    --get "http://localhost/api/reservation?time[]=2022-08-21T14%3A36%3A44&amp;sort=id&amp;order=asc&amp;page=2" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7506,6 +8665,15 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/reservation"
 );
+
+const params = {
+    "time[]": "2022-08-21T14:36:44",
+    "sort": "id",
+    "order": "asc",
+    "page": "2",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -7529,6 +8697,12 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'time[]'=&gt; '2022-08-21T14:36:44',
+            'sort'=&gt; 'id',
+            'order'=&gt; 'asc',
+            'page'=&gt; '2',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -7540,13 +8714,19 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/reservation'
+params = {
+  'time[]': '2022-08-21T14:36:44',
+  'sort': 'id',
+  'order': 'asc',
+  'page': '2',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -7557,40 +8737,52 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 2,
-        &quot;card_id&quot;: 1,
-        &quot;shop_id&quot;: 1,
-        &quot;time&quot;: &quot;2022-08-20T16:30:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+<code class="language-json">{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;card_id&quot;: 1,
+            &quot;shop_id&quot;: 1,
+            &quot;time&quot;: &quot;2022-08-20T16:30:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;card_id&quot;: 1,
+            &quot;shop_id&quot;: 1,
+            &quot;time&quot;: &quot;2022-08-20T08:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;card_id&quot;: 1,
+            &quot;shop_id&quot;: 1,
+            &quot;time&quot;: &quot;2022-08-21T08:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;card_id&quot;: 1,
+            &quot;shop_id&quot;: 2,
+            &quot;time&quot;: &quot;2022-08-21T15:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 4
     },
-    {
-        &quot;id&quot;: 3,
-        &quot;card_id&quot;: 1,
-        &quot;shop_id&quot;: 1,
-        &quot;time&quot;: &quot;2022-08-20T08:00:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 4,
-        &quot;card_id&quot;: 1,
-        &quot;shop_id&quot;: 1,
-        &quot;time&quot;: &quot;2022-08-21T08:00:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 5,
-        &quot;card_id&quot;: 1,
-        &quot;shop_id&quot;: 2,
-        &quot;time&quot;: &quot;2022-08-21T15:00:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
     }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-reservation" hidden>
@@ -7640,6 +8832,87 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-reservation"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>card_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="card_id"
+               data-endpoint="GETapi-reservation"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Card.</p>
+            </p>
+                    <p>
+                <b><code>shop_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="shop_id"
+               data-endpoint="GETapi-reservation"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Shop.</p>
+            </p>
+                    <p>
+                <b><code>time</code></b>&nbsp;&nbsp;<small>object</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="time"
+               data-endpoint="GETapi-reservation"
+               value=""
+               data-component="query" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>time.0</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="time.0"
+               data-endpoint="GETapi-reservation"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Time is after this date. Must be a valid date.</p>
+            </p>
+                    <p>
+                <b><code>time.1</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="time.1"
+               data-endpoint="GETapi-reservation"
+               value="2022-08-21T14:36:44"
+               data-component="query" hidden>
+    <br>
+<p>Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-reservation"
+               value="id"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-reservation"
+               value="asc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-reservation"
+               value="2"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="reservation-POSTapi-reservation">Create new Reservation</h2>
@@ -8304,7 +9577,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/shop" \
+    --get "http://localhost/api/admin/shop?name=consequatur&amp;street=laboriosam&amp;postcode=et&amp;city=voluptate&amp;contact=ex&amp;sort=street&amp;order=asc&amp;page=13" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8314,6 +9587,19 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/shop"
 );
+
+const params = {
+    "name": "consequatur",
+    "street": "laboriosam",
+    "postcode": "et",
+    "city": "voluptate",
+    "contact": "ex",
+    "sort": "street",
+    "order": "asc",
+    "page": "13",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -8337,6 +9623,16 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'name'=&gt; 'consequatur',
+            'street'=&gt; 'laboriosam',
+            'postcode'=&gt; 'et',
+            'city'=&gt; 'voluptate',
+            'contact'=&gt; 'ex',
+            'sort'=&gt; 'street',
+            'order'=&gt; 'asc',
+            'page'=&gt; '13',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -8348,13 +9644,23 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/shop'
+params = {
+  'name': 'consequatur',
+  'street': 'laboriosam',
+  'postcode': 'et',
+  'city': 'voluptate',
+  'contact': 'ex',
+  'sort': 'street',
+  'order': 'asc',
+  'page': '13',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -8365,140 +9671,155 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
+<code class="language-json">{
+ &quot;items&quot;:
+ [
+  {
+      &quot;id&quot;: 1,
+      &quot;organization_id&quot;: 1,
+      &quot;name&quot;: &quot;organization&quot;,
+      &quot;street&quot;: &quot;organizations street&quot;,
+      &quot;postcode&quot;: &quot;12345&quot;,
+      &quot;city&quot;: &quot;oraganizations city&quot;,
+      &quot;contact&quot;: &quot;organizations contact&quot;,
+      &quot;opening_hours&quot;:
+      {
+          &quot;opening_hours&quot;:
+          [
+              {
+                  &quot;monday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;tuesday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;wednesday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;thursday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;friday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;saturday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;sunday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              }
+          ]
+      },
+      &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+  },
+  {
+      &quot;id&quot;: &quot;
+      &quot;organization_id&quot;: &sect;,
+      &quot;name&quot;: &quot;organization&quot;,
+      &quot;street&quot;: &quot;organizations street&quot;,
+      &quot;postcode&quot;: &quot;12345&quot;,
+      &quot;city&quot;: &quot;organizations city&quot;,
+      &quot;contact&quot;: &quot;organizations contact&quot;,
+      &quot;opening_hours&quot;:
+      {
+          &quot;opening_hours&quot;:
+          [
+              {
+                  &quot;monday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;tuesday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;wednesday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;thursday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;friday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;saturday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              },
+              {
+                  &quot;sunday&quot;:
+                  {
+                      &quot;opens_at&quot;: &quot;08:00&quot;,
+                      &quot;closes_at&quot;: &quot;17:00&quot;
+                  }
+              }
+          ]
+      },
+      &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+      &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+  }
+ ],
+ &quot;meta&quot;:
  {
-     &quot;id&quot;: 1,
-     &quot;organization_id&quot;: 1,
-     &quot;name&quot;: &quot;organization&quot;,
-     &quot;street&quot;: &quot;organizations street&quot;,
-     &quot;postcode&quot;: &quot;12345&quot;,
-     &quot;city&quot;: &quot;oraganizations city&quot;,
-     &quot;contact&quot;: &quot;organizations contact&quot;,
-     &quot;opening_hours&quot;:
-     {
-         &quot;opening_hours&quot;:
-         [
-             {
-                 &quot;monday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;tuesday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;wednesday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;thursday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;friday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;saturday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;sunday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             }
-         ]
-     },
-     &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-     &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+     &quot;current_page&quot;: 1,
+     &quot;last_page&quot;: 1,
+     &quot;per_page&quot;: 25,
+     &quot;item_count&quot;: 2
  },
+ &quot;links&quot;:
  {
-     &quot;id&quot;: &quot;
-     &quot;organization_id&quot;: &sect;,
-     &quot;name&quot;: &quot;organization&quot;,
-     &quot;street&quot;: &quot;organizations street&quot;,
-     &quot;postcode&quot;: &quot;12345&quot;,
-     &quot;city&quot;: &quot;organizations city&quot;,
-     &quot;contact&quot;: &quot;organizations contact&quot;,
-     &quot;opening_hours&quot;:
-     {
-         &quot;opening_hours&quot;:
-         [
-             {
-                 &quot;monday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;tuesday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;wednesday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;thursday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;friday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;saturday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             },
-             {
-                 &quot;sunday&quot;:
-                 {
-                     &quot;opens_at&quot;: &quot;08:00&quot;,
-                     &quot;closes_at&quot;: &quot;17:00&quot;
-                 }
-             }
-         ]
-     },
-     &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-     &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+     &quot;prev_page_url&quot;: null,
+     &quot;next_page_url&quot;: null
  }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-shop" hidden>
@@ -8548,6 +9869,97 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-shop"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>organization_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="organization_id"
+               data-endpoint="GETapi-admin-shop"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Organization.</p>
+            </p>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="GETapi-admin-shop"
+               value="consequatur"
+               data-component="query" hidden>
+    <br>
+<p>Name contains.</p>
+            </p>
+                    <p>
+                <b><code>street</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="street"
+               data-endpoint="GETapi-admin-shop"
+               value="laboriosam"
+               data-component="query" hidden>
+    <br>
+<p>Street contains.</p>
+            </p>
+                    <p>
+                <b><code>postcode</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="postcode"
+               data-endpoint="GETapi-admin-shop"
+               value="et"
+               data-component="query" hidden>
+    <br>
+<p>Postcode contains.</p>
+            </p>
+                    <p>
+                <b><code>city</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="city"
+               data-endpoint="GETapi-admin-shop"
+               value="voluptate"
+               data-component="query" hidden>
+    <br>
+<p>City contains.</p>
+            </p>
+                    <p>
+                <b><code>contact</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="contact"
+               data-endpoint="GETapi-admin-shop"
+               value="ex"
+               data-component="query" hidden>
+    <br>
+<p>Contact contains.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-shop"
+               value="street"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-shop"
+               value="asc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-shop"
+               value="13"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="shop-POSTapi-admin-shop">Create new Shop</h2>
@@ -8580,7 +9992,7 @@ response.json()</code></pre></div>
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 1
+                \"slots\": 0
             }
         ],
         \"tuesday\": [
@@ -8594,7 +10006,7 @@ response.json()</code></pre></div>
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 0
+                \"slots\": 1
             }
         ],
         \"thursday\": [
@@ -8622,7 +10034,7 @@ response.json()</code></pre></div>
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 0
+                \"slots\": 1
             }
         ]
     }
@@ -8653,7 +10065,7 @@ let body = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 1
+                "slots": 0
             }
         ],
         "tuesday": [
@@ -8667,7 +10079,7 @@ let body = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "thursday": [
@@ -8695,7 +10107,7 @@ let body = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ]
     }
@@ -8730,7 +10142,7 @@ $response = $client-&gt;post(
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 1,
+                        'slots' =&gt; 0,
                     ],
                 ],
                 'tuesday' =&gt; [
@@ -8744,7 +10156,7 @@ $response = $client-&gt;post(
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 0,
+                        'slots' =&gt; 1,
                     ],
                 ],
                 'thursday' =&gt; [
@@ -8772,7 +10184,7 @@ $response = $client-&gt;post(
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 0,
+                        'slots' =&gt; 1,
                     ],
                 ],
             ],
@@ -8800,7 +10212,7 @@ payload = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 1
+                "slots": 0
             }
         ],
         "tuesday": [
@@ -8814,7 +10226,7 @@ payload = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "thursday": [
@@ -8842,7 +10254,7 @@ payload = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ]
     }
@@ -9007,7 +10419,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.monday.0.slots"
                data-endpoint="POSTapi-admin-shop"
-               value="1"
+               value="0"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Monday. Must be at least 1.</p>
@@ -9085,7 +10497,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.wednesday.0.slots"
                data-endpoint="POSTapi-admin-shop"
-               value="0"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Wednesday. Must be at least 1.</p>
@@ -9241,7 +10653,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.sunday.0.slots"
                data-endpoint="POSTapi-admin-shop"
-               value="0"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Sunday. Must be at least 1.</p>
@@ -9478,7 +10890,7 @@ response.json()</code></pre></div>
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 0
+                \"slots\": 1
             }
         ],
         \"tuesday\": [
@@ -9492,14 +10904,14 @@ response.json()</code></pre></div>
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 0
+                \"slots\": 1
             }
         ],
         \"thursday\": [
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 0
+                \"slots\": 1
             }
         ],
         \"friday\": [
@@ -9513,7 +10925,7 @@ response.json()</code></pre></div>
             {
                 \"opens_at\": \"07:30\",
                 \"closes_at\": \"19:00\",
-                \"slots\": 0
+                \"slots\": 1
             }
         ],
         \"sunday\": [
@@ -9551,7 +10963,7 @@ let body = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "tuesday": [
@@ -9565,14 +10977,14 @@ let body = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "thursday": [
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "friday": [
@@ -9586,7 +10998,7 @@ let body = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "sunday": [
@@ -9628,7 +11040,7 @@ $response = $client-&gt;put(
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 0,
+                        'slots' =&gt; 1,
                     ],
                 ],
                 'tuesday' =&gt; [
@@ -9642,14 +11054,14 @@ $response = $client-&gt;put(
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 0,
+                        'slots' =&gt; 1,
                     ],
                 ],
                 'thursday' =&gt; [
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 0,
+                        'slots' =&gt; 1,
                     ],
                 ],
                 'friday' =&gt; [
@@ -9663,7 +11075,7 @@ $response = $client-&gt;put(
                     [
                         'opens_at' =&gt; '07:30',
                         'closes_at' =&gt; '19:00',
-                        'slots' =&gt; 0,
+                        'slots' =&gt; 1,
                     ],
                 ],
                 'sunday' =&gt; [
@@ -9698,7 +11110,7 @@ payload = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "tuesday": [
@@ -9712,14 +11124,14 @@ payload = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "thursday": [
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "friday": [
@@ -9733,7 +11145,7 @@ payload = {
             {
                 "opens_at": "07:30",
                 "closes_at": "19:00",
-                "slots": 0
+                "slots": 1
             }
         ],
         "sunday": [
@@ -9916,7 +11328,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.monday.0.slots"
                data-endpoint="PUTapi-admin-shop--id-"
-               value="0"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Monday. Must be at least 1.</p>
@@ -9994,7 +11406,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.wednesday.0.slots"
                data-endpoint="PUTapi-admin-shop--id-"
-               value="0"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Wednesday. Must be at least 1.</p>
@@ -10033,7 +11445,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.thursday.0.slots"
                data-endpoint="PUTapi-admin-shop--id-"
-               value="0"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Thursday. Must be at least 1.</p>
@@ -10111,7 +11523,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="opening_hours.saturday.0.slots"
                data-endpoint="PUTapi-admin-shop--id-"
-               value="0"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Number of slots of the store for Saturday. Must be at least 1.</p>
@@ -10319,7 +11731,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/user" \
+    --get "http://localhost/api/admin/user?name=sit&amp;email=aut&amp;sort=name&amp;order=desc&amp;page=1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -10329,6 +11741,16 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/user"
 );
+
+const params = {
+    "name": "sit",
+    "email": "aut",
+    "sort": "name",
+    "order": "desc",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -10352,6 +11774,13 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'name'=&gt; 'sit',
+            'email'=&gt; 'aut',
+            'sort'=&gt; 'name',
+            'order'=&gt; 'desc',
+            'page'=&gt; '1',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -10363,33 +11792,52 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/user'
+params = {
+  'name': 'sit',
+  'email': 'aut',
+  'sort': 'name',
+  'order': 'desc',
+  'page': '1',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
 
 <span id="example-responses-GETapi-admin-user">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-vary: Origin
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 3,
+            &quot;instance_id&quot;: 3,
+            &quot;organization_id&quot;: 3,
+            &quot;name&quot;: &quot;Rene&quot;,
+            &quot;email&quot;: &quot;rene@web.de&quot;,
+            &quot;created_at&quot;: &quot;2022-08-21T11:34:55.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-21T11:34:55.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 1
+    },
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
+    }
 }</code>
  </pre>
     </span>
@@ -10440,6 +11888,67 @@ vary: Origin
                                                                 data-endpoint="GETapi-admin-user"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>organization_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="organization_id"
+               data-endpoint="GETapi-admin-user"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Organization.</p>
+            </p>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="GETapi-admin-user"
+               value="sit"
+               data-component="query" hidden>
+    <br>
+<p>Name contains.</p>
+            </p>
+                    <p>
+                <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="GETapi-admin-user"
+               value="aut"
+               data-component="query" hidden>
+    <br>
+<p>E-Mail contains.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-user"
+               value="name"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-user"
+               value="desc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-user"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="user-POSTapi-admin-user">Create new User</h2>
@@ -11154,7 +12663,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/visit" \
+    --get "http://localhost/api/admin/visit?sort=id&amp;order=asc&amp;page=19" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11164,6 +12673,14 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/admin/visit"
 );
+
+const params = {
+    "sort": "id",
+    "order": "asc",
+    "page": "19",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
@@ -11187,6 +12704,11 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'sort'=&gt; 'id',
+            'order'=&gt; 'asc',
+            'page'=&gt; '19',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -11198,13 +12720,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost/api/admin/visit'
+params = {
+  'sort': 'id',
+  'order': 'asc',
+  'page': '19',
+}
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 </span>
@@ -11215,29 +12742,41 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 6,
-        &quot;card_id&quot;: 1,
-        &quot;user_id&quot;: 1,
-        &quot;created_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;
+<code class="language-json">{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: 6,
+            &quot;card_id&quot;: 1,
+            &quot;user_id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;card_id&quot;: 1,
+            &quot;user_id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-08-17T13:52:35.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-17T13:52:35.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;card_id&quot;: 1,
+            &quot;user_id&quot;: 3,
+            &quot;created_at&quot;: &quot;2022-08-21T11:50:35.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-08-21T11:50:35.000000Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;per_page&quot;: 25,
+        &quot;item_count&quot;: 2
     },
-    {
-        &quot;id&quot;: 7,
-        &quot;card_id&quot;: 1,
-        &quot;user_id&quot;: 1,
-        &quot;created_at&quot;: &quot;2022-08-17T13:52:35.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-17T13:52:35.000000Z&quot;
-    },
-    {
-        &quot;id&quot;: 8,
-        &quot;card_id&quot;: 1,
-        &quot;user_id&quot;: 3,
-        &quot;created_at&quot;: &quot;2022-08-21T11:50:35.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-21T11:50:35.000000Z&quot;
+    &quot;links&quot;: {
+        &quot;prev_page_url&quot;: null,
+        &quot;next_page_url&quot;: null
     }
-]</code>
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-visit" hidden>
@@ -11287,6 +12826,57 @@ response.json()</code></pre></div>
                                                                 data-endpoint="GETapi-admin-visit"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>card_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="card_id"
+               data-endpoint="GETapi-admin-visit"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>Card.</p>
+            </p>
+                    <p>
+                <b><code>user_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="user_id"
+               data-endpoint="GETapi-admin-visit"
+               value=""
+               data-component="query" hidden>
+    <br>
+<p>User.</p>
+            </p>
+                    <p>
+                <b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="sort"
+               data-endpoint="GETapi-admin-visit"
+               value="id"
+               data-component="query" hidden>
+    <br>
+<p>Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.</p>
+            </p>
+                    <p>
+                <b><code>order</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order"
+               data-endpoint="GETapi-admin-visit"
+               value="asc"
+               data-component="query" hidden>
+    <br>
+<p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-admin-visit"
+               value="19"
+               data-component="query" hidden>
+    <br>
+<p>Page to load.</p>
+            </p>
                 </form>
 
             <h2 id="visit-POSTapi-admin-visit">Create new Visit</h2>
