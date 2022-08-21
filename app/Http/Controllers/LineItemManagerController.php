@@ -17,7 +17,9 @@ class LineItemManagerController extends Controller
      * List all LineItems
      *
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
      *      {
      *           "id": 6,
      *           "visit_id": 5,
@@ -34,11 +36,24 @@ class LineItemManagerController extends Controller
      *           "created_at": "2022-08-16T16:32:52.000000Z",
      *           "updated_at": "2022-08-16T16:32:52.000000Z"
      *      },
-     * ]
+     *  ],
+     *  "meta":
+     *  {
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 6
+     *  },
+     *  "links":
+     *  {
+     *      "prev_page_url": null,
+     *      "next_page_url": null
+     *  }
+     * }
      *
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
