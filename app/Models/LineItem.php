@@ -13,6 +13,11 @@ class LineItem extends Model
         'product_type_id'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     public function visit(): BelongsTo
     {
         return $this->belongsTo(Visit::class);

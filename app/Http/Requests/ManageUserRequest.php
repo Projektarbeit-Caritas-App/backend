@@ -25,7 +25,6 @@ class ManageUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'instance_id' => 'exists:instances,id|required',
             'organization_id' => 'exists:organizations,id|required',
             'name' => 'string|required',
             'email' => 'email:rfc,dns|required',
@@ -36,9 +35,6 @@ class ManageUserRequest extends FormRequest
     public function bodyParameters()
     {
         return [
-            'instance_id' => [
-                'description' => 'ID of the instance the user is attached to'
-            ],
             'organization_id' => [
                 'description' => 'ID of the organization the user is attached to'
             ],

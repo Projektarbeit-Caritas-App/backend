@@ -24,7 +24,6 @@ class ManageOrganizationRequest extends FormRequest
     public function rules()
     {
         return [
-            'instance_id' => 'exists:instances,id|required',
             'name' => 'string|required',
             'street' => 'string|required',
             'postcode' => 'string|required',
@@ -35,9 +34,6 @@ class ManageOrganizationRequest extends FormRequest
 
     public function bodyParameters() {
         return [
-            'instance_id' => [
-                'description' => 'ID of the instance the organization is attached to'
-            ],
             'name' => [
                 'description' => 'Name of the organization'
             ],

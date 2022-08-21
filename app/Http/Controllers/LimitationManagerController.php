@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageLimitationRequest;
+use App\Models\Instance;
 use App\Models\Limitation;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -39,7 +41,7 @@ class LimitationManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Limitation::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Limitation::where('instance_id', $request->user()->instance_id), [
             'limitation_set_id' => 'match',
             'product_type_id' => 'match'
         ], $filters));
@@ -49,11 +51,12 @@ class LimitationManagerController extends Controller
      * Create new Limitation
      *
      * @param  \App\Http\Requests\ManageLimitationRequest  $request
-     * @return \App\Models\Limitation
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageLimitationRequest $request): Limitation
+    public function store(ManageLimitationRequest $request): Model
     {
-        return Limitation::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->limitations()->create($request->validated());
     }
 
     /**
