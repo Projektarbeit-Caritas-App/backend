@@ -42,6 +42,7 @@ Route::controller(AuthController::class)
         Route::post('/login', 'login')->name('login');
         Route::post('/token', 'token')->name('token');
         Route::post('/logout', 'logout')->name('logout')->middleware('auth:sanctum');
+        Route::get('/heartbeat', 'heartbeat')->name('heartbeat')->middleware('auth:sanctum');
     });
 //endregion
 
