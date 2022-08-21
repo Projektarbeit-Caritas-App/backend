@@ -65,22 +65,28 @@ class ManageShopRequest extends FormRequest
     {
         return [
             'organization_id' => [
-                'description' => 'ID of the organization the shop is attached to'
+                'description' => 'ID of the organization the shop is attached to',
+                'example' => '50080528753334'
             ],
             'name' => [
-                'description' => 'Name of the shop'
+                'description' => 'Name of the shop',
+                'example' => 'The friendly shop around the corner'
             ],
             'street' => [
-                'description' => 'Street where the shop is located'
+                'description' => 'Street where the shop is located',
+                'example' => 'Around the corner'
             ],
             'postcode' => [
-                'description' => 'Postcode where the shop is located'
+                'description' => 'Postcode where the shop is located',
+                'example' => '50080'
             ],
             'city' => [
-                'description' => 'City where the shop is located'
+                'description' => 'City where the shop is located',
+                'example' => 'Cornville'
             ],
             'contact' => [
-                'description' => 'Contact information from the shop'
+                'description' => 'Contact information from the shop',
+                'example' => 'You can call me under 1-603-413-4124'
             ],
             'opening_hours.monday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Monday',
