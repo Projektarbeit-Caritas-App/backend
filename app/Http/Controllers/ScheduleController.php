@@ -20,24 +20,22 @@ class ScheduleController extends Controller
      *
      * List all today's reservations for a specified store
      *
-     * @response
-     * [
-     *  {
-     *      "id": 4,
-     *      "card_id": 1,
-     *      "shop_id": 1,
-     *      "time": "2022-08-21T08:00:00.000000Z",
-     *      "created_at": "2022-08-19T08:00:00.000000Z",
-     *      "updated_at": "2022-08-19T08:00:00.000000Z"
-     *  },
-     *  {
-     *      "id": 6,
-     *      "card_id": 2,
-     *      "shop_id": 1,
-     *      "time": "2022-08-21T08:00:00.000000Z",
-     *      "created_at": "2022-08-19T08:00:00.000000Z",
-     *      "updated_at": "2022-08-19T08:00:00.000000Z"
-     *  }
+     * @response [
+     *   {
+     *     "id": 4,
+     *     "card_id": 1,
+     *     "shop_id": 1,
+     *     "time": "2022-08-21T08:00:00.000000Z",
+     *     "created_at": "2022-08-19T08:00:00.000000Z",
+     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *   }, {
+     *     "id": 6,
+     *     "card_id": 2,
+     *     "shop_id": 1,
+     *     "time": "2022-08-21T08:00:00.000000Z",
+     *     "created_at": "2022-08-19T08:00:00.000000Z",
+     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *   }
      * ]
      *
      * @param Shop $shop
@@ -57,16 +55,15 @@ class ScheduleController extends Controller
      *
      * List all shops that are in the same organization as the user
      *
-     * @response
-     * [
-     *  {
-     *      "id": 4,
-     *      "card_id": 1,
-     *      "shop_id": 1,
-     *      "time": "2022-08-21T08:00:00.000000Z",
-     *      "created_at": "2022-08-19T08:00:00.000000Z",
-     *      "updated_at": "2022-08-19T08:00:00.000000Z"
-     *  }
+     * @response [
+     *   {
+     *     "id": 4,
+     *     "card_id": 1,
+     *     "shop_id": 1,
+     *     "time": "2022-08-21T08:00:00.000000Z",
+     *     "created_at": "2022-08-19T08:00:00.000000Z",
+     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *   }
      * ]
      *
      * @param Request $request

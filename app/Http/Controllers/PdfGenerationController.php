@@ -35,6 +35,7 @@ class PdfGenerationController extends Controller
         $pdfCard = SnappyPdf::loadView('pdf.card', [
             'card' => Card::withCount('people')->find($card->id)
         ]);
+
         if ($request->has('download')) {
             return response($pdfCard->download(), 200);
         } else if ($request->has('raw')) {

@@ -16,51 +16,44 @@ class PersonManagerController extends Controller
     /**
      * List all persons
      *
-     * @response status=200
-     * {
-     *  "items":
-     *  [
-     *   {
+     * @response status=200 {
+     *   "items": [
+     *     {
      *       "id": 1,
      *       "card_id": 1,
      *       "gender": "male",
      *       "age": 18,
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
-     *   },
-     *   {
+     *     }, {
      *       "id": 2,
      *       "card_id": 1,
      *       "gender": "female",
      *       "age": 15,
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
-     *   },
-     *   {
+     *     }, {
      *       "id": 3,
      *       "card_id": 49394739894111,
      *       "gender": "male",
      *       "age": 23,
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 3
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
      *   }
-     *  ],
-     *  "meta":
-     *  {
-     *      "current_page": 1,
-     *      "last_page": 1,
-     *      "per_page": 25,
-     *      "item_count": 3
-     *  },
-     *  "links":
-     *  {
-     *      "prev_page_url": null,
-     *      "next_page_url": null
-     *  }
      * }
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
@@ -107,14 +100,13 @@ class PersonManagerController extends Controller
     /**
      * Show specified Person
      *
-     * @response status=200
-     * {
-     *      "id": 2,
-     *      "card_id": 1,
-     *      "gender": "female",
-     *      "age": 15,
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     * @response status=200 {
+     *   "id": 2,
+     *   "card_id": 1,
+     *   "gender": "female",
+     *   "age": 15,
+     *   "created_at": "2022-08-18T13:48:25.000000Z",
+     *   "updated_at": "2022-08-18T13:48:25.000000Z"
      * }
      *
      * @param \App\Models\Person $person
@@ -141,9 +133,8 @@ class PersonManagerController extends Controller
     /**
      * Delete specified Person
      *
-     * @response status=200
-     * {
-     *  "success": true
+     * @response status=200 {
+     *   "success": true
      * }
      *
      * @param \App\Models\Person $person

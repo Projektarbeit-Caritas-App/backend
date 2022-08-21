@@ -16,11 +16,9 @@ class OrganizationManagerController extends Controller
     /**
      * List all Organization
      *
-     * @response status=200
-     * {
-     *  "items":
-     *  [
-     *   {
+     * @response status=200 {
+     *   "items": [
+     *     {
      *       "id": 1,
      *       "instance_id": 1,
      *       "name": "test",
@@ -30,8 +28,7 @@ class OrganizationManagerController extends Controller
      *       "contact": "abc",
      *       "created_at": "2022-08-15T17:23:12.000000Z",
      *       "updated_at": "2022-08-15T17:23:12.000000Z"
-     *   },
-     *   {
+     *     }, {
      *       "id": 2,
      *       "instance_id": 2,
      *       "name": "Instance",
@@ -41,8 +38,7 @@ class OrganizationManagerController extends Controller
      *       "contact": "Contact",
      *       "created_at": "2022-08-21T11:34:14.000000Z",
      *       "updated_at": "2022-08-21T11:34:14.000000Z"
-     *   },
-     *   {
+     *     }, {
      *       "id": 3,
      *       "instance_id": 3,
      *       "name": "Instance",
@@ -52,24 +48,21 @@ class OrganizationManagerController extends Controller
      *       "contact": "Contact",
      *       "created_at": "2022-08-21T11:34:55.000000Z",
      *       "updated_at": "2022-08-21T11:34:55.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 1
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
      *   }
-     *  ],
-     *  "meta":
-     *  {
-     *      "current_page": 1,
-     *      "last_page": 1,
-     *      "per_page": 25,
-     *      "item_count": 1
-     *  },
-     *  "links":
-     *  {
-     *      "prev_page_url": null,
-     *      "next_page_url": null
-     *  }
      * }
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
@@ -124,18 +117,17 @@ class OrganizationManagerController extends Controller
     /**
      * Show specified Organization
      *
-     * @response status=200
-     * {
-     *      "id": 2,
-     *      "instance_id": 2,
-     *      "name": "Instance",
-     *      "street": "Street",
-     *      "postcode": "Postcode",
-     *      "city": "City",
-     *      "contact": "Contact",
-     *      "created_at": "2022-08-21T11:34:14.000000Z",
-     *      "updated_at": "2022-08-21T11:34:14.000000Z"
-     *  }
+     * @response status=200 {
+     *   "id": 2,
+     *   "instance_id": 2,
+     *   "name": "Instance",
+     *   "street": "Street",
+     *   "postcode": "Postcode",
+     *   "city": "City",
+     *   "contact": "Contact",
+     *   "created_at": "2022-08-21T11:34:14.000000Z",
+     *   "updated_at": "2022-08-21T11:34:14.000000Z"
+     * }
      *
      * @param \App\Models\Organization $organization
      * @return \App\Models\Organization
@@ -161,9 +153,8 @@ class OrganizationManagerController extends Controller
     /**
      * Delete specified Organization
      *
-     * @response status=200
-     * {
-     *  "success": true
+     * @response status=200 {
+     *   "success": true
      * }
      *
      * @param \App\Models\Organization $organization
