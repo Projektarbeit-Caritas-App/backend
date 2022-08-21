@@ -17,27 +17,42 @@ class LimitationSetManagerController extends Controller
      * List all LimitationSets
      *
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
+     *      {
+     *          "id": 1,
+     *          "name": "limitation_set 1",
+     *          "valid_from": "1999-08-20 22:00:00",
+     *          "valid_until": "2016-08-20 22:00:00",
+     *          "created_at": "2022-08-16T16:32:23.000000Z",
+     *          "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      },
+     *      {
+     *          "id": 2,
+     *          "name": "limitation_set 2",
+     *          "valid_from": "2020-02-14 00:00:00",
+     *          "valid_until": "2021-05-17 00:00:00",
+     *          "created_at": "2022-08-16T16:32:23.000000Z",
+     *          "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 1,
-     *      "name": "limitation_set 1",
-     *      "valid_from": "1999-08-20 22:00:00",
-     *      "valid_until": "2016-08-20 22:00:00",
-     *      "created_at": "2022-08-16T16:32:23.000000Z",
-     *      "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 2
      *  },
+     *  "links":
      *  {
-     *      "id": 2,
-     *      "name": "limitation_set 2",
-     *      "valid_from": "2020-02-14 00:00:00",
-     *      "valid_until": "2021-05-17 00:00:00",
-     *      "created_at": "2022-08-16T16:32:23.000000Z",
-     *      "updated_at": "2022-08-16T16:32:23.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
-     * @return \Illuminate\Database\Eloquent\Collection
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      * @return array
      */
     public function index(Request $request): array
