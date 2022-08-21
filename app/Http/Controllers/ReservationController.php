@@ -19,40 +19,55 @@ class ReservationController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return array
      * @response status=200
-     * [
+     * {
+     *  "items":
+     *  [
+     *   {
+     *       "id": 2,
+     *       "card_id": 1,
+     *       "shop_id": 1,
+     *       "time": "2022-08-20T16:30:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 3,
+     *       "card_id": 1,
+     *       "shop_id": 1,
+     *       "time": "2022-08-20T08:00:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 4,
+     *       "card_id": 1,
+     *       "shop_id": 1,
+     *       "time": "2022-08-21T08:00:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
+     *   {
+     *       "id": 5,
+     *       "card_id": 1,
+     *       "shop_id": 2,
+     *       "time": "2022-08-21T15:00:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   }
+     *  ],
+     *  "meta":
      *  {
-     *      "id": 2,
-     *      "card_id": 1,
-     *      "shop_id": 1,
-     *      "time": "2022-08-20T16:30:00.000000Z",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     *      "current_page": 1,
+     *      "last_page": 1,
+     *      "per_page": 25,
+     *      "item_count": 4
      *  },
+     *  "links":
      *  {
-     *      "id": 3,
-     *      "card_id": 1,
-     *      "shop_id": 1,
-     *      "time": "2022-08-20T08:00:00.000000Z",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
-     *  },
-     *  {
-     *      "id": 4,
-     *      "card_id": 1,
-     *      "shop_id": 1,
-     *      "time": "2022-08-21T08:00:00.000000Z",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
-     *  },
-     *  {
-     *      "id": 5,
-     *      "card_id": 1,
-     *      "shop_id": 2,
-     *      "time": "2022-08-21T15:00:00.000000Z",
-     *      "created_at": "2022-08-18T13:48:25.000000Z",
-     *      "updated_at": "2022-08-18T13:48:25.000000Z"
+     *      "prev_page_url": null,
+     *      "next_page_url": null
      *  }
-     * ]
+     * }
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
