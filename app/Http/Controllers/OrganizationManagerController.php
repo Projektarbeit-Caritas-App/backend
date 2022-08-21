@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageOrganizationRequest;
+use App\Models\Instance;
 use App\Models\Organization;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -61,11 +63,12 @@ class OrganizationManagerController extends Controller
      * Create new Organization
      *
      * @param  \App\Http\Requests\ManageOrganizationRequest  $request
-     * @return \App\Models\Organization
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageOrganizationRequest $request)
+    public function store(ManageOrganizationRequest $request): Model
     {
-        return Organization::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->organizations()->create($request->validated());
     }
 
     /**
@@ -74,7 +77,7 @@ class OrganizationManagerController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \App\Models\Organization
      */
-    public function show(Organization $organization)
+    public function show(Organization $organization): Organization
     {
         return $organization;
     }
@@ -86,7 +89,7 @@ class OrganizationManagerController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \App\Models\Organization
      */
-    public function update(ManageOrganizationRequest $request, Organization $organization)
+    public function update(ManageOrganizationRequest $request, Organization $organization): Organization
     {
         $organization->update($request->validated());
         return $organization;
@@ -98,7 +101,7 @@ class OrganizationManagerController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return array
      */
-    public function destroy(Organization $organization)
+    public function destroy(Organization $organization): array
     {
         return ['success' => $organization->delete()];
     }

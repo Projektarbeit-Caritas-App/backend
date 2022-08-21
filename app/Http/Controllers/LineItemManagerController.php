@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageLineItemRequest;
+use App\Models\Instance;
 use App\Models\LineItem;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -42,7 +44,7 @@ class LineItemManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LineItem::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LineItem::where('instance_id', $request->user()->instance_id), [
             'visit_id' => 'match',
             'person_id' => 'match',
             'product_type_id' => 'match'
@@ -53,11 +55,12 @@ class LineItemManagerController extends Controller
      * Create new LineItem
      *
      * @param \App\Http\Requests\ManageLineItemRequest $request
-     * @return \App\Models\LineItem
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageLineItemRequest $request): LineItem
+    public function store(ManageLineItemRequest $request): Model
     {
-        return LineItem::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->lineItems()->create($request->validated());
     }
 
     /**

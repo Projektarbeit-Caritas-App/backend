@@ -18,6 +18,11 @@ class Shop extends Model
         'opening_hours'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     protected $casts = [
         'opening_hours' => 'json'
     ];

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageUserRequest;
+use App\Models\Instance;
 use App\Models\User;
 use App\Service\ModelFilterService;
+use Hash;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -53,20 +56,28 @@ class UserManagerController extends Controller
      * Create new User
      *
      * @param \App\Http\Requests\ManageUserRequest $request
-     * @return \App\Models\User
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageUserRequest $request)
+    public function store(ManageUserRequest $request): Model
     {
-        return User::create($request->validated());
+        $validated = $request->validated();
+        $instance = Instance::find($request->user()->instance_id);
+
+        return $instance->users()->create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'organization_id' => $validated['organization_id']
+        ]);
     }
 
     /**
      * Show specified User
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \App\Models\User
      */
-    public function show(User $user)
+    public function show(User $user): User
     {
         return $user;
     }
@@ -78,22 +89,22 @@ class UserManagerController extends Controller
      * @param \App\Models\User $user
      * @return \App\Models\User
      */
-    public function update(ManageUserRequest $request, User $user)
+    public function update(ManageUserRequest $request, User $user): User
     {
         $user->update($request->validated());
+        $user->tokens()->delete();
         return $user;
     }
 
     /**
      * Delete specified User
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return array
      */
-    public function destroy(User $user)
+    public function destroy(User $user): array
     {
+        $user->tokens()->delete();
         return ['success' => $user->delete()];
     }
-
-
 }

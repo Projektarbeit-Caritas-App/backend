@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageShopRequest;
+use App\Models\Instance;
 use App\Models\Shop;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -51,7 +53,7 @@ class ShopManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Shop::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Shop::where('instance_id', $request->user()->instance_id), [
             'organization_id' => 'match',
             'name' => 'contains',
             'street' => 'contains',
@@ -65,11 +67,12 @@ class ShopManagerController extends Controller
      * Create new Shop
      *
      * @param  \App\Http\Requests\ManageShopRequest  $request
-     * @return \App\Models\Shop
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageShopRequest $request): Shop
+    public function store(ManageShopRequest $request): Model
     {
-        return Shop::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->shops()->create($request->validated());
     }
 
     /**

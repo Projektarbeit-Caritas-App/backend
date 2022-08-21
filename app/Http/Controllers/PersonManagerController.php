@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManagePersonRequest;
+use App\Models\Instance;
 use App\Models\Person;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -42,7 +44,7 @@ class PersonManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Person::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Person::where('instance_id', $request->user()->instance_id), [
             'card_id' => 'match',
             'gender' => 'contains',
             'age' => 'match'
@@ -53,11 +55,12 @@ class PersonManagerController extends Controller
      * Create new Person
      *
      * @param \App\Http\Requests\ManagePersonRequest $request
-     * @return \App\Models\Person
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManagePersonRequest $request): Person
+    public function store(ManagePersonRequest $request): Model
     {
-        return Person::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->people()->create($request->validated());
     }
 
     /**
