@@ -187,11 +187,11 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user.'
-                  example: unde
+                  example: rerum
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: consequatur
+                  example: velit
               required:
                 - email
                 - password
@@ -310,6 +310,18 @@ paths:
                         updated_at: '2022-08-02T11:59:44.000000Z'
                       created_at: '2022-08-02T11:59:44.000000Z'
                       updated_at: '2022-08-02T11:59:44.000000Z'
+        401:
+          description: 'Invalid credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                properties:
+                  success:
+                    type: boolean
+                    example: false
       tags:
         - Authentication
       requestBody:
@@ -322,15 +334,15 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user. Must be a valid email address.'
-                  example: antwan.mertz@example.com
+                  example: yasmine06@example.org
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: cum
+                  example: explicabo
                 device_name:
                   type: string
                   description: 'Name of the device, used for identification of the token.'
-                  example: itaque
+                  example: quod
               required:
                 - email
                 - password
@@ -377,6 +389,125 @@ paths:
                     example: true
       tags:
         - Authentication
+  /api/auth/heartbeat:
+    get:
+      summary: Heartbeat
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nChecks if the session is still valid and active and returns information about the authenticated user.\n\n<aside class=\"warning\">\n    This endpoint does NOT change the active session and therefore is unable to increase the lifetime of the session.\n    Its purpose is only for testing if the session is still valid and active.\n</aside>"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  user:
+                    id: 1
+                    name: 'Example User'
+                    email: example@localhost.test
+                    roles:
+                      - instance_manager
+                    permissions:
+                      - card.external
+                      - card.manage
+                      - card.view
+                      - limits.manage
+                      - organisation.manage
+                      - organisation.view
+                      - shop.manage
+                      - shop.view
+                      - stats.view
+                      - user.manage
+                      - user.view
+                    instance:
+                      id: 1
+                      name: 'Example Instance'
+                      street: 'Teststreet 123'
+                      postcode: '12345'
+                      city: Test
+                      contact: example@localhost.test
+                      created_at: '2022-08-02T11:59:43.000000Z'
+                      updated_at: '2022-08-02T11:59:43.000000Z'
+                    organization:
+                      id: 1
+                      name: 'Example Organisation'
+                      street: 'Teststreet 123'
+                      postcode: '12345'
+                      city: Test
+                      contact: example@localhost.test
+                      created_at: '2022-08-02T11:59:44.000000Z'
+                      updated_at: '2022-08-02T11:59:44.000000Z'
+                    created_at: '2022-08-02T11:59:44.000000Z'
+                    updated_at: '2022-08-02T11:59:44.000000Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'Example User'
+                      email: example@localhost.test
+                      roles:
+                        - instance_manager
+                      permissions:
+                        - card.external
+                        - card.manage
+                        - card.view
+                        - limits.manage
+                        - organisation.manage
+                        - organisation.view
+                        - shop.manage
+                        - shop.view
+                        - stats.view
+                        - user.manage
+                        - user.view
+                      instance:
+                        id: 1
+                        name: 'Example Instance'
+                        street: 'Teststreet 123'
+                        postcode: '12345'
+                        city: Test
+                        contact: example@localhost.test
+                        created_at: '2022-08-02T11:59:43.000000Z'
+                        updated_at: '2022-08-02T11:59:43.000000Z'
+                      organization:
+                        id: 1
+                        name: 'Example Organisation'
+                        street: 'Teststreet 123'
+                        postcode: '12345'
+                        city: Test
+                        contact: example@localhost.test
+                        created_at: '2022-08-02T11:59:44.000000Z'
+                        updated_at: '2022-08-02T11:59:44.000000Z'
+                      created_at: '2022-08-02T11:59:44.000000Z'
+                      updated_at: '2022-08-02T11:59:44.000000Z'
+      tags:
+        - Authentication
   /api/admin/card:
     get:
       summary: 'List all Cards'
@@ -386,52 +517,52 @@ paths:
           in: query
           name: last_name
           description: 'Last name contains.'
-          example: occaecati
-          required: false
-          schema:
-            type: string
-            description: 'Last name contains.'
-            example: occaecati
-        -
-          in: query
-          name: first_name
-          description: 'First name contains.'
-          example: ut
-          required: false
-          schema:
-            type: string
-            description: 'First name contains.'
-            example: ut
-        -
-          in: query
-          name: street
-          description: 'Street contains.'
           example: est
           required: false
           schema:
             type: string
-            description: 'Street contains.'
+            description: 'Last name contains.'
             example: est
+        -
+          in: query
+          name: first_name
+          description: 'First name contains.'
+          example: unde
+          required: false
+          schema:
+            type: string
+            description: 'First name contains.'
+            example: unde
+        -
+          in: query
+          name: street
+          description: 'Street contains.'
+          example: voluptatem
+          required: false
+          schema:
+            type: string
+            description: 'Street contains.'
+            example: voluptatem
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: distinctio
+          example: enim
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: distinctio
+            example: enim
         -
           in: query
           name: city
           description: 'City contains.'
-          example: ex
+          example: eveniet
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: ex
+            example: eveniet
         -
           in: query
           name: valid_from
@@ -447,22 +578,22 @@ paths:
           in: query
           name: valid_from.0
           description: 'Valid from is after this date. Must be a valid date.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid from is after this date. Must be a valid date.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: valid_from.1
           description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: valid_until
@@ -478,22 +609,22 @@ paths:
           in: query
           name: valid_until.0
           description: 'Valid until is after this date. Must be a valid date.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid until is after this date. Must be a valid date.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: valid_until.1
           description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: creator_id
@@ -508,12 +639,12 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.'
-          example: creator_id
+          example: valid_from
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.'
-            example: creator_id
+            example: valid_from
         -
           in: query
           name: order
@@ -528,12 +659,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 2
+          example: 19
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 2
+            example: 19
         -
           in: header
           name: Authorization
@@ -608,23 +739,23 @@ paths:
                 last_name:
                   type: string
                   description: 'Last name of the cardholder.'
-                  example: eveniet
+                  example: temporibus
                 first_name:
                   type: string
                   description: 'First name of the cardholder.'
-                  example: quo
+                  example: optio
                 street:
                   type: string
                   description: 'Street where the cardholder is located.'
-                  example: explicabo
+                  example: voluptatibus
                 postcode:
                   type: string
                   description: 'Postcode where the cardholder is located.'
-                  example: eum
+                  example: ut
                 city:
                   type: string
                   description: 'City where the cardholder is located.'
-                  example: omnis
+                  example: rerum
                 valid_from:
                   type: string
                   description: 'Date and time of the start of validity of the card. Must be a valid date.'
@@ -636,7 +767,7 @@ paths:
                 creator_id:
                   type: string
                   description: 'ID of the User the card is attached to.'
-                  example: ex
+                  example: ducimus
               required:
                 - last_name
                 - first_name
@@ -722,23 +853,23 @@ paths:
                 last_name:
                   type: string
                   description: 'Last name of the cardholder.'
-                  example: error
+                  example: vel
                 first_name:
                   type: string
                   description: 'First name of the cardholder.'
-                  example: incidunt
+                  example: voluptate
                 street:
                   type: string
                   description: 'Street where the cardholder is located.'
-                  example: aut
+                  example: aspernatur
                 postcode:
                   type: string
                   description: 'Postcode where the cardholder is located.'
-                  example: ducimus
+                  example: natus
                 city:
                   type: string
                   description: 'City where the cardholder is located.'
-                  example: omnis
+                  example: illo
                 valid_from:
                   type: string
                   description: 'Date and time of the start of validity of the card. Must be a valid date.'
@@ -750,7 +881,7 @@ paths:
                 creator_id:
                   type: string
                   description: 'ID of the User the card is attached to.'
-                  example: temporibus
+                  example: quod
               required:
                 - last_name
                 - first_name
@@ -881,15 +1012,15 @@ paths:
                       person_id:
                         type: string
                         description: 'ID of the person the lineItem is for.'
-                        example: reprehenderit
+                        example: aut
                       product_type_id:
                         type: string
                         description: 'ID of the product_type of the lineItem.'
-                        example: sapiente
+                        example: eos
                       amount:
                         type: integer
                         description: 'The amount of purchased lineItems of the same product_type. Must be at least 1.'
-                        example: 0
+                        example: 1
                     required:
                       - person_id
                       - product_type_id
@@ -899,7 +1030,7 @@ paths:
         in: path
         name: card_id
         description: 'The ID of the card.'
-        example: 8
+        example: 1
         required: true
         schema:
           type: integer
@@ -932,12 +1063,12 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
-          example: limit
+          example: id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
-            example: limit
+            example: id
         -
           in: query
           name: order
@@ -952,12 +1083,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 10
+          example: 13
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 10
+            example: 13
         -
           in: header
           name: Authorization
@@ -1032,15 +1163,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: omnis
+                  example: voluptatum
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: debitis
+                  example: rerum
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 4
+                  example: 10
               required:
                 - product_type_id
                 - limitation_set_id
@@ -1123,15 +1254,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: consectetur
+                  example: quaerat
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: at
+                  example: libero
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 14
+                  example: 4
               required:
                 - product_type_id
                 - limitation_set_id
@@ -1181,12 +1312,12 @@ paths:
           in: query
           name: name
           description: 'Filter by name.'
-          example: sunt
+          example: id
           required: false
           schema:
             type: string
             description: 'Filter by name.'
-            example: sunt
+            example: id
         -
           in: query
           name: valid_from
@@ -1202,22 +1333,22 @@ paths:
           in: query
           name: valid_from.0
           description: 'Valid from is after this date. Must be a valid date.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid from is after this date. Must be a valid date.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: valid_from.1
           description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: valid_until
@@ -1233,52 +1364,52 @@ paths:
           in: query
           name: valid_until.0
           description: 'Valid until is after this date. Must be a valid date.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid until is after this date. Must be a valid date.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: valid_until.1
           description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.'
-          example: id
+          example: valid_until
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.'
-            example: id
+            example: valid_until
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 6
+          example: 18
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 6
+            example: 18
         -
           in: header
           name: Authorization
@@ -1353,7 +1484,7 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: illum
+                  example: voluptas
                 valid_from:
                   type: string
                   description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
@@ -1444,7 +1575,7 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: qui
+                  example: autem
                 valid_from:
                   type: string
                   description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
@@ -1489,7 +1620,7 @@ paths:
         in: path
         name: limitationSet_id
         description: 'The ID of the limitationSet.'
-        example: 14
+        example: 12
         required: true
         schema:
           type: integer
@@ -1532,32 +1663,32 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
-          example: visit_id
+          example: id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
-            example: visit_id
+            example: id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 20
+          example: 15
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 20
+            example: 15
         -
           in: header
           name: Authorization
@@ -1632,15 +1763,15 @@ paths:
                 visit_id:
                   type: string
                   description: 'ID of the visit the lineItem is attached to.'
-                  example: esse
+                  example: consectetur
                 person_id:
                   type: string
                   description: 'ID of the person the lineItem is attached to.'
-                  example: assumenda
+                  example: et
                 product_type_id:
                   type: string
                   description: 'ID of the product_type the lineItem is attached to.'
-                  example: et
+                  example: cumque
               required:
                 - visit_id
                 - person_id
@@ -1724,15 +1855,15 @@ paths:
                 visit_id:
                   type: string
                   description: 'ID of the visit the lineItem is attached to.'
-                  example: quam
+                  example: sapiente
                 person_id:
                   type: string
                   description: 'ID of the person the lineItem is attached to.'
-                  example: iste
+                  example: debitis
                 product_type_id:
                   type: string
                   description: 'ID of the product_type the lineItem is attached to.'
-                  example: itaque
+                  example: vero
               required:
                 - visit_id
                 - person_id
@@ -1770,7 +1901,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the lineItem.'
-        example: 2
+        example: 1
         required: true
         schema:
           type: integer
@@ -1783,62 +1914,62 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: omnis
+          example: recusandae
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: omnis
+            example: recusandae
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: ipsa
-          required: false
-          schema:
-            type: string
-            description: 'Street contains.'
-            example: ipsa
-        -
-          in: query
-          name: postcode
-          description: 'Postcode contains.'
-          example: optio
-          required: false
-          schema:
-            type: string
-            description: 'Postcode contains.'
-            example: optio
-        -
-          in: query
-          name: city
-          description: 'City contains.'
-          example: sit
-          required: false
-          schema:
-            type: string
-            description: 'City contains.'
-            example: sit
-        -
-          in: query
-          name: contact
-          description: 'Contact contains.'
           example: et
           required: false
           schema:
             type: string
-            description: 'Contact contains.'
+            description: 'Street contains.'
             example: et
+        -
+          in: query
+          name: postcode
+          description: 'Postcode contains.'
+          example: explicabo
+          required: false
+          schema:
+            type: string
+            description: 'Postcode contains.'
+            example: explicabo
+        -
+          in: query
+          name: city
+          description: 'City contains.'
+          example: numquam
+          required: false
+          schema:
+            type: string
+            description: 'City contains.'
+            example: numquam
+        -
+          in: query
+          name: contact
+          description: 'Contact contains.'
+          example: distinctio
+          required: false
+          schema:
+            type: string
+            description: 'Contact contains.'
+            example: distinctio
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-          example: city
+          example: id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-            example: city
+            example: id
         -
           in: query
           name: order
@@ -1853,12 +1984,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 4
+          example: 1
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 4
+            example: 1
         -
           in: header
           name: Authorization
@@ -1933,23 +2064,23 @@ paths:
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: sint
+                  example: omnis
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: sed
+                  example: non
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: aut
+                  example: accusamus
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: nobis
+                  example: dolores
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: exercitationem
+                  example: culpa
               required:
                 - name
                 - street
@@ -2035,23 +2166,23 @@ paths:
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: iusto
+                  example: non
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: eos
+                  example: modi
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: vel
+                  example: nulla
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: esse
+                  example: consequatur
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: fugiat
+                  example: ipsam
               required:
                 - name
                 - street
@@ -2184,32 +2315,32 @@ paths:
           in: query
           name: gender
           description: 'Gender contains.'
-          example: veniam
+          example: rerum
           required: false
           schema:
             type: string
             description: 'Gender contains.'
-            example: veniam
+            example: rerum
         -
           in: query
           name: age
           description: 'Age is.'
-          example: 13
+          example: 4
           required: false
           schema:
             type: integer
             description: 'Age is.'
-            example: 13
+            example: 4
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>gender</code>, or <code>age</code>.'
-          example: id
+          example: gender
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>gender</code>, or <code>age</code>.'
-            example: id
+            example: gender
         -
           in: query
           name: order
@@ -2224,12 +2355,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 10
+          example: 16
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 10
+            example: 16
         -
           in: header
           name: Authorization
@@ -2304,15 +2435,15 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the person is attached to.'
-                  example: corrupti
+                  example: eveniet
                 gender:
                   type: string
                   description: 'Gender of the person.'
-                  example: necessitatibus
+                  example: magnam
                 age:
                   type: integer
                   description: 'Age of the Person.'
-                  example: 2
+                  example: 14
               required:
                 - card_id
                 - gender
@@ -2396,15 +2527,15 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the person is attached to.'
-                  example: accusamus
+                  example: earum
                 gender:
                   type: string
                   description: 'Gender of the person.'
-                  example: sed
+                  example: iusto
                 age:
                   type: integer
                   description: 'Age of the Person.'
-                  example: 9
+                  example: 15
               required:
                 - card_id
                 - gender
@@ -2442,7 +2573,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the person.'
-        example: 13
+        example: 8
         required: true
         schema:
           type: integer
@@ -2455,52 +2586,52 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: doloremque
+          example: adipisci
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: doloremque
+            example: adipisci
         -
           in: query
           name: icon
           description: 'Icon contains.'
-          example: voluptatum
+          example: maxime
           required: false
           schema:
             type: string
             description: 'Icon contains.'
-            example: voluptatum
+            example: maxime
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
-          example: icon
+          example: id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
-            example: icon
+            example: id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 18
+          example: 7
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 18
+            example: 7
         -
           in: header
           name: Authorization
@@ -2575,11 +2706,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: est
+                  example: dolorem
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: voluptatibus
+                  example: repudiandae
               required:
                 - name
   '/api/admin/product-type/{productType_id}':
@@ -2661,11 +2792,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: minima
+                  example: magnam
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: sed
+                  example: quidem
               required:
                 - name
     delete:
@@ -2701,7 +2832,7 @@ paths:
         in: path
         name: productType_id
         description: 'The ID of the productType.'
-        example: 2
+        example: 3
         required: true
         schema:
           type: integer
@@ -2745,32 +2876,32 @@ paths:
           in: query
           name: time.0
           description: 'Time is after this date. Must be a valid date.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Time is after this date. Must be a valid date.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: time.1
           description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
-          example: '2022-08-21T12:59:27'
+          example: '2022-08-21T14:07:38'
           required: false
           schema:
             type: string
             description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
-            example: '2022-08-21T12:59:27'
+            example: '2022-08-21T14:07:38'
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
-          example: time
+          example: id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
-            example: time
+            example: id
         -
           in: query
           name: order
@@ -2785,12 +2916,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 14
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 14
+            example: 10
         -
           in: header
           name: Authorization
@@ -2865,11 +2996,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: est
+                  example: delectus
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: voluptas
+                  example: ipsam
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -2957,11 +3088,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: autem
+                  example: a
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: error
+                  example: aliquam
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -3003,7 +3134,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the reservation.'
-        example: 19
+        example: 5
         required: true
         schema:
           type: integer
@@ -3094,7 +3225,7 @@ paths:
         in: path
         name: shop_id
         description: 'The ID of the shop.'
-        example: 16
+        example: 8
         required: true
         schema:
           type: integer
@@ -3117,62 +3248,62 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: eaque
+          example: omnis
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: eaque
+            example: omnis
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: quia
+          example: autem
           required: false
           schema:
             type: string
             description: 'Street contains.'
-            example: quia
+            example: autem
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: voluptatibus
+          example: sit
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: voluptatibus
+            example: sit
         -
           in: query
           name: city
           description: 'City contains.'
-          example: vel
+          example: nam
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: vel
+            example: nam
         -
           in: query
           name: contact
           description: 'Contact contains.'
-          example: sunt
+          example: quia
           required: false
           schema:
             type: string
             description: 'Contact contains.'
-            example: sunt
+            example: quia
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-          example: city
+          example: contact
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-            example: city
+            example: contact
         -
           in: query
           name: order
@@ -3187,12 +3318,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 6
+          example: 18
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 6
+            example: 18
         -
           in: header
           name: Authorization
@@ -3267,27 +3398,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: unde
+                  example: laboriosam
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: velit
+                  example: molestiae
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: quia
+                  example: aut
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: esse
+                  example: dolorem
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: iusto
+                  example: rerum
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: natus
+                  example: nisi
                 opening_hours:
                   type: object
                   description: ''
@@ -3312,7 +3443,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Monday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3360,7 +3491,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Wednesday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3432,7 +3563,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Saturday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3547,27 +3678,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: quae
+                  example: ut
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: architecto
+                  example: consectetur
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: officiis
+                  example: incidunt
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: aliquam
+                  example: corporis
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: quia
+                  example: et
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: error
+                  example: explicabo
                 opening_hours:
                   type: object
                   description: ''
@@ -3592,7 +3723,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Monday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -3616,7 +3747,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Tuesday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -3640,7 +3771,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Wednesday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3664,7 +3795,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3688,7 +3819,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Friday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3712,7 +3843,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Saturday. Must be at least 1.'
-                            example: 1
+                            example: 0
                         required:
                           - opens_at
                           - closes_at
@@ -3736,7 +3867,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Sunday. Must be at least 1.'
-                            example: 0
+                            example: 1
                         required:
                           - opens_at
                           - closes_at
@@ -3781,7 +3912,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the shop.'
-        example: 3
+        example: 4
         required: true
         schema:
           type: integer
@@ -3804,32 +3935,32 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: ullam
+          example: quasi
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: ullam
+            example: quasi
         -
           in: query
           name: email
           description: 'E-Mail contains.'
-          example: ut
+          example: in
           required: false
           schema:
             type: string
             description: 'E-Mail contains.'
-            example: ut
+            example: in
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
-          example: email
+          example: name
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
-            example: email
+            example: name
         -
           in: query
           name: order
@@ -3844,12 +3975,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 1
+          example: 16
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 1
+            example: 16
         -
           in: header
           name: Authorization
@@ -3924,19 +4055,19 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: tempore
+                  example: assumenda
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: ex
+                  example: consequatur
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: marks.ayden@example.com
+                  example: beahan.antonietta@example.net
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: voluptas
+                  example: facilis
               required:
                 - organization_id
                 - name
@@ -4021,19 +4152,19 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: provident
+                  example: placeat
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: ea
+                  example: amet
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: velva52@example.org
+                  example: hbosco@example.net
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: ratione
+                  example: necessitatibus
               required:
                 - organization_id
                 - name
@@ -4105,12 +4236,12 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
-          example: id
+          example: user_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
-            example: id
+            example: user_id
         -
           in: query
           name: order
@@ -4125,12 +4256,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 16
+          example: 17
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 16
+            example: 17
         -
           in: header
           name: Authorization
@@ -4205,11 +4336,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the visit is attached to.'
-                  example: tempora
+                  example: et
                 user_id:
                   type: string
                   description: 'ID of the user the visit is attached to.'
-                  example: ut
+                  example: quasi
               required:
                 - card_id
                 - user_id
@@ -4292,11 +4423,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the visit is attached to.'
-                  example: enim
+                  example: architecto
                 user_id:
                   type: string
                   description: 'ID of the user the visit is attached to.'
-                  example: rerum
+                  example: veritatis
               required:
                 - card_id
                 - user_id
@@ -4333,7 +4464,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the visit.'
-        example: 1
+        example: 6
         required: true
         schema:
           type: integer

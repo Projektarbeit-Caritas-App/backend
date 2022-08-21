@@ -13,6 +13,9 @@ use Illuminate\Http\Response;
 use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
 use Laravel\Sanctum\PersonalAccessToken;
 
+/**
+ * @group Authentication
+ */
 class AuthController extends Controller
 {
     /**
@@ -21,9 +24,7 @@ class AuthController extends Controller
      * Required to initialise a new Cookie-Session for SPAs.
      * Do not use this endpoint if you want to use Token-Auth.
      *
-     * @group Authentication
      * @unauthenticated
-     *
      * @header Referer {URL of your SPA}
      * @response status=204
      *
@@ -52,9 +53,7 @@ class AuthController extends Controller
      *   </p>
      * </aside>
      *
-     * @group Authentication
      * @unauthenticated
-     *
      * @header Referer {URL of your SPA}
      * @header X-XSRF-TOKEN {Your XSRF-Token}
      *
@@ -150,9 +149,7 @@ class AuthController extends Controller
      *   Endpoints under the <code>/admin</code> path will not be available for Applications using Token-Auth.
      * </aside>
      *
-     * @group Authentication
      * @unauthenticated
-     *
      * @response status=200 scenario="Valid credentials" {
      *   "success": true,
      *   "token": "{YOUR_AUTH_KEY}",
@@ -200,6 +197,9 @@ class AuthController extends Controller
      *     "updated_at": "2022-08-02T11:59:44.000000Z"
      *   }
      * }
+     * @response status=401 scenario="Invalid credentials" {
+     *   "success": false
+     * }
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -237,15 +237,84 @@ class AuthController extends Controller
     }
 
     /**
+     * Heartbeat
+     *
+     * <small class="badge badge-purple">App authorization available</small>
+     *
+     * Checks if the session is still valid and active and returns information about the authenticated user.
+     *
+     * <aside class="warning">
+     *     This endpoint does NOT change the active session and therefore is unable to increase the lifetime of the session.
+     *     Its purpose is only for testing if the session is still valid and active.
+     * </aside>
+     *
+     * @authenticated
+     * @response status=200 {
+     *   "success": true,
+     *   "user": {
+     *     "id": 1,
+     *     "name": "Example User",
+     *     "email": "example@localhost.test",
+     *     "roles": [
+     *       "instance_manager"
+     *     ],
+     *     "permissions": [
+     *       "card.external",
+     *       "card.manage",
+     *       "card.view",
+     *       "limits.manage",
+     *       "organisation.manage",
+     *       "organisation.view",
+     *       "shop.manage",
+     *       "shop.view",
+     *       "stats.view",
+     *       "user.manage",
+     *       "user.view"
+     *     ],
+     *     "instance": {
+     *       "id": 1,
+     *       "name": "Example Instance",
+     *       "street": "Teststreet 123",
+     *       "postcode": "12345",
+     *       "city": "Test",
+     *       "contact": "example@localhost.test",
+     *       "created_at": "2022-08-02T11:59:43.000000Z",
+     *       "updated_at": "2022-08-02T11:59:43.000000Z"
+     *     },
+     *     "organization": {
+     *       "id": 1,
+     *       "name": "Example Organisation",
+     *       "street": "Teststreet 123",
+     *       "postcode": "12345",
+     *       "city": "Test",
+     *       "contact": "example@localhost.test",
+     *       "created_at": "2022-08-02T11:59:44.000000Z",
+     *       "updated_at": "2022-08-02T11:59:44.000000Z"
+     *     },
+     *     "created_at": "2022-08-02T11:59:44.000000Z",
+     *     "updated_at": "2022-08-02T11:59:44.000000Z"
+     *   }
+     * }
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory
+     */
+    public function heartbeat(Request $request): Response|Application|ResponseFactory
+    {
+        return response([
+            'success' => true,
+            'user' => $this->getUserData($request->user())
+        ], 200);
+    }
+
+    /**
      * Logout
      *
      * <small class="badge badge-purple">App authorization available</small>
      *
      * Invalidate your current session/token
      *
-     * @group Authentication
      * @authenticated
-     *
      * @response {
      *   "success": true
      * }
