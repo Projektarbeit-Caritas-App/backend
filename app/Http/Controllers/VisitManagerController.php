@@ -51,7 +51,7 @@ class VisitManagerController extends Controller
      * @param \App\Http\Requests\ManageVisitRequest $request
      * @return \App\Models\Visit
      */
-    public function store(ManageVisitRequest $request)
+    public function store(ManageVisitRequest $request): Visit
     {
         return Visit::create($request->validated());
     }
@@ -62,7 +62,7 @@ class VisitManagerController extends Controller
      * @param \App\Models\Visit $visit
      * @return \App\Models\Visit
      */
-    public function show(Visit $visit)
+    public function show(Visit $visit): Visit
     {
         return $visit;
     }
@@ -74,7 +74,7 @@ class VisitManagerController extends Controller
      * @param \App\Models\Visit $visit
      * @return \App\Models\Visit
      */
-    public function update(ManageVisitRequest $request, Visit $visit)
+    public function update(ManageVisitRequest $request, Visit $visit): Visit
     {
         $visit->update($request->validated());
         return $visit;
@@ -86,7 +86,7 @@ class VisitManagerController extends Controller
      * @param \App\Models\Visit $visit
      * @return array
      */
-    public function destroy(Visit $visit)
+    public function destroy(Visit $visit): array
     {
         return ['success' => $visit->delete()];
     }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Card;
 use App\Models\Person;
-use App\Models\Shop;
 use App\Models\Visit;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -56,7 +55,6 @@ class CheckoutController extends Controller
      * Endpoint creates a new Visit entry and stores the submitted lineItems
      *
      * @param \App\Http\Requests\CheckoutRequest $request
-     * @param Shop $shop
      * @param Card $card
      * @return Application|ResponseFactory|Response
      */

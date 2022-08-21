@@ -55,7 +55,7 @@ class PersonManagerController extends Controller
      * @param \App\Http\Requests\ManagePersonRequest $request
      * @return \App\Models\Person
      */
-    public function store(ManagePersonRequest $request)
+    public function store(ManagePersonRequest $request): Person
     {
         return Person::create($request->validated());
     }
@@ -66,7 +66,7 @@ class PersonManagerController extends Controller
      * @param \App\Models\Person $person
      * @return \App\Models\Person
      */
-    public function show(Person $person)
+    public function show(Person $person): Person
     {
         return $person;
     }
@@ -78,7 +78,7 @@ class PersonManagerController extends Controller
      * @param \App\Models\Person $person
      * @return \App\Models\Person
      */
-    public function update(ManagePersonRequest $request, Person $person)
+    public function update(ManagePersonRequest $request, Person $person): Person
     {
         $person->update($request->validated());
         return $person;
@@ -90,7 +90,7 @@ class PersonManagerController extends Controller
      * @param \App\Models\Person $person
      * @return array
      */
-    public function destroy(Person $person)
+    public function destroy(Person $person): array
     {
         return ['success' => $person->delete()];
     }

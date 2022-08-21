@@ -67,7 +67,7 @@ class ShopManagerController extends Controller
      * @param  \App\Http\Requests\ManageShopRequest  $request
      * @return \App\Models\Shop
      */
-    public function store(ManageShopRequest $request)
+    public function store(ManageShopRequest $request): Shop
     {
         return Shop::create($request->validated());
     }
@@ -78,7 +78,7 @@ class ShopManagerController extends Controller
      * @param  \App\Models\Shop  $shop
      * @return \App\Models\Shop
      */
-    public function show(Shop $shop)
+    public function show(Shop $shop): Shop
     {
         return $shop;
     }
@@ -90,7 +90,7 @@ class ShopManagerController extends Controller
      * @param  \App\Models\Shop  $shop
      * @return \App\Models\Shop
      */
-    public function update(ManageShopRequest $request, Shop $shop)
+    public function update(ManageShopRequest $request, Shop $shop): Shop
     {
         $shop->update($request->validated());
         return $shop;
@@ -102,7 +102,7 @@ class ShopManagerController extends Controller
      * @param  \App\Models\Shop  $shop
      * @return array
      */
-    public function destroy(Shop $shop)
+    public function destroy(Shop $shop): array
     {
         return ['success' => $shop->delete()];
     }

@@ -4,7 +4,6 @@ namespace App\Service;
 
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class ModelFilterService
 {

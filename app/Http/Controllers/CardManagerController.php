@@ -81,7 +81,7 @@ class CardManagerController extends Controller
      * @param \App\Http\Requests\ManageCardRequest $request
      * @return \App\Models\Card
      */
-    public function store(ManageCardRequest $request)
+    public function store(ManageCardRequest $request): Card
     {
         return Card::create($request->validated());
     }
@@ -92,7 +92,7 @@ class CardManagerController extends Controller
      * @param \App\Models\Card $card
      * @return \App\Models\Card
      */
-    public function show(Card $card)
+    public function show(Card $card): Card
     {
         return $card;
     }
@@ -104,7 +104,7 @@ class CardManagerController extends Controller
      * @param \App\Models\Card $card
      * @return \App\Models\Card
      */
-    public function update(ManageCardRequest $request, Card $card)
+    public function update(ManageCardRequest $request, Card $card): Card
     {
         $card->update($request->validated());
         return $card;
@@ -116,7 +116,7 @@ class CardManagerController extends Controller
      * @param \App\Models\Card $card
      * @return array
      */
-    public function destroy(Card $card)
+    public function destroy(Card $card): array
     {
         return ['success' => $card->delete()];
     }

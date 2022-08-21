@@ -51,7 +51,7 @@ class LimitationManagerController extends Controller
      * @param  \App\Http\Requests\ManageLimitationRequest  $request
      * @return \App\Models\Limitation
      */
-    public function store(ManageLimitationRequest $request)
+    public function store(ManageLimitationRequest $request): Limitation
     {
         return Limitation::create($request->validated());
     }
@@ -62,7 +62,7 @@ class LimitationManagerController extends Controller
      * @param  \App\Models\Limitation  $limitation
      * @return \App\Models\Limitation
      */
-    public function show(Limitation $limitation)
+    public function show(Limitation $limitation): Limitation
     {
         return $limitation;
     }
@@ -74,7 +74,7 @@ class LimitationManagerController extends Controller
      * @param  \App\Models\Limitation  $limitation
      * @return \App\Models\Limitation
      */
-    public function update(ManageLimitationRequest $request, Limitation $limitation)
+    public function update(ManageLimitationRequest $request, Limitation $limitation): Limitation
     {
         $limitation->update($request->validated());
         return $limitation;
@@ -86,7 +86,7 @@ class LimitationManagerController extends Controller
      * @param  \App\Models\Limitation  $limitation
      * @return array
      */
-    public function destroy(Limitation $limitation)
+    public function destroy(Limitation $limitation): array
     {
         return ['success' => $limitation->delete()];
     }

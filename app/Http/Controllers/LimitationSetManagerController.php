@@ -61,7 +61,7 @@ class LimitationSetManagerController extends Controller
      * @param \App\Http\Requests\ManageLimitationSetRequest $request
      * @return \App\Models\LimitationSet
      */
-    public function store(ManageLimitationSetRequest $request)
+    public function store(ManageLimitationSetRequest $request): LimitationSet
     {
         return LimitationSet::create($request->validated());
     }
@@ -72,7 +72,7 @@ class LimitationSetManagerController extends Controller
      * @param  \App\Models\LimitationSet  $limitationSet
      * @return \App\Models\LimitationSet
      */
-    public function show(LimitationSet $limitationSet)
+    public function show(LimitationSet $limitationSet): LimitationSet
     {
         return $limitationSet;
     }
@@ -84,7 +84,7 @@ class LimitationSetManagerController extends Controller
      * @param \App\Models\LimitationSet $limitationSet
      * @return \App\Models\LimitationSet
      */
-    public function update(ManageLimitationSetRequest $request, LimitationSet $limitationSet)
+    public function update(ManageLimitationSetRequest $request, LimitationSet $limitationSet): LimitationSet
     {
         $limitationSet->update($request->validated());
         return $limitationSet;
@@ -96,7 +96,7 @@ class LimitationSetManagerController extends Controller
      * @param  \App\Models\LimitationSet  $limitationSet
      * @return array
      */
-    public function destroy(LimitationSet $limitationSet)
+    public function destroy(LimitationSet $limitationSet): array
     {
         return ['success' => $limitationSet->delete()];
     }

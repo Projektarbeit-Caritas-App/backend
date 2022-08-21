@@ -58,7 +58,7 @@ class ReservationController extends Controller
      * @param  \App\Http\Requests\ReservationRequest  $request
      * @return \App\Models\Reservation
      */
-    public function store(ReservationRequest $request)
+    public function store(ReservationRequest $request): Reservation
     {
         return Reservation::create($request->validated());
     }
@@ -69,7 +69,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \App\Models\Reservation
      */
-    public function show(Reservation $reservation)
+    public function show(Reservation $reservation): Reservation
     {
         return $reservation;
     }
@@ -81,7 +81,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \App\Models\Reservation
      */
-    public function update(ReservationRequest $request, Reservation $reservation)
+    public function update(ReservationRequest $request, Reservation $reservation): Reservation
     {
         $reservation->update($request->validated());
         return $reservation;
@@ -93,7 +93,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return array
      */
-    public function destroy(Reservation $reservation)
+    public function destroy(Reservation $reservation): array
     {
         return ['success' => $reservation->delete()];
     }

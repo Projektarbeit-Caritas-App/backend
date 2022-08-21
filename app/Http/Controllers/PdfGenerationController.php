@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use Barryvdh\Snappy\Facades\SnappyPdf;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  * @group PDF
@@ -27,7 +30,7 @@ class PdfGenerationController extends Controller
      * @param Card $card
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function printCard(Request $request, Card $card)
+    public function printCard(Request $request, Card $card): Response|Application|ResponseFactory
     {
         $pdfCard = SnappyPdf::loadView('pdf.card', [
             'card' => Card::withCount('people')->find($card->id)

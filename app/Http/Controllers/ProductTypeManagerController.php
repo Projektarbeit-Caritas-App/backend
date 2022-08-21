@@ -51,7 +51,7 @@ class ProductTypeManagerController extends Controller
      * @param  \App\Http\Requests\ManageProductTypeRequest  $request
      * @return \App\Models\ProductType
      */
-    public function store(ManageProductTypeRequest $request)
+    public function store(ManageProductTypeRequest $request): ProductType
     {
         return ProductType::create($request->validated());
     }
@@ -62,7 +62,7 @@ class ProductTypeManagerController extends Controller
      * @param  \App\Models\ProductType  $productType
      * @return \App\Models\ProductType
      */
-    public function show(ProductType $productType)
+    public function show(ProductType $productType): ProductType
     {
         return $productType;
     }
@@ -74,7 +74,7 @@ class ProductTypeManagerController extends Controller
      * @param  \App\Models\ProductType  $productType
      * @return \App\Models\ProductType
      */
-    public function update(ManageProductTypeRequest $request, ProductType $productType)
+    public function update(ManageProductTypeRequest $request, ProductType $productType): ProductType
     {
         $productType->update($request->validated());
         return $productType;
@@ -86,7 +86,7 @@ class ProductTypeManagerController extends Controller
      * @param  \App\Models\ProductType  $productType
      * @return array
      */
-    public function destroy(ProductType $productType)
+    public function destroy(ProductType $productType): array
     {
         return ['success' => $productType->delete()];
     }

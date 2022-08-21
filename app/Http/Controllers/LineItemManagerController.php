@@ -55,7 +55,7 @@ class LineItemManagerController extends Controller
      * @param \App\Http\Requests\ManageLineItemRequest $request
      * @return \App\Models\LineItem
      */
-    public function store(ManageLineItemRequest $request)
+    public function store(ManageLineItemRequest $request): LineItem
     {
         return LineItem::create($request->validated());
     }
@@ -66,7 +66,7 @@ class LineItemManagerController extends Controller
      * @param \App\Models\LineItem $lineItem
      * @return \App\Models\LineItem
      */
-    public function show(LineItem $lineItem)
+    public function show(LineItem $lineItem): LineItem
     {
         return $lineItem;
     }
@@ -79,7 +79,7 @@ class LineItemManagerController extends Controller
      * @param \App\Models\LineItem $lineItem
      * @return \App\Models\LineItem
      */
-    public function update(ManageLineItemRequest $request, LineItem $lineItem)
+    public function update(ManageLineItemRequest $request, LineItem $lineItem): LineItem
     {
         $lineItem->update($request->validated());
         return $lineItem;
@@ -91,7 +91,7 @@ class LineItemManagerController extends Controller
      * @param \App\Models\LineItem $lineItem
      * @return array
      */
-    public function destroy(LineItem $lineItem)
+    public function destroy(LineItem $lineItem): array
     {
         return ['success' => $lineItem->delete()];
     }
