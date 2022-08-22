@@ -29,42 +29,49 @@ class ShopManagerController extends Controller
      *       "opening_hours": {
      *         "monday": [
      *           {
+     *             "slots": "4",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "tuesday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "wednesday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "thursday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "friday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "saturday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "sunday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
@@ -83,42 +90,49 @@ class ShopManagerController extends Controller
      *       "opening_hours": {
      *         "monday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "tuesday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "wednesday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "thursday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "friday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "saturday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
      *         ],
      *         "sunday": [
      *           {
+     *             "slots": "2",
      *             "opens_at": "08:00",
      *             "closes_at": "17:00"
      *           }
