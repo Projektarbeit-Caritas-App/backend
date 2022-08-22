@@ -52,11 +52,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/limitation/limit')
     ->name('admin.limitation.limit.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{limitation}', 'show')->name('show');
-        Route::put('/{limitation}', 'update')->name('update');
-        Route::delete('/{limitation}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.limitation.limit.index');
+        Route::post('/', 'store')->name('store')->can('admin.limitation.limit.store');
+        Route::get('/{limitation}', 'show')->name('show')->can('admin.limitation.limit.show', 'limitation');
+        Route::put('/{limitation}', 'update')->name('update')->can('admin.limitation.limit.update', 'limitation');
+        Route::delete('/{limitation}', 'destroy')->name('destroy')->can('admin.limitation.limit.destroy', 'limitation');
     });
 //endregion
 
@@ -66,11 +66,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/limitation/set')
     ->name('admin.limitation.set.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{limitationSet}', 'show')->name('show');
-        Route::put('/{limitationSet}', 'update')->name('update');
-        Route::delete('/{limitationSet}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.limitation.set.index');
+        Route::post('/', 'store')->name('store')->can('admin.limitation.set.store');
+        Route::get('/{limitationSet}', 'show')->name('show')->can('admin.limitation.set.show', 'limitationSet');
+        Route::put('/{limitationSet}', 'update')->name('update')->can('admin.limitation.set.update', 'limitationSet');
+        Route::delete('/{limitationSet}', 'destroy')->name('destroy')->can('admin.limitation.set.destroy', 'limitationSet');
     });
 //endregion
 
@@ -80,11 +80,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/organization')
     ->name('admin.organization.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{organization}', 'show')->name('show');
-        Route::put('/{organization}', 'update')->name('update');
-        Route::delete('/{organization}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.organization.index');
+        Route::post('/', 'store')->name('store')->can('admin.organization.store');
+        Route::get('/{organization}', 'show')->name('show')->can('admin.organization.show', 'organization');
+        Route::put('/{organization}', 'update')->name('update')->can('admin.organization.update', 'organization');
+        Route::delete('/{organization}', 'destroy')->name('destroy')->can('admin.organization.destroy', 'organization');
     });
 //endregion
 
@@ -94,11 +94,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/product-type')
     ->name('admin.product-type.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{productType}', 'show')->name('show');
-        Route::put('/{productType}', 'update')->name('update');
-        Route::delete('/{productType}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.product-type.index');
+        Route::post('/', 'store')->name('store')->can('admin.product-type.store');
+        Route::get('/{productType}', 'show')->name('show')->can('admin.product-type.show', 'productType');
+        Route::put('/{productType}', 'update')->name('update')->can('admin.product-type.update', 'productType');
+        Route::delete('/{productType}', 'destroy')->name('destroy')->can('admin.product-type.destroy', 'productType');
     });
 //endregion
 
@@ -108,8 +108,8 @@ Route::middleware(['auth:sanctum', 'ability:app'])
     ->prefix('schedule')
     ->name('schedule.')
     ->group(function () {
-        Route::get('/', 'shops')->name('shops');
-        Route::get('/{shop}', 'today')->name('reservations');
+        Route::get('/', 'shops')->name('shops')->can('schedule.shops');
+        Route::get('/{shop}', 'today')->name('reservations')->can('schedule.reservations', 'shop');
 
     });
 //endregion
@@ -120,11 +120,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/reservation')
     ->name('admin.reservation.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{reservation}', 'show')->name('show');
-        Route::put('/{reservation}', 'update')->name('update');
-        Route::delete('/{reservation}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.reservation.index');
+        Route::post('/', 'store')->name('store')->can('admin.reservation.store');
+        Route::get('/{reservation}', 'show')->name('show')->can('admin.reservation.show', 'reservation');
+        Route::put('/{reservation}', 'update')->name('update')->can('admin.reservation.update', 'reservation');
+        Route::delete('/{reservation}', 'destroy')->name('destroy')->can('admin.reservation.destroy', 'reservation');
     });
 //endregion
 
@@ -134,11 +134,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/shop')
     ->name('admin.shop.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{shop}', 'show')->name('show');
-        Route::put('/{shop}', 'update')->name('update');
-        Route::delete('/{shop}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.shop.index');
+        Route::post('/', 'store')->name('store')->can('admin.shop.store');
+        Route::get('/{shop}', 'show')->name('show')->can('admin.shop.show', 'shop');
+        Route::put('/{shop}', 'update')->name('update')->can('admin.shop.update', 'shop');
+        Route::delete('/{shop}', 'destroy')->name('destroy')->can('admin.shop.destroy', 'shop');
     });
 //endregion
 
@@ -148,11 +148,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/user')
     ->name('admin.user.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{user}', 'show')->name('show');
-        Route::put('/{user}', 'update')->name('update');
-        Route::delete('/{user}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.user.index');
+        Route::post('/', 'store')->name('store')->can('admin.user.store');
+        Route::get('/{user}', 'show')->name('show')->can('admin.user.show', 'user');
+        Route::put('/{user}', 'update')->name('update')->can('admin.user.update', 'user');
+        Route::delete('/{user}', 'destroy')->name('destroy')->can('admin.user.destroy', 'user');
     });
 //endregion
 
@@ -162,11 +162,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/card')
     ->name('admin.card.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{card}', 'show')->name('show');
-        Route::put('/{card}', 'update')->name('update');
-        Route::delete('/{card}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.card.index');
+        Route::post('/', 'store')->name('store')->can('admin.card.store');
+        Route::get('/{card}', 'show')->name('show')->can('admin.card.show', 'card');
+        Route::put('/{card}', 'update')->name('update')->can('admin.card.update', 'card');
+        Route::delete('/{card}', 'destroy')->name('destroy')->can('admin.card.destroy', 'card');
     });
 //endregion
 
@@ -176,11 +176,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/lineItem')
     ->name('admin.lineItem.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{lineItem}', 'show')->name('show');
-        Route::put('/{lineItem}', 'update')->name('update');
-        Route::delete('/{lineItem}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.lineItem.index');
+        Route::post('/', 'store')->name('store')->can('admin.lineItem.store');
+        Route::get('/{lineItem}', 'show')->name('show')->can('admin.lineItem.show', 'lineItem');
+        Route::put('/{lineItem}', 'update')->name('update')->can('admin.lineItem.update', 'lineItem');
+        Route::delete('/{lineItem}', 'destroy')->name('destroy')->can('admin.lineItem.destroy', 'lineItem');
     });
 //endregion
 
@@ -190,11 +190,11 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/person')
     ->name('admin.person.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{person}', 'show')->name('show');
-        Route::put('/{person}', 'update')->name('update');
-        Route::delete('/{person}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.person.index');
+        Route::post('/', 'store')->name('store')->can('admin.person.store');
+        Route::get('/{person}', 'show')->name('show')->can('admin.person.show', 'person');
+        Route::put('/{person}', 'update')->name('update')->can('admin.person.update', 'person');
+        Route::delete('/{person}', 'destroy')->name('destroy')->can('admin.person.destroy', 'person');
     });
 //endregion
 
@@ -204,21 +204,21 @@ Route::middleware(['auth:sanctum', 'ability:admin'])
     ->prefix('admin/visit')
     ->name('admin.visit.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{visit}', 'show')->name('show');
-        Route::put('/{visit}', 'update')->name('update');
-        Route::delete('/{visit}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->name('index')->can('admin.visit.index');
+        Route::post('/', 'store')->name('store')->can('admin.visit.store');
+        Route::get('/{visit}', 'show')->name('show')->can('admin.visit.show', 'visit');
+        Route::put('/{visit}', 'update')->name('update')->can('admin.visit.update', 'visit');
+        Route::delete('/{visit}', 'destroy')->name('destroy')->can('admin.visit.destroy', 'visit');
     });
 
-//region AppVisits
+//region Checkout
 Route::middleware(['auth:sanctum', 'ability:app'])
     ->controller(CheckoutController::class)
     ->prefix('card/visit')
     ->name('card.visit.')
     ->group(function () {
-        Route::get('/{card}', 'show')->name('show');
-        Route::post('/{card}', 'store')->name('store');
+        Route::get('/{card}', 'show')->name('show')->can('card.visit.show', 'card');
+        Route::post('/{card}', 'store')->name('store')->can('card.visit.store', 'card');
     });
 //endregion
 
@@ -228,6 +228,6 @@ Route::middleware(['auth:sanctum', 'ability:app'])
     ->prefix('pdf')
     ->name('pdf.')
     ->group(function () {
-        Route::get('/card/{card}', 'printCard')->name('card');
+        Route::get('/card/{card}', 'printCard')->name('card')->can('pdf.card', 'card');
     });
 //endregion
