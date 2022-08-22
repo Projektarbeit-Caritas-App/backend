@@ -34,10 +34,12 @@ class ReservationRequest extends FormRequest
     {
         return [
             'card_id' => [
-                'description' => 'ID of the card the reservation is attached to'
+                'description' => 'ID of the card the reservation is attached to',
+                'example' => '50080528753334'
             ],
             'shop_id' => [
-                'description' => 'ID of the shop the reservation is for'
+                'description' => 'ID of the shop the reservation is for',
+                'example' => '50080528753334'
             ],
             'time' => [
                 'description' => 'Date and Time for the reservation',

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "51a58da1-2936-4a70-8058-1d00146c7da6",
+        "_postman_id": "c11033bc-1575-40b0-98c0-524c39d8779d",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -88,7 +88,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"rerum\",\"password\":\"velit\"}"
+                            "raw": "{\"email\":\"aut\",\"password\":\"in\"}"
                         },
                         "description": "After you send a GET-request to <code>\/api\/handshake<\/code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;<\/code><\/pre>\n  <\/p>\n<\/aside>",
                         "auth": {
@@ -132,7 +132,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"yasmine06@example.org\",\"password\":\"explicabo\",\"device_name\":\"quod\"}"
+                            "raw": "{\"email\":\"abbie03@example.com\",\"password\":\"sint\",\"device_name\":\"ex\"}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nIf you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
                         "auth": {
@@ -233,55 +233,55 @@
                             "query": [
                                 {
                                     "key": "last_name",
-                                    "value": "est",
+                                    "value": "nam",
                                     "description": "Last name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "first_name",
-                                    "value": "unde",
+                                    "value": "consequatur",
                                     "description": "First name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "street",
-                                    "value": "voluptatem",
+                                    "value": "nulla",
                                     "description": "Street contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "postcode",
-                                    "value": "enim",
+                                    "value": "ut",
                                     "description": "Postcode contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "city",
-                                    "value": "eveniet",
+                                    "value": "nihil",
                                     "description": "City contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.0",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid from is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.1",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid from is before this date. Must be a valid date. This field is required when valid_from.0 is present.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.0",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid until is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.1",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid until is before this date. Must be a valid date. This field is required when valid_until.0 is present.",
                                     "disabled": false
                                 },
@@ -293,7 +293,7 @@
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "valid_from",
+                                    "value": "creator_id",
                                     "description": "Sort by given field. Must be one of id, last_name, first_name, street, postcode, city, valid_from, valid_until, or creator_id.",
                                     "disabled": false
                                 },
@@ -305,12 +305,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "19",
+                                    "value": "10",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/card?last_name=est&first_name=unde&street=voluptatem&postcode=enim&city=eveniet&valid_from.0=2022-08-21T14%3A07%3A38&valid_from.1=2022-08-21T14%3A07%3A38&valid_until.0=2022-08-21T14%3A07%3A38&valid_until.1=2022-08-21T14%3A07%3A38&creator_id=&sort=valid_from&order=desc&page=19"
+                            "raw": "{{baseUrl}}\/api\/admin\/card?last_name=nam&first_name=consequatur&street=nulla&postcode=ut&city=nihil&valid_from.0=2022-08-22T11%3A10%3A17&valid_from.1=2022-08-22T11%3A10%3A17&valid_until.0=2022-08-22T11%3A10%3A17&valid_until.1=2022-08-22T11%3A10%3A17&creator_id=&sort=creator_id&order=desc&page=10"
                         },
                         "method": "GET",
                         "header": [
@@ -328,22 +328,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n     {\n      \"id\": 1,\n      \"last_name\": \"Mustermann\",\n      \"first_name\": \"M\u00fcller\",\n      \"street\": \"M\u00fchlenstra\u00dfe 5\",\n      \"postcode\": \"12345\",\n      \"city\": \"W\u00fcrzburg\",\n      \"valid_from\": \"2022-01-01T00:00:00.000000Z\",\n      \"valid_until\": \"2022-03-31T00:00:00.000000Z\",\n      \"creator_id\": 1,\n      \"created_at\": \"2022-08-16T15:00:00.000000Z\",\n      \"updated_at\": \"2022-08-16T15:00:00.000000Z\"\n    }, {\n      \"id\": 49394739894111,\n      \"last_name\": \"Kitsune\",\n      \"first_name\": \"Yasu\",\n      \"street\": \"Teststra\u00dfe 123\",\n      \"postcode\": \"12345\",\n      \"city\": \"Teststadt\",\n      \"valid_from\": \"2022-01-01T00:00:00.000000Z\",\n      \"valid_until\": \"2022-03-31T00:00:00.000000Z\",\n      \"creator_id\": 1,\n      \"created_at\": \"2022-08-18T13:47:42.000000Z\",\n      \"updated_at\": \"2022-08-18T13:47:42.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -370,7 +357,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"last_name\":\"temporibus\",\"first_name\":\"optio\",\"street\":\"voluptatibus\",\"postcode\":\"ut\",\"city\":\"rerum\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"ducimus\"}"
+                            "raw": "{\"last_name\":\"Kitsune\",\"first_name\":\"Yasu\",\"street\":\"Foxstreet 10\",\"postcode\":\"12345\",\"city\":\"Foxhole\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -388,7 +375,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "50094827185706",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -409,22 +396,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 49394739894111,\n  \"last_name\": \"Kitsune\",\n  \"first_name\": \"Yasu\",\n  \"street\": \"Teststra\u00dfe 123\",\n  \"postcode\": \"12345\",\n  \"city\": \"Teststadt\",\n  \"valid_from\": \"2022-01-01T00:00:00.000000Z\",\n  \"valid_until\": \"2022-03-31T00:00:00.000000Z\",\n  \"creator_id\": 1,\n  \"created_at\": \"2022-08-18T13:47:42.000000Z\",\n  \"updated_at\": \"2022-08-18T13:47:42.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -441,7 +415,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "50094827185706",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -459,7 +433,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"last_name\":\"vel\",\"first_name\":\"voluptate\",\"street\":\"aspernatur\",\"postcode\":\"natus\",\"city\":\"illo\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"quod\"}"
+                            "raw": "{\"last_name\":\"Kitsune\",\"first_name\":\"Yasu\",\"street\":\"Foxstreet 10\",\"postcode\":\"12345\",\"city\":\"Foxhole\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\",\"creator_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -477,7 +451,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "50094827185706",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -496,7 +470,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -537,22 +518,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"card\": {\n    \"id\": 1,\n    \"last_name\": \"Mustermann\",\n    \"first_name\": \"M\u00fcller\",\n    \"street\": \"M\u00fchlenstra\u00dfe 5\",\n    \"postcode\": \"12345\",\n    \"city\": \"W\u00fcrzburg\",\n    \"valid_from\": \"2022-01-01T00:00:00.000000Z\",\n    \"valid_until\": \"2022-03-31T00:00:00.000000Z\",\n    \"creator_id\": 1,\n    \"created_at\": null,\n    \"updated_at\": null\n  },\n  \"persons\": [\n    {\n      \"id\": 1,\n      \"gender\": \"male\",\n      \"age\": 18,\n      \"created_at\": null,\n      \"updated_at\": null,\n      \"limitation_states\": [\n        {\n          \"product_type\": {\n            \"id\": 1,\n            \"name\": \"t-shirt\",\n            \"icon\": \"t-shirt icon\"\n          },\n          \"limit\": 3,\n          \"used\": 4\n        }, {\n          \"product_type\": {\n            \"id\": 2,\n            \"name\": \"shoe\",\n            \"icon\": \"shoe icon\"\n          },\n          \"limit\": 5,\n          \"used\": 0\n        }, {\n          \"product_type\": {\n            \"id\": 3,\n            \"name\": \"sock\",\n            \"icon\": \"sock icon\"\n          },\n          \"limit\": 2,\n          \"used\": 1\n        }\n      ]\n    }, {\n      \"id\": 2,\n      \"gender\": \"female\",\n      \"age\": 15,\n      \"created_at\": null,\n      \"updated_at\": null,\n      \"limitation_states\": [\n        {\n          \"product_type\": {\n            \"id\": 1,\n            \"name\": \"t-shirt\",\n            \"icon\": \"t-shirt icon\"\n          },\n          \"limit\": 3,\n          \"used\": 0\n        }, {\n          \"product_type\": {\n              \"id\": 2,\n              \"name\": \"shoe\",\n              \"icon\": \"shoe icon\"\n          },\n          \"limit\": 5,\n          \"used\": 1\n        }, {\n          \"product_type\": {\n            \"id\": 3,\n            \"name\": \"sock\",\n            \"icon\": \"sock icon\"\n          },\n          \"limit\": 2,\n          \"used\": 0\n        }\n      ]\n    }\n  ]\n}",
                             "name": ""
                         }
                     ]
@@ -569,7 +537,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "2",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -587,7 +555,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"lineItems\":[{\"person_id\":\"aut\",\"product_type_id\":\"eos\",\"amount\":1}]}"
+                            "raw": "{\"lineItems\":[{\"person_id\":\"50080528753334\",\"product_type_id\":\"50080528753334\",\"amount\":5}]}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nEndpoint creates a new Visit entry and stores the submitted lineItems"
                     },
@@ -620,24 +588,24 @@
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "id",
+                                    "value": "limit",
                                     "description": "Sort by given field. Must be one of id, limitation_set_id, product_type_id, or limit.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "desc",
+                                    "value": "asc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "13",
+                                    "value": "20",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit?limitation_set_id=&product_type_id=&sort=id&order=desc&page=13"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit?limitation_set_id=&product_type_id=&sort=limit&order=asc&page=20"
                         },
                         "method": "GET",
                         "header": [
@@ -655,22 +623,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"product_type_id\": 1,\n      \"limitation_set_id\": 1,\n      \"limit\": 3,\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }, {\n      \"id\": 3,\n      \"product_type_id\": 2,\n      \"limitation_set_id\": 2,\n      \"limit\": 5,\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }, {\n      \"id\": 4,\n      \"product_type_id\": 2,\n      \"limitation_set_id\": 1,\n      \"limit\": 5,\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }, {\n      \"id\": 5,\n      \"product_type_id\": 3,\n      \"limitation_set_id\": 1,\n      \"limit\": 2,\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 4\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -697,7 +652,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"voluptatum\",\"limitation_set_id\":\"rerum\",\"limit\":10}"
+                            "raw": "{\"product_type_id\":\"50080528753334\",\"limitation_set_id\":\"50080528753334\",\"limit\":3}"
                         },
                         "description": ""
                     },
@@ -715,7 +670,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "19",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -736,22 +691,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 1,\n  \"product_type_id\": 1,\n  \"limitation_set_id\": 1,\n  \"limit\": 3,\n  \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n  \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -768,7 +710,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "5",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -786,7 +728,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_type_id\":\"quaerat\",\"limitation_set_id\":\"libero\",\"limit\":4}"
+                            "raw": "{\"product_type_id\":\"50080528753334\",\"limitation_set_id\":\"50080528753334\",\"limit\":3}"
                         },
                         "description": ""
                     },
@@ -804,7 +746,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "16",
+                                    "value": "1",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -823,7 +765,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -840,31 +789,31 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "id",
+                                    "value": "eum",
                                     "description": "Filter by name.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.0",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid from is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.1",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid from is before this date. Must be a valid date. This field is required when valid_from.0 is present.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.0",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid until is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.1",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Valid until is before this date. Must be a valid date. This field is required when valid_until.0 is present.",
                                     "disabled": false
                                 },
@@ -882,12 +831,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "18",
+                                    "value": "19",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set?name=id&valid_from.0=2022-08-21T14%3A07%3A38&valid_from.1=2022-08-21T14%3A07%3A38&valid_until.0=2022-08-21T14%3A07%3A38&valid_until.1=2022-08-21T14%3A07%3A38&sort=valid_until&order=asc&page=18"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set?name=eum&valid_from.0=2022-08-22T11%3A10%3A17&valid_from.1=2022-08-22T11%3A10%3A17&valid_until.0=2022-08-22T11%3A10%3A17&valid_until.1=2022-08-22T11%3A10%3A17&sort=valid_until&order=asc&page=19"
                         },
                         "method": "GET",
                         "header": [
@@ -905,22 +854,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"name\": \"limitation_set 1\",\n      \"valid_from\": \"1999-08-20 22:00:00\",\n      \"valid_until\": \"2016-08-20 22:00:00\",\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }, {\n      \"id\": 2,\n      \"name\": \"limitation_set 2\",\n      \"valid_from\": \"2020-02-14 00:00:00\",\n      \"valid_until\": \"2021-05-17 00:00:00\",\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -947,7 +883,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"voluptas\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"A set to limit them all ~ Tolkien II\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -965,7 +901,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "12",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -986,22 +922,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 1,\n  \"name\": \"limitation_set 1\",\n  \"valid_from\": \"1999-08-20 22:00:00\",\n  \"valid_until\": \"2016-08-20 22:00:00\",\n  \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n  \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1018,7 +941,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -1036,7 +959,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"autem\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"name\":\"A set to limit them all ~ Tolkien II\",\"valid_from\":\"2022-08-04 12:00:00\",\"valid_until\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -1054,7 +977,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "9",
+                                    "value": "1",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -1073,7 +996,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1108,24 +1038,24 @@
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "id",
+                                    "value": "visit_id",
                                     "description": "Sort by given field. Must be one of id, visit_id, person_id, or product_type_id.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "asc",
+                                    "value": "desc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "15",
+                                    "value": "4",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/lineItem?visit_id=&person_id=&product_type_id=&sort=id&order=asc&page=15"
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem?visit_id=&person_id=&product_type_id=&sort=visit_id&order=desc&page=4"
                         },
                         "method": "GET",
                         "header": [
@@ -1143,22 +1073,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 6,\n      \"visit_id\": 5,\n      \"person_id\": 1,\n      \"product_type_id\": 1,\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }, {\n      \"id\": 7,\n      \"visit_id\": 6,\n      \"person_id\": 1,\n      \"product_type_id\": 1,\n      \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n    },\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 6\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -1185,7 +1102,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"visit_id\":\"consectetur\",\"person_id\":\"et\",\"product_type_id\":\"cumque\"}"
+                            "raw": "{\"visit_id\":\"50080528753334\",\"person_id\":\"50080528753334\",\"product_type_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -1203,7 +1120,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1224,22 +1141,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 6,\n  \"visit_id\": 5,\n  \"person_id\": 1,\n  \"product_type_id\": 1,\n  \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n  \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1256,7 +1160,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "7",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1274,7 +1178,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"visit_id\":\"sapiente\",\"person_id\":\"debitis\",\"product_type_id\":\"vero\"}"
+                            "raw": "{\"visit_id\":\"50080528753334\",\"person_id\":\"50080528753334\",\"product_type_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -1292,7 +1196,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "3",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1311,7 +1215,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1328,54 +1239,54 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "recusandae",
+                                    "value": "distinctio",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "street",
-                                    "value": "et",
+                                    "value": "saepe",
                                     "description": "Street contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "postcode",
-                                    "value": "explicabo",
+                                    "value": "dolorem",
                                     "description": "Postcode contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "city",
-                                    "value": "numquam",
+                                    "value": "aut",
                                     "description": "City contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "contact",
-                                    "value": "distinctio",
+                                    "value": "dolor",
                                     "description": "Contact contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "id",
+                                    "value": "postcode",
                                     "description": "Sort by given field. Must be one of id, name, street, postcode, city, or contact.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "desc",
+                                    "value": "asc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "1",
+                                    "value": "14",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/organization?name=recusandae&street=et&postcode=explicabo&city=numquam&contact=distinctio&sort=id&order=desc&page=1"
+                            "raw": "{{baseUrl}}\/api\/admin\/organization?name=distinctio&street=saepe&postcode=dolorem&city=aut&contact=dolor&sort=postcode&order=asc&page=14"
                         },
                         "method": "GET",
                         "header": [
@@ -1393,22 +1304,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"instance_id\": 1,\n      \"name\": \"test\",\n      \"street\": \"abc\",\n      \"postcode\": \"12345\",\n      \"city\": \"abc\",\n      \"contact\": \"abc\",\n      \"created_at\": \"2022-08-15T17:23:12.000000Z\",\n      \"updated_at\": \"2022-08-15T17:23:12.000000Z\"\n    }, {\n      \"id\": 2,\n      \"instance_id\": 2,\n      \"name\": \"Instance\",\n      \"street\": \"Street\",\n      \"postcode\": \"Postcode\",\n      \"city\": \"City\",\n      \"contact\": \"Contact\",\n      \"created_at\": \"2022-08-21T11:34:14.000000Z\",\n      \"updated_at\": \"2022-08-21T11:34:14.000000Z\"\n    }, {\n      \"id\": 3,\n      \"instance_id\": 3,\n      \"name\": \"Instance\",\n      \"street\": \"Street\",\n      \"postcode\": \"Postcode\",\n      \"city\": \"City\",\n      \"contact\": \"Contact\",\n      \"created_at\": \"2022-08-21T11:34:55.000000Z\",\n      \"updated_at\": \"2022-08-21T11:34:55.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 1\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -1435,7 +1333,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"omnis\",\"street\":\"non\",\"postcode\":\"accusamus\",\"city\":\"dolores\",\"contact\":\"culpa\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
                         },
                         "description": ""
                     },
@@ -1474,22 +1372,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 2,\n  \"instance_id\": 2,\n  \"name\": \"Instance\",\n  \"street\": \"Street\",\n  \"postcode\": \"Postcode\",\n  \"city\": \"City\",\n  \"contact\": \"Contact\",\n  \"created_at\": \"2022-08-21T11:34:14.000000Z\",\n  \"updated_at\": \"2022-08-21T11:34:14.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1524,7 +1409,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"non\",\"street\":\"modi\",\"postcode\":\"nulla\",\"city\":\"consequatur\",\"contact\":\"ipsam\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
                         },
                         "description": ""
                     },
@@ -1561,7 +1446,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1594,7 +1486,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "50094827185706",
+                                    "value": "1",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -1656,36 +1548,36 @@
                                 },
                                 {
                                     "key": "gender",
-                                    "value": "rerum",
+                                    "value": "eos",
                                     "description": "Gender contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "age",
-                                    "value": "4",
+                                    "value": "8",
                                     "description": "Age is.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "gender",
+                                    "value": "id",
                                     "description": "Sort by given field. Must be one of id, card_id, gender, or age.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "desc",
+                                    "value": "asc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "16",
+                                    "value": "3",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/person?card_id=&gender=rerum&age=4&sort=gender&order=desc&page=16"
+                            "raw": "{{baseUrl}}\/api\/admin\/person?card_id=&gender=eos&age=8&sort=id&order=asc&page=3"
                         },
                         "method": "GET",
                         "header": [
@@ -1703,22 +1595,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"card_id\": 1,\n      \"gender\": \"male\",\n      \"age\": 18,\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2,\n      \"card_id\": 1,\n      \"gender\": \"female\",\n      \"age\": 15,\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 3,\n      \"card_id\": 49394739894111,\n      \"gender\": \"male\",\n      \"age\": 23,\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 3\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -1745,7 +1624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"eveniet\",\"gender\":\"magnam\",\"age\":14}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20}"
                         },
                         "description": ""
                     },
@@ -1763,7 +1642,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1784,22 +1663,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 2,\n  \"card_id\": 1,\n  \"gender\": \"female\",\n  \"age\": 15,\n  \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n  \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -1816,7 +1682,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1834,7 +1700,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"earum\",\"gender\":\"iusto\",\"age\":15}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20}"
                         },
                         "description": ""
                     },
@@ -1871,7 +1737,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1888,19 +1761,19 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "adipisci",
+                                    "value": "sit",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "icon",
-                                    "value": "maxime",
+                                    "value": "vitae",
                                     "description": "Icon contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "id",
+                                    "value": "name",
                                     "description": "Sort by given field. Must be one of id, name, or icon.",
                                     "disabled": false
                                 },
@@ -1912,12 +1785,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "7",
+                                    "value": "13",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-type?name=adipisci&icon=maxime&sort=id&order=asc&page=7"
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type?name=sit&icon=vitae&sort=name&order=asc&page=13"
                         },
                         "method": "GET",
                         "header": [
@@ -1935,22 +1808,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items: [\n    {\n      \"id\": 1,\n      \"name\": \"t-shirt\",\n      \"icon\": \"t-shirt icon\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2,\n      \"name\": \"shoe\",\n      \"icon\": \"shoe icon\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 3,\n      \"name\": \"sock\",\n      \"icon\": \"sock icon\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 3\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -1977,7 +1837,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"dolorem\",\"icon\":\"repudiandae\"}"
+                            "raw": "{\"name\":\"T-Shirt\",\"icon\":\"Icon value\"}"
                         },
                         "description": ""
                     },
@@ -1995,7 +1855,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "3",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -2016,22 +1876,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 1,\n  \"name\": \"t-shirt\",\n  \"icon\": \"t-shirt icon\",\n  \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n  \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -2048,7 +1895,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "10",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -2066,7 +1913,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"magnam\",\"icon\":\"quidem\"}"
+                            "raw": "{\"name\":\"T-Shirt\",\"icon\":\"Icon value\"}"
                         },
                         "description": ""
                     },
@@ -2084,7 +1931,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "5",
+                                    "value": "1",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -2103,7 +1950,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -2132,25 +1986,25 @@
                                 },
                                 {
                                     "key": "time.0",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Time is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "time.1",
-                                    "value": "2022-08-21T14%3A07%3A38",
+                                    "value": "2022-08-22T11%3A10%3A17",
                                     "description": "Time is before this date. Must be a valid date. This field is required when time.0 is present.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "id",
+                                    "value": "card_id",
                                     "description": "Sort by given field. Must be one of id, card_id, shop_id, or time.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "desc",
+                                    "value": "asc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
@@ -2161,7 +2015,7 @@
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/reservation?card_id=&shop_id=&time.0=2022-08-21T14%3A07%3A38&time.1=2022-08-21T14%3A07%3A38&sort=id&order=desc&page=10"
+                            "raw": "{{baseUrl}}\/api\/reservation?card_id=&shop_id=&time.0=2022-08-22T11%3A10%3A17&time.1=2022-08-22T11%3A10%3A17&sort=card_id&order=asc&page=10"
                         },
                         "method": "GET",
                         "header": [
@@ -2179,22 +2033,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 2,\n      \"card_id\": 1,\n      \"shop_id\": 1,\n      \"time\": \"2022-08-20T16:30:00.000000Z\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 3,\n      \"card_id\": 1,\n      \"shop_id\": 1,\n      \"time\": \"2022-08-20T08:00:00.000000Z\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 4,\n      \"card_id\": 1,\n      \"shop_id\": 1,\n      \"time\": \"2022-08-21T08:00:00.000000Z\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 5,\n      \"card_id\": 1,\n      \"shop_id\": 2,\n      \"time\": \"2022-08-21T15:00:00.000000Z\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 4\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -2221,7 +2062,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"delectus\",\"shop_id\":\"ipsam\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"shop_id\":\"50080528753334\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -2239,7 +2080,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "5",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2260,22 +2101,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 2,\n  \"card_id\": 1,\n  \"shop_id\": 1,\n  \"time\": \"2022-08-20T16:30:00.000000Z\",\n  \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n  \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -2292,7 +2120,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2310,7 +2138,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"a\",\"shop_id\":\"aliquam\",\"time\":\"2022-08-04 12:00:00\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"shop_id\":\"50080528753334\",\"time\":\"2022-08-04 12:00:00\"}"
                         },
                         "description": ""
                     },
@@ -2328,7 +2156,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "7",
+                                    "value": "2",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2347,7 +2175,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -2380,22 +2215,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"organization_id\": 1,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"oraganizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2\n      \"organization_id\": 3,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"organizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -2412,7 +2234,7 @@
                                 {
                                     "id": "shop_id",
                                     "key": "shop_id",
-                                    "value": "8",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2433,22 +2255,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 4,\n    \"card_id\": 1,\n    \"shop_id\": 1,\n    \"time\": \"2022-08-21T08:00:00.000000Z\",\n    \"created_at\": \"2022-08-19T08:00:00.000000Z\",\n    \"updated_at\": \"2022-08-19T08:00:00.000000Z\"\n  }, {\n    \"id\": 6,\n    \"card_id\": 2,\n    \"shop_id\": 1,\n    \"time\": \"2022-08-21T08:00:00.000000Z\",\n    \"created_at\": \"2022-08-19T08:00:00.000000Z\",\n    \"updated_at\": \"2022-08-19T08:00:00.000000Z\"\n  }\n]",
                             "name": ""
                         }
                     ]
@@ -2474,54 +2283,54 @@
                                 },
                                 {
                                     "key": "name",
-                                    "value": "omnis",
+                                    "value": "in",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "street",
-                                    "value": "autem",
+                                    "value": "qui",
                                     "description": "Street contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "postcode",
-                                    "value": "sit",
+                                    "value": "quae",
                                     "description": "Postcode contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "city",
-                                    "value": "nam",
+                                    "value": "et",
                                     "description": "City contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "contact",
-                                    "value": "quia",
+                                    "value": "tempore",
                                     "description": "Contact contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "contact",
+                                    "value": "city",
                                     "description": "Sort by given field. Must be one of id, organization_id, name, street, postcode, city, or contact.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "desc",
+                                    "value": "asc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "18",
+                                    "value": "5",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/shop?organization_id=&name=omnis&street=autem&postcode=sit&city=nam&contact=quia&sort=contact&order=desc&page=18"
+                            "raw": "{{baseUrl}}\/api\/admin\/shop?organization_id=&name=in&street=qui&postcode=quae&city=et&contact=tempore&sort=city&order=asc&page=5"
                         },
                         "method": "GET",
                         "header": [
@@ -2539,22 +2348,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"organization_id\": 1,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"oraganizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2\n      \"organization_id\": 3,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"organizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -2581,7 +2377,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"laboriosam\",\"name\":\"molestiae\",\"street\":\"aut\",\"postcode\":\"dolorem\",\"city\":\"rerum\",\"contact\":\"nisi\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}]}}"
+                            "raw": "{\"organization_id\":\"50080528753334\",\"name\":\"The friendly shop around the corner\",\"street\":\"Around the corner\",\"postcode\":\"50080\",\"city\":\"Cornville\",\"contact\":\"You can call me under 1-603-413-4124\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":4}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":2}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":6}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":4}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":4}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":2}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":2}]}}"
                         },
                         "description": ""
                     },
@@ -2599,7 +2395,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2620,22 +2416,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"organization_id\": 1,\n    \"name\": \"organization\",\n    \"street\": \"organizations street\",\n    \"postcode\": \"12345\",\n    \"city\": \"organizations city\",\n    \"contact\": \"organizations contact\",\n    \"opening_hours\": {\n      \"monday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ],\n      \"tuesday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ],\n      \"wednesday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ],\n      \"thursday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ],\n      \"friday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ],\n      \"saturday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ],\n      \"sunday\": [\n        {\n          \"opens_at\": \"08:00\",\n          \"closes_at\": \"17:00\"\n        }\n      ]\n    },\n    \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n    \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n  }\n]",
                             "name": ""
                         }
                     ]
@@ -2652,7 +2435,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "14",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2670,7 +2453,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"ut\",\"name\":\"consectetur\",\"street\":\"incidunt\",\"postcode\":\"corporis\",\"city\":\"et\",\"contact\":\"explicabo\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":0}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":1}]}}"
+                            "raw": "{\"organization_id\":\"50080528753334\",\"name\":\"The friendly shop around the corner\",\"street\":\"Around the corner\",\"postcode\":\"50080\",\"city\":\"Cornville\",\"contact\":\"You can call me under 1-603-413-4124\",\"opening_hours\":{\"monday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":4}],\"tuesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":2}],\"wednesday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":6}],\"thursday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":4}],\"friday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":4}],\"saturday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":2}],\"sunday\":[{\"opens_at\":\"07:30\",\"closes_at\":\"19:00\",\"slots\":2}]}}"
                         },
                         "description": ""
                     },
@@ -2688,7 +2471,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "18",
+                                    "value": "1",
                                     "description": "The ID of the shop."
                                 }
                             ]
@@ -2707,7 +2490,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -2730,19 +2520,19 @@
                                 },
                                 {
                                     "key": "name",
-                                    "value": "quasi",
+                                    "value": "exercitationem",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "email",
-                                    "value": "in",
+                                    "value": "corrupti",
                                     "description": "E-Mail contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "name",
+                                    "value": "organization_id",
                                     "description": "Sort by given field. Must be one of id, organization_id, name, or email.",
                                     "disabled": false
                                 },
@@ -2754,12 +2544,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "16",
+                                    "value": "17",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/user?organization_id=&name=quasi&email=in&sort=name&order=desc&page=16"
+                            "raw": "{{baseUrl}}\/api\/admin\/user?organization_id=&name=exercitationem&email=corrupti&sort=organization_id&order=desc&page=17"
                         },
                         "method": "GET",
                         "header": [
@@ -2777,22 +2567,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 3,\n      \"instance_id\": 3,\n      \"organization_id\": 3,\n      \"name\": \"Rene\",\n      \"email\": \"rene@web.de\",\n      \"created_at\": \"2022-08-21T11:34:55.000000Z\",\n      \"updated_at\": \"2022-08-21T11:34:55.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 1\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -2819,7 +2596,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"assumenda\",\"name\":\"consequatur\",\"email\":\"beahan.antonietta@example.net\",\"password\":\"facilis\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\"}"
                         },
                         "description": ""
                     },
@@ -2908,7 +2685,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organization_id\":\"placeat\",\"name\":\"amet\",\"email\":\"hbosco@example.net\",\"password\":\"necessitatibus\"}"
+                            "raw": "{\"instance_id\":\"50080528753334\",\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\"}"
                         },
                         "description": ""
                     },
@@ -2945,7 +2722,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -2974,7 +2758,7 @@
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "user_id",
+                                    "value": "card_id",
                                     "description": "Sort by given field. Must be one of id, card_id, or user_id.",
                                     "disabled": false
                                 },
@@ -2986,12 +2770,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "17",
+                                    "value": "20",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/visit?card_id=&user_id=&sort=user_id&order=desc&page=17"
+                            "raw": "{{baseUrl}}\/api\/admin\/visit?card_id=&user_id=&sort=card_id&order=desc&page=20"
                         },
                         "method": "GET",
                         "header": [
@@ -3009,22 +2793,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 6,\n      \"card_id\": 1,\n      \"user_id\": 1,\n      \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n    }, {\n      \"id\": 7,\n      \"card_id\": 1,\n      \"user_id\": 1,\n      \"created_at\": \"2022-08-17T13:52:35.000000Z\",\n      \"updated_at\": \"2022-08-17T13:52:35.000000Z\"\n    }, {\n      \"id\": 8,\n      \"card_id\": 1,\n      \"user_id\": 3,\n      \"created_at\": \"2022-08-21T11:50:35.000000Z\",\n      \"updated_at\": \"2022-08-21T11:50:35.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -3051,7 +2822,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"et\",\"user_id\":\"quasi\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"user_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -3069,7 +2840,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "6",
+                                    "value": "1",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -3090,22 +2861,9 @@
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "vary",
-                                    "value": "Origin"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 6,\n  \"card_id\": 1,\n  \"user_id\": 1,\n  \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n  \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n}",
                             "name": ""
                         }
                     ]
@@ -3122,7 +2880,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "1",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -3140,7 +2898,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"architecto\",\"user_id\":\"veritatis\"}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"user_id\":\"50080528753334\"}"
                         },
                         "description": ""
                     },
@@ -3158,7 +2916,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "5",
+                                    "value": "1",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -3177,7 +2935,14 @@
                         "body": null,
                         "description": ""
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"success\": true\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }

@@ -34,9 +34,11 @@ class ManageProductTypeRequest extends FormRequest
         return [
             'name' => [
                 'description' => 'Name of the product type',
+                'example' => 'T-Shirt'
             ],
             'icon' => [
-                'description' => 'Icon of the product type'
+                'description' => 'Icon of the product type',
+                'example' => 'Icon value'
             ]
         ];
     }

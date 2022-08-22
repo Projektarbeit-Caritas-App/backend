@@ -37,19 +37,24 @@ class ManageUserRequest extends FormRequest
     {
         return [
             'instance_id' => [
-                'description' => 'ID of the instance the user is attached to'
+                'description' => 'ID of the instance the user is attached to',
+                'example' => '50080528753334'
             ],
             'organization_id' => [
-                'description' => 'ID of the organization the user is attached to'
+                'description' => 'ID of the organization the user is attached to',
+                'example' => '50080528753334'
             ],
             'name' => [
-                'description' => 'Name of the user'
+                'description' => 'Name of the user',
+                'example' => 'xX_B4d-gUY_08_Xx'
             ],
             'email' => [
-                'description' => 'Email of the user'
+                'description' => 'Email of the user',
+                'example' => 'B4d-gUY@web.de'
             ],
             'password' => [
-                'description' => 'Password of the user'
+                'description' => 'Password of the user',
+                'example' => 'MyP4zzW0rD'
             ]
         ];
     }

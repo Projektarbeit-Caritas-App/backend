@@ -16,6 +16,52 @@ class OrganizationManagerController extends Controller
     /**
      * List all Organization
      *
+     * @response status=200 {
+     *   "items": [
+     *     {
+     *       "id": 1,
+     *       "instance_id": 1,
+     *       "name": "test",
+     *       "street": "abc",
+     *       "postcode": "12345",
+     *       "city": "abc",
+     *       "contact": "abc",
+     *       "created_at": "2022-08-15T17:23:12.000000Z",
+     *       "updated_at": "2022-08-15T17:23:12.000000Z"
+     *     }, {
+     *       "id": 2,
+     *       "instance_id": 2,
+     *       "name": "Instance",
+     *       "street": "Street",
+     *       "postcode": "Postcode",
+     *       "city": "City",
+     *       "contact": "Contact",
+     *       "created_at": "2022-08-21T11:34:14.000000Z",
+     *       "updated_at": "2022-08-21T11:34:14.000000Z"
+     *     }, {
+     *       "id": 3,
+     *       "instance_id": 3,
+     *       "name": "Instance",
+     *       "street": "Street",
+     *       "postcode": "Postcode",
+     *       "city": "City",
+     *       "contact": "Contact",
+     *       "created_at": "2022-08-21T11:34:55.000000Z",
+     *       "updated_at": "2022-08-21T11:34:55.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 1
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
+     *
      * @param \Illuminate\Http\Request $request
      * @return array
      */
@@ -60,7 +106,7 @@ class OrganizationManagerController extends Controller
     /**
      * Create new Organization
      *
-     * @param  \App\Http\Requests\ManageOrganizationRequest  $request
+     * @param \App\Http\Requests\ManageOrganizationRequest $request
      * @return \App\Models\Organization
      */
     public function store(ManageOrganizationRequest $request)
@@ -71,7 +117,19 @@ class OrganizationManagerController extends Controller
     /**
      * Show specified Organization
      *
-     * @param  \App\Models\Organization  $organization
+     * @response status=200 {
+     *   "id": 2,
+     *   "instance_id": 2,
+     *   "name": "Instance",
+     *   "street": "Street",
+     *   "postcode": "Postcode",
+     *   "city": "City",
+     *   "contact": "Contact",
+     *   "created_at": "2022-08-21T11:34:14.000000Z",
+     *   "updated_at": "2022-08-21T11:34:14.000000Z"
+     * }
+     *
+     * @param \App\Models\Organization $organization
      * @return \App\Models\Organization
      */
     public function show(Organization $organization)
@@ -82,8 +140,8 @@ class OrganizationManagerController extends Controller
     /**
      * Update specified Organization
      *
-     * @param  \App\Http\Requests\ManageOrganizationRequest  $request
-     * @param  \App\Models\Organization  $organization
+     * @param \App\Http\Requests\ManageOrganizationRequest $request
+     * @param \App\Models\Organization $organization
      * @return \App\Models\Organization
      */
     public function update(ManageOrganizationRequest $request, Organization $organization)
@@ -95,7 +153,11 @@ class OrganizationManagerController extends Controller
     /**
      * Delete specified Organization
      *
-     * @param  \App\Models\Organization  $organization
+     * @response status=200 {
+     *   "success": true
+     * }
+     *
+     * @param \App\Models\Organization $organization
      * @return array
      */
     public function destroy(Organization $organization)

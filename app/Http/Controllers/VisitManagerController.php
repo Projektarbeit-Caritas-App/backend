@@ -16,6 +16,40 @@ class VisitManagerController extends Controller
     /**
      * List all Visits
      *
+     * @response status=200 {
+     *   "items": [
+     *     {
+     *       "id": 6,
+     *       "card_id": 1,
+     *       "user_id": 1,
+     *       "created_at": "2022-08-16T16:32:52.000000Z",
+     *       "updated_at": "2022-08-16T16:32:52.000000Z"
+     *     }, {
+     *       "id": 7,
+     *       "card_id": 1,
+     *       "user_id": 1,
+     *       "created_at": "2022-08-17T13:52:35.000000Z",
+     *       "updated_at": "2022-08-17T13:52:35.000000Z"
+     *     }, {
+     *       "id": 8,
+     *       "card_id": 1,
+     *       "user_id": 3,
+     *       "created_at": "2022-08-21T11:50:35.000000Z",
+     *       "updated_at": "2022-08-21T11:50:35.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 2
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
+     *
      * @param \Illuminate\Http\Request $request
      * @return array
      */
@@ -59,6 +93,14 @@ class VisitManagerController extends Controller
     /**
      * Show specified Visit
      *
+     * @response status=200 {
+     *   "id": 6,
+     *   "card_id": 1,
+     *   "user_id": 1,
+     *   "created_at": "2022-08-16T16:32:52.000000Z",
+     *   "updated_at": "2022-08-16T16:32:52.000000Z"
+     * }
+     *
      * @param \App\Models\Visit $visit
      * @return \App\Models\Visit
      */
@@ -82,6 +124,10 @@ class VisitManagerController extends Controller
 
     /**
      * Delete specified Visit
+     *
+     * @response status=200 {
+     *   "success": true
+     * }
      *
      * @param \App\Models\Visit $visit
      * @return array
