@@ -97,7 +97,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.monday.*.slots' => [
-                'description' => 'Number of slots of the store for Monday'
+                'description' => 'Number of slots of the store for Monday',
+                'example' => '4'
             ],
             'opening_hours.tuesday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Tuesday',
@@ -108,7 +109,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.tuesday.*.slots' => [
-                'description' => 'Number of slots of the store for Tuesday'
+                'description' => 'Number of slots of the store for Tuesday',
+                'example' => '2'
             ],
             'opening_hours.wednesday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Wednesday',
@@ -119,7 +121,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.wednesday.*.slots' => [
-                'description' => 'Number of slots of the store for Wednesday'
+                'description' => 'Number of slots of the store for Wednesday',
+                'example' => '6'
             ],
             'opening_hours.thursday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Thursday',
@@ -130,7 +133,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.thursday.*.slots' => [
-                'description' => 'Number of slots of the store for Thursday'
+                'description' => 'Number of slots of the store for Thursday',
+                'example' => '4'
             ],
             'opening_hours.friday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Friday',
@@ -141,7 +145,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.friday.*.slots' => [
-                'description' => 'Number of slots of the store for Friday'
+                'description' => 'Number of slots of the store for Friday',
+                'example' => '4'
             ],
             'opening_hours.saturday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Saturday',
@@ -152,7 +157,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.saturday.*.slots' => [
-                'description' => 'Number of slots of the store for Saturday'
+                'description' => 'Number of slots of the store for Saturday',
+                'example' => '2'
             ],
             'opening_hours.sunday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Sunday',
@@ -163,7 +169,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.sunday.*.slots' => [
-                'description' => 'Number of slots of the store for Sunday'
+                'description' => 'Number of slots of the store for Sunday',
+                'example' => '2'
             ]
         ];
     }
