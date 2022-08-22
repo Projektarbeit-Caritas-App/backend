@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('card_id');
+            $table->foreignId('card_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('gender');
             $table->integer('age');
             $table->timestamps();
