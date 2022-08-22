@@ -27,6 +27,6 @@ class LimitationSet extends Model
 
     public function persons(): BelongsToMany
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class)->withTimestamps();
     }
 }

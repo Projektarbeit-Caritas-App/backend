@@ -27,7 +27,7 @@ class Person extends Model
 
     public function limitationSets(): BelongsToMany
     {
-        return $this->belongsToMany(LimitationSet::class);
+        return $this->belongsToMany(LimitationSet::class)->withTimestamps();
     }
 
     public function lineItems(): HasMany

@@ -60,7 +60,12 @@ class PersonManagerController extends Controller
     public function store(ManagePersonRequest $request): Model
     {
         $instance = Instance::find($request->user()->instance_id);
-        return $instance->people()->create($request->validated());
+
+        /** @var Person $person */
+        $person = $instance->people()->create($request->validated());
+        $person->limitationSets()->sync($request->validated('limitation_sets'));
+
+        return $person;
     }
 
     /**
@@ -84,6 +89,8 @@ class PersonManagerController extends Controller
     public function update(ManagePersonRequest $request, Person $person): Person
     {
         $person->update($request->validated());
+        $person->limitationSets()->sync($request->validated('limitation_sets'));
+
         return $person;
     }
 
