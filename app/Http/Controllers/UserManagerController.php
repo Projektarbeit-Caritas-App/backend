@@ -46,7 +46,13 @@ class UserManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(User::where('instance_id', $request->user()->instance_id), [
+        $query = User::where('instance_id', $request->user()->instance_id);
+
+        if (!$request->user()->hasPermissionTo('admin.user.index')) {
+            $query->where('organization_id', $request->user()->organization_id);
+        }
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
             'organization_id' => 'match',
             'name' => 'contains',
             'email' => 'contains'
@@ -62,7 +68,14 @@ class UserManagerController extends Controller
     public function store(ManageUserStoreRequest $request): Model
     {
         $validated = $request->validated();
-        $instance = Instance::find($request->user()->instance_id);
+        $instance  = Instance::find($request->user()->instance_id);
+
+        if (
+            !$request->user()->hasPermissionTo('admin.user.store') &&
+            $validated['organization_id'] !== $request->user()->organization_id
+        ) {
+            abort(403);
+        }
 
         /** @var User $user */
         $user = $instance->users()->create([

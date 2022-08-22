@@ -53,7 +53,13 @@ class ShopManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Shop::where('instance_id', $request->user()->instance_id), [
+        $query = Shop::where('instance_id', $request->user()->instance_id);
+
+        if (!$request->user()->hasPermissionTo('admin.shop.index')) {
+            $query->where('organization_id', $request->user()->organization_id);
+        }
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
             'organization_id' => 'match',
             'name' => 'contains',
             'street' => 'contains',
@@ -71,8 +77,17 @@ class ShopManagerController extends Controller
      */
     public function store(ManageShopRequest $request): Model
     {
+        $validated = $request->validated();
+
+        if (
+            !$request->user()->hasPermissionTo('admin.shop.store') &&
+            $validated['organization_id'] !== $request->user()->organization_id
+        ) {
+            abort(403);
+        }
+
         $instance = Instance::find($request->user()->instance_id);
-        return $instance->shops()->create($request->validated());
+        return $instance->shops()->create($validated);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageReservationRequest;
 use App\Models\Reservation;
+use App\Models\Shop;
 use App\Service\ModelFilterService;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,13 @@ class ReservationManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Reservation::query(), [
+        $query = Reservation::where('instance_id', $request->user()->instance_id);
+
+        if (!$request->user()->hasPermissionTo('admin.reservation.index')) {
+            $query->whereRelation('shop', 'organization_id', $request->user()->organization_id);
+        }
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
             'card_id' => 'match',
             'shop_id' => 'match',
             'time' => 'range'
@@ -60,7 +67,17 @@ class ReservationManagerController extends Controller
      */
     public function store(ManageReservationRequest $request): Reservation
     {
-        return Reservation::create($request->validated());
+        $validated = $request->validated();
+
+        if (!$request->user()->hasPermissionTo('admin.reservation.store')) {
+            $shop = Shop::find($validated['shop_id']);
+
+            if ($shop === null || $shop->organization_id !== $request->user()->organization_id) {
+                abort(403);
+            }
+        }
+
+        return Reservation::create($validated);
     }
 
     /**

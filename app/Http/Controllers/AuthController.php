@@ -120,7 +120,9 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attemptWhen($credentials, function (User $user) {
+            return $user->hasPermissionTo('auth.admin');
+        })) {
             $request->session()->regenerate();
             $user = User::with(['permissions', 'roles', 'instance', 'organization'])
                 ->find(Auth::user()->id)
@@ -222,7 +224,7 @@ class AuthController extends Controller
             ->get()
             ->first();
 
-        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+        if (!$user || !Hash::check($credentials['password'], $user->password) || !$user->hasPermission('auth.app')) {
             return response([
                 'success' => false
             ], 401);
