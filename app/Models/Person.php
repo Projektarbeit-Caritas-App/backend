@@ -15,6 +15,11 @@ class Person extends Model
         'age'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     public function card(): BelongsTo
     {
         return $this->belongsTo(Card::class);
@@ -22,7 +27,7 @@ class Person extends Model
 
     public function limitationSets(): BelongsToMany
     {
-        return $this->belongsToMany(LimitationSet::class);
+        return $this->belongsToMany(LimitationSet::class)->withTimestamps();
     }
 
     public function lineItems(): HasMany

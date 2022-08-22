@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ManageReservationRequest;
 use App\Models\Reservation;
+use App\Models\Shop;
 use App\Service\ModelFilterService;
 use Illuminate\Http\Request;
 
@@ -11,13 +12,11 @@ use Illuminate\Http\Request;
  * @group Reservation
  * @authenticated
  */
-class ReservationController extends Controller
+class ReservationManagerController extends Controller
 {
     /**
      * List all Reservations
      *
-     * @param \Illuminate\Http\Request $request
-     * @return array
      * @response status=200 {
      *   "items": [
      *     {
@@ -62,7 +61,8 @@ class ReservationController extends Controller
      *   }
      * }
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
     public function index(Request $request): array
     {
@@ -90,7 +90,13 @@ class ReservationController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Reservation::query(), [
+        $query = Reservation::where('instance_id', $request->user()->instance_id);
+
+        if (!$request->user()->hasPermissionTo('admin.reservation.index')) {
+            $query->whereRelation('shop', 'organization_id', $request->user()->organization_id);
+        }
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
             'card_id' => 'match',
             'shop_id' => 'match',
             'time' => 'range'
@@ -100,12 +106,22 @@ class ReservationController extends Controller
     /**
      * Create new Reservation
      *
-     * @param \App\Http\Requests\ReservationRequest $request
+     * @param \App\Http\Requests\ManageReservationRequest $request
      * @return \App\Models\Reservation
      */
-    public function store(ReservationRequest $request): Reservation
+    public function store(ManageReservationRequest $request): Reservation
     {
-        return Reservation::create($request->validated());
+        $validated = $request->validated();
+
+        if (!$request->user()->hasPermissionTo('admin.reservation.store')) {
+            $shop = Shop::find($validated['shop_id']);
+
+            if ($shop === null || $shop->organization_id !== $request->user()->organization_id) {
+                abort(403);
+            }
+        }
+
+        return Reservation::create($validated);
     }
 
     /**
@@ -131,11 +147,11 @@ class ReservationController extends Controller
     /**
      * Update specified Reservation
      *
-     * @param \App\Http\Requests\ReservationRequest $request
+     * @param \App\Http\Requests\ManageReservationRequest $request
      * @param \App\Models\Reservation $reservation
      * @return \App\Models\Reservation
      */
-    public function update(ReservationRequest $request, Reservation $reservation): Reservation
+    public function update(ManageReservationRequest $request, Reservation $reservation): Reservation
     {
         $reservation->update($request->validated());
         return $reservation;

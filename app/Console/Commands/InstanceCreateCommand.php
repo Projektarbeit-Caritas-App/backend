@@ -78,6 +78,7 @@ class InstanceCreateCommand extends Command
         $user->password    = Hash::make($password);
         $user->instance_id = $instance->id;
         $organization->users()->save($user);
+        $user->assignRole('instance_manager');
         $this->info('User created');
 
         return 0;

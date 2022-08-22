@@ -43,9 +43,10 @@ class ScheduleController extends Controller
      */
     public function today(Shop $shop): Collection
     {
-        return Reservation::whereBetween('time',
-            [date('Y-m-d') . ' 00:00:00', date('Y-m-d') . ' 23:59:59'])
-            ->where('shop_id', $shop->id)->get();
+        return Reservation::whereBetween('time', [
+            date('Y-m-d') . ' 00:00:00',
+            date('Y-m-d') . ' 23:59:59'
+        ])->where('shop_id', $shop->id)->get();
     }
 
     /**

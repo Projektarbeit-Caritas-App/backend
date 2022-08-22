@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageVisitRequest;
+use App\Models\Instance;
 use App\Models\Visit;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -73,7 +75,7 @@ class VisitManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Visit::query(), [
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Visit::where('instance_id', $request->user()->instance_id), [
             'card_id' => 'match',
             'user_id' => 'match'
         ], $filters));
@@ -83,11 +85,12 @@ class VisitManagerController extends Controller
      * Create new Visit
      *
      * @param \App\Http\Requests\ManageVisitRequest $request
-     * @return \App\Models\Visit
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageVisitRequest $request): Visit
+    public function store(ManageVisitRequest $request): Model
     {
-        return Visit::create($request->validated());
+        $instance = Instance::find($request->user()->instance_id);
+        return $instance->visits()->create($request->validated());
     }
 
     /**
