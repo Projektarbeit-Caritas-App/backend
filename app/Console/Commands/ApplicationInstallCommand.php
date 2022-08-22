@@ -320,7 +320,7 @@ class ApplicationInstallCommand extends Command
             'auth.app',
             'auth.admin',
 
-            // CardVisit permissions
+            // Checkout permissions
             'card.visit.show',
             'card.visit.store',
 
