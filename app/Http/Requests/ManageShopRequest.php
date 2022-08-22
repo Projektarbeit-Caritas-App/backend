@@ -31,32 +31,32 @@ class ManageShopRequest extends FormRequest
             'city' => 'string|required',
             'contact' => 'string|required',
             'opening_hours.monday' => 'array|nullable',
-            'opening_hours.monday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/|required',
-            'opening_hours.monday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.monday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.monday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.monday.*.slots' => 'int|min:1|required',
             'opening_hours.tuesday' => 'array|nullable',
-            'opening_hours.tuesday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
-            'opening_hours.tuesday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.tuesday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.tuesday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.tuesday.*.slots' => 'int|min:1|required',
             'opening_hours.wednesday' => 'array|nullable',
-            'opening_hours.wednesday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
-            'opening_hours.wednesday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.wednesday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.wednesday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.wednesday.*.slots' => 'int|min:1|required',
             'opening_hours.thursday' => 'array|nullable',
-            'opening_hours.thursday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
-            'opening_hours.thursday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.thursday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.thursday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.thursday.*.slots' => 'int|min:1|required',
             'opening_hours.friday' => 'array|nullable',
-            'opening_hours.friday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
-            'opening_hours.friday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.friday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.friday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.friday.*.slots' => 'int|min:1|required',
             'opening_hours.saturday' => 'array|nullable',
-            'opening_hours.saturday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
-            'opening_hours.saturday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.saturday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.saturday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.saturday.*.slots' => 'int|min:1|required',
             'opening_hours.sunday' => 'array|nullable',
-            'opening_hours.sunday.*.opens_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
-            'opening_hours.sunday.*.closes_at' => 'string|regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$|required',
+            'opening_hours.sunday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
+            'opening_hours.sunday.*.closes_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],
             'opening_hours.sunday.*.slots' => 'int|min:1|required',
         ];
     }
@@ -65,22 +65,28 @@ class ManageShopRequest extends FormRequest
     {
         return [
             'organization_id' => [
-                'description' => 'ID of the organization the shop is attached to'
+                'description' => 'ID of the organization the shop is attached to',
+                'example' => '50080528753334'
             ],
             'name' => [
-                'description' => 'Name of the shop'
+                'description' => 'Name of the shop',
+                'example' => 'The friendly shop around the corner'
             ],
             'street' => [
-                'description' => 'Street where the shop is located'
+                'description' => 'Street where the shop is located',
+                'example' => 'Around the corner'
             ],
             'postcode' => [
-                'description' => 'Postcode where the shop is located'
+                'description' => 'Postcode where the shop is located',
+                'example' => '50080'
             ],
             'city' => [
-                'description' => 'City where the shop is located'
+                'description' => 'City where the shop is located',
+                'example' => 'Cornville'
             ],
             'contact' => [
-                'description' => 'Contact information from the shop'
+                'description' => 'Contact information from the shop',
+                'example' => 'You can call me under 1-603-413-4124'
             ],
             'opening_hours.monday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Monday',
@@ -91,7 +97,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.monday.*.slots' => [
-                'description' => 'Number of slots of the store for Monday'
+                'description' => 'Number of slots of the store for Monday',
+                'example' => '4'
             ],
             'opening_hours.tuesday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Tuesday',
@@ -102,7 +109,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.tuesday.*.slots' => [
-                'description' => 'Number of slots of the store for Tuesday'
+                'description' => 'Number of slots of the store for Tuesday',
+                'example' => '2'
             ],
             'opening_hours.wednesday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Wednesday',
@@ -113,7 +121,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.wednesday.*.slots' => [
-                'description' => 'Number of slots of the store for Wednesday'
+                'description' => 'Number of slots of the store for Wednesday',
+                'example' => '6'
             ],
             'opening_hours.thursday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Thursday',
@@ -124,7 +133,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.thursday.*.slots' => [
-                'description' => 'Number of slots of the store for Thursday'
+                'description' => 'Number of slots of the store for Thursday',
+                'example' => '4'
             ],
             'opening_hours.friday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Friday',
@@ -135,7 +145,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.friday.*.slots' => [
-                'description' => 'Number of slots of the store for Friday'
+                'description' => 'Number of slots of the store for Friday',
+                'example' => '4'
             ],
             'opening_hours.saturday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Saturday',
@@ -146,7 +157,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.saturday.*.slots' => [
-                'description' => 'Number of slots of the store for Saturday'
+                'description' => 'Number of slots of the store for Saturday',
+                'example' => '2'
             ],
             'opening_hours.sunday.*.opens_at' => [
                 'description' => 'Time of opening of the store on Sunday',
@@ -157,7 +169,8 @@ class ManageShopRequest extends FormRequest
                 'example' => '19:00'
             ],
             'opening_hours.sunday.*.slots' => [
-                'description' => 'Number of slots of the store for Sunday'
+                'description' => 'Number of slots of the store for Sunday',
+                'example' => '2'
             ]
         ];
     }

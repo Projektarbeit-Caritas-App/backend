@@ -35,13 +35,16 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'lineItems.*.person_id' => [
-                'description' => 'ID of the person the lineItem is for'
+                'description' => 'ID of the person the lineItem is for',
+                'example' => '50080528753334'
             ],
             'lineItems.*.product_type_id' => [
                 'description' => 'ID of the product_type of the lineItem',
+                'example' => '50080528753334'
             ],
             'lineItems.*.amount' => [
                 'description' => 'The amount of purchased lineItems of the same product_type',
+                'example' => '5'
             ]
         ];
     }

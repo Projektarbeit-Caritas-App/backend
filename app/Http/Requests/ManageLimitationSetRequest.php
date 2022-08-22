@@ -34,7 +34,8 @@ class ManageLimitationSetRequest extends FormRequest
     {
         return [
             'name' => [
-                'description' => 'Name of the limitation set'
+                'description' => 'Name of the limitation set',
+                'example' => 'A set to limit them all ~ Tolkien II'
             ],
             'valid_from' => [
                 'description' => 'Date and time of the start of the validity of the limitation set.',

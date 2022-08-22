@@ -18,6 +18,36 @@ class LimitationSetManagerController extends Controller
     /**
      * List all LimitationSets
      *
+     * @response status=200 {
+     *   "items": [
+     *     {
+     *       "id": 1,
+     *       "name": "limitation_set 1",
+     *       "valid_from": "1999-08-20 22:00:00",
+     *       "valid_until": "2016-08-20 22:00:00",
+     *       "created_at": "2022-08-16T16:32:23.000000Z",
+     *       "updated_at": "2022-08-16T16:32:23.000000Z"
+     *     }, {
+     *       "id": 2,
+     *       "name": "limitation_set 2",
+     *       "valid_from": "2020-02-14 00:00:00",
+     *       "valid_until": "2021-05-17 00:00:00",
+     *       "created_at": "2022-08-16T16:32:23.000000Z",
+     *       "updated_at": "2022-08-16T16:32:23.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 2
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
+     *
      * @param \Illuminate\Http\Request $request
      * @return array
      */
@@ -72,7 +102,16 @@ class LimitationSetManagerController extends Controller
     /**
      * Show specified LimitationSet
      *
-     * @param  \App\Models\LimitationSet  $limitationSet
+     * @response status=200 {
+     *   "id": 1,
+     *   "name": "limitation_set 1",
+     *   "valid_from": "1999-08-20 22:00:00",
+     *   "valid_until": "2016-08-20 22:00:00",
+     *   "created_at": "2022-08-16T16:32:23.000000Z",
+     *   "updated_at": "2022-08-16T16:32:23.000000Z"
+     * }
+     *
+     * @param \App\Models\LimitationSet $limitationSet
      * @return \App\Models\LimitationSet
      */
     public function show(LimitationSet $limitationSet): LimitationSet
@@ -96,7 +135,11 @@ class LimitationSetManagerController extends Controller
     /**
      * Delete specified LimitationSet
      *
-     * @param  \App\Models\LimitationSet  $limitationSet
+     * @response status=200 {
+     *   "success": true
+     * }
+     *
+     * @param \App\Models\LimitationSet $limitationSet
      * @return array
      */
     public function destroy(LimitationSet $limitationSet): array

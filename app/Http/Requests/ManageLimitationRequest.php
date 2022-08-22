@@ -34,13 +34,16 @@ class ManageLimitationRequest extends FormRequest
     {
         return [
             'product_type_id' => [
-                'description' => 'ID of the product type the limitation is attached to'
+                'description' => 'ID of the product type the limitation is attached to',
+                'example' => '50080528753334'
             ],
             'limitation_set_id' => [
-                'description' => 'ID of the limitation set the limitation is attached to'
+                'description' => 'ID of the limitation set the limitation is attached to',
+                'example' => '50080528753334'
             ],
             'limit' => [
-                'description' => 'Number that determines the limit'
+                'description' => 'Number that determines the limit',
+                'example' => '3'
             ]
         ];
     }

@@ -35,19 +35,24 @@ class ManageOrganizationRequest extends FormRequest
     public function bodyParameters() {
         return [
             'name' => [
-                'description' => 'Name of the organization'
+                'description' => 'Name of the organization',
+                'example' => 'Caritas'
             ],
             'street' => [
-                'description' => 'Street where the organization is located'
+                'description' => 'Street where the organization is located',
+                'example' => 'Franziskanergasse 3'
             ],
             'postcode' => [
-                'description' => 'Postcode where the organization is located'
+                'description' => 'Postcode where the organization is located',
+                'example' => ' 97070'
             ],
             'city' => [
-                'description' => 'City where the organization is located'
+                'description' => 'City where the organization is located',
+                'example' => 'Wuerzburg'
             ],
             'contact' => [
-                'description' => 'Contact information from the organization'
+                'description' => 'Contact information from the organization',
+                'example' => 'You can call me under 1-603-413-4124'
             ],
         ];
     }

@@ -36,13 +36,16 @@ class ManagePersonRequest extends FormRequest
     {
         return [
             'card_id' => [
-                'description' => 'ID of the card the person is attached to'
+                'description' => 'ID of the card the person is attached to',
+                'example' => '50080528753334'
             ],
             'gender' => [
-                'description' => 'Gender of the person'
+                'description' => 'Gender of the person',
+                'example' => 'male'
             ],
             'age' => [
-                'description' => 'Age of the Person'
+                'description' => 'Age of the Person',
+                'example' => '20'
             ],
             'limitation_sets.*' => [
                 'description' => 'IDs of the limitation_sets',
