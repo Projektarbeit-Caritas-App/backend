@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class ManageUserRequest extends FormRequest
+class ManageUserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,8 @@ class ManageUserRequest extends FormRequest
             'organization_id' => 'exists:organizations,id|required',
             'name' => 'string|required',
             'email' => 'email:rfc,dns|required',
-            'password' => ['string', 'confirmed', 'required', Password::defaults()],
+            'password' => ['string', 'confirmed', 'nullable', Password::defaults()],
+            'role' => 'string|in:inactive,external_employee,external_manager,employee,organization_manager,instance_manager|required'
         ];
     }
 
@@ -46,6 +47,9 @@ class ManageUserRequest extends FormRequest
             ],
             'password' => [
                 'description' => 'Password of the user'
+            ],
+            'roles' => [
+                'description' => 'Role the user gets assigned'
             ]
         ];
     }

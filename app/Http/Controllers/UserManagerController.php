@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ManageUserRequest;
+use App\Http\Requests\ManageUserStoreRequest;
+use App\Http\Requests\ManageUserUpdateRequest;
 use App\Models\Instance;
 use App\Models\User;
 use App\Service\ModelFilterService;
@@ -55,20 +56,26 @@ class UserManagerController extends Controller
     /**
      * Create new User
      *
-     * @param \App\Http\Requests\ManageUserRequest $request
+     * @param \App\Http\Requests\ManageUserStoreRequest $request
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageUserRequest $request): Model
+    public function store(ManageUserStoreRequest $request): Model
     {
         $validated = $request->validated();
         $instance = Instance::find($request->user()->instance_id);
 
-        return $instance->users()->create([
+        /** @var User $user */
+        $user = $instance->users()->create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'organization_id' => $validated['organization_id']
         ]);
+
+        if ($request->user()->id !== $user->id) {
+            $user->syncRoles([$validated['role']]);
+        }
+        return $user;
     }
 
     /**
@@ -85,14 +92,32 @@ class UserManagerController extends Controller
     /**
      * Update specified User
      *
-     * @param \App\Http\Requests\ManageUserRequest $request
+     * @param \App\Http\Requests\ManageUserUpdateRequest $request
      * @param \App\Models\User $user
      * @return \App\Models\User
      */
-    public function update(ManageUserRequest $request, User $user): User
+    public function update(ManageUserUpdateRequest $request, User $user): User
     {
-        $user->update($request->validated());
+        $validated = $request->validated();
+
+        $data = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'organization_id' => $validated['organization_id']
+        ];
+
+        if ($validated['password'] !== null) {
+            $data['password'] = Hash::make($validated['password']);
+        }
+
+        $user->update($data);
+
+        if ($request->user()->id !== $user->id) {
+            $user->syncRoles($validated['role']);
+        }
+
         $user->tokens()->delete();
+
         return $user;
     }
 
