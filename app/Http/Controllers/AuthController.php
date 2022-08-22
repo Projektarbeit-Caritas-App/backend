@@ -120,7 +120,9 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attemptWhen($credentials, function (User $user) {
+            return $user->hasPermissionTo('auth.admin');
+        })) {
             $request->session()->regenerate();
             $user = User::with(['permissions', 'roles', 'instance', 'organization'])
                 ->find(Auth::user()->id)
@@ -222,15 +224,14 @@ class AuthController extends Controller
             ->get()
             ->first();
 
-        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+        if (!$user || !Hash::check($credentials['password'], $user->password) || !$user->hasPermission('auth.app')) {
             return response([
                 'success' => false
             ], 401);
         } else {
-            // TODO: Add abilities for mobile-App
             return response([
                 'success' => true,
-                'token' => $user->createToken($credentials['device_name'], ['abilities'])->plainTextToken,
+                'token' => $user->createToken($credentials['device_name'], ['app'])->plainTextToken,
                 'user' => $this->getUserData($user)
             ], 200);
         }
@@ -347,16 +348,8 @@ class AuthController extends Controller
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
-            'roles' => $user->roles->map(function ($role) {
-                return $role->name;
-            }),
-            'permissions' => collect($user->permissions->map(function ($permission) {
-                return $permission->name;
-            }))->add($user->roles->map(function ($role) {
-                return $role->permissions->map(function ($permission) {
-                    return $permission->name;
-                });
-            }))->flatten()->unique()->sort()->values(),
+            'roles' => $user->roles->pluck('name'),
+            'permissions' => $user->getAllPermissions()->pluck('name'),
             'instance' => $user->instance,
             'organization' => $user->organization->makeHidden('instance_id'),
             'created_at' => $user->created_at,

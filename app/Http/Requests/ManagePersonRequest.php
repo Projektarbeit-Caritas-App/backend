@@ -26,7 +26,9 @@ class ManagePersonRequest extends FormRequest
         return [
             'card_id' => 'exists:cards,id|required',
             'gender' => 'string|required',
-            'age' => 'int|required'
+            'age' => 'int|required',
+            'limitation_sets' => 'array|nullable',
+            'limitation_sets.*' => 'exists:limitation_sets,id|required'
         ];
     }
 
@@ -44,6 +46,10 @@ class ManagePersonRequest extends FormRequest
             'age' => [
                 'description' => 'Age of the Person',
                 'example' => '20'
+            ],
+            'limitation_sets.*' => [
+                'description' => 'IDs of the limitation_sets',
+                'example' => '49394739894111'
             ]
         ];
     }

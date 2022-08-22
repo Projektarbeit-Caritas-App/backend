@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "c11033bc-1575-40b0-98c0-524c39d8779d",
+        "_postman_id": "dc045e15-7074-462c-9b5e-c4d6b1e6f02f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -88,7 +88,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"aut\",\"password\":\"in\"}"
+                            "raw": "{\"email\":\"quas\",\"password\":\"omnis\"}"
                         },
                         "description": "After you send a GET-request to <code>\/api\/handshake<\/code>, which will create the Session and give you a XSRF-Token,\nyou can send your Credentials to this endpoint and authenticate your session.\n\nAll further requests are now authenticated through cookies and do not require an Authorization-Header.\n\n<aside class=\"warning\">\n  If you get an Error 419, make sure your Request contains the X-XSRF-TOKEN header.\n  <p>\n    You can enable this in axios with the following line:\n    <pre style=\"float: none; width: 100%;\"><code>axios.defaults.withCredentials = true;<\/code><\/pre>\n  <\/p>\n<\/aside>",
                         "auth": {
@@ -132,7 +132,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"abbie03@example.com\",\"password\":\"sint\",\"device_name\":\"ex\"}"
+                            "raw": "{\"email\":\"zbashirian@example.org\",\"password\":\"quia\",\"device_name\":\"rerum\"}"
                         },
                         "description": "<small class=\"badge badge-purple\">App authorization available<\/small>\n\nIf you are not able to use Cookies, for example in a mobile application, you can use Token-Auth instead.\nTokens will be valid for 20 hours before they expire.\n\n<aside class=\"warning\">\n  Endpoints under the <code>\/admin<\/code> path will not be available for Applications using Token-Auth.\n<\/aside>",
                         "auth": {
@@ -233,55 +233,55 @@
                             "query": [
                                 {
                                     "key": "last_name",
-                                    "value": "nam",
+                                    "value": "ex",
                                     "description": "Last name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "first_name",
-                                    "value": "consequatur",
+                                    "value": "iste",
                                     "description": "First name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "street",
-                                    "value": "nulla",
+                                    "value": "quisquam",
                                     "description": "Street contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "postcode",
-                                    "value": "ut",
+                                    "value": "cupiditate",
                                     "description": "Postcode contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "city",
-                                    "value": "nihil",
+                                    "value": "eum",
                                     "description": "City contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.0",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid from is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.1",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid from is before this date. Must be a valid date. This field is required when valid_from.0 is present.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.0",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid until is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.1",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid until is before this date. Must be a valid date. This field is required when valid_until.0 is present.",
                                     "disabled": false
                                 },
@@ -293,7 +293,7 @@
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "creator_id",
+                                    "value": "first_name",
                                     "description": "Sort by given field. Must be one of id, last_name, first_name, street, postcode, city, valid_from, valid_until, or creator_id.",
                                     "disabled": false
                                 },
@@ -305,12 +305,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "10",
+                                    "value": "12",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/card?last_name=nam&first_name=consequatur&street=nulla&postcode=ut&city=nihil&valid_from.0=2022-08-22T11%3A10%3A17&valid_from.1=2022-08-22T11%3A10%3A17&valid_until.0=2022-08-22T11%3A10%3A17&valid_until.1=2022-08-22T11%3A10%3A17&creator_id=&sort=creator_id&order=desc&page=10"
+                            "raw": "{{baseUrl}}\/api\/admin\/card?last_name=ex&first_name=iste&street=quisquam&postcode=cupiditate&city=eum&valid_from.0=2022-08-22T20%3A36%3A58&valid_from.1=2022-08-22T20%3A36%3A58&valid_until.0=2022-08-22T20%3A36%3A58&valid_until.1=2022-08-22T20%3A36%3A58&creator_id=&sort=first_name&order=desc&page=12"
                         },
                         "method": "GET",
                         "header": [
@@ -375,7 +375,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "50094827185706",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -415,7 +415,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "50094827185706",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -451,7 +451,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "50094827185706",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -497,7 +497,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "1",
+                                    "value": "13",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -537,7 +537,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "1",
+                                    "value": "5",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -588,24 +588,24 @@
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "limit",
+                                    "value": "product_type_id",
                                     "description": "Sort by given field. Must be one of id, limitation_set_id, product_type_id, or limit.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "order",
-                                    "value": "asc",
+                                    "value": "desc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit?limitation_set_id=&product_type_id=&sort=limit&order=asc&page=20"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/limit?limitation_set_id=&product_type_id=&sort=product_type_id&order=desc&page=1"
                         },
                         "method": "GET",
                         "header": [
@@ -670,7 +670,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "1",
+                                    "value": "16",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -710,7 +710,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "1",
+                                    "value": "7",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -746,7 +746,7 @@
                                 {
                                     "id": "limitation_id",
                                     "key": "limitation_id",
-                                    "value": "1",
+                                    "value": "18",
                                     "description": "The ID of the limitation."
                                 }
                             ]
@@ -789,31 +789,31 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "eum",
+                                    "value": "architecto",
                                     "description": "Filter by name.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.0",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid from is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_from.1",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid from is before this date. Must be a valid date. This field is required when valid_from.0 is present.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.0",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid until is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "valid_until.1",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Valid until is before this date. Must be a valid date. This field is required when valid_until.0 is present.",
                                     "disabled": false
                                 },
@@ -836,7 +836,7 @@
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set?name=eum&valid_from.0=2022-08-22T11%3A10%3A17&valid_from.1=2022-08-22T11%3A10%3A17&valid_until.0=2022-08-22T11%3A10%3A17&valid_until.1=2022-08-22T11%3A10%3A17&sort=valid_until&order=asc&page=19"
+                            "raw": "{{baseUrl}}\/api\/admin\/limitation\/set?name=architecto&valid_from.0=2022-08-22T20%3A36%3A58&valid_from.1=2022-08-22T20%3A36%3A58&valid_until.0=2022-08-22T20%3A36%3A58&valid_until.1=2022-08-22T20%3A36%3A58&sort=valid_until&order=asc&page=19"
                         },
                         "method": "GET",
                         "header": [
@@ -901,7 +901,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "1",
+                                    "value": "19",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -941,7 +941,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "1",
+                                    "value": "14",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -977,7 +977,7 @@
                                 {
                                     "id": "limitationSet_id",
                                     "key": "limitationSet_id",
-                                    "value": "1",
+                                    "value": "17",
                                     "description": "The ID of the limitationSet."
                                 }
                             ]
@@ -1044,18 +1044,18 @@
                                 },
                                 {
                                     "key": "order",
-                                    "value": "desc",
+                                    "value": "asc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "4",
+                                    "value": "18",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/lineItem?visit_id=&person_id=&product_type_id=&sort=visit_id&order=desc&page=4"
+                            "raw": "{{baseUrl}}\/api\/admin\/lineItem?visit_id=&person_id=&product_type_id=&sort=visit_id&order=asc&page=18"
                         },
                         "method": "GET",
                         "header": [
@@ -1120,7 +1120,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "1",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1160,7 +1160,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "2",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1196,7 +1196,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "19",
                                     "description": "The ID of the lineItem."
                                 }
                             ]
@@ -1239,37 +1239,37 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "distinctio",
+                                    "value": "eos",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "street",
-                                    "value": "saepe",
+                                    "value": "earum",
                                     "description": "Street contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "postcode",
-                                    "value": "dolorem",
+                                    "value": "ipsam",
                                     "description": "Postcode contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "city",
-                                    "value": "aut",
+                                    "value": "sint",
                                     "description": "City contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "contact",
-                                    "value": "dolor",
+                                    "value": "quis",
                                     "description": "Contact contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "postcode",
+                                    "value": "street",
                                     "description": "Sort by given field. Must be one of id, name, street, postcode, city, or contact.",
                                     "disabled": false
                                 },
@@ -1281,12 +1281,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "14",
+                                    "value": "9",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/organization?name=distinctio&street=saepe&postcode=dolorem&city=aut&contact=dolor&sort=postcode&order=asc&page=14"
+                            "raw": "{{baseUrl}}\/api\/admin\/organization?name=eos&street=earum&postcode=ipsam&city=sint&contact=quis&sort=street&order=asc&page=9"
                         },
                         "method": "GET",
                         "header": [
@@ -1333,7 +1333,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"50080528753334\",\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
+                            "raw": "{\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
                         },
                         "description": ""
                     },
@@ -1409,7 +1409,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"50080528753334\",\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
+                            "raw": "{\"name\":\"Caritas\",\"street\":\"Franziskanergasse 3\",\"postcode\":\" 97070\",\"city\":\"Wuerzburg\",\"contact\":\"You can call me under 1-603-413-4124\"}"
                         },
                         "description": ""
                     },
@@ -1486,7 +1486,7 @@
                                 {
                                     "id": "card_id",
                                     "key": "card_id",
-                                    "value": "1",
+                                    "value": "50094827185706",
                                     "description": "The ID of the card."
                                 }
                             ]
@@ -1548,19 +1548,19 @@
                                 },
                                 {
                                     "key": "gender",
-                                    "value": "eos",
+                                    "value": "ea",
                                     "description": "Gender contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "age",
-                                    "value": "8",
+                                    "value": "2",
                                     "description": "Age is.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "id",
+                                    "value": "age",
                                     "description": "Sort by given field. Must be one of id, card_id, gender, or age.",
                                     "disabled": false
                                 },
@@ -1572,12 +1572,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "3",
+                                    "value": "16",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/person?card_id=&gender=eos&age=8&sort=id&order=asc&page=3"
+                            "raw": "{{baseUrl}}\/api\/admin\/person?card_id=&gender=ea&age=2&sort=age&order=asc&page=16"
                         },
                         "method": "GET",
                         "header": [
@@ -1624,7 +1624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20,\"limitation_sets\":[\"49394739894111\"]}"
                         },
                         "description": ""
                     },
@@ -1642,7 +1642,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "18",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1682,7 +1682,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "19",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1700,7 +1700,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20}"
+                            "raw": "{\"card_id\":\"50080528753334\",\"gender\":\"male\",\"age\":20,\"limitation_sets\":[\"49394739894111\"]}"
                         },
                         "description": ""
                     },
@@ -1718,7 +1718,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "6",
                                     "description": "The ID of the person."
                                 }
                             ]
@@ -1761,19 +1761,19 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "sit",
+                                    "value": "atque",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "icon",
-                                    "value": "vitae",
+                                    "value": "ipsa",
                                     "description": "Icon contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "name",
+                                    "value": "icon",
                                     "description": "Sort by given field. Must be one of id, name, or icon.",
                                     "disabled": false
                                 },
@@ -1785,12 +1785,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "13",
+                                    "value": "17",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/product-type?name=sit&icon=vitae&sort=name&order=asc&page=13"
+                            "raw": "{{baseUrl}}\/api\/admin\/product-type?name=atque&icon=ipsa&sort=icon&order=asc&page=17"
                         },
                         "method": "GET",
                         "header": [
@@ -1855,7 +1855,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "1",
+                                    "value": "19",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1895,7 +1895,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "1",
+                                    "value": "9",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1931,7 +1931,7 @@
                                 {
                                     "id": "productType_id",
                                     "key": "productType_id",
-                                    "value": "1",
+                                    "value": "5",
                                     "description": "The ID of the productType."
                                 }
                             ]
@@ -1970,7 +1970,7 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservation",
+                            "path": "api\/admin\/reservation",
                             "query": [
                                 {
                                     "key": "card_id",
@@ -1986,13 +1986,13 @@
                                 },
                                 {
                                     "key": "time.0",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Time is after this date. Must be a valid date.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "time.1",
-                                    "value": "2022-08-22T11%3A10%3A17",
+                                    "value": "2022-08-22T20%3A36%3A58",
                                     "description": "Time is before this date. Must be a valid date. This field is required when time.0 is present.",
                                     "disabled": false
                                 },
@@ -2004,18 +2004,18 @@
                                 },
                                 {
                                     "key": "order",
-                                    "value": "asc",
+                                    "value": "desc",
                                     "description": "Sort ascending or descending. Must be one of asc or desc.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "page",
-                                    "value": "10",
+                                    "value": "4",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/reservation?card_id=&shop_id=&time.0=2022-08-22T11%3A10%3A17&time.1=2022-08-22T11%3A10%3A17&sort=card_id&order=asc&page=10"
+                            "raw": "{{baseUrl}}\/api\/admin\/reservation?card_id=&shop_id=&time.0=2022-08-22T20%3A36%3A58&time.1=2022-08-22T20%3A36%3A58&sort=card_id&order=desc&page=4"
                         },
                         "method": "GET",
                         "header": [
@@ -2045,9 +2045,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservation",
+                            "path": "api\/admin\/reservation",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservation"
+                            "raw": "{{baseUrl}}\/api\/admin\/reservation"
                         },
                         "method": "POST",
                         "header": [
@@ -2073,14 +2073,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservation\/:id",
+                            "path": "api\/admin\/reservation\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservation\/:id",
+                            "raw": "{{baseUrl}}\/api\/admin\/reservation\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "5",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2113,14 +2113,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservation\/:id",
+                            "path": "api\/admin\/reservation\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservation\/:id",
+                            "raw": "{{baseUrl}}\/api\/admin\/reservation\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "18",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2149,14 +2149,14 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/reservation\/:id",
+                            "path": "api\/admin\/reservation\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/reservation\/:id",
+                            "raw": "{{baseUrl}}\/api\/admin\/reservation\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "16",
                                     "description": "The ID of the reservation."
                                 }
                             ]
@@ -2283,37 +2283,37 @@
                                 },
                                 {
                                     "key": "name",
-                                    "value": "in",
+                                    "value": "est",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "street",
-                                    "value": "qui",
+                                    "value": "quia",
                                     "description": "Street contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "postcode",
-                                    "value": "quae",
+                                    "value": "architecto",
                                     "description": "Postcode contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "city",
-                                    "value": "et",
+                                    "value": "voluptatem",
                                     "description": "City contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "contact",
-                                    "value": "tempore",
+                                    "value": "voluptas",
                                     "description": "Contact contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "city",
+                                    "value": "postcode",
                                     "description": "Sort by given field. Must be one of id, organization_id, name, street, postcode, city, or contact.",
                                     "disabled": false
                                 },
@@ -2325,12 +2325,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "5",
+                                    "value": "19",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/shop?organization_id=&name=in&street=qui&postcode=quae&city=et&contact=tempore&sort=city&order=asc&page=5"
+                            "raw": "{{baseUrl}}\/api\/admin\/shop?organization_id=&name=est&street=quia&postcode=architecto&city=voluptatem&contact=voluptas&sort=postcode&order=asc&page=19"
                         },
                         "method": "GET",
                         "header": [
@@ -2350,7 +2350,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"organization_id\": 1,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"oraganizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2\n      \"organization_id\": 3,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"organizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
+                            "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"organization_id\": 1,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"oraganizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"slots\": \"4\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2\n      \"organization_id\": 3,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"organizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"slots\": \"2\",\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}",
                             "name": ""
                         }
                     ]
@@ -2520,19 +2520,19 @@
                                 },
                                 {
                                     "key": "name",
-                                    "value": "exercitationem",
+                                    "value": "deleniti",
                                     "description": "Name contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "email",
-                                    "value": "corrupti",
+                                    "value": "voluptatem",
                                     "description": "E-Mail contains.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "sort",
-                                    "value": "organization_id",
+                                    "value": "email",
                                     "description": "Sort by given field. Must be one of id, organization_id, name, or email.",
                                     "disabled": false
                                 },
@@ -2544,12 +2544,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "17",
+                                    "value": "19",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/user?organization_id=&name=exercitationem&email=corrupti&sort=organization_id&order=desc&page=17"
+                            "raw": "{{baseUrl}}\/api\/admin\/user?organization_id=&name=deleniti&email=voluptatem&sort=email&order=desc&page=19"
                         },
                         "method": "GET",
                         "header": [
@@ -2596,7 +2596,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"50080528753334\",\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\"}"
+                            "raw": "{\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\",\"role\":\"inactive\"}"
                         },
                         "description": ""
                     },
@@ -2685,7 +2685,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"instance_id\":\"50080528753334\",\"organization_id\":\"50080528753334\",\"name\":\"xX_B4d-gUY_08_Xx\",\"email\":\"B4d-gUY@web.de\",\"password\":\"MyP4zzW0rD\"}"
+                            "raw": "{\"organization_id\":\"commodi\",\"name\":\"quod\",\"email\":\"claude.okeefe@example.com\",\"password\":\"quia\",\"role\":\"external_manager\"}"
                         },
                         "description": ""
                     },
@@ -2770,12 +2770,12 @@
                                 },
                                 {
                                     "key": "page",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "Page to load.",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/admin\/visit?card_id=&user_id=&sort=card_id&order=desc&page=20"
+                            "raw": "{{baseUrl}}\/api\/admin\/visit?card_id=&user_id=&sort=card_id&order=desc&page=1"
                         },
                         "method": "GET",
                         "header": [
@@ -2840,7 +2840,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "2",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -2880,7 +2880,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "17",
                                     "description": "The ID of the visit."
                                 }
                             ]
@@ -2916,7 +2916,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "16",
                                     "description": "The ID of the visit."
                                 }
                             ]

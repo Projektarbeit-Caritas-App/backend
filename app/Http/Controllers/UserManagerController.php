@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ManageUserRequest;
+use App\Http\Requests\ManageUserStoreRequest;
+use App\Http\Requests\ManageUserUpdateRequest;
+use App\Models\Instance;
 use App\Models\User;
 use App\Service\ModelFilterService;
+use Hash;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -66,7 +70,13 @@ class UserManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(User::where('instance_id', $request->user()->instance_id), [
+        $query = User::where('instance_id', $request->user()->instance_id);
+
+        if (!$request->user()->hasPermissionTo('admin.user.index')) {
+            $query->where('organization_id', $request->user()->organization_id);
+        }
+
+        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
             'organization_id' => 'match',
             'name' => 'contains',
             'email' => 'contains'
@@ -76,12 +86,33 @@ class UserManagerController extends Controller
     /**
      * Create new User
      *
-     * @param \App\Http\Requests\ManageUserRequest $request
-     * @return \App\Models\User
+     * @param \App\Http\Requests\ManageUserStoreRequest $request
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageUserRequest $request)
+    public function store(ManageUserStoreRequest $request): Model
     {
-        return User::create($request->validated());
+        $validated = $request->validated();
+        $instance  = Instance::find($request->user()->instance_id);
+
+        if (
+            !$request->user()->hasPermissionTo('admin.user.store') &&
+            $validated['organization_id'] !== $request->user()->organization_id
+        ) {
+            abort(403);
+        }
+
+        /** @var User $user */
+        $user = $instance->users()->create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'organization_id' => $validated['organization_id']
+        ]);
+
+        if ($request->user()->id !== $user->id) {
+            $user->syncRoles([$validated['role']]);
+        }
+        return $user;
     }
 
     /**
@@ -90,7 +121,7 @@ class UserManagerController extends Controller
      * @param \App\Models\User $user
      * @return \App\Models\User
      */
-    public function show(User $user)
+    public function show(User $user): User
     {
         return $user;
     }
@@ -98,13 +129,32 @@ class UserManagerController extends Controller
     /**
      * Update specified User
      *
-     * @param \App\Http\Requests\ManageUserRequest $request
+     * @param \App\Http\Requests\ManageUserUpdateRequest $request
      * @param \App\Models\User $user
      * @return \App\Models\User
      */
-    public function update(ManageUserRequest $request, User $user)
+    public function update(ManageUserUpdateRequest $request, User $user): User
     {
-        $user->update($request->validated());
+        $validated = $request->validated();
+
+        $data = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'organization_id' => $validated['organization_id']
+        ];
+
+        if ($validated['password'] !== null) {
+            $data['password'] = Hash::make($validated['password']);
+        }
+
+        $user->update($data);
+
+        if ($request->user()->id !== $user->id) {
+            $user->syncRoles($validated['role']);
+        }
+
+        $user->tokens()->delete();
+
         return $user;
     }
 
@@ -118,10 +168,9 @@ class UserManagerController extends Controller
      * @param \App\Models\User $user
      * @return array
      */
-    public function destroy(User $user)
+    public function destroy(User $user): array
     {
+        $user->tokens()->delete();
         return ['success' => $user->delete()];
     }
-
-
 }

@@ -13,6 +13,11 @@ class Limitation extends Model
         'limit'
     ];
 
+    public function instance(): BelongsTo
+    {
+        return $this->belongsTo(Instance::class, 'instance_id');
+    }
+
     public function productType(): BelongsTo
     {
         return $this->belongsTo(ProductType::class);
