@@ -187,11 +187,11 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user.'
-                  example: rerum
+                  example: aut
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: velit
+                  example: in
               required:
                 - email
                 - password
@@ -334,15 +334,15 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user. Must be a valid email address.'
-                  example: yasmine06@example.org
+                  example: abbie03@example.com
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: explicabo
+                  example: sint
                 device_name:
                   type: string
                   description: 'Name of the device, used for identification of the token.'
-                  example: quod
+                  example: ex
               required:
                 - email
                 - password
@@ -517,52 +517,52 @@ paths:
           in: query
           name: last_name
           description: 'Last name contains.'
-          example: est
+          example: nam
           required: false
           schema:
             type: string
             description: 'Last name contains.'
-            example: est
+            example: nam
         -
           in: query
           name: first_name
           description: 'First name contains.'
-          example: unde
+          example: consequatur
           required: false
           schema:
             type: string
             description: 'First name contains.'
-            example: unde
+            example: consequatur
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: voluptatem
+          example: nulla
           required: false
           schema:
             type: string
             description: 'Street contains.'
-            example: voluptatem
+            example: nulla
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: enim
+          example: ut
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: enim
+            example: ut
         -
           in: query
           name: city
           description: 'City contains.'
-          example: eveniet
+          example: nihil
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: eveniet
+            example: nihil
         -
           in: query
           name: valid_from
@@ -578,22 +578,22 @@ paths:
           in: query
           name: valid_from.0
           description: 'Valid from is after this date. Must be a valid date.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid from is after this date. Must be a valid date.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: valid_from.1
           description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: valid_until
@@ -609,22 +609,22 @@ paths:
           in: query
           name: valid_until.0
           description: 'Valid until is after this date. Must be a valid date.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid until is after this date. Must be a valid date.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: valid_until.1
           description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: creator_id
@@ -639,12 +639,12 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.'
-          example: valid_from
+          example: creator_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.'
-            example: valid_from
+            example: creator_id
         -
           in: query
           name: order
@@ -659,12 +659,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 19
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 19
+            example: 10
         -
           in: header
           name: Authorization
@@ -687,18 +687,88 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 1
+                      last_name: Mustermann
+                      first_name: Müller
+                      street: 'Mühlenstraße 5'
+                      postcode: '12345'
+                      city: Würzburg
+                      valid_from: '2022-01-01T00:00:00.000000Z'
+                      valid_until: '2022-03-31T00:00:00.000000Z'
+                      creator_id: 1
+                      created_at: '2022-08-16T15:00:00.000000Z'
+                      updated_at: '2022-08-16T15:00:00.000000Z'
+                    -
+                      id: 49394739894111
+                      last_name: Kitsune
+                      first_name: Yasu
+                      street: 'Teststraße 123'
+                      postcode: '12345'
+                      city: Teststadt
+                      valid_from: '2022-01-01T00:00:00.000000Z'
+                      valid_until: '2022-03-31T00:00:00.000000Z'
+                      creator_id: 1
+                      created_at: '2022-08-18T13:47:42.000000Z'
+                      updated_at: '2022-08-18T13:47:42.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 2
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        last_name: Mustermann
+                        first_name: Müller
+                        street: 'Mühlenstraße 5'
+                        postcode: '12345'
+                        city: Würzburg
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        created_at: '2022-08-16T15:00:00.000000Z'
+                        updated_at: '2022-08-16T15:00:00.000000Z'
+                      -
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 2
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - Card
     post:
@@ -739,23 +809,23 @@ paths:
                 last_name:
                   type: string
                   description: 'Last name of the cardholder.'
-                  example: temporibus
+                  example: Kitsune
                 first_name:
                   type: string
                   description: 'First name of the cardholder.'
-                  example: optio
+                  example: Yasu
                 street:
                   type: string
                   description: 'Street where the cardholder is located.'
-                  example: voluptatibus
+                  example: 'Foxstreet 10'
                 postcode:
                   type: string
                   description: 'Postcode where the cardholder is located.'
-                  example: ut
+                  example: '12345'
                 city:
                   type: string
                   description: 'City where the cardholder is located.'
-                  example: rerum
+                  example: Foxhole
                 valid_from:
                   type: string
                   description: 'Date and time of the start of validity of the card. Must be a valid date.'
@@ -767,7 +837,7 @@ paths:
                 creator_id:
                   type: string
                   description: 'ID of the User the card is attached to.'
-                  example: ducimus
+                  example: '50080528753334'
               required:
                 - last_name
                 - first_name
@@ -801,18 +871,58 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 49394739894111
+                  last_name: Kitsune
+                  first_name: Yasu
+                  street: 'Teststraße 123'
+                  postcode: '12345'
+                  city: Teststadt
+                  valid_from: '2022-01-01T00:00:00.000000Z'
+                  valid_until: '2022-03-31T00:00:00.000000Z'
+                  creator_id: 1
+                  created_at: '2022-08-18T13:47:42.000000Z'
+                  updated_at: '2022-08-18T13:47:42.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 49394739894111
+                  last_name:
                     type: string
-                    example: Unauthenticated.
+                    example: Kitsune
+                  first_name:
+                    type: string
+                    example: Yasu
+                  street:
+                    type: string
+                    example: 'Teststraße 123'
+                  postcode:
+                    type: string
+                    example: '12345'
+                  city:
+                    type: string
+                    example: Teststadt
+                  valid_from:
+                    type: string
+                    example: '2022-01-01T00:00:00.000000Z'
+                  valid_until:
+                    type: string
+                    example: '2022-03-31T00:00:00.000000Z'
+                  creator_id:
+                    type: integer
+                    example: 1
+                  created_at:
+                    type: string
+                    example: '2022-08-18T13:47:42.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-18T13:47:42.000000Z'
       tags:
         - Card
     put:
@@ -853,23 +963,23 @@ paths:
                 last_name:
                   type: string
                   description: 'Last name of the cardholder.'
-                  example: vel
+                  example: Kitsune
                 first_name:
                   type: string
                   description: 'First name of the cardholder.'
-                  example: voluptate
+                  example: Yasu
                 street:
                   type: string
                   description: 'Street where the cardholder is located.'
-                  example: aspernatur
+                  example: 'Foxstreet 10'
                 postcode:
                   type: string
                   description: 'Postcode where the cardholder is located.'
-                  example: natus
+                  example: '12345'
                 city:
                   type: string
                   description: 'City where the cardholder is located.'
-                  example: illo
+                  example: Foxhole
                 valid_from:
                   type: string
                   description: 'Date and time of the start of validity of the card. Must be a valid date.'
@@ -881,7 +991,7 @@ paths:
                 creator_id:
                   type: string
                   description: 'ID of the User the card is attached to.'
-                  example: quod
+                  example: '50080528753334'
               required:
                 - last_name
                 - first_name
@@ -913,7 +1023,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Card
     parameters:
@@ -921,7 +1043,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the card.'
-        example: 50094827185706
+        example: 1
         required: true
         schema:
           type: integer
@@ -952,18 +1074,158 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  card:
+                    id: 1
+                    last_name: Mustermann
+                    first_name: Müller
+                    street: 'Mühlenstraße 5'
+                    postcode: '12345'
+                    city: Würzburg
+                    valid_from: '2022-01-01T00:00:00.000000Z'
+                    valid_until: '2022-03-31T00:00:00.000000Z'
+                    creator_id: 1
+                    created_at: null
+                    updated_at: null
+                  persons:
+                    -
+                      id: 1
+                      gender: male
+                      age: 18
+                      created_at: null
+                      updated_at: null
+                      limitation_states:
+                        -
+                          product_type:
+                            id: 1
+                            name: t-shirt
+                            icon: 't-shirt icon'
+                          limit: 3
+                          used: 4
+                        -
+                          product_type:
+                            id: 2
+                            name: shoe
+                            icon: 'shoe icon'
+                          limit: 5
+                          used: 0
+                        -
+                          product_type:
+                            id: 3
+                            name: sock
+                            icon: 'sock icon'
+                          limit: 2
+                          used: 1
+                    -
+                      id: 2
+                      gender: female
+                      age: 15
+                      created_at: null
+                      updated_at: null
+                      limitation_states:
+                        -
+                          product_type:
+                            id: 1
+                            name: t-shirt
+                            icon: 't-shirt icon'
+                          limit: 3
+                          used: 0
+                        -
+                          product_type:
+                            id: 2
+                            name: shoe
+                            icon: 'shoe icon'
+                          limit: 5
+                          used: 1
+                        -
+                          product_type:
+                            id: 3
+                            name: sock
+                            icon: 'sock icon'
+                          limit: 2
+                          used: 0
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  card:
+                    type: object
+                    example:
+                      id: 1
+                      last_name: Mustermann
+                      first_name: Müller
+                      street: 'Mühlenstraße 5'
+                      postcode: '12345'
+                      city: Würzburg
+                      valid_from: '2022-01-01T00:00:00.000000Z'
+                      valid_until: '2022-03-31T00:00:00.000000Z'
+                      creator_id: 1
+                      created_at: null
+                      updated_at: null
+                  persons:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        gender: male
+                        age: 18
+                        created_at: null
+                        updated_at: null
+                        limitation_states:
+                          -
+                            product_type:
+                              id: 1
+                              name: t-shirt
+                              icon: 't-shirt icon'
+                            limit: 3
+                            used: 4
+                          -
+                            product_type:
+                              id: 2
+                              name: shoe
+                              icon: 'shoe icon'
+                            limit: 5
+                            used: 0
+                          -
+                            product_type:
+                              id: 3
+                              name: sock
+                              icon: 'sock icon'
+                            limit: 2
+                            used: 1
+                      -
+                        id: 2
+                        gender: female
+                        age: 15
+                        created_at: null
+                        updated_at: null
+                        limitation_states:
+                          -
+                            product_type:
+                              id: 1
+                              name: t-shirt
+                              icon: 't-shirt icon'
+                            limit: 3
+                            used: 0
+                          -
+                            product_type:
+                              id: 2
+                              name: shoe
+                              icon: 'shoe icon'
+                            limit: 5
+                            used: 1
+                          -
+                            product_type:
+                              id: 3
+                              name: sock
+                              icon: 'sock icon'
+                            limit: 2
+                            used: 0
+                    items:
+                      type: object
       tags:
         - Checkout
     post:
@@ -1012,15 +1274,15 @@ paths:
                       person_id:
                         type: string
                         description: 'ID of the person the lineItem is for.'
-                        example: aut
+                        example: '50080528753334'
                       product_type_id:
                         type: string
                         description: 'ID of the product_type of the lineItem.'
-                        example: eos
+                        example: '50080528753334'
                       amount:
                         type: integer
                         description: 'The amount of purchased lineItems of the same product_type. Must be at least 1.'
-                        example: 1
+                        example: 5
                     required:
                       - person_id
                       - product_type_id
@@ -1063,32 +1325,32 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
-          example: id
+          example: limit
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
-            example: id
+            example: limit
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 13
+          example: 20
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 13
+            example: 20
         -
           in: header
           name: Authorization
@@ -1111,18 +1373,96 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 1
+                      product_type_id: 1
+                      limitation_set_id: 1
+                      limit: 3
+                      created_at: '2022-08-16T16:32:23.000000Z'
+                      updated_at: '2022-08-16T16:32:23.000000Z'
+                    -
+                      id: 3
+                      product_type_id: 2
+                      limitation_set_id: 2
+                      limit: 5
+                      created_at: '2022-08-16T16:32:23.000000Z'
+                      updated_at: '2022-08-16T16:32:23.000000Z'
+                    -
+                      id: 4
+                      product_type_id: 2
+                      limitation_set_id: 1
+                      limit: 5
+                      created_at: '2022-08-16T16:32:23.000000Z'
+                      updated_at: '2022-08-16T16:32:23.000000Z'
+                    -
+                      id: 5
+                      product_type_id: 3
+                      limitation_set_id: 1
+                      limit: 2
+                      created_at: '2022-08-16T16:32:23.000000Z'
+                      updated_at: '2022-08-16T16:32:23.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 4
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        product_type_id: 1
+                        limitation_set_id: 1
+                        limit: 3
+                        created_at: '2022-08-16T16:32:23.000000Z'
+                        updated_at: '2022-08-16T16:32:23.000000Z'
+                      -
+                        id: 3
+                        product_type_id: 2
+                        limitation_set_id: 2
+                        limit: 5
+                        created_at: '2022-08-16T16:32:23.000000Z'
+                        updated_at: '2022-08-16T16:32:23.000000Z'
+                      -
+                        id: 4
+                        product_type_id: 2
+                        limitation_set_id: 1
+                        limit: 5
+                        created_at: '2022-08-16T16:32:23.000000Z'
+                        updated_at: '2022-08-16T16:32:23.000000Z'
+                      -
+                        id: 5
+                        product_type_id: 3
+                        limitation_set_id: 1
+                        limit: 2
+                        created_at: '2022-08-16T16:32:23.000000Z'
+                        updated_at: '2022-08-16T16:32:23.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 4
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - Limitation
     post:
@@ -1163,15 +1503,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: voluptatum
+                  example: '50080528753334'
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: rerum
+                  example: '50080528753334'
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 10
+                  example: 3
               required:
                 - product_type_id
                 - limitation_set_id
@@ -1202,18 +1542,38 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 1
+                  product_type_id: 1
+                  limitation_set_id: 1
+                  limit: 3
+                  created_at: '2022-08-16T16:32:23.000000Z'
+                  updated_at: '2022-08-16T16:32:23.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 1
+                  product_type_id:
+                    type: integer
+                    example: 1
+                  limitation_set_id:
+                    type: integer
+                    example: 1
+                  limit:
+                    type: integer
+                    example: 3
+                  created_at:
                     type: string
-                    example: Unauthenticated.
+                    example: '2022-08-16T16:32:23.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-16T16:32:23.000000Z'
       tags:
         - Limitation
     put:
@@ -1254,15 +1614,15 @@ paths:
                 product_type_id:
                   type: string
                   description: 'ID of the product type the limitation is attached to.'
-                  example: quaerat
+                  example: '50080528753334'
                 limitation_set_id:
                   type: string
                   description: 'ID of the limitation set the limitation is attached to.'
-                  example: libero
+                  example: '50080528753334'
                 limit:
                   type: integer
                   description: 'Number that determines the limit.'
-                  example: 4
+                  example: 3
               required:
                 - product_type_id
                 - limitation_set_id
@@ -1291,7 +1651,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Limitation
     parameters:
@@ -1299,7 +1671,7 @@ paths:
         in: path
         name: limitation_id
         description: 'The ID of the limitation.'
-        example: 19
+        example: 1
         required: true
         schema:
           type: integer
@@ -1312,12 +1684,12 @@ paths:
           in: query
           name: name
           description: 'Filter by name.'
-          example: id
+          example: eum
           required: false
           schema:
             type: string
             description: 'Filter by name.'
-            example: id
+            example: eum
         -
           in: query
           name: valid_from
@@ -1333,22 +1705,22 @@ paths:
           in: query
           name: valid_from.0
           description: 'Valid from is after this date. Must be a valid date.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid from is after this date. Must be a valid date.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: valid_from.1
           description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: valid_until
@@ -1364,22 +1736,22 @@ paths:
           in: query
           name: valid_until.0
           description: 'Valid until is after this date. Must be a valid date.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid until is after this date. Must be a valid date.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: valid_until.1
           description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: sort
@@ -1404,12 +1776,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 18
+          example: 19
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 18
+            example: 19
         -
           in: header
           name: Authorization
@@ -1432,18 +1804,68 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 1
+                      name: 'limitation_set 1'
+                      valid_from: '1999-08-20 22:00:00'
+                      valid_until: '2016-08-20 22:00:00'
+                      created_at: '2022-08-16T16:32:23.000000Z'
+                      updated_at: '2022-08-16T16:32:23.000000Z'
+                    -
+                      id: 2
+                      name: 'limitation_set 2'
+                      valid_from: '2020-02-14 00:00:00'
+                      valid_until: '2021-05-17 00:00:00'
+                      created_at: '2022-08-16T16:32:23.000000Z'
+                      updated_at: '2022-08-16T16:32:23.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 2
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'limitation_set 1'
+                        valid_from: '1999-08-20 22:00:00'
+                        valid_until: '2016-08-20 22:00:00'
+                        created_at: '2022-08-16T16:32:23.000000Z'
+                        updated_at: '2022-08-16T16:32:23.000000Z'
+                      -
+                        id: 2
+                        name: 'limitation_set 2'
+                        valid_from: '2020-02-14 00:00:00'
+                        valid_until: '2021-05-17 00:00:00'
+                        created_at: '2022-08-16T16:32:23.000000Z'
+                        updated_at: '2022-08-16T16:32:23.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 2
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - 'Limitation Set'
     post:
@@ -1484,7 +1906,7 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: voluptas
+                  example: 'A set to limit them all ~ Tolkien II'
                 valid_from:
                   type: string
                   description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
@@ -1523,18 +1945,38 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 1
+                  name: 'limitation_set 1'
+                  valid_from: '1999-08-20 22:00:00'
+                  valid_until: '2016-08-20 22:00:00'
+                  created_at: '2022-08-16T16:32:23.000000Z'
+                  updated_at: '2022-08-16T16:32:23.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
                     type: string
-                    example: Unauthenticated.
+                    example: 'limitation_set 1'
+                  valid_from:
+                    type: string
+                    example: '1999-08-20 22:00:00'
+                  valid_until:
+                    type: string
+                    example: '2016-08-20 22:00:00'
+                  created_at:
+                    type: string
+                    example: '2022-08-16T16:32:23.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-16T16:32:23.000000Z'
       tags:
         - 'Limitation Set'
     put:
@@ -1575,7 +2017,7 @@ paths:
                 name:
                   type: string
                   description: 'Name of the limitation set.'
-                  example: autem
+                  example: 'A set to limit them all ~ Tolkien II'
                 valid_from:
                   type: string
                   description: 'Date and time of the start of the validity of the limitation set. Must be a valid date.'
@@ -1612,7 +2054,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - 'Limitation Set'
     parameters:
@@ -1620,7 +2074,7 @@ paths:
         in: path
         name: limitationSet_id
         description: 'The ID of the limitationSet.'
-        example: 12
+        example: 1
         required: true
         schema:
           type: integer
@@ -1663,32 +2117,32 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
-          example: id
+          example: visit_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
-            example: id
+            example: visit_id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 15
+          example: 4
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 15
+            example: 4
         -
           in: header
           name: Authorization
@@ -1711,18 +2165,13 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                type: string
+                example: "{\n  \"items\": [\n    {\n      \"id\": 6,\n      \"visit_id\": 5,\n      \"person_id\": 1,\n      \"product_type_id\": 1,\n      \"created_at\": \"2022-08-16T16:32:23.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:23.000000Z\"\n    }, {\n      \"id\": 7,\n      \"visit_id\": 6,\n      \"person_id\": 1,\n      \"product_type_id\": 1,\n      \"created_at\": \"2022-08-16T16:32:52.000000Z\",\n      \"updated_at\": \"2022-08-16T16:32:52.000000Z\"\n    },\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 6\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}"
       tags:
         - 'Line Item'
     post:
@@ -1763,15 +2212,15 @@ paths:
                 visit_id:
                   type: string
                   description: 'ID of the visit the lineItem is attached to.'
-                  example: consectetur
+                  example: '50080528753334'
                 person_id:
                   type: string
                   description: 'ID of the person the lineItem is attached to.'
-                  example: et
+                  example: '50080528753334'
                 product_type_id:
                   type: string
                   description: 'ID of the product_type the lineItem is attached to.'
-                  example: cumque
+                  example: '50080528753334'
               required:
                 - visit_id
                 - person_id
@@ -1803,18 +2252,38 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 6
+                  visit_id: 5
+                  person_id: 1
+                  product_type_id: 1
+                  created_at: '2022-08-16T16:32:23.000000Z'
+                  updated_at: '2022-08-16T16:32:23.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 6
+                  visit_id:
+                    type: integer
+                    example: 5
+                  person_id:
+                    type: integer
+                    example: 1
+                  product_type_id:
+                    type: integer
+                    example: 1
+                  created_at:
                     type: string
-                    example: Unauthenticated.
+                    example: '2022-08-16T16:32:23.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-16T16:32:23.000000Z'
       tags:
         - 'Line Item'
     put:
@@ -1855,15 +2324,15 @@ paths:
                 visit_id:
                   type: string
                   description: 'ID of the visit the lineItem is attached to.'
-                  example: sapiente
+                  example: '50080528753334'
                 person_id:
                   type: string
                   description: 'ID of the person the lineItem is attached to.'
-                  example: debitis
+                  example: '50080528753334'
                 product_type_id:
                   type: string
                   description: 'ID of the product_type the lineItem is attached to.'
-                  example: vero
+                  example: '50080528753334'
               required:
                 - visit_id
                 - person_id
@@ -1893,7 +2362,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - 'Line Item'
     parameters:
@@ -1901,7 +2382,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the lineItem.'
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
@@ -1914,82 +2395,82 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: recusandae
-          required: false
-          schema:
-            type: string
-            description: 'Name contains.'
-            example: recusandae
-        -
-          in: query
-          name: street
-          description: 'Street contains.'
-          example: et
-          required: false
-          schema:
-            type: string
-            description: 'Street contains.'
-            example: et
-        -
-          in: query
-          name: postcode
-          description: 'Postcode contains.'
-          example: explicabo
-          required: false
-          schema:
-            type: string
-            description: 'Postcode contains.'
-            example: explicabo
-        -
-          in: query
-          name: city
-          description: 'City contains.'
-          example: numquam
-          required: false
-          schema:
-            type: string
-            description: 'City contains.'
-            example: numquam
-        -
-          in: query
-          name: contact
-          description: 'Contact contains.'
           example: distinctio
           required: false
           schema:
             type: string
-            description: 'Contact contains.'
+            description: 'Name contains.'
             example: distinctio
+        -
+          in: query
+          name: street
+          description: 'Street contains.'
+          example: saepe
+          required: false
+          schema:
+            type: string
+            description: 'Street contains.'
+            example: saepe
+        -
+          in: query
+          name: postcode
+          description: 'Postcode contains.'
+          example: dolorem
+          required: false
+          schema:
+            type: string
+            description: 'Postcode contains.'
+            example: dolorem
+        -
+          in: query
+          name: city
+          description: 'City contains.'
+          example: aut
+          required: false
+          schema:
+            type: string
+            description: 'City contains.'
+            example: aut
+        -
+          in: query
+          name: contact
+          description: 'Contact contains.'
+          example: dolor
+          required: false
+          schema:
+            type: string
+            description: 'Contact contains.'
+            example: dolor
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-          example: id
+          example: postcode
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-            example: id
+            example: postcode
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 1
+          example: 14
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 1
+            example: 14
         -
           in: header
           name: Authorization
@@ -2012,18 +2493,100 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 1
+                      instance_id: 1
+                      name: test
+                      street: abc
+                      postcode: '12345'
+                      city: abc
+                      contact: abc
+                      created_at: '2022-08-15T17:23:12.000000Z'
+                      updated_at: '2022-08-15T17:23:12.000000Z'
+                    -
+                      id: 2
+                      instance_id: 2
+                      name: Instance
+                      street: Street
+                      postcode: Postcode
+                      city: City
+                      contact: Contact
+                      created_at: '2022-08-21T11:34:14.000000Z'
+                      updated_at: '2022-08-21T11:34:14.000000Z'
+                    -
+                      id: 3
+                      instance_id: 3
+                      name: Instance
+                      street: Street
+                      postcode: Postcode
+                      city: City
+                      contact: Contact
+                      created_at: '2022-08-21T11:34:55.000000Z'
+                      updated_at: '2022-08-21T11:34:55.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 1
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        instance_id: 1
+                        name: test
+                        street: abc
+                        postcode: '12345'
+                        city: abc
+                        contact: abc
+                        created_at: '2022-08-15T17:23:12.000000Z'
+                        updated_at: '2022-08-15T17:23:12.000000Z'
+                      -
+                        id: 2
+                        instance_id: 2
+                        name: Instance
+                        street: Street
+                        postcode: Postcode
+                        city: City
+                        contact: Contact
+                        created_at: '2022-08-21T11:34:14.000000Z'
+                        updated_at: '2022-08-21T11:34:14.000000Z'
+                      -
+                        id: 3
+                        instance_id: 3
+                        name: Instance
+                        street: Street
+                        postcode: Postcode
+                        city: City
+                        contact: Contact
+                        created_at: '2022-08-21T11:34:55.000000Z'
+                        updated_at: '2022-08-21T11:34:55.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 1
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - Organization
     post:
@@ -2061,27 +2624,32 @@ paths:
             schema:
               type: object
               properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the organization is attached to.'
+                  example: '50080528753334'
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: omnis
+                  example: Caritas
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: non
+                  example: 'Franziskanergasse 3'
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: accusamus
+                  example: ' 97070'
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: dolores
+                  example: Wuerzburg
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: culpa
+                  example: 'You can call me under 1-603-413-4124'
               required:
+                - instance_id
                 - name
                 - street
                 - postcode
@@ -2114,18 +2682,50 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 2
+                  instance_id: 2
+                  name: Instance
+                  street: Street
+                  postcode: Postcode
+                  city: City
+                  contact: Contact
+                  created_at: '2022-08-21T11:34:14.000000Z'
+                  updated_at: '2022-08-21T11:34:14.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 2
+                  instance_id:
+                    type: integer
+                    example: 2
+                  name:
                     type: string
-                    example: Unauthenticated.
+                    example: Instance
+                  street:
+                    type: string
+                    example: Street
+                  postcode:
+                    type: string
+                    example: Postcode
+                  city:
+                    type: string
+                    example: City
+                  contact:
+                    type: string
+                    example: Contact
+                  created_at:
+                    type: string
+                    example: '2022-08-21T11:34:14.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-21T11:34:14.000000Z'
       tags:
         - Organization
     put:
@@ -2163,27 +2763,32 @@ paths:
             schema:
               type: object
               properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the organization is attached to.'
+                  example: '50080528753334'
                 name:
                   type: string
                   description: 'Name of the organization.'
-                  example: non
+                  example: Caritas
                 street:
                   type: string
                   description: 'Street where the organization is located.'
-                  example: modi
+                  example: 'Franziskanergasse 3'
                 postcode:
                   type: string
                   description: 'Postcode where the organization is located.'
-                  example: nulla
+                  example: ' 97070'
                 city:
                   type: string
                   description: 'City where the organization is located.'
-                  example: consequatur
+                  example: Wuerzburg
                 contact:
                   type: string
                   description: 'Contact information from the organization.'
-                  example: ipsam
+                  example: 'You can call me under 1-603-413-4124'
               required:
+                - instance_id
                 - name
                 - street
                 - postcode
@@ -2214,7 +2819,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Organization
     parameters:
@@ -2292,7 +2909,7 @@ paths:
         in: path
         name: card_id
         description: 'The ID of the card.'
-        example: 50094827185706
+        example: 1
         required: true
         schema:
           type: integer
@@ -2315,52 +2932,52 @@ paths:
           in: query
           name: gender
           description: 'Gender contains.'
-          example: rerum
+          example: eos
           required: false
           schema:
             type: string
             description: 'Gender contains.'
-            example: rerum
+            example: eos
         -
           in: query
           name: age
           description: 'Age is.'
-          example: 4
+          example: 8
           required: false
           schema:
             type: integer
             description: 'Age is.'
-            example: 4
+            example: 8
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>gender</code>, or <code>age</code>.'
-          example: gender
+          example: id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>gender</code>, or <code>age</code>.'
-            example: gender
+            example: id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 16
+          example: 3
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 16
+            example: 3
         -
           in: header
           name: Authorization
@@ -2383,18 +3000,82 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 1
+                      card_id: 1
+                      gender: male
+                      age: 18
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                    -
+                      id: 2
+                      card_id: 1
+                      gender: female
+                      age: 15
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                    -
+                      id: 3
+                      card_id: 49394739894111
+                      gender: male
+                      age: 23
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 3
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        card_id: 1
+                        gender: male
+                        age: 18
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                      -
+                        id: 2
+                        card_id: 1
+                        gender: female
+                        age: 15
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                      -
+                        id: 3
+                        card_id: 49394739894111
+                        gender: male
+                        age: 23
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 3
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - Person
     post:
@@ -2435,15 +3116,15 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the person is attached to.'
-                  example: eveniet
+                  example: '50080528753334'
                 gender:
                   type: string
                   description: 'Gender of the person.'
-                  example: magnam
+                  example: male
                 age:
                   type: integer
                   description: 'Age of the Person.'
-                  example: 14
+                  example: 20
               required:
                 - card_id
                 - gender
@@ -2475,18 +3156,38 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 2
+                  card_id: 1
+                  gender: female
+                  age: 15
+                  created_at: '2022-08-18T13:48:25.000000Z'
+                  updated_at: '2022-08-18T13:48:25.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 2
+                  card_id:
+                    type: integer
+                    example: 1
+                  gender:
                     type: string
-                    example: Unauthenticated.
+                    example: female
+                  age:
+                    type: integer
+                    example: 15
+                  created_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
       tags:
         - Person
     put:
@@ -2527,15 +3228,15 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the person is attached to.'
-                  example: earum
+                  example: '50080528753334'
                 gender:
                   type: string
                   description: 'Gender of the person.'
-                  example: iusto
+                  example: male
                 age:
                   type: integer
                   description: 'Age of the Person.'
-                  example: 15
+                  example: 20
               required:
                 - card_id
                 - gender
@@ -2565,7 +3266,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Person
     parameters:
@@ -2573,7 +3286,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the person.'
-        example: 8
+        example: 1
         required: true
         schema:
           type: integer
@@ -2586,32 +3299,32 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: adipisci
+          example: sit
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: adipisci
+            example: sit
         -
           in: query
           name: icon
           description: 'Icon contains.'
-          example: maxime
+          example: vitae
           required: false
           schema:
             type: string
             description: 'Icon contains.'
-            example: maxime
+            example: vitae
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
-          example: id
+          example: name
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
-            example: id
+            example: name
         -
           in: query
           name: order
@@ -2626,12 +3339,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 7
+          example: 13
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 7
+            example: 13
         -
           in: header
           name: Authorization
@@ -2654,18 +3367,13 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                type: string
+                example: "{\n  \"items: [\n    {\n      \"id\": 1,\n      \"name\": \"t-shirt\",\n      \"icon\": \"t-shirt icon\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2,\n      \"name\": \"shoe\",\n      \"icon\": \"shoe icon\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 3,\n      \"name\": \"sock\",\n      \"icon\": \"sock icon\",\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 3\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}"
       tags:
         - 'Product Type'
     post:
@@ -2706,11 +3414,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: dolorem
+                  example: T-Shirt
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: repudiandae
+                  example: 'Icon value'
               required:
                 - name
   '/api/admin/product-type/{productType_id}':
@@ -2740,18 +3448,34 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 1
+                  name: t-shirt
+                  icon: 't-shirt icon'
+                  created_at: '2022-08-18T13:48:25.000000Z'
+                  updated_at: '2022-08-18T13:48:25.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
                     type: string
-                    example: Unauthenticated.
+                    example: t-shirt
+                  icon:
+                    type: string
+                    example: 't-shirt icon'
+                  created_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
       tags:
         - 'Product Type'
     put:
@@ -2792,11 +3516,11 @@ paths:
                 name:
                   type: string
                   description: 'Name of the product type.'
-                  example: magnam
+                  example: T-Shirt
                 icon:
                   type: string
                   description: 'Icon of the product type.'
-                  example: quidem
+                  example: 'Icon value'
               required:
                 - name
     delete:
@@ -2824,7 +3548,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - 'Product Type'
     parameters:
@@ -2832,7 +3568,7 @@ paths:
         in: path
         name: productType_id
         description: 'The ID of the productType.'
-        example: 3
+        example: 1
         required: true
         schema:
           type: integer
@@ -2876,42 +3612,42 @@ paths:
           in: query
           name: time.0
           description: 'Time is after this date. Must be a valid date.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Time is after this date. Must be a valid date.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: time.1
           description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
-          example: '2022-08-21T14:07:38'
+          example: '2022-08-22T11:10:17'
           required: false
           schema:
             type: string
             description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
-            example: '2022-08-21T14:07:38'
+            example: '2022-08-22T11:10:17'
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
-          example: id
+          example: card_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
-            example: id
+            example: card_id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
@@ -2944,18 +3680,96 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 2
+                      card_id: 1
+                      shop_id: 1
+                      time: '2022-08-20T16:30:00.000000Z'
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                    -
+                      id: 3
+                      card_id: 1
+                      shop_id: 1
+                      time: '2022-08-20T08:00:00.000000Z'
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                    -
+                      id: 4
+                      card_id: 1
+                      shop_id: 1
+                      time: '2022-08-21T08:00:00.000000Z'
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                    -
+                      id: 5
+                      card_id: 1
+                      shop_id: 2
+                      time: '2022-08-21T15:00:00.000000Z'
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 4
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 2
+                        card_id: 1
+                        shop_id: 1
+                        time: '2022-08-20T16:30:00.000000Z'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                      -
+                        id: 3
+                        card_id: 1
+                        shop_id: 1
+                        time: '2022-08-20T08:00:00.000000Z'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                      -
+                        id: 4
+                        card_id: 1
+                        shop_id: 1
+                        time: '2022-08-21T08:00:00.000000Z'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                      -
+                        id: 5
+                        card_id: 1
+                        shop_id: 2
+                        time: '2022-08-21T15:00:00.000000Z'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 4
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - Reservation
     post:
@@ -2996,11 +3810,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: delectus
+                  example: '50080528753334'
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: ipsam
+                  example: '50080528753334'
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -3036,18 +3850,38 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 2
+                  card_id: 1
+                  shop_id: 1
+                  time: '2022-08-20T16:30:00.000000Z'
+                  created_at: '2022-08-18T13:48:25.000000Z'
+                  updated_at: '2022-08-18T13:48:25.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 2
+                  card_id:
+                    type: integer
+                    example: 1
+                  shop_id:
+                    type: integer
+                    example: 1
+                  time:
                     type: string
-                    example: Unauthenticated.
+                    example: '2022-08-20T16:30:00.000000Z'
+                  created_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
       tags:
         - Reservation
     put:
@@ -3088,11 +3922,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the reservation is attached to.'
-                  example: a
+                  example: '50080528753334'
                 shop_id:
                   type: string
                   description: 'ID of the shop the reservation is for.'
-                  example: aliquam
+                  example: '50080528753334'
                 time:
                   type: string
                   description: 'Date and Time for the reservation. Must be a valid date.'
@@ -3126,7 +3960,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Reservation
     parameters:
@@ -3134,7 +3980,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the reservation.'
-        example: 5
+        example: 2
         required: true
         schema:
           type: integer
@@ -3165,18 +4011,13 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                type: string
+                example: "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"organization_id\": 1,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"oraganizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2\n      \"organization_id\": 3,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"organizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}"
       tags:
         - Schedule
   '/api/schedule/{shop_id}':
@@ -3206,18 +4047,29 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
                 example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  -
+                    id: 4
+                    card_id: 1
+                    shop_id: 1
+                    time: '2022-08-21T08:00:00.000000Z'
+                    created_at: '2022-08-19T08:00:00.000000Z'
+                    updated_at: '2022-08-19T08:00:00.000000Z'
+                  -
+                    id: 6
+                    card_id: 2
+                    shop_id: 1
+                    time: '2022-08-21T08:00:00.000000Z'
+                    created_at: '2022-08-19T08:00:00.000000Z'
+                    updated_at: '2022-08-19T08:00:00.000000Z'
       tags:
         - Schedule
     parameters:
@@ -3225,7 +4077,7 @@ paths:
         in: path
         name: shop_id
         description: 'The ID of the shop.'
-        example: 8
+        example: 1
         required: true
         schema:
           type: integer
@@ -3248,82 +4100,82 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: omnis
+          example: in
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: omnis
+            example: in
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: autem
+          example: qui
           required: false
           schema:
             type: string
             description: 'Street contains.'
-            example: autem
+            example: qui
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: sit
+          example: quae
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: sit
+            example: quae
         -
           in: query
           name: city
           description: 'City contains.'
-          example: nam
+          example: et
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: nam
+            example: et
         -
           in: query
           name: contact
           description: 'Contact contains.'
-          example: quia
+          example: tempore
           required: false
           schema:
             type: string
             description: 'Contact contains.'
-            example: quia
+            example: tempore
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-          example: contact
+          example: city
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-            example: contact
+            example: city
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: desc
+          example: asc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: desc
+            example: asc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 18
+          example: 5
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 18
+            example: 5
         -
           in: header
           name: Authorization
@@ -3346,18 +4198,13 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                type: string
+                example: "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"organization_id\": 1,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"oraganizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }, {\n      \"id\": 2\n      \"organization_id\": 3,\n      \"name\": \"organization\",\n      \"street\": \"organizations street\",\n      \"postcode\": \"12345\",\n      \"city\": \"organizations city\",\n      \"contact\": \"organizations contact\",\n      \"opening_hours\": {\n        \"monday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"tuesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"wednesday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"thursday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"friday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"saturday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ],\n        \"sunday\": [\n          {\n            \"opens_at\": \"08:00\",\n            \"closes_at\": \"17:00\"\n          }\n        ]\n      },\n      \"created_at\": \"2022-08-18T13:48:25.000000Z\",\n      \"updated_at\": \"2022-08-18T13:48:25.000000Z\"\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1,\n    \"last_page\": 1,\n    \"per_page\": 25,\n    \"item_count\": 2\n  },\n  \"links\": {\n    \"prev_page_url\": null,\n    \"next_page_url\": null\n  }\n}"
       tags:
         - Shop
     post:
@@ -3398,27 +4245,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: laboriosam
+                  example: '50080528753334'
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: molestiae
+                  example: 'The friendly shop around the corner'
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: aut
+                  example: 'Around the corner'
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: dolorem
+                  example: '50080'
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: rerum
+                  example: Cornville
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: nisi
+                  example: 'You can call me under 1-603-413-4124'
                 opening_hours:
                   type: object
                   description: ''
@@ -3443,7 +4290,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Monday. Must be at least 1.'
-                            example: 0
+                            example: 4
                         required:
                           - opens_at
                           - closes_at
@@ -3467,7 +4314,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Tuesday. Must be at least 1.'
-                            example: 1
+                            example: 2
                         required:
                           - opens_at
                           - closes_at
@@ -3491,7 +4338,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Wednesday. Must be at least 1.'
-                            example: 0
+                            example: 6
                         required:
                           - opens_at
                           - closes_at
@@ -3515,7 +4362,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 1
+                            example: 4
                         required:
                           - opens_at
                           - closes_at
@@ -3539,7 +4386,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Friday. Must be at least 1.'
-                            example: 0
+                            example: 4
                         required:
                           - opens_at
                           - closes_at
@@ -3563,7 +4410,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Saturday. Must be at least 1.'
-                            example: 0
+                            example: 2
                         required:
                           - opens_at
                           - closes_at
@@ -3587,7 +4434,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Sunday. Must be at least 1.'
-                            example: 0
+                            example: 2
                         required:
                           - opens_at
                           - closes_at
@@ -3626,18 +4473,54 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
                 example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  -
+                    id: 1
+                    organization_id: 1
+                    name: organization
+                    street: 'organizations street'
+                    postcode: '12345'
+                    city: 'organizations city'
+                    contact: 'organizations contact'
+                    opening_hours:
+                      monday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      tuesday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      wednesday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      thursday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      friday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      saturday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      sunday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                    created_at: '2022-08-18T13:48:25.000000Z'
+                    updated_at: '2022-08-18T13:48:25.000000Z'
       tags:
         - Shop
     put:
@@ -3678,27 +4561,27 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the shop is attached to.'
-                  example: ut
+                  example: '50080528753334'
                 name:
                   type: string
                   description: 'Name of the shop.'
-                  example: consectetur
+                  example: 'The friendly shop around the corner'
                 street:
                   type: string
                   description: 'Street where the shop is located.'
-                  example: incidunt
+                  example: 'Around the corner'
                 postcode:
                   type: string
                   description: 'Postcode where the shop is located.'
-                  example: corporis
+                  example: '50080'
                 city:
                   type: string
                   description: 'City where the shop is located.'
-                  example: et
+                  example: Cornville
                 contact:
                   type: string
                   description: 'Contact information from the shop.'
-                  example: explicabo
+                  example: 'You can call me under 1-603-413-4124'
                 opening_hours:
                   type: object
                   description: ''
@@ -3723,7 +4606,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Monday. Must be at least 1.'
-                            example: 1
+                            example: 4
                         required:
                           - opens_at
                           - closes_at
@@ -3747,7 +4630,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Tuesday. Must be at least 1.'
-                            example: 1
+                            example: 2
                         required:
                           - opens_at
                           - closes_at
@@ -3771,7 +4654,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Wednesday. Must be at least 1.'
-                            example: 0
+                            example: 6
                         required:
                           - opens_at
                           - closes_at
@@ -3795,7 +4678,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Thursday. Must be at least 1.'
-                            example: 0
+                            example: 4
                         required:
                           - opens_at
                           - closes_at
@@ -3819,7 +4702,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Friday. Must be at least 1.'
-                            example: 0
+                            example: 4
                         required:
                           - opens_at
                           - closes_at
@@ -3843,7 +4726,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Saturday. Must be at least 1.'
-                            example: 0
+                            example: 2
                         required:
                           - opens_at
                           - closes_at
@@ -3867,7 +4750,7 @@ paths:
                           slots:
                             type: integer
                             description: 'Number of slots of the store for Sunday. Must be at least 1.'
-                            example: 1
+                            example: 2
                         required:
                           - opens_at
                           - closes_at
@@ -3904,7 +4787,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Shop
     parameters:
@@ -3912,7 +4807,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the shop.'
-        example: 4
+        example: 1
         required: true
         schema:
           type: integer
@@ -3935,32 +4830,32 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: quasi
+          example: exercitationem
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: quasi
+            example: exercitationem
         -
           in: query
           name: email
           description: 'E-Mail contains.'
-          example: in
+          example: corrupti
           required: false
           schema:
             type: string
             description: 'E-Mail contains.'
-            example: in
+            example: corrupti
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
-          example: name
+          example: organization_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
-            example: name
+            example: organization_id
         -
           in: query
           name: order
@@ -3975,12 +4870,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 16
+          example: 17
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 16
+            example: 17
         -
           in: header
           name: Authorization
@@ -4003,18 +4898,56 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 3
+                      instance_id: 3
+                      organization_id: 3
+                      name: Rene
+                      email: rene@web.de
+                      created_at: '2022-08-21T11:34:55.000000Z'
+                      updated_at: '2022-08-21T11:34:55.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 1
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 3
+                        instance_id: 3
+                        organization_id: 3
+                        name: Rene
+                        email: rene@web.de
+                        created_at: '2022-08-21T11:34:55.000000Z'
+                        updated_at: '2022-08-21T11:34:55.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 1
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - User
     post:
@@ -4052,23 +4985,28 @@ paths:
             schema:
               type: object
               properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the user is attached to.'
+                  example: '50080528753334'
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: assumenda
+                  example: '50080528753334'
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: consequatur
+                  example: xX_B4d-gUY_08_Xx
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: beahan.antonietta@example.net
+                  example: B4d-gUY@web.de
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: facilis
+                  example: MyP4zzW0rD
               required:
+                - instance_id
                 - organization_id
                 - name
                 - email
@@ -4149,23 +5087,28 @@ paths:
             schema:
               type: object
               properties:
+                instance_id:
+                  type: string
+                  description: 'ID of the instance the user is attached to.'
+                  example: '50080528753334'
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: placeat
+                  example: '50080528753334'
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: amet
+                  example: xX_B4d-gUY_08_Xx
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: hbosco@example.net
+                  example: B4d-gUY@web.de
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: necessitatibus
+                  example: MyP4zzW0rD
               required:
+                - instance_id
                 - organization_id
                 - name
                 - email
@@ -4195,7 +5138,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - User
     parameters:
@@ -4236,12 +5191,12 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
-          example: user_id
+          example: card_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
-            example: user_id
+            example: card_id
         -
           in: query
           name: order
@@ -4256,12 +5211,12 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 17
+          example: 20
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 17
+            example: 20
         -
           in: header
           name: Authorization
@@ -4284,18 +5239,76 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  items:
+                    -
+                      id: 6
+                      card_id: 1
+                      user_id: 1
+                      created_at: '2022-08-16T16:32:52.000000Z'
+                      updated_at: '2022-08-16T16:32:52.000000Z'
+                    -
+                      id: 7
+                      card_id: 1
+                      user_id: 1
+                      created_at: '2022-08-17T13:52:35.000000Z'
+                      updated_at: '2022-08-17T13:52:35.000000Z'
+                    -
+                      id: 8
+                      card_id: 1
+                      user_id: 3
+                      created_at: '2022-08-21T11:50:35.000000Z'
+                      updated_at: '2022-08-21T11:50:35.000000Z'
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                    per_page: 25
+                    item_count: 2
+                  links:
+                    prev_page_url: null
+                    next_page_url: null
                 properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+                  items:
+                    type: array
+                    example:
+                      -
+                        id: 6
+                        card_id: 1
+                        user_id: 1
+                        created_at: '2022-08-16T16:32:52.000000Z'
+                        updated_at: '2022-08-16T16:32:52.000000Z'
+                      -
+                        id: 7
+                        card_id: 1
+                        user_id: 1
+                        created_at: '2022-08-17T13:52:35.000000Z'
+                        updated_at: '2022-08-17T13:52:35.000000Z'
+                      -
+                        id: 8
+                        card_id: 1
+                        user_id: 3
+                        created_at: '2022-08-21T11:50:35.000000Z'
+                        updated_at: '2022-08-21T11:50:35.000000Z'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      last_page: 1
+                      per_page: 25
+                      item_count: 2
+                  links:
+                    type: object
+                    example:
+                      prev_page_url: null
+                      next_page_url: null
       tags:
         - Visit
     post:
@@ -4336,11 +5349,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the visit is attached to.'
-                  example: et
+                  example: '50080528753334'
                 user_id:
                   type: string
                   description: 'ID of the user the visit is attached to.'
-                  example: quasi
+                  example: '50080528753334'
               required:
                 - card_id
                 - user_id
@@ -4371,18 +5384,34 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 6
+                  card_id: 1
+                  user_id: 1
+                  created_at: '2022-08-16T16:32:52.000000Z'
+                  updated_at: '2022-08-16T16:32:52.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 6
+                  card_id:
+                    type: integer
+                    example: 1
+                  user_id:
+                    type: integer
+                    example: 1
+                  created_at:
                     type: string
-                    example: Unauthenticated.
+                    example: '2022-08-16T16:32:52.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-16T16:32:52.000000Z'
       tags:
         - Visit
     put:
@@ -4423,11 +5452,11 @@ paths:
                 card_id:
                   type: string
                   description: 'ID of the card the visit is attached to.'
-                  example: architecto
+                  example: '50080528753334'
                 user_id:
                   type: string
                   description: 'ID of the user the visit is attached to.'
-                  example: veritatis
+                  example: '50080528753334'
               required:
                 - card_id
                 - user_id
@@ -4456,7 +5485,19 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                properties:
+                  success:
+                    type: boolean
+                    example: true
       tags:
         - Visit
     parameters:
@@ -4464,7 +5505,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the visit.'
-        example: 6
+        example: 1
         required: true
         schema:
           type: integer

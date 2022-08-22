@@ -39,19 +39,24 @@ class ManageCardRequest extends FormRequest
     {
         return [
             'last_name' => [
-                'description' => 'Last name of the cardholder'
+                'description' => 'Last name of the cardholder',
+                'example' => 'Kitsune'
             ],
             'first_name' => [
-                'description' => 'First name of the cardholder'
+                'description' => 'First name of the cardholder',
+                'example' => 'Yasu'
             ],
             'street' => [
-                'description' => 'Street where the cardholder is located'
+                'description' => 'Street where the cardholder is located',
+                'example' => 'Foxstreet 10'
             ],
             'postcode' => [
-                'description' => 'Postcode where the cardholder is located'
+                'description' => 'Postcode where the cardholder is located',
+                'example' => '12345'
             ],
             'city' => [
-                'description' => 'City where the cardholder is located'
+                'description' => 'City where the cardholder is located',
+                'example' => 'Foxhole'
             ],
             'valid_from' => [
                 'description' => 'Date and time of the start of validity of the card',
@@ -62,7 +67,8 @@ class ManageCardRequest extends FormRequest
                 'example' => '2022-08-04 12:00:00'
             ],
             'creator_id' => [
-                'description' => 'ID of the User the card is attached to'
+                'description' => 'ID of the User the card is attached to',
+                'example' => '50080528753334'
             ]
         ];
     }

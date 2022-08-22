@@ -20,6 +20,24 @@ class ScheduleController extends Controller
      *
      * List all today's reservations for a specified store
      *
+     * @response [
+     *   {
+     *     "id": 4,
+     *     "card_id": 1,
+     *     "shop_id": 1,
+     *     "time": "2022-08-21T08:00:00.000000Z",
+     *     "created_at": "2022-08-19T08:00:00.000000Z",
+     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *   }, {
+     *     "id": 6,
+     *     "card_id": 2,
+     *     "shop_id": 1,
+     *     "time": "2022-08-21T08:00:00.000000Z",
+     *     "created_at": "2022-08-19T08:00:00.000000Z",
+     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *   }
+     * ]
+     *
      * @param Shop $shop
      * @return \Illuminate\Support\Collection
      */
@@ -36,6 +54,130 @@ class ScheduleController extends Controller
      * <small class="badge badge-purple">App authorization available</small>
      *
      * List all shops that are in the same organization as the user
+     *
+     * @response status=200 {
+     *   "items": [
+     *     {
+     *       "id": 1,
+     *       "organization_id": 1,
+     *       "name": "organization",
+     *       "street": "organizations street",
+     *       "postcode": "12345",
+     *       "city": "oraganizations city",
+     *       "contact": "organizations contact",
+     *       "opening_hours": {
+     *         "monday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "tuesday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "wednesday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "thursday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "friday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "saturday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "sunday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ]
+     *       },
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }, {
+     *       "id": 2
+     *       "organization_id": 3,
+     *       "name": "organization",
+     *       "street": "organizations street",
+     *       "postcode": "12345",
+     *       "city": "organizations city",
+     *       "contact": "organizations contact",
+     *       "opening_hours": {
+     *         "monday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "tuesday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "wednesday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "thursday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "friday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "saturday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ],
+     *         "sunday": [
+     *           {
+     *             "opens_at": "08:00",
+     *             "closes_at": "17:00"
+     *           }
+     *         ]
+     *       },
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 2
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
      *
      * @param Request $request
      * @return Shop[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection

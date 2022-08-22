@@ -16,6 +16,30 @@ class UserManagerController extends Controller
     /**
      * List all Users
      *
+     * @response {
+     *   "items": [
+     *     {
+     *       "id": 3,
+     *       "instance_id": 3,
+     *       "organization_id": 3,
+     *       "name": "Rene",
+     *       "email": "rene@web.de",
+     *       "created_at": "2022-08-21T11:34:55.000000Z",
+     *       "updated_at": "2022-08-21T11:34:55.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 1
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
+     *
      * @param \Illuminate\Http\Request $request
      * @return array
      */
@@ -63,7 +87,7 @@ class UserManagerController extends Controller
     /**
      * Show specified User
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \App\Models\User
      */
     public function show(User $user)
@@ -87,7 +111,11 @@ class UserManagerController extends Controller
     /**
      * Delete specified User
      *
-     * @param  \App\Models\User  $user
+     * @response status=200 {
+     *   "success": true
+     * }
+     *
+     * @param \App\Models\User $user
      * @return array
      */
     public function destroy(User $user)

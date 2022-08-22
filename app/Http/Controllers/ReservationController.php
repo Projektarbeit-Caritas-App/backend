@@ -18,6 +18,51 @@ class ReservationController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return array
+     * @response status=200 {
+     *   "items": [
+     *     {
+     *       "id": 2,
+     *       "card_id": 1,
+     *       "shop_id": 1,
+     *       "time": "2022-08-20T16:30:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }, {
+     *       "id": 3,
+     *       "card_id": 1,
+     *       "shop_id": 1,
+     *       "time": "2022-08-20T08:00:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }, {
+     *       "id": 4,
+     *       "card_id": 1,
+     *       "shop_id": 1,
+     *       "time": "2022-08-21T08:00:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }, {
+     *       "id": 5,
+     *       "card_id": 1,
+     *       "shop_id": 2,
+     *       "time": "2022-08-21T15:00:00.000000Z",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 4
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index(Request $request): array
     {
@@ -55,7 +100,7 @@ class ReservationController extends Controller
     /**
      * Create new Reservation
      *
-     * @param  \App\Http\Requests\ReservationRequest  $request
+     * @param \App\Http\Requests\ReservationRequest $request
      * @return \App\Models\Reservation
      */
     public function store(ReservationRequest $request): Reservation
@@ -66,7 +111,16 @@ class ReservationController extends Controller
     /**
      * Show specified Reservation
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @response status=200 {
+     *   "id": 2,
+     *   "card_id": 1,
+     *   "shop_id": 1,
+     *   "time": "2022-08-20T16:30:00.000000Z",
+     *   "created_at": "2022-08-18T13:48:25.000000Z",
+     *   "updated_at": "2022-08-18T13:48:25.000000Z"
+     * }
+     *
+     * @param \App\Models\Reservation $reservation
      * @return \App\Models\Reservation
      */
     public function show(Reservation $reservation): Reservation
@@ -77,8 +131,8 @@ class ReservationController extends Controller
     /**
      * Update specified Reservation
      *
-     * @param  \App\Http\Requests\ReservationRequest  $request
-     * @param  \App\Models\Reservation  $reservation
+     * @param \App\Http\Requests\ReservationRequest $request
+     * @param \App\Models\Reservation $reservation
      * @return \App\Models\Reservation
      */
     public function update(ReservationRequest $request, Reservation $reservation): Reservation
@@ -90,7 +144,11 @@ class ReservationController extends Controller
     /**
      * Delete specified Reservation
      *
-     * @param  \App\Models\Reservation  $reservation
+     * @response status=200 {
+     *   "success": true
+     * }
+     *
+     * @param \App\Models\Reservation $reservation
      * @return array
      */
     public function destroy(Reservation $reservation): array

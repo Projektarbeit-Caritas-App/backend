@@ -18,6 +18,41 @@ class ProductTypeManagerController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return array
+     * @response status=200 {
+     *   "items: [
+     *     {
+     *       "id": 1,
+     *       "name": "t-shirt",
+     *       "icon": "t-shirt icon",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }, {
+     *       "id": 2,
+     *       "name": "shoe",
+     *       "icon": "shoe icon",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }, {
+     *       "id": 3,
+     *       "name": "sock",
+     *       "icon": "sock icon",
+     *       "created_at": "2022-08-18T13:48:25.000000Z",
+     *       "updated_at": "2022-08-18T13:48:25.000000Z"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "last_page": 1,
+     *     "per_page": 25,
+     *     "item_count": 3
+     *   },
+     *   "links": {
+     *     "prev_page_url": null,
+     *     "next_page_url": null
+     *   }
+     * }
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index(Request $request): array
     {
@@ -48,7 +83,7 @@ class ProductTypeManagerController extends Controller
     /**
      * Create new ProductType
      *
-     * @param  \App\Http\Requests\ManageProductTypeRequest  $request
+     * @param \App\Http\Requests\ManageProductTypeRequest $request
      * @return \App\Models\ProductType
      */
     public function store(ManageProductTypeRequest $request): ProductType
@@ -59,7 +94,15 @@ class ProductTypeManagerController extends Controller
     /**
      * Show specified ProductType
      *
-     * @param  \App\Models\ProductType  $productType
+     * @response status=200 {
+     *   "id": 1,
+     *   "name": "t-shirt",
+     *   "icon": "t-shirt icon",
+     *   "created_at": "2022-08-18T13:48:25.000000Z",
+     *   "updated_at": "2022-08-18T13:48:25.000000Z"
+     * }
+     *
+     * @param \App\Models\ProductType $productType
      * @return \App\Models\ProductType
      */
     public function show(ProductType $productType): ProductType
@@ -70,8 +113,8 @@ class ProductTypeManagerController extends Controller
     /**
      * Update specified ProductType
      *
-     * @param  \App\Http\Requests\ManageProductTypeRequest  $request
-     * @param  \App\Models\ProductType  $productType
+     * @param \App\Http\Requests\ManageProductTypeRequest $request
+     * @param \App\Models\ProductType $productType
      * @return \App\Models\ProductType
      */
     public function update(ManageProductTypeRequest $request, ProductType $productType): ProductType
@@ -83,7 +126,11 @@ class ProductTypeManagerController extends Controller
     /**
      * Delete specified ProductType
      *
-     * @param  \App\Models\ProductType  $productType
+     * @response status=200 {
+     *   "success": true
+     * }
+     *
+     * @param \App\Models\ProductType $productType
      * @return array
      */
     public function destroy(ProductType $productType): array

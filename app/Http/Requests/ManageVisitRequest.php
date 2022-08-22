@@ -33,10 +33,12 @@ class ManageVisitRequest extends FormRequest
     {
         return [
             'card_id' => [
-                'description' => 'ID of the card the visit is attached to'
+                'description' => 'ID of the card the visit is attached to',
+                'example' => '50080528753334'
             ],
             'user_id' => [
-                'description' => 'ID of the user the visit is attached to'
+                'description' => 'ID of the user the visit is attached to',
+                'example' => '50080528753334'
             ]
         ];
     }

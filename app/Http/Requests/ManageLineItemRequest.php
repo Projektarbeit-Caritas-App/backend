@@ -34,13 +34,16 @@ class ManageLineItemRequest extends FormRequest
     {
         return [
             'visit_id' => [
-                'description' => 'ID of the visit the lineItem is attached to'
+                'description' => 'ID of the visit the lineItem is attached to',
+                'example' => '50080528753334'
             ],
             'person_id' => [
-                'description' => 'ID of the person the lineItem is attached to'
+                'description' => 'ID of the person the lineItem is attached to',
+                'example' => '50080528753334'
             ],
             'product_type_id' => [
-                'description' => 'ID of the product_type the lineItem is attached to'
+                'description' => 'ID of the product_type the lineItem is attached to',
+                'example' => '50080528753334'
             ]
         ];
     }
