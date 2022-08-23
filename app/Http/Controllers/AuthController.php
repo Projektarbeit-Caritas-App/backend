@@ -224,7 +224,7 @@ class AuthController extends Controller
             ->get()
             ->first();
 
-        if (!$user || !Hash::check($credentials['password'], $user->password) || !$user->hasPermission('auth.app')) {
+        if (!$user || !Hash::check($credentials['password'], $user->password) || !$user->hasPermissionTo('auth.app')) {
             return response([
                 'success' => false
             ], 401);
