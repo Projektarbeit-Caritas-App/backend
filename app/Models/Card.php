@@ -19,6 +19,7 @@ class Card extends Model
         'city',
         'valid_from',
         'valid_until',
+        'comment',
         'creator_id'
     ];
 

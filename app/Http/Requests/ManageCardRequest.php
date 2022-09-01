@@ -31,7 +31,7 @@ class ManageCardRequest extends FormRequest
             'city' => 'string',
             'valid_from' => 'date|required',
             'valid_until' => 'date|required',
-            'creator_id' => 'exists:users,id|required'
+            'comment' => 'string|nullable'
         ];
     }
 
@@ -66,9 +66,9 @@ class ManageCardRequest extends FormRequest
                 'description' => 'Date and time of the expiry of the card',
                 'example' => '2022-08-04 12:00:00'
             ],
-            'creator_id' => [
-                'description' => 'ID of the User the card is attached to',
-                'example' => '50080528753334'
+            'comment' => [
+                'description' => 'Additional Comment for the card',
+                'example' => 'Took an additional buggy for his newly born child'
             ]
         ];
     }
