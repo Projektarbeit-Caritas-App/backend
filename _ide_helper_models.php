@@ -26,6 +26,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $instance_id
+ * @property string|null $comment
  * @property-read \App\Models\User $creator
  * @property-read \App\Models\Instance $instance
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Person[] $people
@@ -38,6 +39,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Card newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Card query()
  * @method static \Illuminate\Database\Eloquent\Builder|Card whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Card whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Card whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Card whereCreatorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Card whereFirstName($value)

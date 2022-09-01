@@ -30,6 +30,7 @@ class CardManagerController extends Controller
      *       "valid_from": "2022-01-01T00:00:00.000000Z",
      *       "valid_until": "2022-03-31T00:00:00.000000Z",
      *       "creator_id": 1,
+     *       "comment": null,
      *       "created_at": "2022-08-16T15:00:00.000000Z",
      *       "updated_at": "2022-08-16T15:00:00.000000Z"
      *     }, {
@@ -42,6 +43,7 @@ class CardManagerController extends Controller
      *       "valid_from": "2022-01-01T00:00:00.000000Z",
      *       "valid_until": "2022-03-31T00:00:00.000000Z",
      *       "creator_id": 1,
+     *       "comment": "Hallo Welt",
      *       "created_at": "2022-08-18T13:47:42.000000Z",
      *       "updated_at": "2022-08-18T13:47:42.000000Z"
      *     }
@@ -92,6 +94,9 @@ class CardManagerController extends Controller
             // Valid until is before this date
             'valid_until.1' => 'date|required_with:valid_until.0',
 
+            // Comment contains
+            'comment' => 'string|nullable',
+
             // Created by user_id
             'creator_id' => 'exists:users,id|nullable',
 
@@ -113,6 +118,7 @@ class CardManagerController extends Controller
             'city' => 'contains',
             'valid_from' => 'range',
             'valid_until' => 'range',
+            'comment' => 'contains',
             'creator_id' => 'match'
         ], $filters));
     }
@@ -126,7 +132,11 @@ class CardManagerController extends Controller
     public function store(ManageCardRequest $request): Model
     {
         $instance = Instance::find($request->user()->instance_id);
-        return $instance->cards()->create($request->validated());
+
+        $validated = $request->validated();
+        $validated['creator_id'] = $request->user()->id;
+
+        return $instance->cards()->create($validated);
     }
 
     /**
@@ -142,6 +152,7 @@ class CardManagerController extends Controller
      *   "valid_from": "2022-01-01T00:00:00.000000Z",
      *   "valid_until": "2022-03-31T00:00:00.000000Z",
      *   "creator_id": 1,
+     *   "comment": null,
      *   "created_at": "2022-08-18T13:47:42.000000Z",
      *   "updated_at": "2022-08-18T13:47:42.000000Z"
      * }
