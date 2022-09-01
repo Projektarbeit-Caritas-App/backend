@@ -37,6 +37,7 @@ class CheckoutController extends Controller
      *     "valid_from": "2022-01-01T00:00:00.000000Z",
      *     "valid_until": "2022-03-31T00:00:00.000000Z",
      *     "creator_id": 1,
+     *     "comment": "Hallo Welt",
      *     "created_at": null,
      *     "updated_at": null
      *   },
@@ -194,6 +195,11 @@ class CheckoutController extends Controller
                     'product_type_id' => $lineItem['product_type_id']
                 ]);
             }
+        }
+
+        if (!empty($request->get('comment'))) {
+            $card->comment = $request->get('comment');
+            $card->save();
         }
 
         return response(null, 204);
