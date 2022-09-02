@@ -57,10 +57,15 @@ class UserTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/user/' . $this->user->id)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
-
-        // TODO Check returned json
+            ->assertJsonStructure([
+                "id",
+                "instance_id",
+                "organization_id",
+                "name",
+                "email",
+                "created_at",
+                "updated_at"
+            ])->assertSuccessful();
     }
 
     /**
@@ -80,10 +85,29 @@ class UserTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->get('/api/admin/user/')
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
-
-        // TODO Check returned json
+            ->assertJsonStructure([
+                "items" => [
+                    "*" => [
+                        "id",
+                        "instance_id",
+                        "organization_id",
+                        "name",
+                        "email",
+                        "created_at",
+                        "updated_at"
+                    ]
+                ],
+                "meta" => [
+                    "current_page",
+                    "last_page",
+                    "per_page",
+                    "item_count"
+                ],
+                "links" => [
+                    "prev_page_url",
+                    "next_page_url"
+                ]
+            ])->assertSuccessful();
     }
 
     /**
@@ -104,8 +128,7 @@ class UserTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->post('/api/admin/user/', $payload)
-            ->assertStatus(201)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+            ->assertSuccessful();
 
         assertEquals(2, User::count());
     }
@@ -128,8 +151,7 @@ class UserTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->put('/api/admin/user/' . $this->user->id, $payload)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+            ->assertSuccessful();
 
         $this->user = $this->user->refresh();
 
@@ -149,8 +171,7 @@ class UserTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->delete('/api/admin/user/' . $this->user->id)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+            ->assertSuccessful();
 
         assertFalse(User::exists());
     }
