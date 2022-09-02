@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Card;
+use App\Models\Instance;
 use App\Models\Person;
-use App\Models\Visit;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
@@ -37,6 +37,7 @@ class CheckoutController extends Controller
      *     "valid_from": "2022-01-01T00:00:00.000000Z",
      *     "valid_until": "2022-03-31T00:00:00.000000Z",
      *     "creator_id": 1,
+     *     "comment": "Hallo Welt",
      *     "created_at": null,
      *     "updated_at": null
      *   },
@@ -178,10 +179,12 @@ class CheckoutController extends Controller
             ], 410);
         }
 
-        $visit = new Visit();
-        $visit->card_id = $card->id;
-        $visit->user_id = $request->user()->id;
-        $visit->save();
+        $instance = Instance::find($card->instance_id);
+
+        $visit = $instance->visits()->create([
+            'card_id' => $card->id,
+            'user_id' => $request->user()->id
+        ]);
 
         $items = $request->json('lineItems');
 
@@ -189,11 +192,17 @@ class CheckoutController extends Controller
             $amount = $lineItem['amount'];
 
             for ($i = 0; $i < $amount; $i++) {
-                $visit->lineItems()->create([
+                $instance->lineItems()->create([
+                    'visit_id' => $visit->id,
                     'person_id' => $lineItem['person_id'],
                     'product_type_id' => $lineItem['product_type_id']
                 ]);
             }
+        }
+
+        if (!empty($request->get('comment'))) {
+            $card->comment = $request->get('comment');
+            $card->save();
         }
 
         return response(null, 204);
