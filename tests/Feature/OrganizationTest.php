@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
 
 class OrganizationTest extends TestCase
 {
@@ -57,6 +59,8 @@ class OrganizationTest extends TestCase
             ->get('/api/admin/organization/' . $this->organization->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        // TODO Check returned json
     }
 
     /**
@@ -78,6 +82,8 @@ class OrganizationTest extends TestCase
             ->get('/api/admin/organization/')
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        // TODO Check returned json
     }
 
     /**
@@ -99,6 +105,8 @@ class OrganizationTest extends TestCase
             ->post('/api/admin/organization/', $payload)
             ->assertStatus(201)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        assertEquals(2, Organization::count());
     }
 
     /**
@@ -120,6 +128,14 @@ class OrganizationTest extends TestCase
             ->put('/api/admin/organization/' . $this->organization->id, $payload)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        $this->organization = $this->organization->refresh();
+        assertEquals($payload['name'], $this->organization->name);
+        assertEquals($payload['street'], $this->organization->street);
+        assertEquals($payload['postcode'], $this->organization->postcode);
+        assertEquals($payload['city'], $this->organization->city);
+        assertEquals($payload['contact'], $this->organization->contact);
+
     }
 
     /**
@@ -129,30 +145,11 @@ class OrganizationTest extends TestCase
      */
     public function test_delete_organization()
     {
-        $organization2 = new Organization;
-        $organization2->name = "Organization Name";
-        $organization2->street = "Organization Street";
-        $organization2->postcode = "12345";
-        $organization2->city = "Organization City";
-        $organization2->contact = "Organization Contact";
-        $this->instance->organizations()->save($organization2);
-
-        $response = $this->actingAs($this->user)
-            ->delete('/api/admin/organization/' . $organization2->id)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
-    }
-
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_delete_only_existing_organization()
-    {
         $response = $this->actingAs($this->user)
             ->delete('/api/admin/organization/' . $this->organization->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        assertFalse(Organization::exists());
     }
 }

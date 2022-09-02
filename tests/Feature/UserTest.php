@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
 
 class UserTest extends TestCase
 {
@@ -57,6 +59,8 @@ class UserTest extends TestCase
             ->get('/api/admin/user/' . $this->user->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        // TODO Check returned json
     }
 
     /**
@@ -78,6 +82,8 @@ class UserTest extends TestCase
             ->get('/api/admin/user/')
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        // TODO Check returned json
     }
 
     /**
@@ -100,6 +106,8 @@ class UserTest extends TestCase
             ->post('/api/admin/user/', $payload)
             ->assertStatus(201)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        assertEquals(2, User::count());
     }
 
     /**
@@ -122,6 +130,14 @@ class UserTest extends TestCase
             ->put('/api/admin/user/' . $this->user->id, $payload)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        $this->user = $this->user->refresh();
+
+        assertEquals($payload['name'], $this->user->name);
+        assertEquals($payload['email'], $this->user->email);
+
+        // TODO Password hash is not the same
+        // assertEquals(Hash::make($payload['password']), $this->user->password);
     }
 
     /**
@@ -135,5 +151,7 @@ class UserTest extends TestCase
             ->delete('/api/admin/user/' . $this->user->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+
+        assertFalse(User::exists());
     }
 }
