@@ -13,6 +13,39 @@ class OrganizationTest extends TestCase
 {
     use DatabaseTransactions;
 
+    private $instance;
+    private $organization;
+    private $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->instance = new Instance;
+        $this->instance->name = "Instance Name";
+        $this->instance->street = "Instance Street";
+        $this->instance->postcode = "12345";
+        $this->instance->city = "Instance city";
+        $this->instance->contact = "Instance contact";
+        $this->instance->save();
+
+        $this->organization = new Organization;
+        $this->organization->name = "Organization Name";
+        $this->organization->street = "Organization Street";
+        $this->organization->postcode = "12345";
+        $this->organization->city = "Organization City";
+        $this->organization->contact = "Organization Contact";
+        $this->instance->organizations()->save($this->organization);
+
+        $this->user = new User;
+        $this->user->name = "Test User Name";
+        $this->user->email = "test@web.de";
+        $this->user->password = Hash::make("Test User Password");
+        $this->user->syncRoles("instance_manager");
+        $this->user->instance_id = $this->instance->id;
+        $this->organization->users()->save($this->user);
+    }
+
     /**
      * A basic feature test example.
      *
@@ -20,32 +53,8 @@ class OrganizationTest extends TestCase
      */
     public function test_show_organization()
     {
-        $instance = new Instance;
-        $instance->name = "Instance Name";
-        $instance->street = "Instance Street";
-        $instance->postcode = "12345";
-        $instance->city = "Instance city";
-        $instance->contact = "Instance contact";
-        $instance->save();
-
-        $organization = new Organization;
-        $organization->name = "Organization Name";
-        $organization->street = "Organization Street";
-        $organization->postcode = "12345";
-        $organization->city = "Organization City";
-        $organization->contact = "Organization Contact";
-        $instance->organizations()->save($organization);
-
-        $user = new User;
-        $user->name = "Test User Name";
-        $user->email = "test@web.de";
-        $user->password = Hash::make("Test User Password");
-        $user->syncRoles("instance_manager");
-        $user->instance_id = $instance->id;
-        $organization->users()->save($user);
-
-        $response = $this->actingAs($user)
-            ->get('/api/admin/organization/' . $organization->id)
+        $response = $this->actingAs($this->user)
+            ->get('/api/admin/organization/' . $this->organization->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
     }
@@ -57,39 +66,15 @@ class OrganizationTest extends TestCase
      */
     public function test_index_organization()
     {
-        $instance = new Instance;
-        $instance->name = "Instance Name";
-        $instance->street = "Instance Street";
-        $instance->postcode = 12345;
-        $instance->city = "Instance city";
-        $instance->contact = "Instance contact";
-        $instance->save();
-
-        $organization = new Organization;
-        $organization->name = "Organization Name";
-        $organization->street = "Organization Street";
-        $organization->postcode = "12345";
-        $organization->city = "Organization City";
-        $organization->contact = "Organization Contact";
-        $instance->organizations()->save($organization);
-
         $organization2 = new Organization;
         $organization2->name = "Organization Name";
         $organization2->street = "Organization Street";
         $organization2->postcode = "12345";
         $organization2->city = "Organization City";
         $organization2->contact = "Organization Contact";
-        $instance->organizations()->save($organization2);
+        $this->instance->organizations()->save($organization2);
 
-        $user = new User;
-        $user->name = "Test User Name";
-        $user->email = "test@web.de";
-        $user->password = Hash::make("Test User Password");
-        $user->syncRoles("instance_manager");
-        $user->instance_id = $instance->id;
-        $organization->users()->save($user);
-
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($this->user)
             ->get('/api/admin/organization/')
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
@@ -102,30 +87,6 @@ class OrganizationTest extends TestCase
      */
     public function test_create_organization()
     {
-        $instance = new Instance;
-        $instance->name = "Instance Name";
-        $instance->street = "Instance Street";
-        $instance->postcode = "12345";
-        $instance->city = "Instance city";
-        $instance->contact = "Instance contact";
-        $instance->save();
-
-        $organization = new Organization;
-        $organization->name = "Organization Name";
-        $organization->street = "Organization Street";
-        $organization->postcode = "12345";
-        $organization->city = "Organization City";
-        $organization->contact = "Organization Contact";
-        $instance->organizations()->save($organization);
-
-        $user = new User;
-        $user->name = "Test User Name";
-        $user->email = "test@web.de";
-        $user->password = Hash::make("Test User Password");
-        $user->syncRoles("instance_manager");
-        $user->instance_id = $instance->id;
-        $organization->users()->save($user);
-
         $payload = [
             'name' => 'Organization Name',
             'street' => "Organization Street",
@@ -134,7 +95,7 @@ class OrganizationTest extends TestCase
             'contact' => "Organization Contact"
         ];
 
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($this->user)
             ->post('/api/admin/organization/', $payload)
             ->assertStatus(201)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
@@ -147,30 +108,6 @@ class OrganizationTest extends TestCase
      */
     public function test_update_organization()
     {
-        $instance = new Instance;
-        $instance->name = "Instance Name";
-        $instance->street = "Instance Street";
-        $instance->postcode = "12345";
-        $instance->city = "Instance city";
-        $instance->contact = "Instance contact";
-        $instance->save();
-
-        $organization = new Organization;
-        $organization->name = "Organization Name";
-        $organization->street = "Organization Street";
-        $organization->postcode = "12345";
-        $organization->city = "Organization City";
-        $organization->contact = "Organization Contact";
-        $instance->organizations()->save($organization);
-
-        $user = new User;
-        $user->name = "Test User Name";
-        $user->email = "test@web.de";
-        $user->password = Hash::make("Test User Password");
-        $user->syncRoles("instance_manager");
-        $user->instance_id = $instance->id;
-        $organization->users()->save($user);
-
         $payload = [
             'name' => 'Organization Name Updated',
             'street' => "Organization Street Updated",
@@ -179,8 +116,8 @@ class OrganizationTest extends TestCase
             'contact' => "Organization  UpdatedContact"
         ];
 
-        $response = $this->actingAs($user)
-            ->put('/api/admin/organization/' . $organization->id, $payload)
+        $response = $this->actingAs($this->user)
+            ->put('/api/admin/organization/' . $this->organization->id, $payload)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
     }
@@ -192,39 +129,15 @@ class OrganizationTest extends TestCase
      */
     public function test_delete_organization()
     {
-        $instance = new Instance;
-        $instance->name = "Instance Name";
-        $instance->street = "Instance Street";
-        $instance->postcode = 12345;
-        $instance->city = "Instance city";
-        $instance->contact = "Instance contact";
-        $instance->save();
-
-        $organization = new Organization;
-        $organization->name = "Organization Name";
-        $organization->street = "Organization Street";
-        $organization->postcode = "12345";
-        $organization->city = "Organization City";
-        $organization->contact = "Organization Contact";
-        $instance->organizations()->save($organization);
-
         $organization2 = new Organization;
         $organization2->name = "Organization Name";
         $organization2->street = "Organization Street";
         $organization2->postcode = "12345";
         $organization2->city = "Organization City";
         $organization2->contact = "Organization Contact";
-        $instance->organizations()->save($organization2);
+        $this->instance->organizations()->save($organization2);
 
-        $user = new User;
-        $user->name = "Test User Name";
-        $user->email = "test@web.de";
-        $user->password = Hash::make("Test User Password");
-        $user->syncRoles("instance_manager");
-        $user->instance_id = $instance->id;
-        $organization->users()->save($user);
-
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($this->user)
             ->delete('/api/admin/organization/' . $organization2->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
@@ -237,32 +150,8 @@ class OrganizationTest extends TestCase
      */
     public function test_delete_only_existing_organization()
     {
-        $instance = new Instance;
-        $instance->name = "Instance Name";
-        $instance->street = "Instance Street";
-        $instance->postcode = 12345;
-        $instance->city = "Instance city";
-        $instance->contact = "Instance contact";
-        $instance->save();
-
-        $organization = new Organization;
-        $organization->name = "Organization Name";
-        $organization->street = "Organization Street";
-        $organization->postcode = "12345";
-        $organization->city = "Organization City";
-        $organization->contact = "Organization Contact";
-        $instance->organizations()->save($organization);
-
-        $user = new User;
-        $user->name = "Test User Name";
-        $user->email = "test@web.de";
-        $user->password = Hash::make("Test User Password");
-        $user->syncRoles("instance_manager");
-        $user->instance_id = $instance->id;
-        $organization->users()->save($user);
-
-        $response = $this->actingAs($user)
-            ->delete('/api/admin/organization/' . $organization->id)
+        $response = $this->actingAs($this->user)
+            ->delete('/api/admin/organization/' . $this->organization->id)
             ->assertStatus(200)
             ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
     }
