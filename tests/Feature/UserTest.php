@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertNotEquals;
 
 class UserTest extends TestCase
 {
@@ -122,7 +123,7 @@ class UserTest extends TestCase
             'name' => 'Test User Name 2',
             'email' => 'test2@web.de',
             'password' => "!22Test73Pass#",
-            'password_confirmation' => "!22Test73Pass#", //TODO
+            'password_confirmation' => "!22Test73Pass#",
             'role' => "instance_manager"
         ];
 
@@ -145,21 +146,23 @@ class UserTest extends TestCase
             'name' => 'Test User Name 2',
             'email' => 'test2@web.de',
             'password' => "!22Test73Pass#",
-            'password_confirmation' => "!22Test73Pass#", //TODO
+            'password_confirmation' => "!22Test73Pass#",
             'role' => "instance_manager"
         ];
+
+        assertNotEquals($payload['name'], $this->user->name);
+        assertNotEquals($payload['email'], $this->user->email);
 
         $response = $this->actingAs($this->user)
             ->put('/api/admin/user/' . $this->user->id, $payload)
             ->assertSuccessful();
 
+        $oldPassword = $this->user->password;
         $this->user = $this->user->refresh();
 
         assertEquals($payload['name'], $this->user->name);
         assertEquals($payload['email'], $this->user->email);
-
-        // TODO Password hash is not the same
-        // assertEquals(Hash::make($payload['password']), $this->user->password);
+        assertNotEquals($oldPassword, $this->user->password);
     }
 
     /**
