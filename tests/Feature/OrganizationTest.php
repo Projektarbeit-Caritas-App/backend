@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertNotEquals;
 
 class OrganizationTest extends TestCase
 {
@@ -151,6 +152,12 @@ class OrganizationTest extends TestCase
             'city' => "Organization City Updated",
             'contact' => "Organization  UpdatedContact"
         ];
+
+        assertNotEquals($payload['name'], $this->organization->name);
+        assertNotEquals($payload['street'], $this->organization->street);
+        assertNotEquals($payload['postcode'], $this->organization->postcode);
+        assertNotEquals($payload['city'], $this->organization->city);
+        assertNotEquals($payload['contact'], $this->organization->contact);
 
         $response = $this->actingAs($this->user)
             ->put('/api/admin/organization/' . $this->organization->id, $payload)
