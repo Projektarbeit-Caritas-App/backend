@@ -57,10 +57,18 @@ class OrganizationTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/organization/' . $this->organization->id)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
-
-        // TODO Check returned json
+            ->assertJsonStructure([
+                "id",
+                "instance_id",
+                "name",
+                "street",
+                "postcode",
+                "city",
+                "contact",
+                "created_at",
+                "updated_at"
+            ])
+            ->assertSuccessful();
     }
 
     /**
@@ -80,10 +88,31 @@ class OrganizationTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->get('/api/admin/organization/')
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
-
-        // TODO Check returned json
+            ->assertJsonStructure([
+                "items" => [
+                    "*" => [
+                        "id",
+                        "instance_id",
+                        "name",
+                        "street",
+                        "postcode",
+                        "city",
+                        "contact",
+                        "created_at",
+                        "updated_at"
+                    ]
+                ],
+                "meta" => [
+                    "current_page",
+                    "last_page",
+                    "per_page",
+                    "item_count"
+                ],
+                "links" => [
+                    "prev_page_url",
+                    "next_page_url"
+                ]
+            ])->assertSuccessful();
     }
 
     /**
@@ -103,8 +132,7 @@ class OrganizationTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->post('/api/admin/organization/', $payload)
-            ->assertStatus(201)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+            ->assertSuccessful();
 
         assertEquals(2, Organization::count());
     }
@@ -126,8 +154,7 @@ class OrganizationTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->put('/api/admin/organization/' . $this->organization->id, $payload)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+            ->assertSuccessful();
 
         $this->organization = $this->organization->refresh();
         assertEquals($payload['name'], $this->organization->name);
@@ -135,7 +162,6 @@ class OrganizationTest extends TestCase
         assertEquals($payload['postcode'], $this->organization->postcode);
         assertEquals($payload['city'], $this->organization->city);
         assertEquals($payload['contact'], $this->organization->contact);
-
     }
 
     /**
@@ -147,8 +173,7 @@ class OrganizationTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->delete('/api/admin/organization/' . $this->organization->id)
-            ->assertStatus(200)
-            ->withHeaders(['Content-Type' => 'application/json', 'Accept' => 'application/json']);
+            ->assertSuccessful();
 
         assertFalse(Organization::exists());
     }
