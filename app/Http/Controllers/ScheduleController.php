@@ -27,14 +27,44 @@ class ScheduleController extends Controller
      *     "shop_id": 1,
      *     "time": "2022-08-21T08:00:00.000000Z",
      *     "created_at": "2022-08-19T08:00:00.000000Z",
-     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *     "updated_at": "2022-08-19T08:00:00.000000Z",
+     *     "card": {
+     *       "id": 1,
+     *       "last_name": "Yasu",
+     *       "first_name": "Kitsune",
+     *       "street": null,
+     *       "postcode": null,
+     *       "city": null,
+     *       "valid_from": "2022-01-01T00:00:00.000000Z",
+     *       "valid_until": "2022-12-31T00:00:00.000000Z",
+     *       "creator_id": 1,
+     *       "created_at": "2022-08-20T13:16:22.000000Z",
+     *       "updated_at": "2022-08-20T13:16:22.000000Z",
+     *       "instance_id": 1,
+     *       "comment": null
+     *     }
      *   }, {
      *     "id": 6,
      *     "card_id": 2,
      *     "shop_id": 1,
      *     "time": "2022-08-21T08:00:00.000000Z",
      *     "created_at": "2022-08-19T08:00:00.000000Z",
-     *     "updated_at": "2022-08-19T08:00:00.000000Z"
+     *     "updated_at": "2022-08-19T08:00:00.000000Z",
+     *     "card": {
+     *       "id": 2,
+     *       "last_name": "User",
+     *       "first_name": "Test",
+     *       "street": null,
+     *       "postcode": null,
+     *       "city": null,
+     *       "valid_from": "2022-01-01T00:00:00.000000Z",
+     *       "valid_until": "2022-12-31T00:00:00.000000Z",
+     *       "creator_id": 1,
+     *       "created_at": "2022-08-20T13:16:22.000000Z",
+     *       "updated_at": "2022-08-20T13:16:22.000000Z",
+     *       "instance_id": 1,
+     *       "comment": null
+     *     }
      *   }
      * ]
      *
@@ -43,7 +73,7 @@ class ScheduleController extends Controller
      */
     public function today(Shop $shop): Collection
     {
-        return Reservation::whereBetween('time', [
+        return Reservation::with('card')->whereBetween('time', [
             date('Y-m-d') . ' 00:00:00',
             date('Y-m-d') . ' 23:59:59'
         ])->where('shop_id', $shop->id)->get();
@@ -64,7 +94,7 @@ class ScheduleController extends Controller
      *       "name": "organization",
      *       "street": "organizations street",
      *       "postcode": "12345",
-     *       "city": "oraganizations city",
+     *       "city": "organizations city",
      *       "contact": "organizations contact",
      *       "opening_hours": {
      *         "monday": [
