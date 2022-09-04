@@ -60,7 +60,7 @@ class ShopTest extends TestCase
         $this->shop->contact = "Shop contact";
         $this->shop->opening_hours = [
             "monday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
@@ -68,7 +68,7 @@ class ShopTest extends TestCase
                     ]
                 ],
             "tuesday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
@@ -76,7 +76,7 @@ class ShopTest extends TestCase
                     ]
                 ],
             "wednesday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
@@ -84,7 +84,7 @@ class ShopTest extends TestCase
                     ]
                 ],
             "thursday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
@@ -92,7 +92,7 @@ class ShopTest extends TestCase
                     ]
                 ],
             "friday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
@@ -100,7 +100,7 @@ class ShopTest extends TestCase
                     ]
                 ],
             "saturday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
@@ -108,7 +108,7 @@ class ShopTest extends TestCase
                     ]
                 ],
             "sunday" =>
-                [ "*" =>
+                [
                     [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
