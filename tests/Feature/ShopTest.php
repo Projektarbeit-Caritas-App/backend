@@ -59,41 +59,62 @@ class ShopTest extends TestCase
         $this->shop->city = "Shop city";
         $this->shop->contact = "Shop contact";
         $this->shop->opening_hours = [
-            "monday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
-            "tuesday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
-            "wednesday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
-            "thursday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
-            "friday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
-            "saturday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
-            "sunday" => [
-                "opens_at" => "07:30",
-                "closes_at" => "19:00",
-                "slots" => 4
-            ],
+            "monday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
+            "tuesday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
+            "wednesday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
+            "thursday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
+            "friday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
+            "saturday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
+            "sunday" =>
+                [ "*" =>
+                    [
+                        "opens_at" => "07:30",
+                        "closes_at" => "19:00",
+                        "slots" => 4
+                    ]
+                ],
         ];
         $this->shop->save();
     }
@@ -103,7 +124,7 @@ class ShopTest extends TestCase
      *
      * @return void
      */
-    public function test_show_shop() //FIXME Argument #2 of PHPUnit\Framework\Assert::assertArrayHasKey() must be an array or ArrayAccess || Fails at "id"
+    public function test_show_shop()
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/shop/' . $this->shop->id)
@@ -175,7 +196,7 @@ class ShopTest extends TestCase
      *
      * @return void
      */
-    public function test_index_shop() //FIXME Argument #2 of PHPUnit\Framework\Assert::assertArrayHasKey() must be an array or ArrayAccess || Fails at "id"
+    public function test_index_shop()
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/shop/')
