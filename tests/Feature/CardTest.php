@@ -58,6 +58,7 @@ class CardTest extends TestCase
         $this->card->street = "Foxstreet 10";
         $this->card->postcode = "12345";
         $this->card->city = "Foxhole";
+        $this->card->comment = "Comment";
         $this->card->valid_from = "2022-07-04 12:00:00";
         $this->card->valid_until = "2022-07-04 12:00:00";
         $this->card->save();
@@ -72,6 +73,20 @@ class CardTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/card/' . $this->card->id)
+            ->assertJsonStructure([
+                "id",
+                "last_name",
+                "first_name",
+                "street",
+                "postcode",
+                "city",
+                "valid_from",
+                "valid_until",
+                "creator_id",
+                "comment",
+                "created_at",
+                "updated_at"
+            ])
             ->assertSuccessful();
     }
 
@@ -84,6 +99,34 @@ class CardTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/card/')
+            ->assertJsonStructure([
+                "items" => [
+                    "*" => [
+                        "id",
+                        "last_name",
+                        "first_name",
+                        "street",
+                        "postcode",
+                        "city",
+                        "valid_from",
+                        "valid_until",
+                        "creator_id",
+                        "comment",
+                        "created_at",
+                        "updated_at"
+                    ]
+                ],
+                "meta" => [
+                    "current_page",
+                    "last_page",
+                    "per_page",
+                    "item_count"
+                ],
+                "links" => [
+                    "prev_page_url",
+                    "next_page_url"
+                ]
+            ])
             ->assertSuccessful();
     }
 
@@ -146,8 +189,8 @@ class CardTest extends TestCase
         assertEquals($payload['street'], $this->card->street);
         assertEquals($payload['postcode'], $this->card->postcode);
         assertEquals($payload['city'], $this->card->city);
-        // assertEquals($payload['valid_from'], $this->card->valid_from); //TODO why time is not updated correctly
-        // assertEquals($payload['valid_until'], $this->card->valid_until);
+        assertEquals($payload['valid_from'], $this->card->valid_from);
+        assertEquals($payload['valid_until'], $this->card->valid_until);
     }
 
     /**
@@ -155,7 +198,7 @@ class CardTest extends TestCase
      *
      * @return void
      */
-    public function test_delete_shop()
+    public function test_delete_card()
     {
         $response = $this->actingAs($this->user)
             ->delete('/api/admin/card/' . $this->card->id)

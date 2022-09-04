@@ -24,8 +24,8 @@ class Card extends Model
     ];
 
     protected $casts = [
-        'valid_from' => 'date',
-        'valid_until' => 'date'
+        'valid_from' => 'datetime',
+        'valid_until' => 'datetime'
     ];
 
     public function instance(): BelongsTo
