@@ -160,49 +160,49 @@ class ScheduleTest extends TestCase
                     "contact",
                     "opening_hours" => [
                         "monday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"
                             ]
                         ],
                         "tuesday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"
                             ]
                         ],
                         "wednesday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"
                             ]
                         ],
                         "thursday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"
                             ]
                         ],
                         "friday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"
                             ]
                         ],
                         "saturday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"
                             ]
                         ],
                         "sunday" => [
-                            "*" => [
+                            [
                                 "opens_at",
                                 "closes_at",
                                 "slots"

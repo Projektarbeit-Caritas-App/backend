@@ -87,7 +87,7 @@ class ProductTypeTest extends TestCase
             ->get('/api/admin/product-type/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "name",
                         "icon",

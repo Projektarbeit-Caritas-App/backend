@@ -128,7 +128,7 @@ class LineItemTest extends TestCase
             ->get('/api/admin/lineItem/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "visit_id",
                         "person_id",

@@ -101,7 +101,7 @@ class CardTest extends TestCase
             ->get('/api/admin/card/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "last_name",
                         "first_name",

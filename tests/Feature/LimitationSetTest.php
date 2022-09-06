@@ -89,7 +89,7 @@ class LimitationSetTest extends TestCase
             ->get('/api/admin/limitation/set/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "name",
                         "valid_from",

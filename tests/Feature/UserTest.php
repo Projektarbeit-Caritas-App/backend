@@ -88,7 +88,7 @@ class UserTest extends TestCase
             ->get('/api/admin/user/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "instance_id",
                         "organization_id",

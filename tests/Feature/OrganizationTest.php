@@ -91,7 +91,7 @@ class OrganizationTest extends TestCase
             ->get('/api/admin/organization/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "instance_id",
                         "name",

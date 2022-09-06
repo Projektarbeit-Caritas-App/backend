@@ -104,7 +104,7 @@ class PersonTest extends TestCase
             ->get('/api/admin/person/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "card_id",
                         "gender",

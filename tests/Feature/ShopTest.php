@@ -138,49 +138,49 @@ class ShopTest extends TestCase
                 "contact",
                 "opening_hours" => [
                     "monday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
                         ]
                     ],
                     "tuesday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
                         ]
                     ],
                     "wednesday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
                         ]
                     ],
                     "thursday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
                         ]
                     ],
                     "friday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
                         ]
                     ],
                     "saturday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
                         ]
                     ],
                     "sunday" => [
-                        "*" => [
+                        [
                             "opens_at",
                             "closes_at",
                             "slots"
@@ -202,7 +202,7 @@ class ShopTest extends TestCase
             ->get('/api/admin/shop/')
             ->assertJsonStructure([
                     "items" => [
-                        "*" => [
+                        [
                             "id",
                             "organization_id",
                             "name",
@@ -212,49 +212,49 @@ class ShopTest extends TestCase
                             "contact",
                             "opening_hours" => [
                                 "monday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
                                     ]
                                 ],
                                 "tuesday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
                                     ]
                                 ],
                                 "wednesday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
                                     ]
                                 ],
                                 "thursday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
                                     ]
                                 ],
                                 "friday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
                                     ]
                                 ],
                                 "saturday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
                                     ]
                                 ],
                                 "sunday" => [
-                                    "*" => [
+                                    [
                                         "opens_at",
                                         "closes_at",
                                         "slots"
@@ -296,49 +296,49 @@ class ShopTest extends TestCase
             "contact" => "Shop contact",
             "opening_hours" => [
                 "monday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
                     ]
                 ],
                 "tuesday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
                     ]
                 ],
                 "wednesday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
                     ]
                 ],
                 "thursday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
                     ]
                 ],
                 "friday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
                     ]
                 ],
                 "saturday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
                     ]
                 ],
                 "sunday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 4
@@ -371,49 +371,49 @@ class ShopTest extends TestCase
             "contact" => "Shop contact 2",
             "opening_hours" => [
                 "monday" => [
-                    "*" => [
+                    [
                         "opens_at" => "08:30",
                         "closes_at" => "16:00",
                         "slots" => 1
                     ]
                 ],
                 "tuesday" => [
-                    "*" => [
+                    [
                         "opens_at" => "05:30",
                         "closes_at" => "15:00",
                         "slots" => 3
                     ]
                 ],
                 "wednesday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 2
                     ]
                 ],
                 "thursday" => [
-                    "*" => [
+                    [
                         "opens_at" => "07:30",
                         "closes_at" => "19:00",
                         "slots" => 7
                     ]
                 ],
                 "friday" => [
-                    "*" => [
+                    [
                         "opens_at" => "09:30",
                         "closes_at" => "19:00",
                         "slots" => 2
                     ]
                 ],
                 "saturday" => [
-                    "*" => [
+                    [
                         "opens_at" => "12:30",
                         "closes_at" => "19:00",
                         "slots" => 1
                     ]
                 ],
                 "sunday" => [
-                    "*" => [
+                    [
                         "opens_at" => "12:30",
                         "closes_at" => "19:00",
                         "slots" => 3

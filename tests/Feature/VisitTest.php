@@ -101,7 +101,7 @@ class VisitTest extends TestCase
             ->get('/api/admin/visit/')
             ->assertJsonStructure([
                 "items" => [
-                    "*" => [
+                    [
                         "id",
                         "card_id",
                         "user_id",
