@@ -25,7 +25,7 @@ class ManageProductTypeRequest extends FormRequest
     {
         return [
             'name' => 'string|required',
-            'icon' => 'string'
+            'icon' => 'string|nullable'
         ];
     }
 

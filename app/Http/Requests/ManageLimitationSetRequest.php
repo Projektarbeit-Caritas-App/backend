@@ -26,7 +26,7 @@ class ManageLimitationSetRequest extends FormRequest
         return [
             'name' => 'string|required',
             'valid_from' => 'date|required',
-            'valid_until' => 'date'
+            'valid_until' => 'date|nullable'
         ];
     }
 
