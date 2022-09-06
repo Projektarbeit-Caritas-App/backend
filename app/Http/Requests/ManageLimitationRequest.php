@@ -26,7 +26,7 @@ class ManageLimitationRequest extends FormRequest
         return [
             'product_type_id' => 'exists:product_types,id|required',
             'limitation_set_id' => 'exists:limitation_sets,id|required',
-            'limit' => 'int'
+            'limit' => 'int|nullable'
         ];
     }
 

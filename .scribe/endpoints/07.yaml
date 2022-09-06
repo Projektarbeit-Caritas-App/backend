@@ -1,0 +1,54 @@
+name: PDF
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/pdf/card/{id}'
+    metadata:
+      title: 'Print specified Card'
+      description: |-
+        <small class="badge badge-purple">App authorization available</small>
+
+        Generate PDF for the given Card-ID. You can control the response with the Query-Params listed below.
+        If none is given it will generate a json with the base64 encoded PDF-File.
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the card.'
+        required: true
+        example: 4
+        type: integer
+        custom: []
+    queryParameters:
+      download:
+        name: download
+        description: 'Download generated PDF'
+        required: false
+        example: null
+        type: string
+        custom: []
+      raw:
+        name: raw
+        description: 'Show PDF in Browser'
+        required: false
+        example: null
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []

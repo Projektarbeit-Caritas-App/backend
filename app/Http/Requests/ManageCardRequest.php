@@ -26,9 +26,9 @@ class ManageCardRequest extends FormRequest
         return [
             'last_name' => 'string|required',
             'first_name' => 'string|required',
-            'street' => 'string',
-            'postcode' => 'string',
-            'city' => 'string',
+            'street' => 'string|nullable',
+            'postcode' => 'string|nullable',
+            'city' => 'string|nullable',
             'valid_from' => 'date|required',
             'valid_until' => 'date|required',
             'comment' => 'string|nullable'

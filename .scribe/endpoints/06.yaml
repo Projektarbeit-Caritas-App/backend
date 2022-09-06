@@ -1,0 +1,314 @@
+name: Organization
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/admin/organization
+    metadata:
+      title: 'List all Organization'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      name:
+        name: name
+        description: 'Name contains.'
+        required: false
+        example: quidem
+        type: string
+        custom: []
+      street:
+        name: street
+        description: 'Street contains.'
+        required: false
+        example: et
+        type: string
+        custom: []
+      postcode:
+        name: postcode
+        description: 'Postcode contains.'
+        required: false
+        example: ut
+        type: string
+        custom: []
+      city:
+        name: city
+        description: 'City contains.'
+        required: false
+        example: neque
+        type: string
+        custom: []
+      contact:
+        name: contact
+        description: 'Contact contains.'
+        required: false
+        example: aut
+        type: string
+        custom: []
+      sort:
+        name: sort
+        description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
+        required: false
+        example: name
+        type: string
+        custom: []
+      order:
+        name: order
+        description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
+        required: false
+        example: desc
+        type: string
+        custom: []
+      page:
+        name: page
+        description: 'Page to load.'
+        required: false
+        example: 9
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "items": [
+              {
+                "id": 1,
+                "instance_id": 1,
+                "name": "test",
+                "street": "abc",
+                "postcode": "12345",
+                "city": "abc",
+                "contact": "abc",
+                "created_at": "2022-08-15T17:23:12.000000Z",
+                "updated_at": "2022-08-15T17:23:12.000000Z"
+              }, {
+                "id": 2,
+                "instance_id": 2,
+                "name": "Instance",
+                "street": "Street",
+                "postcode": "Postcode",
+                "city": "City",
+                "contact": "Contact",
+                "created_at": "2022-08-21T11:34:14.000000Z",
+                "updated_at": "2022-08-21T11:34:14.000000Z"
+              }, {
+                "id": 3,
+                "instance_id": 3,
+                "name": "Instance",
+                "street": "Street",
+                "postcode": "Postcode",
+                "city": "City",
+                "contact": "Contact",
+                "created_at": "2022-08-21T11:34:55.000000Z",
+                "updated_at": "2022-08-21T11:34:55.000000Z"
+              }
+            ],
+            "meta": {
+              "current_page": 1,
+              "last_page": 1,
+              "per_page": 25,
+              "item_count": 1
+            },
+            "links": {
+              "prev_page_url": null,
+              "next_page_url": null
+            }
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/organization
+    metadata:
+      title: 'Create new Organization'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Name of the organization.'
+        required: true
+        example: Caritas
+        type: string
+        custom: []
+      street:
+        name: street
+        description: 'Street where the organization is located.'
+        required: true
+        example: 'Franziskanergasse 3'
+        type: string
+        custom: []
+      postcode:
+        name: postcode
+        description: 'Postcode where the organization is located.'
+        required: true
+        example: ' 97070'
+        type: string
+        custom: []
+      city:
+        name: city
+        description: 'City where the organization is located.'
+        required: true
+        example: Wuerzburg
+        type: string
+        custom: []
+      contact:
+        name: contact
+        description: 'Contact information from the organization.'
+        required: true
+        example: 'You can call me under 1-603-413-4124'
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/admin/organization/{id}'
+    metadata:
+      title: 'Show specified Organization'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the organization.'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "id": 2,
+            "instance_id": 2,
+            "name": "Instance",
+            "street": "Street",
+            "postcode": "Postcode",
+            "city": "City",
+            "contact": "Contact",
+            "created_at": "2022-08-21T11:34:14.000000Z",
+            "updated_at": "2022-08-21T11:34:14.000000Z"
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/admin/organization/{id}'
+    metadata:
+      title: 'Update specified Organization'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the organization.'
+        required: true
+        example: 19
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Name of the organization.'
+        required: true
+        example: Caritas
+        type: string
+        custom: []
+      street:
+        name: street
+        description: 'Street where the organization is located.'
+        required: true
+        example: 'Franziskanergasse 3'
+        type: string
+        custom: []
+      postcode:
+        name: postcode
+        description: 'Postcode where the organization is located.'
+        required: true
+        example: ' 97070'
+        type: string
+        custom: []
+      city:
+        name: city
+        description: 'City where the organization is located.'
+        required: true
+        example: Wuerzburg
+        type: string
+        custom: []
+      contact:
+        name: contact
+        description: 'Contact information from the organization.'
+        required: true
+        example: 'You can call me under 1-603-413-4124'
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/organization/{id}'
+    metadata:
+      title: 'Delete specified Organization'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the organization.'
+        required: true
+        example: 4
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true
+          }
+        headers: []
+        description: '200'
+    responseFields: []
