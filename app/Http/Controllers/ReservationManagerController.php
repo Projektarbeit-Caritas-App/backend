@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageReservationRequest;
+use App\Models\Instance;
 use App\Models\Reservation;
 use App\Models\Shop;
 use App\Service\ModelFilterService;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -107,11 +109,12 @@ class ReservationManagerController extends Controller
      * Create new Reservation
      *
      * @param \App\Http\Requests\ManageReservationRequest $request
-     * @return \App\Models\Reservation
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function store(ManageReservationRequest $request): Reservation
+    public function store(ManageReservationRequest $request): Model
     {
         $validated = $request->validated();
+        $instance = Instance::find($request->user()->instance_id);
 
         if (!$request->user()->hasPermissionTo('admin.reservation.store')) {
             $shop = Shop::find($validated['shop_id']);
@@ -121,7 +124,7 @@ class ReservationManagerController extends Controller
             }
         }
 
-        return Reservation::create($validated);
+        return $instance->reservations()->create($validated);
     }
 
     /**
