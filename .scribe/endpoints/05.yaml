@@ -1,0 +1,253 @@
+name: 'Line Item'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/admin/lineItem
+    metadata:
+      title: 'List all LineItems'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      visit_id:
+        name: visit_id
+        description: Visit.
+        required: false
+        example: null
+        type: string
+        custom: []
+      person_id:
+        name: person_id
+        description: Person.
+        required: false
+        example: null
+        type: string
+        custom: []
+      product_type_id:
+        name: product_type_id
+        description: 'Product Type.'
+        required: false
+        example: null
+        type: string
+        custom: []
+      sort:
+        name: sort
+        description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
+        required: false
+        example: id
+        type: string
+        custom: []
+      order:
+        name: order
+        description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
+        required: false
+        example: asc
+        type: string
+        custom: []
+      page:
+        name: page
+        description: 'Page to load.'
+        required: false
+        example: 11
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "items": [
+              {
+                "id": 6,
+                "visit_id": 5,
+                "person_id": 1,
+                "product_type_id": 1,
+                "created_at": "2022-08-16T16:32:23.000000Z",
+                "updated_at": "2022-08-16T16:32:23.000000Z"
+              }, {
+                "id": 7,
+                "visit_id": 6,
+                "person_id": 1,
+                "product_type_id": 1,
+                "created_at": "2022-08-16T16:32:52.000000Z",
+                "updated_at": "2022-08-16T16:32:52.000000Z"
+              },
+            ],
+            "meta": {
+              "current_page": 1,
+              "last_page": 1,
+              "per_page": 25,
+              "item_count": 6
+            },
+            "links": {
+              "prev_page_url": null,
+              "next_page_url": null
+            }
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/lineItem
+    metadata:
+      title: 'Create new LineItem'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      visit_id:
+        name: visit_id
+        description: 'ID of the visit the lineItem is attached to.'
+        required: true
+        example: '50080528753334'
+        type: string
+        custom: []
+      person_id:
+        name: person_id
+        description: 'ID of the person the lineItem is attached to.'
+        required: true
+        example: '50080528753334'
+        type: string
+        custom: []
+      product_type_id:
+        name: product_type_id
+        description: 'ID of the product_type the lineItem is attached to.'
+        required: true
+        example: '50080528753334'
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/admin/lineItem/{id}'
+    metadata:
+      title: 'Show specified LineItem'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the lineItem.'
+        required: true
+        example: 14
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "id": 6,
+            "visit_id": 5,
+            "person_id": 1,
+            "product_type_id": 1,
+            "created_at": "2022-08-16T16:32:23.000000Z",
+            "updated_at": "2022-08-16T16:32:23.000000Z"
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/admin/lineItem/{id}'
+    metadata:
+      title: 'Update specified LineItem'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the lineItem.'
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      visit_id:
+        name: visit_id
+        description: 'ID of the visit the lineItem is attached to.'
+        required: true
+        example: '50080528753334'
+        type: string
+        custom: []
+      person_id:
+        name: person_id
+        description: 'ID of the person the lineItem is attached to.'
+        required: true
+        example: '50080528753334'
+        type: string
+        custom: []
+      product_type_id:
+        name: product_type_id
+        description: 'ID of the product_type the lineItem is attached to.'
+        required: true
+        example: '50080528753334'
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/admin/lineItem/{id}'
+    metadata:
+      title: 'Delete specified LineItem'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the lineItem.'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true
+          }
+        headers: []
+        description: '200'
+    responseFields: []

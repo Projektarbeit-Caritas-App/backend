@@ -234,7 +234,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $instance_id
- * @property-read \App\Models\Card|null $card
+ * @property-read \App\Models\Card $card
  * @property-read \App\Models\Instance $instance
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LimitationSet[] $limitationSets
  * @property-read int|null $limitation_sets_count
