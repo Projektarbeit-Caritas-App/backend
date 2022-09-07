@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use function PHPUnit\Framework\assertEquals;
 
 class CheckoutTest extends TestCase
 {
@@ -236,6 +237,50 @@ class CheckoutTest extends TestCase
      */
     public function test_create_checkout()
     {
-        // TODO implement
+        $payload = [
+            'comment' => 'Took an additional buggy for his newly born child',
+            'lineItems' => [
+                [
+                    'person_id' => $this->person->id,
+                    'product_type_id' => $this->productType->id,
+                    'amount' => 5,
+                ]
+            ]
+        ];
+
+        // dd($payload);
+        /*
+          array:2 [
+          "comment" => "Took an additional buggy for his newly born child"
+          "lineItems" => array:1 [
+            0 => array:3 [
+              "person_id" => 210
+              "product_type_id" => 95
+              "amount" => 5
+            ]
+           ]
+         ]
+         */
+
+        $response = $this->actingAs($this->user)
+            ->post('/api/card/visit/' . $this->card->id, $payload);
+        // ->assertSuccessful();
+
+        dd($response->exception); //FIXME
+
+        /*
+            #message: "foreach() argument must be of type array|object, null given"
+            #code: 0
+            #file: "./app/Http/Controllers/CheckoutController.php"
+            #line: 191
+            #severity: E_WARNING
+            trace: {
+              ./app/Http/Controllers/CheckoutController.php:191 {
+                Illuminate\Foundation\Bootstrap\HandleExceptions->handleError($level, $message, $file = '', $line = 0, $context = [])^
+                ›
+                › foreach ($items as $lineItem) {
+                ›     $amount = $lineItem['amount'];
+              }
+         */
     }
 }
