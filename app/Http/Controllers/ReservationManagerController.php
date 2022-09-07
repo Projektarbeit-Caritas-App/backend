@@ -25,6 +25,75 @@ class ReservationManagerController extends Controller
      *       "id": 2,
      *       "card_id": 1,
      *       "shop_id": 1,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
+     *       "shop": {
+     *         "id": 1,
+     *         "organization_id": 1,
+     *         "name": "organization",
+     *         "street": "organizations street",
+     *         "postcode": "12345",
+     *         "city": "organizations city",
+     *         "contact": "organizations contact",
+     *         "opening_hours": {
+     *           "monday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "tuesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "wednesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "thursday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "friday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "saturday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "sunday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ]
+     *         },
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "time": "2022-08-20T16:30:00.000000Z",
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -32,6 +101,75 @@ class ReservationManagerController extends Controller
      *       "id": 3,
      *       "card_id": 1,
      *       "shop_id": 1,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
+     *       "shop": {
+     *         "id": 1,
+     *         "organization_id": 1,
+     *         "name": "organization",
+     *         "street": "organizations street",
+     *         "postcode": "12345",
+     *         "city": "organizations city",
+     *         "contact": "organizations contact",
+     *         "opening_hours": {
+     *           "monday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "tuesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "wednesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "thursday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "friday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "saturday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "sunday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ]
+     *         },
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "time": "2022-08-20T08:00:00.000000Z",
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -39,13 +177,151 @@ class ReservationManagerController extends Controller
      *       "id": 4,
      *       "card_id": 1,
      *       "shop_id": 1,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
+     *       "shop": {
+     *         "id": 1,
+     *         "organization_id": 1,
+     *         "name": "organization",
+     *         "street": "organizations street",
+     *         "postcode": "12345",
+     *         "city": "organizations city",
+     *         "contact": "organizations contact",
+     *         "opening_hours": {
+     *           "monday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "tuesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "wednesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "thursday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "friday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "saturday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "sunday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ]
+     *         },
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "time": "2022-08-21T08:00:00.000000Z",
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
      *     }, {
      *       "id": 5,
-     *       "card_id": 1,
+     *       "card_id": 49394739894111,
      *       "shop_id": 2,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
+     *       "shop": {
+     *         "id": 2,
+     *         "organization_id": 1,
+     *         "name": "organization",
+     *         "street": "organizations street",
+     *         "postcode": "12345",
+     *         "city": "organizations city",
+     *         "contact": "organizations contact",
+     *         "opening_hours": {
+     *           "monday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "tuesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "wednesday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "thursday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "friday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "saturday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ],
+     *           "sunday": [
+     *             {
+     *               "opens_at": "08:00",
+     *               "closes_at": "17:00"
+     *             }
+     *           ]
+     *         },
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "time": "2022-08-21T15:00:00.000000Z",
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -92,7 +368,7 @@ class ReservationManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        $query = Reservation::where('instance_id', $request->user()->instance_id);
+        $query = Reservation::where('instance_id', $request->user()->instance_id)->with(['card', 'shop']);
 
         if (!$request->user()->hasPermissionTo('admin.reservation.index')) {
             $query->whereRelation('shop', 'organization_id', $request->user()->organization_id);
@@ -132,8 +408,77 @@ class ReservationManagerController extends Controller
      *
      * @response status=200 {
      *   "id": 2,
-     *   "card_id": 1,
+     *   "card_id": 49394739894111,
      *   "shop_id": 1,
+     *   "card": {
+     *     "id": 49394739894111,
+     *     "last_name": "Kitsune",
+     *     "first_name": "Yasu",
+     *     "street": "Teststraße 123",
+     *     "postcode": "12345",
+     *     "city": "Teststadt",
+     *     "valid_from": "2022-01-01T00:00:00.000000Z",
+     *     "valid_until": "2022-03-31T00:00:00.000000Z",
+     *     "creator_id": 1,
+     *     "comment": null,
+     *     "created_at": "2022-08-18T13:47:42.000000Z",
+     *     "updated_at": "2022-08-18T13:47:42.000000Z"
+     *   },
+     *   "shop": {
+     *     "id": 1,
+     *     "organization_id": 1,
+     *     "name": "organization",
+     *     "street": "organizations street",
+     *     "postcode": "12345",
+     *     "city": "organizations city",
+     *     "contact": "organizations contact",
+     *     "opening_hours": {
+     *       "monday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ],
+     *       "tuesday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ],
+     *       "wednesday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ],
+     *       "thursday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ],
+     *       "friday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ],
+     *       "saturday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ],
+     *       "sunday": [
+     *         {
+     *           "opens_at": "08:00",
+     *           "closes_at": "17:00"
+     *         }
+     *       ]
+     *     },
+     *     "created_at": "2022-08-18T13:48:25.000000Z",
+     *     "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
      *   "time": "2022-08-20T16:30:00.000000Z",
      *   "created_at": "2022-08-18T13:48:25.000000Z",
      *   "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -144,6 +489,7 @@ class ReservationManagerController extends Controller
      */
     public function show(Reservation $reservation): Reservation
     {
+        $reservation->load(['card', 'shop']);
         return $reservation;
     }
 

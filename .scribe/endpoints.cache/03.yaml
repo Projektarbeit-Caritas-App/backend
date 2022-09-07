@@ -36,7 +36,7 @@ endpoints:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
         required: false
-        example: limitation_set_id
+        example: limit
         type: string
         custom: []
       order:
@@ -50,7 +50,7 @@ endpoints:
         name: page
         description: 'Page to load.'
         required: false
-        example: 4
+        example: 17
         type: integer
         custom: []
     bodyParameters: []
@@ -65,6 +65,13 @@ endpoints:
                 "product_type_id": 1,
                 "limitation_set_id": 1,
                 "limit": 3,
+                "product_type": {
+                  "id": 1,
+                  "name": "t-shirt",
+                  "icon": "t-shirt icon",
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "created_at": "2022-08-16T16:32:23.000000Z",
                 "updated_at": "2022-08-16T16:32:23.000000Z"
               }, {
@@ -72,6 +79,13 @@ endpoints:
                 "product_type_id": 2,
                 "limitation_set_id": 2,
                 "limit": 5,
+                "product_type": {
+                  "id": 2,
+                  "name": "skirt",
+                  "icon": "skirt icon",
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "created_at": "2022-08-16T16:32:23.000000Z",
                 "updated_at": "2022-08-16T16:32:23.000000Z"
               }, {
@@ -79,6 +93,13 @@ endpoints:
                 "product_type_id": 2,
                 "limitation_set_id": 1,
                 "limit": 5,
+                "product_type": {
+                  "id": 2,
+                  "name": "skirt",
+                  "icon": "skirt icon",
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "created_at": "2022-08-16T16:32:23.000000Z",
                 "updated_at": "2022-08-16T16:32:23.000000Z"
               }, {
@@ -86,6 +107,13 @@ endpoints:
                 "product_type_id": 3,
                 "limitation_set_id": 1,
                 "limit": 2,
+                "product_type": {
+                  "id": 3,
+                  "name": "toy",
+                  "icon": "toy icon",
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "created_at": "2022-08-16T16:32:23.000000Z",
                 "updated_at": "2022-08-16T16:32:23.000000Z"
               }
@@ -161,7 +189,7 @@ endpoints:
         name: limitation_id
         description: 'The ID of the limitation.'
         required: true
-        example: 11
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -175,6 +203,13 @@ endpoints:
             "product_type_id": 1,
             "limitation_set_id": 1,
             "limit": 3,
+            "product_type": {
+              "id": 1,
+              "name": "t-shirt",
+              "icon": "t-shirt icon",
+              "created_at": "2022-08-18T13:48:25.000000Z",
+              "updated_at": "2022-08-18T13:48:25.000000Z"
+            },
             "created_at": "2022-08-16T16:32:23.000000Z",
             "updated_at": "2022-08-16T16:32:23.000000Z"
           }
@@ -199,7 +234,7 @@ endpoints:
         name: limitation_id
         description: 'The ID of the limitation.'
         required: true
-        example: 19
+        example: 11
         type: integer
         custom: []
     queryParameters: []
@@ -245,7 +280,7 @@ endpoints:
         name: limitation_id
         description: 'The ID of the limitation.'
         required: true
-        example: 5
+        example: 7
         type: integer
         custom: []
     queryParameters: []

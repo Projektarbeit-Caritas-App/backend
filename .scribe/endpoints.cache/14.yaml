@@ -36,7 +36,7 @@ endpoints:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
         required: false
-        example: id
+        example: card_id
         type: string
         custom: []
       order:
@@ -50,7 +50,7 @@ endpoints:
         name: page
         description: 'Page to load.'
         required: false
-        example: 15
+        example: 18
         type: integer
         custom: []
     bodyParameters: []
@@ -64,18 +64,60 @@ endpoints:
                 "id": 6,
                 "card_id": 1,
                 "user_id": 1,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
                 "created_at": "2022-08-16T16:32:52.000000Z",
                 "updated_at": "2022-08-16T16:32:52.000000Z"
               }, {
                 "id": 7,
-                "card_id": 1,
+                "card_id": 49394739894111,
                 "user_id": 1,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
                 "created_at": "2022-08-17T13:52:35.000000Z",
                 "updated_at": "2022-08-17T13:52:35.000000Z"
               }, {
                 "id": 8,
-                "card_id": 1,
+                "card_id": 49394739894111,
                 "user_id": 3,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
                 "created_at": "2022-08-21T11:50:35.000000Z",
                 "updated_at": "2022-08-21T11:50:35.000000Z"
               }
@@ -144,7 +186,7 @@ endpoints:
         name: id
         description: 'The ID of the visit.'
         required: true
-        example: 15
+        example: 2
         type: integer
         custom: []
     queryParameters: []
@@ -155,8 +197,22 @@ endpoints:
         content: |-
           {
             "id": 6,
-            "card_id": 1,
+            "card_id": 49394739894111,
             "user_id": 1,
+            "card": {
+              "id": 49394739894111,
+              "last_name": "Kitsune",
+              "first_name": "Yasu",
+              "street": "Teststraße 123",
+              "postcode": "12345",
+              "city": "Teststadt",
+              "valid_from": "2022-01-01T00:00:00.000000Z",
+              "valid_until": "2022-03-31T00:00:00.000000Z",
+              "creator_id": 1,
+              "comment": null,
+              "created_at": "2022-08-18T13:47:42.000000Z",
+              "updated_at": "2022-08-18T13:47:42.000000Z"
+            },
             "created_at": "2022-08-16T16:32:52.000000Z",
             "updated_at": "2022-08-16T16:32:52.000000Z"
           }
@@ -181,7 +237,7 @@ endpoints:
         name: id
         description: 'The ID of the visit.'
         required: true
-        example: 14
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -220,7 +276,7 @@ endpoints:
         name: id
         description: 'The ID of the visit.'
         required: true
-        example: 15
+        example: 1
         type: integer
         custom: []
     queryParameters: []

@@ -59,14 +59,14 @@ endpoints:
         name: email
         description: 'E-Mail of the user.'
         required: true
-        example: rerum
+        example: eaque
         type: string
         custom: []
       password:
         name: password
         description: 'Password of the user.'
         required: true
-        example: voluptatem
+        example: eligendi
         type: string
         custom: []
     responses:
@@ -157,21 +157,21 @@ endpoints:
         name: email
         description: 'E-Mail of the user. Must be a valid email address.'
         required: true
-        example: barrows.rodrigo@example.com
+        example: laverne62@example.org
         type: string
         custom: []
       password:
         name: password
         description: 'Password of the user.'
         required: true
-        example: enim
+        example: est
         type: string
         custom: []
       device_name:
         name: device_name
         description: 'Name of the device, used for identification of the token.'
         required: true
-        example: et
+        example: est
         type: string
         custom: []
     responses:

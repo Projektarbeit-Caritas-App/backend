@@ -27,56 +27,56 @@ endpoints:
         name: name
         description: 'Name contains.'
         required: false
-        example: sunt
+        example: voluptatem
         type: string
         custom: []
       street:
         name: street
         description: 'Street contains.'
         required: false
-        example: pariatur
+        example: et
         type: string
         custom: []
       postcode:
         name: postcode
         description: 'Postcode contains.'
         required: false
-        example: unde
+        example: similique
         type: string
         custom: []
       city:
         name: city
         description: 'City contains.'
         required: false
-        example: nemo
+        example: placeat
         type: string
         custom: []
       contact:
         name: contact
         description: 'Contact contains.'
         required: false
-        example: in
+        example: fugiat
         type: string
         custom: []
       sort:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
         required: false
-        example: contact
+        example: city
         type: string
         custom: []
       order:
         name: order
         description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
         required: false
-        example: asc
+        example: desc
         type: string
         custom: []
       page:
         name: page
         description: 'Page to load.'
         required: false
-        example: 10
+        example: 12
         type: integer
         custom: []
     bodyParameters: []
@@ -512,7 +512,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 15
+        example: 4
         type: integer
         custom: []
     queryParameters: []
@@ -521,63 +521,61 @@ endpoints:
       -
         status: 200
         content: |-
-          [
-            {
-              "id": 1,
-              "organization_id": 1,
-              "name": "organization",
-              "street": "organizations street",
-              "postcode": "12345",
-              "city": "organizations city",
-              "contact": "organizations contact",
-              "opening_hours": {
-                "monday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ],
-                "tuesday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ],
-                "wednesday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ],
-                "thursday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ],
-                "friday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ],
-                "saturday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ],
-                "sunday": [
-                  {
-                    "opens_at": "08:00",
-                    "closes_at": "17:00"
-                  }
-                ]
-              },
-              "created_at": "2022-08-18T13:48:25.000000Z",
-              "updated_at": "2022-08-18T13:48:25.000000Z"
-            }
-          ]
+          {
+            "id": 1,
+            "organization_id": 1,
+            "name": "organization",
+            "street": "organizations street",
+            "postcode": "12345",
+            "city": "organizations city",
+            "contact": "organizations contact",
+            "opening_hours": {
+              "monday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ],
+              "tuesday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ],
+              "wednesday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ],
+              "thursday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ],
+              "friday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ],
+              "saturday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ],
+              "sunday": [
+                {
+                  "opens_at": "08:00",
+                  "closes_at": "17:00"
+                }
+              ]
+            },
+            "created_at": "2022-08-18T13:48:25.000000Z",
+            "updated_at": "2022-08-18T13:48:25.000000Z"
+          }
         headers: []
         description: '200'
     responseFields: []
@@ -599,7 +597,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 4
+        example: 19
         type: integer
         custom: []
     queryParameters: []
@@ -876,7 +874,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 8
+        example: 9
         type: integer
         custom: []
     queryParameters: []

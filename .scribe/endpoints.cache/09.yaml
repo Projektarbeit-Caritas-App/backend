@@ -22,35 +22,35 @@ endpoints:
         name: name
         description: 'Name contains.'
         required: false
-        example: sed
+        example: beatae
         type: string
         custom: []
       icon:
         name: icon
         description: 'Icon contains.'
         required: false
-        example: explicabo
+        example: doloremque
         type: string
         custom: []
       sort:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
         required: false
-        example: id
+        example: icon
         type: string
         custom: []
       order:
         name: order
         description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
         required: false
-        example: desc
+        example: asc
         type: string
         custom: []
       page:
         name: page
         description: 'Page to load.'
         required: false
-        example: 10
+        example: 11
         type: integer
         custom: []
     bodyParameters: []
@@ -144,7 +144,7 @@ endpoints:
         name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 17
+        example: 9
         type: integer
         custom: []
     queryParameters: []
@@ -181,7 +181,7 @@ endpoints:
         name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 5
+        example: 8
         type: integer
         custom: []
     queryParameters: []
@@ -220,7 +220,7 @@ endpoints:
         name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 20
+        example: 16
         type: integer
         custom: []
     queryParameters: []

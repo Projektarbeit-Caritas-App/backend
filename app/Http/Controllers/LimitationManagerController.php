@@ -25,6 +25,13 @@ class LimitationManagerController extends Controller
      *       "product_type_id": 1,
      *       "limitation_set_id": 1,
      *       "limit": 3,
+     *       "product_type": {
+     *         "id": 1,
+     *         "name": "t-shirt",
+     *         "icon": "t-shirt icon",
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "created_at": "2022-08-16T16:32:23.000000Z",
      *       "updated_at": "2022-08-16T16:32:23.000000Z"
      *     }, {
@@ -32,6 +39,13 @@ class LimitationManagerController extends Controller
      *       "product_type_id": 2,
      *       "limitation_set_id": 2,
      *       "limit": 5,
+     *       "product_type": {
+     *         "id": 2,
+     *         "name": "skirt",
+     *         "icon": "skirt icon",
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "created_at": "2022-08-16T16:32:23.000000Z",
      *       "updated_at": "2022-08-16T16:32:23.000000Z"
      *     }, {
@@ -39,6 +53,13 @@ class LimitationManagerController extends Controller
      *       "product_type_id": 2,
      *       "limitation_set_id": 1,
      *       "limit": 5,
+     *       "product_type": {
+     *         "id": 2,
+     *         "name": "skirt",
+     *         "icon": "skirt icon",
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "created_at": "2022-08-16T16:32:23.000000Z",
      *       "updated_at": "2022-08-16T16:32:23.000000Z"
      *     }, {
@@ -46,6 +67,13 @@ class LimitationManagerController extends Controller
      *       "product_type_id": 3,
      *       "limitation_set_id": 1,
      *       "limit": 2,
+     *       "product_type": {
+     *         "id": 3,
+     *         "name": "toy",
+     *         "icon": "toy icon",
+     *         "created_at": "2022-08-18T13:48:25.000000Z",
+     *         "updated_at": "2022-08-18T13:48:25.000000Z"
+     *       },
      *       "created_at": "2022-08-16T16:32:23.000000Z",
      *       "updated_at": "2022-08-16T16:32:23.000000Z"
      *     }
@@ -85,10 +113,16 @@ class LimitationManagerController extends Controller
             'page' => 'integer|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Limitation::where('instance_id', $request->user()->instance_id), [
-            'limitation_set_id' => 'match',
-            'product_type_id' => 'match'
-        ], $filters));
+        return ModelFilterService::apiPaginate(
+            ModelFilterService::filterEntries(
+                Limitation::where('instance_id', $request->user()->instance_id)->with('productType'),
+                [
+                    'limitation_set_id' => 'match',
+                    'product_type_id' => 'match'
+                ],
+                $filters
+            )
+        );
     }
 
     /**
@@ -111,6 +145,13 @@ class LimitationManagerController extends Controller
      *   "product_type_id": 1,
      *   "limitation_set_id": 1,
      *   "limit": 3,
+     *   "product_type": {
+     *     "id": 1,
+     *     "name": "t-shirt",
+     *     "icon": "t-shirt icon",
+     *     "created_at": "2022-08-18T13:48:25.000000Z",
+     *     "updated_at": "2022-08-18T13:48:25.000000Z"
+     *   },
      *   "created_at": "2022-08-16T16:32:23.000000Z",
      *   "updated_at": "2022-08-16T16:32:23.000000Z"
      * }
@@ -120,6 +161,7 @@ class LimitationManagerController extends Controller
      */
     public function show(Limitation $limitation): Limitation
     {
+        $limitation->load('productType');
         return $limitation;
     }
 

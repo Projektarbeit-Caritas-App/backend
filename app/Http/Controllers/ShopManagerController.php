@@ -231,63 +231,61 @@ class ShopManagerController extends Controller
     /**
      * Show specified Shop
      *
-     * @response status=200 [
-     *   {
-     *     "id": 1,
-     *     "organization_id": 1,
-     *     "name": "organization",
-     *     "street": "organizations street",
-     *     "postcode": "12345",
-     *     "city": "organizations city",
-     *     "contact": "organizations contact",
-     *     "opening_hours": {
-     *       "monday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ],
-     *       "tuesday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ],
-     *       "wednesday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ],
-     *       "thursday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ],
-     *       "friday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ],
-     *       "saturday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ],
-     *       "sunday": [
-     *         {
-     *           "opens_at": "08:00",
-     *           "closes_at": "17:00"
-     *         }
-     *       ]
-     *     },
-     *     "created_at": "2022-08-18T13:48:25.000000Z",
-     *     "updated_at": "2022-08-18T13:48:25.000000Z"
-     *   }
-     * ]
+     * @response status=200 {
+     *   "id": 1,
+     *   "organization_id": 1,
+     *   "name": "organization",
+     *   "street": "organizations street",
+     *   "postcode": "12345",
+     *   "city": "organizations city",
+     *   "contact": "organizations contact",
+     *   "opening_hours": {
+     *     "monday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ],
+     *     "tuesday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ],
+     *     "wednesday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ],
+     *     "thursday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ],
+     *     "friday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ],
+     *     "saturday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ],
+     *     "sunday": [
+     *       {
+     *         "opens_at": "08:00",
+     *         "closes_at": "17:00"
+     *       }
+     *     ]
+     *   },
+     *   "created_at": "2022-08-18T13:48:25.000000Z",
+     *   "updated_at": "2022-08-18T13:48:25.000000Z"
+     * }
      *
      * @param \App\Models\Shop $shop
      * @return \App\Models\Shop

@@ -171,7 +171,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 14
+        example: 20
         type: integer
         custom: []
     queryParameters: []

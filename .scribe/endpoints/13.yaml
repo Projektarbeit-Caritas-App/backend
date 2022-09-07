@@ -27,21 +27,21 @@ endpoints:
         name: name
         description: 'Name contains.'
         required: false
-        example: eos
+        example: neque
         type: string
         custom: []
       email:
         name: email
         description: 'E-Mail contains.'
         required: false
-        example: eveniet
+        example: perferendis
         type: string
         custom: []
       sort:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
         required: false
-        example: email
+        example: id
         type: string
         custom: []
       order:
@@ -55,7 +55,7 @@ endpoints:
         name: page
         description: 'Page to load.'
         required: false
-        example: 12
+        example: 3
         type: integer
         custom: []
     bodyParameters: []
@@ -137,7 +137,7 @@ endpoints:
         name: role
         description: 'Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.'
         required: true
-        example: employee
+        example: inactive
         type: string
         custom: []
     responses: []
@@ -160,7 +160,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 6
+        example: 19
         type: integer
         custom: []
     queryParameters: []
@@ -193,7 +193,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 2
+        example: 19
         type: integer
         custom: []
     queryParameters: []
@@ -202,35 +202,35 @@ endpoints:
         name: organization_id
         description: 'ID of the organization the user is attached to.'
         required: true
-        example: sed
+        example: magnam
         type: string
         custom: []
       name:
         name: name
         description: 'Name of the user.'
         required: true
-        example: facilis
+        example: sequi
         type: string
         custom: []
       email:
         name: email
         description: 'Email of the user. Must be a valid email address.'
         required: true
-        example: clint12@example.org
+        example: deshaun.greenholt@example.org
         type: string
         custom: []
       password:
         name: password
         description: 'Password of the user.'
         required: false
-        example: blanditiis
+        example: et
         type: string
         custom: []
       role:
         name: role
         description: 'Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.'
         required: true
-        example: organization_manager
+        example: inactive
         type: string
         custom: []
     responses: []
@@ -253,7 +253,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 19
+        example: 7
         type: integer
         custom: []
     queryParameters: []
