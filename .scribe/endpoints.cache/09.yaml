@@ -22,35 +22,42 @@ endpoints:
         name: name
         description: 'Name contains.'
         required: false
-        example: beatae
+        example: laudantium
         type: string
         custom: []
       icon:
         name: icon
         description: 'Icon contains.'
         required: false
-        example: doloremque
+        example: laudantium
         type: string
         custom: []
       sort:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
         required: false
-        example: icon
+        example: name
         type: string
         custom: []
       order:
         name: order
         description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
         required: false
-        example: asc
+        example: desc
         type: string
         custom: []
       page:
         name: page
         description: 'Page to load.'
         required: false
-        example: 11
+        example: 10
+        type: integer
+        custom: []
+      limit:
+        name: limit
+        description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+        required: false
+        example: 120
         type: integer
         custom: []
     bodyParameters: []
@@ -144,7 +151,7 @@ endpoints:
         name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 9
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -181,7 +188,7 @@ endpoints:
         name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 8
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -220,7 +227,7 @@ endpoints:
         name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 16
+        example: 10
         type: integer
         custom: []
     queryParameters: []

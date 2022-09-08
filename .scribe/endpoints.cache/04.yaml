@@ -22,7 +22,7 @@ endpoints:
         name: name
         description: 'Filter by name.'
         required: false
-        example: omnis
+        example: laudantium
         type: string
         custom: []
       valid_from:
@@ -36,14 +36,14 @@ endpoints:
         name: valid_from.0
         description: 'Valid from is after this date. Must be a valid date.'
         required: false
-        example: '2022-09-06T11:54:33'
+        example: '2022-09-08T13:11:50'
         type: string
         custom: []
       valid_from.1:
         name: valid_from.1
         description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
         required: false
-        example: '2022-09-06T11:54:33'
+        example: '2022-09-08T13:11:50'
         type: string
         custom: []
       valid_until:
@@ -57,35 +57,42 @@ endpoints:
         name: valid_until.0
         description: 'Valid until is after this date. Must be a valid date.'
         required: false
-        example: '2022-09-06T11:54:33'
+        example: '2022-09-08T13:11:50'
         type: string
         custom: []
       valid_until.1:
         name: valid_until.1
         description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
         required: false
-        example: '2022-09-06T11:54:33'
+        example: '2022-09-08T13:11:50'
         type: string
         custom: []
       sort:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.'
         required: false
-        example: valid_from
+        example: name
         type: string
         custom: []
       order:
         name: order
         description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
         required: false
-        example: asc
+        example: desc
         type: string
         custom: []
       page:
         name: page
         description: 'Page to load.'
         required: false
-        example: 6
+        example: 10
+        type: integer
+        custom: []
+      limit:
+        name: limit
+        description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+        required: false
+        example: 120
         type: integer
         custom: []
     bodyParameters: []
@@ -182,7 +189,7 @@ endpoints:
         name: limitationSet_id
         description: 'The ID of the limitationSet.'
         required: true
-        example: 17
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -220,7 +227,7 @@ endpoints:
         name: limitationSet_id
         description: 'The ID of the limitationSet.'
         required: true
-        example: 19
+        example: 1
         type: integer
         custom: []
     queryParameters: []

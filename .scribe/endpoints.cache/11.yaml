@@ -173,7 +173,7 @@ endpoints:
         name: shop_id
         description: 'The ID of the shop.'
         required: true
-        example: 20
+        example: 10
         type: integer
         custom: []
     queryParameters: []

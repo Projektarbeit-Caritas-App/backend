@@ -25,7 +25,7 @@ endpoints:
         name: card_id
         description: 'The ID of the card.'
         required: true
-        example: 15
+        example: 56815898664224
         type: integer
         custom: []
     queryParameters:
