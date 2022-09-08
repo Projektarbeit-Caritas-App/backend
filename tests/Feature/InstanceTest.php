@@ -71,7 +71,7 @@ class InstanceTest extends TestCase
         $user->instance_id = $instance->id;
         $organization->users()->save($user);
 
-        $this->artisan('instance:delete')
+        $this->artisan('instance:delete ' . $instance->id)
             ->expectsOutput('ID: ' . $instance->id)
             ->expectsOutput('Name: ' . $instance->name)
             ->expectsOutput('Street: ' . $instance->street)
@@ -80,11 +80,6 @@ class InstanceTest extends TestCase
             ->expectsOutput('Contact: ' . $instance->contact)
             ->expectsOutput('Created: ' . $instance->created_at->format('G:i \o\n l jS F Y'))
             ->expectsOutput('Updated: ' . $instance->updated_at->format('G:i \o\n l jS F Y'))
-            ->expectsOutput(sprintf(
-                'This action will delete %s organizations with %s users.',
-                $instance->organizations_count,
-                $instance->users_count
-            ))
             ->expectsConfirmation('Do you really want to delete the instance?', 'yes')
             ->expectsOutput('Instance deleted')
             ->assertSuccessful();
