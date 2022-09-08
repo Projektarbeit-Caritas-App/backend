@@ -8,6 +8,7 @@ use App\Models\Instance;
 use App\Models\Person;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 
@@ -200,12 +201,29 @@ class CheckoutController extends Controller
             }
         }
 
-        if (!empty($request->get('comment'))) {
-            $card->comment = $request->get('comment');
-            $card->save();
-        }
-
         return response(null, 204);
+    }
+
+    /**
+     * Add comment to card
+     *
+     * <small class="badge badge-purple">App authorization available</small>
+     *
+     * Allows the app to add a comment to the given card
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Card $card
+     * @return \App\Models\Card
+     */
+    public function comment(Request $request, Card $card): Card
+    {
+        $validated = $request->validate([
+            // Additional Comment for the card Example: Took an additional buggy for his newly born child
+            'comment' => 'string|required'
+        ]);
+
+        $card->update($validated);
+        return $card;
     }
 
     /**

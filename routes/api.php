@@ -219,6 +219,7 @@ Route::middleware(['auth:sanctum', 'ability:app'])
     ->group(function () {
         Route::get('/{card}', 'show')->name('show')->can('card.visit.show', 'card');
         Route::post('/{card}', 'store')->name('store')->can('card.visit.store', 'card');
+        Route::post('/{card}/comment', 'comment')->name('comment')->can('card.visit.store', 'card');
     });
 //endregion
 
