@@ -25,6 +25,23 @@ class PersonManagerController extends Controller
      *       "card_id": 1,
      *       "gender": "male",
      *       "age": 18,
+     *       "limitation_sets": [
+     *         {
+     *           "id": 1,
+     *           "name": "A set to limit them all",
+     *           "valid_from": "2022-08-04 12:00:00",
+     *           "valid_until": "2022-08-04 12:00:00",
+     *           "created_at": "2022-09-08T13:05:40.000000Z",
+     *           "updated_at": "2022-09-08T13:05:40.000000Z",
+     *           "instance_id": 1,
+     *           "pivot": {
+     *             "person_id": 1,
+     *             "limitation_set_id": 1,
+     *             "created_at": "2022-09-08T13:06:41.000000Z",
+     *             "updated_at": "2022-09-08T13:06:41.000000Z"
+     *           }
+     *         }
+     *       ],
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
      *     }, {
@@ -32,6 +49,23 @@ class PersonManagerController extends Controller
      *       "card_id": 1,
      *       "gender": "female",
      *       "age": 15,
+     *       "limitation_sets": [
+     *         {
+     *           "id": 1,
+     *           "name": "A set to limit them all",
+     *           "valid_from": "2022-08-04 12:00:00",
+     *           "valid_until": "2022-08-04 12:00:00",
+     *           "created_at": "2022-09-08T13:05:40.000000Z",
+     *           "updated_at": "2022-09-08T13:05:40.000000Z",
+     *           "instance_id": 1,
+     *           "pivot": {
+     *             "person_id": 2,
+     *             "limitation_set_id": 1,
+     *             "created_at": "2022-09-08T13:06:41.000000Z",
+     *             "updated_at": "2022-09-08T13:06:41.000000Z"
+     *           }
+     *         }
+     *       ],
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
      *     }, {
@@ -39,6 +73,23 @@ class PersonManagerController extends Controller
      *       "card_id": 49394739894111,
      *       "gender": "male",
      *       "age": 23,
+     *       "limitation_sets": [
+     *         {
+     *           "id": 1,
+     *           "name": "A set to limit them all",
+     *           "valid_from": "2022-08-04 12:00:00",
+     *           "valid_until": "2022-08-04 12:00:00",
+     *           "created_at": "2022-09-08T13:05:40.000000Z",
+     *           "updated_at": "2022-09-08T13:05:40.000000Z",
+     *           "instance_id": 1,
+     *           "pivot": {
+     *             "person_id": 3,
+     *             "limitation_set_id": 1,
+     *             "created_at": "2022-09-08T13:06:41.000000Z",
+     *             "updated_at": "2022-09-08T13:06:41.000000Z"
+     *           }
+     *         }
+     *       ],
      *       "created_at": "2022-08-18T13:48:25.000000Z",
      *       "updated_at": "2022-08-18T13:48:25.000000Z"
      *     }
@@ -84,11 +135,18 @@ class PersonManagerController extends Controller
             'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Person::where('instance_id', $request->user()->instance_id), [
-            'card_id' => 'match',
-            'gender' => 'contains',
-            'age' => 'match'
-        ], $filters), $filters['limit'] ?? 25);
+        return ModelFilterService::apiPaginate(
+            ModelFilterService::filterEntries(
+                Person::where('instance_id', $request->user()->instance_id)->with('limitationSets'),
+                [
+                    'card_id' => 'match',
+                    'gender' => 'contains',
+                    'age' => 'match'
+                ],
+                $filters
+            ),
+            $filters['limit'] ?? 25
+        );
     }
 
     /**
@@ -116,6 +174,23 @@ class PersonManagerController extends Controller
      *   "card_id": 1,
      *   "gender": "female",
      *   "age": 15,
+     *   "limitation_sets": [
+     *     {
+     *       "id": 1,
+     *       "name": "A set to limit them all",
+     *       "valid_from": "2022-08-04 12:00:00",
+     *       "valid_until": "2022-08-04 12:00:00",
+     *       "created_at": "2022-09-08T13:05:40.000000Z",
+     *       "updated_at": "2022-09-08T13:05:40.000000Z",
+     *       "instance_id": 1,
+     *       "pivot": {
+     *         "person_id": 2,
+     *         "limitation_set_id": 1,
+     *         "created_at": "2022-09-08T13:06:41.000000Z",
+     *         "updated_at": "2022-09-08T13:06:41.000000Z"
+     *       }
+     *     }
+     *   ],
      *   "created_at": "2022-08-18T13:48:25.000000Z",
      *   "updated_at": "2022-08-18T13:48:25.000000Z"
      * }
@@ -125,6 +200,7 @@ class PersonManagerController extends Controller
      */
     public function show(Person $person): Person
     {
+        $person->load('limitationSets');
         return $person;
     }
 
