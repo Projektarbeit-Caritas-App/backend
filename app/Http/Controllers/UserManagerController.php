@@ -67,7 +67,10 @@ class UserManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         $query = User::where('instance_id', $request->user()->instance_id);
@@ -80,7 +83,7 @@ class UserManagerController extends Controller
             'organization_id' => 'match',
             'name' => 'contains',
             'email' => 'contains'
-        ], $filters));
+        ], $filters), $filters['limit'] ?? 25);
     }
 
     /**

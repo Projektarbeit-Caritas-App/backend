@@ -114,7 +114,10 @@ class VisitManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         return ModelFilterService::apiPaginate(
@@ -125,7 +128,8 @@ class VisitManagerController extends Controller
                     'user_id' => 'match'
                 ],
                 $filters
-            )
+            ),
+            $filters['limit'] ?? 25
         );
     }
 

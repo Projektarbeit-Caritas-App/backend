@@ -365,7 +365,10 @@ class ReservationManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         $query = Reservation::where('instance_id', $request->user()->instance_id)->with(['card', 'shop']);
@@ -378,7 +381,7 @@ class ReservationManagerController extends Controller
             'card_id' => 'match',
             'shop_id' => 'match',
             'time' => 'range'
-        ], $filters));
+        ], $filters), $filters['limit'] ?? 25);
     }
 
     /**

@@ -188,7 +188,10 @@ class ShopManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         $query = Shop::where('instance_id', $request->user()->instance_id);
@@ -204,7 +207,7 @@ class ShopManagerController extends Controller
             'postcode' => 'contains',
             'city' => 'contains',
             'contact' => 'contains'
-        ], $filters));
+        ], $filters), $filters['limit'] ?? 25);
     }
 
     /**
