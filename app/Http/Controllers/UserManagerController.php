@@ -73,17 +73,32 @@ class UserManagerController extends Controller
             'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
-        $query = User::where('instance_id', $request->user()->instance_id);
+        $query = User::where('instance_id', $request->user()->instance_id)->with('roles');
 
         if (!$request->user()->hasPermissionTo('admin.user.index')) {
             $query->where('organization_id', $request->user()->organization_id);
         }
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
+        $return = ModelFilterService::apiPaginate(ModelFilterService::filterEntries($query, [
             'organization_id' => 'match',
             'name' => 'contains',
             'email' => 'contains'
         ], $filters), $filters['limit'] ?? 25);
+
+        foreach ($return['items'] as &$user) {
+            $user = [
+                'id' => $user->id,
+                'instance_id' => $user->instance_id,
+                'organization_id' => $user->organization_id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'roles' => $user->roles->pluck('name'),
+                'created_at' => $user->created_at,
+                'updated_at' => $user->updated_at
+            ];
+        }
+
+        return $return;
     }
 
     /**
@@ -115,6 +130,7 @@ class UserManagerController extends Controller
         if ($request->user()->id !== $user->id) {
             $user->syncRoles([$validated['role']]);
         }
+
         return $user;
     }
 
@@ -122,11 +138,20 @@ class UserManagerController extends Controller
      * Show specified User
      *
      * @param \App\Models\User $user
-     * @return \App\Models\User
+     * @return array
      */
-    public function show(User $user): User
+    public function show(User $user): array
     {
-        return $user;
+        return [
+            'id' => $user->id,
+            'instance_id' => $user->instance_id,
+            'organization_id' => $user->organization_id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'roles' => $user->roles->pluck('name'),
+            'created_at' => $user->created_at,
+            'updated_at' => $user->updated_at
+        ];
     }
 
     /**
