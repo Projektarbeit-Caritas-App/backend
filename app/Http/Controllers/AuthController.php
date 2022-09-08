@@ -210,7 +210,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             // E-Mail of the user.
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|string',
 
             // Password of the user.
             'password' => 'required|string',

@@ -26,72 +26,72 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: sunt
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: sunt
+            example: laudantium
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: pariatur
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Street contains.'
-            example: pariatur
+            example: laudantium
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: unde
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: unde
+            example: laudantium
         -
           in: query
           name: city
           description: 'City contains.'
-          example: nemo
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: nemo
+            example: laudantium
         -
           in: query
           name: contact
           description: 'Contact contains.'
-          example: in
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Contact contains.'
-            example: in
+            example: laudantium
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-          example: contact
+          example: street
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.'
-            example: contact
+            example: street
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
@@ -102,6 +102,16 @@ paths:
             type: integer
             description: 'Page to load.'
             example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -404,19 +414,71 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                type: object
                 example:
-                  -
-                    id: 1
-                    organization_id: 1
-                    name: organization
-                    street: 'organizations street'
-                    postcode: '12345'
-                    city: 'organizations city'
-                    contact: 'organizations contact'
-                    opening_hours:
+                  id: 1
+                  organization_id: 1
+                  name: organization
+                  street: 'organizations street'
+                  postcode: '12345'
+                  city: 'organizations city'
+                  contact: 'organizations contact'
+                  opening_hours:
+                    monday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                    tuesday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                    wednesday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                    thursday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                    friday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                    saturday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                    sunday:
+                      -
+                        opens_at: '08:00'
+                        closes_at: '17:00'
+                  created_at: '2022-08-18T13:48:25.000000Z'
+                  updated_at: '2022-08-18T13:48:25.000000Z'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  organization_id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: organization
+                  street:
+                    type: string
+                    example: 'organizations street'
+                  postcode:
+                    type: string
+                    example: '12345'
+                  city:
+                    type: string
+                    example: 'organizations city'
+                  contact:
+                    type: string
+                    example: 'organizations contact'
+                  opening_hours:
+                    type: object
+                    example:
                       monday:
                         -
                           opens_at: '08:00'
@@ -445,8 +507,12 @@ paths:
                         -
                           opens_at: '08:00'
                           closes_at: '17:00'
-                    created_at: '2022-08-18T13:48:25.000000Z'
-                    updated_at: '2022-08-18T13:48:25.000000Z'
+                  created_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2022-08-18T13:48:25.000000Z'
       tags:
         - Shop
     put:
@@ -733,7 +799,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the shop.'
-        example: 15
+        example: 10
         required: true
         schema:
           type: integer
@@ -746,12 +812,12 @@ paths:
           in: query
           name: name
           description: 'Filter by name.'
-          example: omnis
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Filter by name.'
-            example: omnis
+            example: laudantium
         -
           in: query
           name: valid_from
@@ -767,22 +833,22 @@ paths:
           in: query
           name: valid_from.0
           description: 'Valid from is after this date. Must be a valid date.'
-          example: '2022-09-06T11:54:33'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid from is after this date. Must be a valid date.'
-            example: '2022-09-06T11:54:33'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: valid_from.1
           description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-          example: '2022-09-06T11:54:33'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-            example: '2022-09-06T11:54:33'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: valid_until
@@ -798,52 +864,62 @@ paths:
           in: query
           name: valid_until.0
           description: 'Valid until is after this date. Must be a valid date.'
-          example: '2022-09-06T11:54:33'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid until is after this date. Must be a valid date.'
-            example: '2022-09-06T11:54:33'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: valid_until.1
           description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-          example: '2022-09-06T11:54:33'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-            example: '2022-09-06T11:54:33'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.'
-          example: valid_from
+          example: name
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.'
-            example: valid_from
+            example: name
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 6
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 6
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -1136,7 +1212,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the limitationSet.'
-        example: 3
+        example: 1
         required: true
         schema:
           type: integer
@@ -1169,32 +1245,42 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
-          example: id
+          example: card_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
-            example: id
+            example: card_id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 15
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 15
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -1229,18 +1315,57 @@ paths:
                       id: 6
                       card_id: 1
                       user_id: 1
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
                       created_at: '2022-08-16T16:32:52.000000Z'
                       updated_at: '2022-08-16T16:32:52.000000Z'
                     -
                       id: 7
-                      card_id: 1
+                      card_id: 49394739894111
                       user_id: 1
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
                       created_at: '2022-08-17T13:52:35.000000Z'
                       updated_at: '2022-08-17T13:52:35.000000Z'
                     -
                       id: 8
-                      card_id: 1
+                      card_id: 49394739894111
                       user_id: 3
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
                       created_at: '2022-08-21T11:50:35.000000Z'
                       updated_at: '2022-08-21T11:50:35.000000Z'
                   meta:
@@ -1259,18 +1384,57 @@ paths:
                         id: 6
                         card_id: 1
                         user_id: 1
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
                         created_at: '2022-08-16T16:32:52.000000Z'
                         updated_at: '2022-08-16T16:32:52.000000Z'
                       -
                         id: 7
-                        card_id: 1
+                        card_id: 49394739894111
                         user_id: 1
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
                         created_at: '2022-08-17T13:52:35.000000Z'
                         updated_at: '2022-08-17T13:52:35.000000Z'
                       -
                         id: 8
-                        card_id: 1
+                        card_id: 49394739894111
                         user_id: 3
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
                         created_at: '2022-08-21T11:50:35.000000Z'
                         updated_at: '2022-08-21T11:50:35.000000Z'
                     items:
@@ -1370,8 +1534,21 @@ paths:
                 type: object
                 example:
                   id: 6
-                  card_id: 1
+                  card_id: 49394739894111
                   user_id: 1
+                  card:
+                    id: 49394739894111
+                    last_name: Kitsune
+                    first_name: Yasu
+                    street: 'Teststraße 123'
+                    postcode: '12345'
+                    city: Teststadt
+                    valid_from: '2022-01-01T00:00:00.000000Z'
+                    valid_until: '2022-03-31T00:00:00.000000Z'
+                    creator_id: 1
+                    comment: null
+                    created_at: '2022-08-18T13:47:42.000000Z'
+                    updated_at: '2022-08-18T13:47:42.000000Z'
                   created_at: '2022-08-16T16:32:52.000000Z'
                   updated_at: '2022-08-16T16:32:52.000000Z'
                 properties:
@@ -1380,10 +1557,25 @@ paths:
                     example: 6
                   card_id:
                     type: integer
-                    example: 1
+                    example: 49394739894111
                   user_id:
                     type: integer
                     example: 1
+                  card:
+                    type: object
+                    example:
+                      id: 49394739894111
+                      last_name: Kitsune
+                      first_name: Yasu
+                      street: 'Teststraße 123'
+                      postcode: '12345'
+                      city: Teststadt
+                      valid_from: '2022-01-01T00:00:00.000000Z'
+                      valid_until: '2022-03-31T00:00:00.000000Z'
+                      creator_id: 1
+                      comment: null
+                      created_at: '2022-08-18T13:47:42.000000Z'
+                      updated_at: '2022-08-18T13:47:42.000000Z'
                   created_at:
                     type: string
                     example: '2022-08-16T16:32:52.000000Z'
@@ -1483,7 +1675,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the visit.'
-        example: 15
+        example: 1
         required: true
         schema:
           type: integer
@@ -1553,7 +1745,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the card.'
-        example: 4
+        example: 56815898664224
         required: true
         schema:
           type: integer
@@ -1566,52 +1758,52 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: quidem
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: quidem
+            example: laudantium
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: et
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Street contains.'
-            example: et
+            example: laudantium
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: ut
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: ut
+            example: laudantium
         -
           in: query
           name: city
           description: 'City contains.'
-          example: neque
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: neque
+            example: laudantium
         -
           in: query
           name: contact
           description: 'Contact contains.'
-          example: aut
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Contact contains.'
-            example: aut
+            example: laudantium
         -
           in: query
           name: sort
@@ -1636,12 +1828,22 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 9
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 9
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -2000,7 +2202,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the organization.'
-        example: 10
+        example: 1
         required: true
         schema:
           type: integer
@@ -2222,10 +2424,6 @@ paths:
             schema:
               type: object
               properties:
-                comment:
-                  type: string
-                  description: 'Additional Comment for the card.'
-                  example: 'Took an additional buggy for his newly born child'
                 lineItems:
                   type: array
                   description: ''
@@ -2255,7 +2453,58 @@ paths:
         in: path
         name: id
         description: 'The ID of the card.'
-        example: 4
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/card/visit/{id}/comment':
+    post:
+      summary: 'Add comment to card'
+      description: "<small class=\"badge badge-purple\">App authorization available</small>\n\nAllows the app to add a comment to the given card"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Checkout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  description: 'Additional Comment for the card.'
+                  example: 'Took an additional buggy for his newly born child'
+              required:
+                - comment
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the card.'
+        example: 1
         required: true
         schema:
           type: integer
@@ -2268,52 +2517,52 @@ paths:
           in: query
           name: last_name
           description: 'Last name contains.'
-          example: numquam
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Last name contains.'
-            example: numquam
+            example: laudantium
         -
           in: query
           name: first_name
           description: 'First name contains.'
-          example: consequatur
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'First name contains.'
-            example: consequatur
+            example: laudantium
         -
           in: query
           name: street
           description: 'Street contains.'
-          example: minus
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Street contains.'
-            example: minus
+            example: laudantium
         -
           in: query
           name: postcode
           description: 'Postcode contains.'
-          example: rerum
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Postcode contains.'
-            example: rerum
+            example: laudantium
         -
           in: query
           name: city
           description: 'City contains.'
-          example: accusantium
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'City contains.'
-            example: accusantium
+            example: laudantium
         -
           in: query
           name: valid_from
@@ -2329,22 +2578,22 @@ paths:
           in: query
           name: valid_from.0
           description: 'Valid from is after this date. Must be a valid date.'
-          example: '2022-09-06T11:58:07'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid from is after this date. Must be a valid date.'
-            example: '2022-09-06T11:58:07'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: valid_from.1
           description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-          example: '2022-09-06T11:58:07'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
-            example: '2022-09-06T11:58:07'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: valid_until
@@ -2360,32 +2609,32 @@ paths:
           in: query
           name: valid_until.0
           description: 'Valid until is after this date. Must be a valid date.'
-          example: '2022-09-06T11:58:07'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid until is after this date. Must be a valid date.'
-            example: '2022-09-06T11:58:07'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: valid_until.1
           description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-          example: '2022-09-06T11:58:07'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
-            example: '2022-09-06T11:58:07'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: comment
           description: 'Comment contains.'
-          example: pariatur
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Comment contains.'
-            example: pariatur
+            example: laudantium
         -
           in: query
           name: creator_id
@@ -2400,32 +2649,42 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.'
-          example: valid_from
+          example: last_name
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.'
-            example: valid_from
+            example: last_name
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 11
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 11
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -2810,7 +3069,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the card.'
-        example: 4
+        example: 56815898664224
         required: true
         schema:
           type: integer
@@ -2833,22 +3092,22 @@ paths:
           in: query
           name: gender
           description: 'Gender contains.'
-          example: nemo
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Gender contains.'
-            example: nemo
+            example: laudantium
         -
           in: query
           name: age
           description: 'Age is.'
-          example: 5
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Age is.'
-            example: 5
+            example: 10
         -
           in: query
           name: sort
@@ -2863,22 +3122,32 @@ paths:
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 3
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 3
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -2914,6 +3183,20 @@ paths:
                       card_id: 1
                       gender: male
                       age: 18
+                      limitation_sets:
+                        -
+                          id: 1
+                          name: 'A set to limit them all'
+                          valid_from: '2022-08-04 12:00:00'
+                          valid_until: '2022-08-04 12:00:00'
+                          created_at: '2022-09-08T13:05:40.000000Z'
+                          updated_at: '2022-09-08T13:05:40.000000Z'
+                          instance_id: 1
+                          pivot:
+                            person_id: 1
+                            limitation_set_id: 1
+                            created_at: '2022-09-08T13:06:41.000000Z'
+                            updated_at: '2022-09-08T13:06:41.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
                     -
@@ -2921,6 +3204,20 @@ paths:
                       card_id: 1
                       gender: female
                       age: 15
+                      limitation_sets:
+                        -
+                          id: 1
+                          name: 'A set to limit them all'
+                          valid_from: '2022-08-04 12:00:00'
+                          valid_until: '2022-08-04 12:00:00'
+                          created_at: '2022-09-08T13:05:40.000000Z'
+                          updated_at: '2022-09-08T13:05:40.000000Z'
+                          instance_id: 1
+                          pivot:
+                            person_id: 2
+                            limitation_set_id: 1
+                            created_at: '2022-09-08T13:06:41.000000Z'
+                            updated_at: '2022-09-08T13:06:41.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
                     -
@@ -2928,6 +3225,20 @@ paths:
                       card_id: 49394739894111
                       gender: male
                       age: 23
+                      limitation_sets:
+                        -
+                          id: 1
+                          name: 'A set to limit them all'
+                          valid_from: '2022-08-04 12:00:00'
+                          valid_until: '2022-08-04 12:00:00'
+                          created_at: '2022-09-08T13:05:40.000000Z'
+                          updated_at: '2022-09-08T13:05:40.000000Z'
+                          instance_id: 1
+                          pivot:
+                            person_id: 3
+                            limitation_set_id: 1
+                            created_at: '2022-09-08T13:06:41.000000Z'
+                            updated_at: '2022-09-08T13:06:41.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
                   meta:
@@ -2947,6 +3258,20 @@ paths:
                         card_id: 1
                         gender: male
                         age: 18
+                        limitation_sets:
+                          -
+                            id: 1
+                            name: 'A set to limit them all'
+                            valid_from: '2022-08-04 12:00:00'
+                            valid_until: '2022-08-04 12:00:00'
+                            created_at: '2022-09-08T13:05:40.000000Z'
+                            updated_at: '2022-09-08T13:05:40.000000Z'
+                            instance_id: 1
+                            pivot:
+                              person_id: 1
+                              limitation_set_id: 1
+                              created_at: '2022-09-08T13:06:41.000000Z'
+                              updated_at: '2022-09-08T13:06:41.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
                       -
@@ -2954,6 +3279,20 @@ paths:
                         card_id: 1
                         gender: female
                         age: 15
+                        limitation_sets:
+                          -
+                            id: 1
+                            name: 'A set to limit them all'
+                            valid_from: '2022-08-04 12:00:00'
+                            valid_until: '2022-08-04 12:00:00'
+                            created_at: '2022-09-08T13:05:40.000000Z'
+                            updated_at: '2022-09-08T13:05:40.000000Z'
+                            instance_id: 1
+                            pivot:
+                              person_id: 2
+                              limitation_set_id: 1
+                              created_at: '2022-09-08T13:06:41.000000Z'
+                              updated_at: '2022-09-08T13:06:41.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
                       -
@@ -2961,6 +3300,20 @@ paths:
                         card_id: 49394739894111
                         gender: male
                         age: 23
+                        limitation_sets:
+                          -
+                            id: 1
+                            name: 'A set to limit them all'
+                            valid_from: '2022-08-04 12:00:00'
+                            valid_until: '2022-08-04 12:00:00'
+                            created_at: '2022-09-08T13:05:40.000000Z'
+                            updated_at: '2022-09-08T13:05:40.000000Z'
+                            instance_id: 1
+                            pivot:
+                              person_id: 3
+                              limitation_set_id: 1
+                              created_at: '2022-09-08T13:06:41.000000Z'
+                              updated_at: '2022-09-08T13:06:41.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
                     items:
@@ -3076,6 +3429,20 @@ paths:
                   card_id: 1
                   gender: female
                   age: 15
+                  limitation_sets:
+                    -
+                      id: 1
+                      name: 'A set to limit them all'
+                      valid_from: '2022-08-04 12:00:00'
+                      valid_until: '2022-08-04 12:00:00'
+                      created_at: '2022-09-08T13:05:40.000000Z'
+                      updated_at: '2022-09-08T13:05:40.000000Z'
+                      instance_id: 1
+                      pivot:
+                        person_id: 2
+                        limitation_set_id: 1
+                        created_at: '2022-09-08T13:06:41.000000Z'
+                        updated_at: '2022-09-08T13:06:41.000000Z'
                   created_at: '2022-08-18T13:48:25.000000Z'
                   updated_at: '2022-08-18T13:48:25.000000Z'
                 properties:
@@ -3091,6 +3458,24 @@ paths:
                   age:
                     type: integer
                     example: 15
+                  limitation_sets:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'A set to limit them all'
+                        valid_from: '2022-08-04 12:00:00'
+                        valid_until: '2022-08-04 12:00:00'
+                        created_at: '2022-09-08T13:05:40.000000Z'
+                        updated_at: '2022-09-08T13:05:40.000000Z'
+                        instance_id: 1
+                        pivot:
+                          person_id: 2
+                          limitation_set_id: 1
+                          created_at: '2022-09-08T13:06:41.000000Z'
+                          updated_at: '2022-09-08T13:06:41.000000Z'
+                    items:
+                      type: object
                   created_at:
                     type: string
                     example: '2022-08-18T13:48:25.000000Z'
@@ -3328,7 +3713,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the shop.'
-        example: 14
+        example: 10
         required: true
         schema:
           type: integer
@@ -3361,12 +3746,12 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
-          example: limit
+          example: limitation_set_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.'
-            example: limit
+            example: limitation_set_id
         -
           in: query
           name: order
@@ -3381,12 +3766,22 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 17
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 17
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -3422,6 +3817,12 @@ paths:
                       product_type_id: 1
                       limitation_set_id: 1
                       limit: 3
+                      product_type:
+                        id: 1
+                        name: t-shirt
+                        icon: 't-shirt icon'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       created_at: '2022-08-16T16:32:23.000000Z'
                       updated_at: '2022-08-16T16:32:23.000000Z'
                     -
@@ -3429,6 +3830,12 @@ paths:
                       product_type_id: 2
                       limitation_set_id: 2
                       limit: 5
+                      product_type:
+                        id: 2
+                        name: skirt
+                        icon: 'skirt icon'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       created_at: '2022-08-16T16:32:23.000000Z'
                       updated_at: '2022-08-16T16:32:23.000000Z'
                     -
@@ -3436,6 +3843,12 @@ paths:
                       product_type_id: 2
                       limitation_set_id: 1
                       limit: 5
+                      product_type:
+                        id: 2
+                        name: skirt
+                        icon: 'skirt icon'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       created_at: '2022-08-16T16:32:23.000000Z'
                       updated_at: '2022-08-16T16:32:23.000000Z'
                     -
@@ -3443,6 +3856,12 @@ paths:
                       product_type_id: 3
                       limitation_set_id: 1
                       limit: 2
+                      product_type:
+                        id: 3
+                        name: toy
+                        icon: 'toy icon'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       created_at: '2022-08-16T16:32:23.000000Z'
                       updated_at: '2022-08-16T16:32:23.000000Z'
                   meta:
@@ -3462,6 +3881,12 @@ paths:
                         product_type_id: 1
                         limitation_set_id: 1
                         limit: 3
+                        product_type:
+                          id: 1
+                          name: t-shirt
+                          icon: 't-shirt icon'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         created_at: '2022-08-16T16:32:23.000000Z'
                         updated_at: '2022-08-16T16:32:23.000000Z'
                       -
@@ -3469,6 +3894,12 @@ paths:
                         product_type_id: 2
                         limitation_set_id: 2
                         limit: 5
+                        product_type:
+                          id: 2
+                          name: skirt
+                          icon: 'skirt icon'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         created_at: '2022-08-16T16:32:23.000000Z'
                         updated_at: '2022-08-16T16:32:23.000000Z'
                       -
@@ -3476,6 +3907,12 @@ paths:
                         product_type_id: 2
                         limitation_set_id: 1
                         limit: 5
+                        product_type:
+                          id: 2
+                          name: skirt
+                          icon: 'skirt icon'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         created_at: '2022-08-16T16:32:23.000000Z'
                         updated_at: '2022-08-16T16:32:23.000000Z'
                       -
@@ -3483,6 +3920,12 @@ paths:
                         product_type_id: 3
                         limitation_set_id: 1
                         limit: 2
+                        product_type:
+                          id: 3
+                          name: toy
+                          icon: 'toy icon'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         created_at: '2022-08-16T16:32:23.000000Z'
                         updated_at: '2022-08-16T16:32:23.000000Z'
                     items:
@@ -3589,6 +4032,12 @@ paths:
                   product_type_id: 1
                   limitation_set_id: 1
                   limit: 3
+                  product_type:
+                    id: 1
+                    name: t-shirt
+                    icon: 't-shirt icon'
+                    created_at: '2022-08-18T13:48:25.000000Z'
+                    updated_at: '2022-08-18T13:48:25.000000Z'
                   created_at: '2022-08-16T16:32:23.000000Z'
                   updated_at: '2022-08-16T16:32:23.000000Z'
                 properties:
@@ -3604,6 +4053,14 @@ paths:
                   limit:
                     type: integer
                     example: 3
+                  product_type:
+                    type: object
+                    example:
+                      id: 1
+                      name: t-shirt
+                      icon: 't-shirt icon'
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
                   created_at:
                     type: string
                     example: '2022-08-16T16:32:23.000000Z'
@@ -3707,7 +4164,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the limitation.'
-        example: 6
+        example: 10
         required: true
         schema:
           type: integer
@@ -3730,32 +4187,32 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: eos
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: eos
+            example: laudantium
         -
           in: query
           name: email
           description: 'E-Mail contains.'
-          example: eveniet
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'E-Mail contains.'
-            example: eveniet
+            example: laudantium
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
-          example: email
+          example: organization_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
-            example: email
+            example: organization_id
         -
           in: query
           name: order
@@ -3770,12 +4227,22 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 12
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 12
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -3990,23 +4457,23 @@ paths:
                 organization_id:
                   type: string
                   description: 'ID of the organization the user is attached to.'
-                  example: sed
+                  example: laudantium
                 name:
                   type: string
                   description: 'Name of the user.'
-                  example: facilis
+                  example: laudantium
                 email:
                   type: string
                   description: 'Email of the user. Must be a valid email address.'
-                  example: clint12@example.org
+                  example: jeffry.mitchell@example.net
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: blanditiis
+                  example: laudantium
                 role:
                   type: string
                   description: 'Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.'
-                  example: organization_manager
+                  example: external_employee
               required:
                 - organization_id
                 - name
@@ -4057,7 +4524,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: 6
+        example: 1
         required: true
         schema:
           type: integer
@@ -4100,32 +4567,42 @@ paths:
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
-          example: id
+          example: visit_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.'
-            example: id
+            example: visit_id
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 11
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 11
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -4365,7 +4842,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the lineItem.'
-        example: 14
+        example: 1
         required: true
         schema:
           type: integer
@@ -4378,52 +4855,62 @@ paths:
           in: query
           name: name
           description: 'Name contains.'
-          example: beatae
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Name contains.'
-            example: beatae
+            example: laudantium
         -
           in: query
           name: icon
           description: 'Icon contains.'
-          example: doloremque
+          example: laudantium
           required: false
           schema:
             type: string
             description: 'Icon contains.'
-            example: doloremque
+            example: laudantium
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
-          example: icon
+          example: name
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
-            example: icon
+            example: name
         -
           in: query
           name: order
           description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-          example: asc
+          example: desc
           required: false
           schema:
             type: string
             description: 'Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.'
-            example: asc
+            example: desc
         -
           in: query
           name: page
           description: 'Page to load.'
-          example: 11
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 11
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -4647,7 +5134,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the productType.'
-        example: 2
+        example: 1
         required: true
         schema:
           type: integer
@@ -4691,32 +5178,32 @@ paths:
           in: query
           name: time.0
           description: 'Time is after this date. Must be a valid date.'
-          example: '2022-09-06T11:58:06'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Time is after this date. Must be a valid date.'
-            example: '2022-09-06T11:58:06'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: time.1
           description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
-          example: '2022-09-06T11:58:06'
+          example: '2022-09-08T15:12:54'
           required: false
           schema:
             type: string
             description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
-            example: '2022-09-06T11:58:06'
+            example: '2022-09-08T15:12:54'
         -
           in: query
           name: sort
           description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
-          example: id
+          example: card_id
           required: false
           schema:
             type: string
             description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
-            example: id
+            example: card_id
         -
           in: query
           name: order
@@ -4731,12 +5218,22 @@ paths:
           in: query
           name: page
           description: 'Page to load.'
-          example: 4
+          example: 10
           required: false
           schema:
             type: integer
             description: 'Page to load.'
-            example: 4
+            example: 10
+        -
+          in: query
+          name: limit
+          description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+          example: 120
+          required: false
+          schema:
+            type: integer
+            description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+            example: 120
         -
           in: header
           name: Authorization
@@ -4771,6 +5268,58 @@ paths:
                       id: 2
                       card_id: 1
                       shop_id: 1
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
+                      shop:
+                        id: 1
+                        organization_id: 1
+                        name: organization
+                        street: 'organizations street'
+                        postcode: '12345'
+                        city: 'organizations city'
+                        contact: 'organizations contact'
+                        opening_hours:
+                          monday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          tuesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          wednesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          thursday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          friday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          saturday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          sunday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       time: '2022-08-20T16:30:00.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4778,6 +5327,58 @@ paths:
                       id: 3
                       card_id: 1
                       shop_id: 1
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
+                      shop:
+                        id: 1
+                        organization_id: 1
+                        name: organization
+                        street: 'organizations street'
+                        postcode: '12345'
+                        city: 'organizations city'
+                        contact: 'organizations contact'
+                        opening_hours:
+                          monday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          tuesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          wednesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          thursday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          friday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          saturday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          sunday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       time: '2022-08-20T08:00:00.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4785,13 +5386,117 @@ paths:
                       id: 4
                       card_id: 1
                       shop_id: 1
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
+                      shop:
+                        id: 1
+                        organization_id: 1
+                        name: organization
+                        street: 'organizations street'
+                        postcode: '12345'
+                        city: 'organizations city'
+                        contact: 'organizations contact'
+                        opening_hours:
+                          monday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          tuesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          wednesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          thursday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          friday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          saturday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          sunday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       time: '2022-08-21T08:00:00.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
                     -
                       id: 5
-                      card_id: 1
+                      card_id: 49394739894111
                       shop_id: 2
+                      card:
+                        id: 49394739894111
+                        last_name: Kitsune
+                        first_name: Yasu
+                        street: 'Teststraße 123'
+                        postcode: '12345'
+                        city: Teststadt
+                        valid_from: '2022-01-01T00:00:00.000000Z'
+                        valid_until: '2022-03-31T00:00:00.000000Z'
+                        creator_id: 1
+                        comment: null
+                        created_at: '2022-08-18T13:47:42.000000Z'
+                        updated_at: '2022-08-18T13:47:42.000000Z'
+                      shop:
+                        id: 2
+                        organization_id: 1
+                        name: organization
+                        street: 'organizations street'
+                        postcode: '12345'
+                        city: 'organizations city'
+                        contact: 'organizations contact'
+                        opening_hours:
+                          monday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          tuesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          wednesday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          thursday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          friday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          saturday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                          sunday:
+                            -
+                              opens_at: '08:00'
+                              closes_at: '17:00'
+                        created_at: '2022-08-18T13:48:25.000000Z'
+                        updated_at: '2022-08-18T13:48:25.000000Z'
                       time: '2022-08-21T15:00:00.000000Z'
                       created_at: '2022-08-18T13:48:25.000000Z'
                       updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4811,6 +5516,58 @@ paths:
                         id: 2
                         card_id: 1
                         shop_id: 1
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
+                        shop:
+                          id: 1
+                          organization_id: 1
+                          name: organization
+                          street: 'organizations street'
+                          postcode: '12345'
+                          city: 'organizations city'
+                          contact: 'organizations contact'
+                          opening_hours:
+                            monday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            tuesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            wednesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            thursday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            friday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            saturday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            sunday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         time: '2022-08-20T16:30:00.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4818,6 +5575,58 @@ paths:
                         id: 3
                         card_id: 1
                         shop_id: 1
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
+                        shop:
+                          id: 1
+                          organization_id: 1
+                          name: organization
+                          street: 'organizations street'
+                          postcode: '12345'
+                          city: 'organizations city'
+                          contact: 'organizations contact'
+                          opening_hours:
+                            monday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            tuesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            wednesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            thursday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            friday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            saturday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            sunday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         time: '2022-08-20T08:00:00.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4825,13 +5634,117 @@ paths:
                         id: 4
                         card_id: 1
                         shop_id: 1
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
+                        shop:
+                          id: 1
+                          organization_id: 1
+                          name: organization
+                          street: 'organizations street'
+                          postcode: '12345'
+                          city: 'organizations city'
+                          contact: 'organizations contact'
+                          opening_hours:
+                            monday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            tuesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            wednesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            thursday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            friday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            saturday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            sunday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         time: '2022-08-21T08:00:00.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
                       -
                         id: 5
-                        card_id: 1
+                        card_id: 49394739894111
                         shop_id: 2
+                        card:
+                          id: 49394739894111
+                          last_name: Kitsune
+                          first_name: Yasu
+                          street: 'Teststraße 123'
+                          postcode: '12345'
+                          city: Teststadt
+                          valid_from: '2022-01-01T00:00:00.000000Z'
+                          valid_until: '2022-03-31T00:00:00.000000Z'
+                          creator_id: 1
+                          comment: null
+                          created_at: '2022-08-18T13:47:42.000000Z'
+                          updated_at: '2022-08-18T13:47:42.000000Z'
+                        shop:
+                          id: 2
+                          organization_id: 1
+                          name: organization
+                          street: 'organizations street'
+                          postcode: '12345'
+                          city: 'organizations city'
+                          contact: 'organizations contact'
+                          opening_hours:
+                            monday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            tuesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            wednesday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            thursday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            friday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            saturday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                            sunday:
+                              -
+                                opens_at: '08:00'
+                                closes_at: '17:00'
+                          created_at: '2022-08-18T13:48:25.000000Z'
+                          updated_at: '2022-08-18T13:48:25.000000Z'
                         time: '2022-08-21T15:00:00.000000Z'
                         created_at: '2022-08-18T13:48:25.000000Z'
                         updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4937,8 +5850,60 @@ paths:
                 type: object
                 example:
                   id: 2
-                  card_id: 1
+                  card_id: 49394739894111
                   shop_id: 1
+                  card:
+                    id: 49394739894111
+                    last_name: Kitsune
+                    first_name: Yasu
+                    street: 'Teststraße 123'
+                    postcode: '12345'
+                    city: Teststadt
+                    valid_from: '2022-01-01T00:00:00.000000Z'
+                    valid_until: '2022-03-31T00:00:00.000000Z'
+                    creator_id: 1
+                    comment: null
+                    created_at: '2022-08-18T13:47:42.000000Z'
+                    updated_at: '2022-08-18T13:47:42.000000Z'
+                  shop:
+                    id: 1
+                    organization_id: 1
+                    name: organization
+                    street: 'organizations street'
+                    postcode: '12345'
+                    city: 'organizations city'
+                    contact: 'organizations contact'
+                    opening_hours:
+                      monday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      tuesday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      wednesday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      thursday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      friday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      saturday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                      sunday:
+                        -
+                          opens_at: '08:00'
+                          closes_at: '17:00'
+                    created_at: '2022-08-18T13:48:25.000000Z'
+                    updated_at: '2022-08-18T13:48:25.000000Z'
                   time: '2022-08-20T16:30:00.000000Z'
                   created_at: '2022-08-18T13:48:25.000000Z'
                   updated_at: '2022-08-18T13:48:25.000000Z'
@@ -4948,10 +5913,66 @@ paths:
                     example: 2
                   card_id:
                     type: integer
-                    example: 1
+                    example: 49394739894111
                   shop_id:
                     type: integer
                     example: 1
+                  card:
+                    type: object
+                    example:
+                      id: 49394739894111
+                      last_name: Kitsune
+                      first_name: Yasu
+                      street: 'Teststraße 123'
+                      postcode: '12345'
+                      city: Teststadt
+                      valid_from: '2022-01-01T00:00:00.000000Z'
+                      valid_until: '2022-03-31T00:00:00.000000Z'
+                      creator_id: 1
+                      comment: null
+                      created_at: '2022-08-18T13:47:42.000000Z'
+                      updated_at: '2022-08-18T13:47:42.000000Z'
+                  shop:
+                    type: object
+                    example:
+                      id: 1
+                      organization_id: 1
+                      name: organization
+                      street: 'organizations street'
+                      postcode: '12345'
+                      city: 'organizations city'
+                      contact: 'organizations contact'
+                      opening_hours:
+                        monday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                        tuesday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                        wednesday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                        thursday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                        friday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                        saturday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                        sunday:
+                          -
+                            opens_at: '08:00'
+                            closes_at: '17:00'
+                      created_at: '2022-08-18T13:48:25.000000Z'
+                      updated_at: '2022-08-18T13:48:25.000000Z'
                   time:
                     type: string
                     example: '2022-08-20T16:30:00.000000Z'
@@ -5059,7 +6080,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the reservation.'
-        example: 3
+        example: 10
         required: true
         schema:
           type: integer
@@ -5243,11 +6264,11 @@ paths:
                 email:
                   type: string
                   description: 'E-Mail of the user.'
-                  example: rerum
+                  example: laudantium
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: voluptatem
+                  example: laudantium
               required:
                 - email
                 - password
@@ -5389,16 +6410,16 @@ paths:
               properties:
                 email:
                   type: string
-                  description: 'E-Mail of the user. Must be a valid email address.'
-                  example: barrows.rodrigo@example.com
+                  description: 'E-Mail of the user.'
+                  example: laudantium
                 password:
                   type: string
                   description: 'Password of the user.'
-                  example: enim
+                  example: laudantium
                 device_name:
                   type: string
                   description: 'Name of the device, used for identification of the token.'
-                  example: et
+                  example: laudantium
               required:
                 - email
                 - password

@@ -157,9 +157,9 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'E-Mail of the user. Must be a valid email address.'
+        description: 'E-Mail of the user.'
         required: true
-        example: jeffry.mitchell@example.net
+        example: laudantium
         type: string
         custom: []
       password:

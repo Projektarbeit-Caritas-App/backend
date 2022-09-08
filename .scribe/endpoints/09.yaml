@@ -149,7 +149,7 @@ endpoints:
         name: id
         description: 'The ID of the productType.'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -186,7 +186,7 @@ endpoints:
         name: id
         description: 'The ID of the productType.'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -225,7 +225,7 @@ endpoints:
         name: id
         description: 'The ID of the productType.'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []
