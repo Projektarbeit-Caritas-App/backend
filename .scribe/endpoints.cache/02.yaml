@@ -26,7 +26,7 @@ endpoints:
         name: card_id
         description: 'The ID of the card.'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -144,7 +144,7 @@ endpoints:
         name: card_id
         description: 'The ID of the card.'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -201,7 +201,7 @@ endpoints:
         name: card_id
         description: 'The ID of the card.'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []

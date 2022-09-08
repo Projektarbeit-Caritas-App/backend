@@ -32,9 +32,9 @@
         var useCsrf = Boolean(1);
         var csrfUrl = "/api/handshake";
     </script>
-    <script src="../docs/js/tryitout-3.37.1.js"></script>
+    <script src="../docs/js/tryitout-3.37.2.js"></script>
 
-    <script src="../docs/js/theme-default-3.37.1.js"></script>
+    <script src="../docs/js/theme-default-3.37.2.js"></script>
 
 </head>
 
@@ -181,6 +181,9 @@
                     </li>
                                     <li class="tocify-item level-2" data-unique="checkout-POSTapi-card-visit--id-">
                         <a href="#checkout-POSTapi-card-visit--id-">Create new Visit, LineItems</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="checkout-POSTapi-card-visit--id--comment">
+                        <a href="#checkout-POSTapi-card-visit--id--comment">Add comment to card</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -383,7 +386,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 6 2022</li>
+        <li>Last updated: September 8 2022</li>
     </ul>
 </div>
 
@@ -400,7 +403,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://localhost</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>Alternatively to the Token-Auth you can also use Session-Auth with XSRF-Protection, which is useful for SPAs.</p>
 
@@ -422,7 +425,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/shop?name=sunt&amp;street=pariatur&amp;postcode=unde&amp;city=nemo&amp;contact=in&amp;sort=contact&amp;order=asc&amp;page=10" \
+    --get "http://localhost/api/admin/shop?name=laudantium&amp;street=laudantium&amp;postcode=laudantium&amp;city=laudantium&amp;contact=laudantium&amp;sort=street&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -434,14 +437,15 @@ You can switch the language used with the tabs at the top right (or from the nav
 );
 
 const params = {
-    "name": "sunt",
-    "street": "pariatur",
-    "postcode": "unde",
-    "city": "nemo",
-    "contact": "in",
-    "sort": "contact",
-    "order": "asc",
+    "name": "laudantium",
+    "street": "laudantium",
+    "postcode": "laudantium",
+    "city": "laudantium",
+    "contact": "laudantium",
+    "sort": "street",
+    "order": "desc",
     "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -469,14 +473,15 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'name'=&gt; 'sunt',
-            'street'=&gt; 'pariatur',
-            'postcode'=&gt; 'unde',
-            'city'=&gt; 'nemo',
-            'contact'=&gt; 'in',
-            'sort'=&gt; 'contact',
-            'order'=&gt; 'asc',
+            'name'=&gt; 'laudantium',
+            'street'=&gt; 'laudantium',
+            'postcode'=&gt; 'laudantium',
+            'city'=&gt; 'laudantium',
+            'contact'=&gt; 'laudantium',
+            'sort'=&gt; 'street',
+            'order'=&gt; 'desc',
             'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -490,14 +495,15 @@ import json
 
 url = 'http://localhost/api/admin/shop'
 params = {
-  'name': 'sunt',
-  'street': 'pariatur',
-  'postcode': 'unde',
-  'city': 'nemo',
-  'contact': 'in',
-  'sort': 'contact',
-  'order': 'asc',
+  'name': 'laudantium',
+  'street': 'laudantium',
+  'postcode': 'laudantium',
+  'city': 'laudantium',
+  'contact': 'laudantium',
+  'sort': 'street',
+  'order': 'desc',
   'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -718,7 +724,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="name"
                data-endpoint="GETapi-admin-shop"
-               value="sunt"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Name contains.</p>
@@ -728,7 +734,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="street"
                data-endpoint="GETapi-admin-shop"
-               value="pariatur"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Street contains.</p>
@@ -738,7 +744,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="postcode"
                data-endpoint="GETapi-admin-shop"
-               value="unde"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Postcode contains.</p>
@@ -748,7 +754,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="city"
                data-endpoint="GETapi-admin-shop"
-               value="nemo"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>City contains.</p>
@@ -758,7 +764,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="contact"
                data-endpoint="GETapi-admin-shop"
-               value="in"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Contact contains.</p>
@@ -768,7 +774,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-shop"
-               value="contact"
+               value="street"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, or <code>contact</code>.</p>
@@ -778,7 +784,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-shop"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -792,6 +798,16 @@ response.json()</code></pre></div>
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-shop"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -1511,7 +1527,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/shop/15" \
+    --get "http://localhost/api/admin/shop/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1519,7 +1535,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/shop/15"
+    "http://localhost/api/admin/shop/10"
 );
 
 const headers = {
@@ -1537,7 +1553,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/shop/15',
+    'http://localhost/api/admin/shop/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -1554,7 +1570,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/shop/15'
+url = 'http://localhost/api/admin/shop/10'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -1572,63 +1588,61 @@ response.json()</code></pre></div>
         </blockquote>
                 <pre>
 
-<code class="language-json">[
-    {
-        &quot;id&quot;: 1,
-        &quot;organization_id&quot;: 1,
-        &quot;name&quot;: &quot;organization&quot;,
-        &quot;street&quot;: &quot;organizations street&quot;,
-        &quot;postcode&quot;: &quot;12345&quot;,
-        &quot;city&quot;: &quot;organizations city&quot;,
-        &quot;contact&quot;: &quot;organizations contact&quot;,
-        &quot;opening_hours&quot;: {
-            &quot;monday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ],
-            &quot;tuesday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ],
-            &quot;wednesday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ],
-            &quot;thursday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ],
-            &quot;friday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ],
-            &quot;saturday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ],
-            &quot;sunday&quot;: [
-                {
-                    &quot;opens_at&quot;: &quot;08:00&quot;,
-                    &quot;closes_at&quot;: &quot;17:00&quot;
-                }
-            ]
-        },
-        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
-    }
-]</code>
+<code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;organization_id&quot;: 1,
+    &quot;name&quot;: &quot;organization&quot;,
+    &quot;street&quot;: &quot;organizations street&quot;,
+    &quot;postcode&quot;: &quot;12345&quot;,
+    &quot;city&quot;: &quot;organizations city&quot;,
+    &quot;contact&quot;: &quot;organizations contact&quot;,
+    &quot;opening_hours&quot;: {
+        &quot;monday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ],
+        &quot;tuesday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ],
+        &quot;wednesday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ],
+        &quot;thursday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ],
+        &quot;friday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ],
+        &quot;saturday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ],
+        &quot;sunday&quot;: [
+            {
+                &quot;opens_at&quot;: &quot;08:00&quot;,
+                &quot;closes_at&quot;: &quot;17:00&quot;
+            }
+        ]
+    },
+    &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-admin-shop--id-" hidden>
@@ -1684,7 +1698,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-shop--id-"
-               value="15"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the shop.</p>
@@ -1705,7 +1719,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/shop/4" \
+    "http://localhost/api/admin/shop/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -1773,7 +1787,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/shop/4"
+    "http://localhost/api/admin/shop/10"
 );
 
 const headers = {
@@ -1852,7 +1866,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/shop/4',
+    'http://localhost/api/admin/shop/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -1928,7 +1942,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/shop/4'
+url = 'http://localhost/api/admin/shop/10'
 payload = {
     "organization_id": "50080528753334",
     "name": "The friendly shop around the corner",
@@ -2054,7 +2068,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-shop--id-"
-               value="4"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the shop.</p>
@@ -2418,7 +2432,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/shop/8" \
+    "http://localhost/api/admin/shop/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2426,7 +2440,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/shop/8"
+    "http://localhost/api/admin/shop/10"
 );
 
 const headers = {
@@ -2444,7 +2458,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/shop/8',
+    'http://localhost/api/admin/shop/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -2461,7 +2475,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/shop/8'
+url = 'http://localhost/api/admin/shop/10'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -2537,7 +2551,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-shop--id-"
-               value="8"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the shop.</p>
@@ -2562,7 +2576,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/limitation/set?name=omnis&amp;valid_from[]=2022-09-06T11%3A54%3A33&amp;valid_until[]=2022-09-06T11%3A54%3A33&amp;sort=valid_from&amp;order=asc&amp;page=6" \
+    --get "http://localhost/api/admin/limitation/set?name=laudantium&amp;valid_from[]=2022-09-08T15%3A12%3A54&amp;valid_until[]=2022-09-08T15%3A12%3A54&amp;sort=name&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2574,12 +2588,13 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "name": "omnis",
-    "valid_from[]": "2022-09-06T11:54:33",
-    "valid_until[]": "2022-09-06T11:54:33",
-    "sort": "valid_from",
-    "order": "asc",
-    "page": "6",
+    "name": "laudantium",
+    "valid_from[]": "2022-09-08T15:12:54",
+    "valid_until[]": "2022-09-08T15:12:54",
+    "sort": "name",
+    "order": "desc",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -2607,12 +2622,13 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'name'=&gt; 'omnis',
-            'valid_from[]'=&gt; '2022-09-06T11:54:33',
-            'valid_until[]'=&gt; '2022-09-06T11:54:33',
-            'sort'=&gt; 'valid_from',
-            'order'=&gt; 'asc',
-            'page'=&gt; '6',
+            'name'=&gt; 'laudantium',
+            'valid_from[]'=&gt; '2022-09-08T15:12:54',
+            'valid_until[]'=&gt; '2022-09-08T15:12:54',
+            'sort'=&gt; 'name',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -2626,12 +2642,13 @@ import json
 
 url = 'http://localhost/api/admin/limitation/set'
 params = {
-  'name': 'omnis',
-  'valid_from[]': '2022-09-06T11:54:33',
-  'valid_until[]': '2022-09-06T11:54:33',
-  'sort': 'valid_from',
-  'order': 'asc',
-  'page': '6',
+  'name': 'laudantium',
+  'valid_from[]': '2022-09-08T15:12:54',
+  'valid_until[]': '2022-09-08T15:12:54',
+  'sort': 'name',
+  'order': 'desc',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -2735,7 +2752,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="name"
                data-endpoint="GETapi-admin-limitation-set"
-               value="omnis"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Filter by name.</p>
@@ -2755,7 +2772,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_from.0"
                data-endpoint="GETapi-admin-limitation-set"
-               value="2022-09-06T11:54:33"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid from is after this date. Must be a valid date.</p>
@@ -2765,7 +2782,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_from.1"
                data-endpoint="GETapi-admin-limitation-set"
-               value="2022-09-06T11:54:33"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.</p>
@@ -2785,7 +2802,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_until.0"
                data-endpoint="GETapi-admin-limitation-set"
-               value="2022-09-06T11:54:33"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid until is after this date. Must be a valid date.</p>
@@ -2795,7 +2812,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_until.1"
                data-endpoint="GETapi-admin-limitation-set"
-               value="2022-09-06T11:54:33"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.</p>
@@ -2805,7 +2822,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-limitation-set"
-               value="valid_from"
+               value="name"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>name</code>, <code>valid_from</code>, or <code>valid_until</code>.</p>
@@ -2815,7 +2832,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-limitation-set"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -2825,10 +2842,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-limitation-set"
-               value="6"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-limitation-set"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -3020,7 +3047,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/limitation/set/3" \
+    --get "http://localhost/api/admin/limitation/set/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3028,7 +3055,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/limitation/set/3"
+    "http://localhost/api/admin/limitation/set/1"
 );
 
 const headers = {
@@ -3046,7 +3073,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/limitation/set/3',
+    'http://localhost/api/admin/limitation/set/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -3063,7 +3090,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/limitation/set/3'
+url = 'http://localhost/api/admin/limitation/set/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -3144,7 +3171,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-limitation-set--id-"
-               value="3"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the limitationSet.</p>
@@ -3165,7 +3192,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/limitation/set/16" \
+    "http://localhost/api/admin/limitation/set/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -3179,7 +3206,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/limitation/set/16"
+    "http://localhost/api/admin/limitation/set/1"
 );
 
 const headers = {
@@ -3204,7 +3231,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/limitation/set/16',
+    'http://localhost/api/admin/limitation/set/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -3226,7 +3253,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/limitation/set/16'
+url = 'http://localhost/api/admin/limitation/set/1'
 payload = {
     "name": "A set to limit them all ~ Tolkien II",
     "valid_from": "2022-08-04 12:00:00",
@@ -3298,7 +3325,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-limitation-set--id-"
-               value="16"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the limitationSet.</p>
@@ -3350,7 +3377,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/limitation/set/8" \
+    "http://localhost/api/admin/limitation/set/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3358,7 +3385,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/limitation/set/8"
+    "http://localhost/api/admin/limitation/set/1"
 );
 
 const headers = {
@@ -3376,7 +3403,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/limitation/set/8',
+    'http://localhost/api/admin/limitation/set/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -3393,7 +3420,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/limitation/set/8'
+url = 'http://localhost/api/admin/limitation/set/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -3469,7 +3496,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-limitation-set--id-"
-               value="8"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the limitationSet.</p>
@@ -3494,7 +3521,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/visit?sort=id&amp;order=asc&amp;page=15" \
+    --get "http://localhost/api/admin/visit?sort=card_id&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3506,9 +3533,10 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "sort": "id",
-    "order": "asc",
-    "page": "15",
+    "sort": "card_id",
+    "order": "desc",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -3536,9 +3564,10 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'sort'=&gt; 'id',
-            'order'=&gt; 'asc',
-            'page'=&gt; '15',
+            'sort'=&gt; 'card_id',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -3552,9 +3581,10 @@ import json
 
 url = 'http://localhost/api/admin/visit'
 params = {
-  'sort': 'id',
-  'order': 'asc',
-  'page': '15',
+  'sort': 'card_id',
+  'order': 'desc',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -3579,20 +3609,62 @@ response.json()</code></pre></div>
             &quot;id&quot;: 6,
             &quot;card_id&quot;: 1,
             &quot;user_id&quot;: 1,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;
         },
         {
             &quot;id&quot;: 7,
-            &quot;card_id&quot;: 1,
+            &quot;card_id&quot;: 49394739894111,
             &quot;user_id&quot;: 1,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-17T13:52:35.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-17T13:52:35.000000Z&quot;
         },
         {
             &quot;id&quot;: 8,
-            &quot;card_id&quot;: 1,
+            &quot;card_id&quot;: 49394739894111,
             &quot;user_id&quot;: 3,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-21T11:50:35.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-21T11:50:35.000000Z&quot;
         }
@@ -3683,7 +3755,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-visit"
-               value="id"
+               value="card_id"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.</p>
@@ -3693,7 +3765,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-visit"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -3703,10 +3775,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-visit"
-               value="15"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-visit"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -3884,7 +3966,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/visit/15" \
+    --get "http://localhost/api/admin/visit/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3892,7 +3974,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/visit/15"
+    "http://localhost/api/admin/visit/1"
 );
 
 const headers = {
@@ -3910,7 +3992,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/visit/15',
+    'http://localhost/api/admin/visit/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -3927,7 +4009,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/visit/15'
+url = 'http://localhost/api/admin/visit/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -3947,8 +4029,22 @@ response.json()</code></pre></div>
 
 <code class="language-json">{
     &quot;id&quot;: 6,
-    &quot;card_id&quot;: 1,
+    &quot;card_id&quot;: 49394739894111,
     &quot;user_id&quot;: 1,
+    &quot;card&quot;: {
+        &quot;id&quot;: 49394739894111,
+        &quot;last_name&quot;: &quot;Kitsune&quot;,
+        &quot;first_name&quot;: &quot;Yasu&quot;,
+        &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+        &quot;postcode&quot;: &quot;12345&quot;,
+        &quot;city&quot;: &quot;Teststadt&quot;,
+        &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+        &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+        &quot;creator_id&quot;: 1,
+        &quot;comment&quot;: null,
+        &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+    },
     &quot;created_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;,
     &quot;updated_at&quot;: &quot;2022-08-16T16:32:52.000000Z&quot;
 }</code>
@@ -4007,7 +4103,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-visit--id-"
-               value="15"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the visit.</p>
@@ -4028,7 +4124,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/visit/14" \
+    "http://localhost/api/admin/visit/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -4041,7 +4137,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/visit/14"
+    "http://localhost/api/admin/visit/1"
 );
 
 const headers = {
@@ -4065,7 +4161,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/visit/14',
+    'http://localhost/api/admin/visit/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -4086,7 +4182,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/visit/14'
+url = 'http://localhost/api/admin/visit/1'
 payload = {
     "card_id": "50080528753334",
     "user_id": "50080528753334"
@@ -4157,7 +4253,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-visit--id-"
-               value="14"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the visit.</p>
@@ -4199,7 +4295,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/visit/15" \
+    "http://localhost/api/admin/visit/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4207,7 +4303,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/visit/15"
+    "http://localhost/api/admin/visit/1"
 );
 
 const headers = {
@@ -4225,7 +4321,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/visit/15',
+    'http://localhost/api/admin/visit/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -4242,7 +4338,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/visit/15'
+url = 'http://localhost/api/admin/visit/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -4318,7 +4414,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-visit--id-"
-               value="15"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the visit.</p>
@@ -4345,7 +4441,7 @@ If none is given it will generate a json with the base64 encoded PDF-File.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/pdf/card/4" \
+    --get "http://localhost/api/pdf/card/56815898664224" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4353,7 +4449,7 @@ If none is given it will generate a json with the base64 encoded PDF-File.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/pdf/card/4"
+    "http://localhost/api/pdf/card/56815898664224"
 );
 
 const headers = {
@@ -4371,7 +4467,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/pdf/card/4',
+    'http://localhost/api/pdf/card/56815898664224',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -4388,7 +4484,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/pdf/card/4'
+url = 'http://localhost/api/pdf/card/56815898664224'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -4472,7 +4568,7 @@ vary: Origin
                 <input type="number"
                name="id"
                data-endpoint="GETapi-pdf-card--id-"
-               value="4"
+               value="56815898664224"
                data-component="url" hidden>
     <br>
 <p>The ID of the card.</p>
@@ -4518,7 +4614,7 @@ vary: Origin
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/organization?name=quidem&amp;street=et&amp;postcode=ut&amp;city=neque&amp;contact=aut&amp;sort=name&amp;order=desc&amp;page=9" \
+    --get "http://localhost/api/admin/organization?name=laudantium&amp;street=laudantium&amp;postcode=laudantium&amp;city=laudantium&amp;contact=laudantium&amp;sort=name&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4530,14 +4626,15 @@ vary: Origin
 );
 
 const params = {
-    "name": "quidem",
-    "street": "et",
-    "postcode": "ut",
-    "city": "neque",
-    "contact": "aut",
+    "name": "laudantium",
+    "street": "laudantium",
+    "postcode": "laudantium",
+    "city": "laudantium",
+    "contact": "laudantium",
     "sort": "name",
     "order": "desc",
-    "page": "9",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -4565,14 +4662,15 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'name'=&gt; 'quidem',
-            'street'=&gt; 'et',
-            'postcode'=&gt; 'ut',
-            'city'=&gt; 'neque',
-            'contact'=&gt; 'aut',
+            'name'=&gt; 'laudantium',
+            'street'=&gt; 'laudantium',
+            'postcode'=&gt; 'laudantium',
+            'city'=&gt; 'laudantium',
+            'contact'=&gt; 'laudantium',
             'sort'=&gt; 'name',
             'order'=&gt; 'desc',
-            'page'=&gt; '9',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -4586,14 +4684,15 @@ import json
 
 url = 'http://localhost/api/admin/organization'
 params = {
-  'name': 'quidem',
-  'street': 'et',
-  'postcode': 'ut',
-  'city': 'neque',
-  'contact': 'aut',
+  'name': 'laudantium',
+  'street': 'laudantium',
+  'postcode': 'laudantium',
+  'city': 'laudantium',
+  'contact': 'laudantium',
   'sort': 'name',
   'order': 'desc',
-  'page': '9',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -4714,7 +4813,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="name"
                data-endpoint="GETapi-admin-organization"
-               value="quidem"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Name contains.</p>
@@ -4724,7 +4823,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="street"
                data-endpoint="GETapi-admin-organization"
-               value="et"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Street contains.</p>
@@ -4734,7 +4833,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="postcode"
                data-endpoint="GETapi-admin-organization"
-               value="ut"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Postcode contains.</p>
@@ -4744,7 +4843,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="city"
                data-endpoint="GETapi-admin-organization"
-               value="neque"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>City contains.</p>
@@ -4754,7 +4853,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="contact"
                data-endpoint="GETapi-admin-organization"
-               value="aut"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Contact contains.</p>
@@ -4784,10 +4883,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-organization"
-               value="9"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-organization"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -5007,7 +5116,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/organization/10" \
+    --get "http://localhost/api/admin/organization/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5015,7 +5124,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/organization/10"
+    "http://localhost/api/admin/organization/1"
 );
 
 const headers = {
@@ -5033,7 +5142,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/organization/10',
+    'http://localhost/api/admin/organization/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -5050,7 +5159,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/organization/10'
+url = 'http://localhost/api/admin/organization/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -5134,7 +5243,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-organization--id-"
-               value="10"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the organization.</p>
@@ -5155,7 +5264,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/organization/19" \
+    "http://localhost/api/admin/organization/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -5171,7 +5280,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/organization/19"
+    "http://localhost/api/admin/organization/1"
 );
 
 const headers = {
@@ -5198,7 +5307,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/organization/19',
+    'http://localhost/api/admin/organization/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -5222,7 +5331,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/organization/19'
+url = 'http://localhost/api/admin/organization/1'
 payload = {
     "name": "Caritas",
     "street": "Franziskanergasse 3",
@@ -5296,7 +5405,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-organization--id-"
-               value="19"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the organization.</p>
@@ -5368,7 +5477,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/organization/4" \
+    "http://localhost/api/admin/organization/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5376,7 +5485,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/organization/4"
+    "http://localhost/api/admin/organization/1"
 );
 
 const headers = {
@@ -5394,7 +5503,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/organization/4',
+    'http://localhost/api/admin/organization/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -5411,7 +5520,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/organization/4'
+url = 'http://localhost/api/admin/organization/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -5487,7 +5596,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-organization--id-"
-               value="4"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the organization.</p>
@@ -5515,7 +5624,7 @@ many of them have already been used by a person</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/card/visit/4" \
+    --get "http://localhost/api/card/visit/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5523,7 +5632,7 @@ many of them have already been used by a person</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/card/visit/4"
+    "http://localhost/api/card/visit/1"
 );
 
 const headers = {
@@ -5541,7 +5650,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/card/visit/4',
+    'http://localhost/api/card/visit/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -5558,7 +5667,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/card/visit/4'
+url = 'http://localhost/api/card/visit/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -5721,7 +5830,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-card-visit--id-"
-               value="4"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the card.</p>
@@ -5743,12 +5852,11 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/card/visit/3" \
+    "http://localhost/api/card/visit/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"comment\": \"Took an additional buggy for his newly born child\",
     \"lineItems\": [
         {
             \"person_id\": \"50080528753334\",
@@ -5762,7 +5870,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/card/visit/3"
+    "http://localhost/api/card/visit/1"
 );
 
 const headers = {
@@ -5772,7 +5880,6 @@ const headers = {
 };
 
 let body = {
-    "comment": "Took an additional buggy for his newly born child",
     "lineItems": [
         {
             "person_id": "50080528753334",
@@ -5792,7 +5899,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/api/card/visit/3',
+    'http://localhost/api/card/visit/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -5800,7 +5907,6 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'comment' =&gt; 'Took an additional buggy for his newly born child',
             'lineItems' =&gt; [
                 [
                     'person_id' =&gt; '50080528753334',
@@ -5819,9 +5925,8 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/card/visit/3'
+url = 'http://localhost/api/card/visit/1'
 payload = {
-    "comment": "Took an additional buggy for his newly born child",
     "lineItems": [
         {
             "person_id": "50080528753334",
@@ -5896,23 +6001,13 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="POSTapi-card-visit--id-"
-               value="3"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the card.</p>
             </p>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
-            <b><code>comment</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="comment"
-               data-endpoint="POSTapi-card-visit--id-"
-               value="Took an additional buggy for his newly born child"
-               data-component="body" hidden>
-    <br>
-<p>Additional Comment for the card.</p>
-        </p>
-                <p>
         <details>
             <summary style="padding-bottom: 10px;">
                 <b><code>lineItems</code></b>&nbsp;&nbsp;<small>object[]</small>     <i>optional</i> &nbsp;
@@ -5953,6 +6048,164 @@ response.json()</code></pre></div>
         </p>
         </form>
 
+            <h2 id="checkout-POSTapi-card-visit--id--comment">Add comment to card</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p><small class="badge badge-purple">App authorization available</small></p>
+<p>Allows the app to add a comment to the given card</p>
+
+<span id="example-requests-POSTapi-card-visit--id--comment">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/card/visit/1/comment" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"comment\": \"Took an additional buggy for his newly born child\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/card/visit/1/comment"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "comment": "Took an additional buggy for his newly born child"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost/api/card/visit/1/comment',
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'comment' =&gt; 'Took an additional buggy for his newly born child',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost/api/card/visit/1/comment'
+payload = {
+    "comment": "Took an additional buggy for his newly born child"
+}
+headers = {
+  'Authorization': 'Bearer {YOUR_AUTH_KEY}',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-card-visit--id--comment">
+</span>
+<span id="execution-results-POSTapi-card-visit--id--comment" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-card-visit--id--comment"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-card-visit--id--comment"></code></pre>
+</span>
+<span id="execution-error-POSTapi-card-visit--id--comment" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-card-visit--id--comment"></code></pre>
+</span>
+<form id="form-POSTapi-card-visit--id--comment" data-method="POST"
+      data-path="api/card/visit/{id}/comment"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-card-visit--id--comment', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-card-visit--id--comment"
+                    onclick="tryItOut('POSTapi-card-visit--id--comment');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-card-visit--id--comment"
+                    onclick="cancelTryOut('POSTapi-card-visit--id--comment');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-card-visit--id--comment" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/card/visit/{id}/comment</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-card-visit--id--comment" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-card-visit--id--comment"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="POSTapi-card-visit--id--comment"
+               value="1"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the card.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>comment</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="comment"
+               data-endpoint="POSTapi-card-visit--id--comment"
+               value="Took an additional buggy for his newly born child"
+               data-component="body" hidden>
+    <br>
+<p>Additional Comment for the card.</p>
+        </p>
+        </form>
+
         <h1 id="card">Card</h1>
 
     
@@ -5971,7 +6224,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/card?last_name=numquam&amp;first_name=consequatur&amp;street=minus&amp;postcode=rerum&amp;city=accusantium&amp;valid_from[]=2022-09-06T11%3A58%3A07&amp;valid_until[]=2022-09-06T11%3A58%3A07&amp;comment=pariatur&amp;sort=valid_from&amp;order=asc&amp;page=11" \
+    --get "http://localhost/api/admin/card?last_name=laudantium&amp;first_name=laudantium&amp;street=laudantium&amp;postcode=laudantium&amp;city=laudantium&amp;valid_from[]=2022-09-08T15%3A12%3A54&amp;valid_until[]=2022-09-08T15%3A12%3A54&amp;comment=laudantium&amp;sort=last_name&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5983,17 +6236,18 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "last_name": "numquam",
-    "first_name": "consequatur",
-    "street": "minus",
-    "postcode": "rerum",
-    "city": "accusantium",
-    "valid_from[]": "2022-09-06T11:58:07",
-    "valid_until[]": "2022-09-06T11:58:07",
-    "comment": "pariatur",
-    "sort": "valid_from",
-    "order": "asc",
-    "page": "11",
+    "last_name": "laudantium",
+    "first_name": "laudantium",
+    "street": "laudantium",
+    "postcode": "laudantium",
+    "city": "laudantium",
+    "valid_from[]": "2022-09-08T15:12:54",
+    "valid_until[]": "2022-09-08T15:12:54",
+    "comment": "laudantium",
+    "sort": "last_name",
+    "order": "desc",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -6021,17 +6275,18 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'last_name'=&gt; 'numquam',
-            'first_name'=&gt; 'consequatur',
-            'street'=&gt; 'minus',
-            'postcode'=&gt; 'rerum',
-            'city'=&gt; 'accusantium',
-            'valid_from[]'=&gt; '2022-09-06T11:58:07',
-            'valid_until[]'=&gt; '2022-09-06T11:58:07',
-            'comment'=&gt; 'pariatur',
-            'sort'=&gt; 'valid_from',
-            'order'=&gt; 'asc',
-            'page'=&gt; '11',
+            'last_name'=&gt; 'laudantium',
+            'first_name'=&gt; 'laudantium',
+            'street'=&gt; 'laudantium',
+            'postcode'=&gt; 'laudantium',
+            'city'=&gt; 'laudantium',
+            'valid_from[]'=&gt; '2022-09-08T15:12:54',
+            'valid_until[]'=&gt; '2022-09-08T15:12:54',
+            'comment'=&gt; 'laudantium',
+            'sort'=&gt; 'last_name',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -6045,17 +6300,18 @@ import json
 
 url = 'http://localhost/api/admin/card'
 params = {
-  'last_name': 'numquam',
-  'first_name': 'consequatur',
-  'street': 'minus',
-  'postcode': 'rerum',
-  'city': 'accusantium',
-  'valid_from[]': '2022-09-06T11:58:07',
-  'valid_until[]': '2022-09-06T11:58:07',
-  'comment': 'pariatur',
-  'sort': 'valid_from',
-  'order': 'asc',
-  'page': '11',
+  'last_name': 'laudantium',
+  'first_name': 'laudantium',
+  'street': 'laudantium',
+  'postcode': 'laudantium',
+  'city': 'laudantium',
+  'valid_from[]': '2022-09-08T15:12:54',
+  'valid_until[]': '2022-09-08T15:12:54',
+  'comment': 'laudantium',
+  'sort': 'last_name',
+  'order': 'desc',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -6171,7 +6427,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="last_name"
                data-endpoint="GETapi-admin-card"
-               value="numquam"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Last name contains.</p>
@@ -6181,7 +6437,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="first_name"
                data-endpoint="GETapi-admin-card"
-               value="consequatur"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>First name contains.</p>
@@ -6191,7 +6447,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="street"
                data-endpoint="GETapi-admin-card"
-               value="minus"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Street contains.</p>
@@ -6201,7 +6457,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="postcode"
                data-endpoint="GETapi-admin-card"
-               value="rerum"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Postcode contains.</p>
@@ -6211,7 +6467,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="city"
                data-endpoint="GETapi-admin-card"
-               value="accusantium"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>City contains.</p>
@@ -6231,7 +6487,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_from.0"
                data-endpoint="GETapi-admin-card"
-               value="2022-09-06T11:58:07"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid from is after this date. Must be a valid date.</p>
@@ -6241,7 +6497,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_from.1"
                data-endpoint="GETapi-admin-card"
-               value="2022-09-06T11:58:07"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.</p>
@@ -6261,7 +6517,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_until.0"
                data-endpoint="GETapi-admin-card"
-               value="2022-09-06T11:58:07"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid until is after this date. Must be a valid date.</p>
@@ -6271,7 +6527,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="valid_until.1"
                data-endpoint="GETapi-admin-card"
-               value="2022-09-06T11:58:07"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.</p>
@@ -6281,7 +6537,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="comment"
                data-endpoint="GETapi-admin-card"
-               value="pariatur"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Comment contains.</p>
@@ -6301,7 +6557,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-card"
-               value="valid_from"
+               value="last_name"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>last_name</code>, <code>first_name</code>, <code>street</code>, <code>postcode</code>, <code>city</code>, <code>valid_from</code>, <code>valid_until</code>, or <code>creator_id</code>.</p>
@@ -6311,7 +6567,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-card"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -6321,10 +6577,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-card"
-               value="11"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-card"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -6586,7 +6852,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/card/4" \
+    --get "http://localhost/api/admin/card/56815898664224" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6594,7 +6860,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/card/4"
+    "http://localhost/api/admin/card/56815898664224"
 );
 
 const headers = {
@@ -6612,7 +6878,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/card/4',
+    'http://localhost/api/admin/card/56815898664224',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -6629,7 +6895,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/card/4'
+url = 'http://localhost/api/admin/card/56815898664224'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -6716,7 +6982,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-card--id-"
-               value="4"
+               value="56815898664224"
                data-component="url" hidden>
     <br>
 <p>The ID of the card.</p>
@@ -6737,7 +7003,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/card/1" \
+    "http://localhost/api/admin/card/56815898664224" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -6756,7 +7022,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/card/1"
+    "http://localhost/api/admin/card/56815898664224"
 );
 
 const headers = {
@@ -6786,7 +7052,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/card/1',
+    'http://localhost/api/admin/card/56815898664224',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -6813,7 +7079,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/card/1'
+url = 'http://localhost/api/admin/card/56815898664224'
 payload = {
     "last_name": "Kitsune",
     "first_name": "Yasu",
@@ -6890,7 +7156,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-card--id-"
-               value="1"
+               value="56815898664224"
                data-component="url" hidden>
     <br>
 <p>The ID of the card.</p>
@@ -6992,7 +7258,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/card/2" \
+    "http://localhost/api/admin/card/56815898664224" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7000,7 +7266,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/card/2"
+    "http://localhost/api/admin/card/56815898664224"
 );
 
 const headers = {
@@ -7018,7 +7284,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/card/2',
+    'http://localhost/api/admin/card/56815898664224',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -7035,7 +7301,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/card/2'
+url = 'http://localhost/api/admin/card/56815898664224'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -7111,7 +7377,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-card--id-"
-               value="2"
+               value="56815898664224"
                data-component="url" hidden>
     <br>
 <p>The ID of the card.</p>
@@ -7136,7 +7402,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/person?gender=nemo&amp;age=5&amp;sort=card_id&amp;order=asc&amp;page=3" \
+    --get "http://localhost/api/admin/person?gender=laudantium&amp;age=10&amp;sort=card_id&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7148,11 +7414,12 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "gender": "nemo",
-    "age": "5",
+    "gender": "laudantium",
+    "age": "10",
     "sort": "card_id",
-    "order": "asc",
-    "page": "3",
+    "order": "desc",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -7180,11 +7447,12 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'gender'=&gt; 'nemo',
-            'age'=&gt; '5',
+            'gender'=&gt; 'laudantium',
+            'age'=&gt; '10',
             'sort'=&gt; 'card_id',
-            'order'=&gt; 'asc',
-            'page'=&gt; '3',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -7198,11 +7466,12 @@ import json
 
 url = 'http://localhost/api/admin/person'
 params = {
-  'gender': 'nemo',
-  'age': '5',
+  'gender': 'laudantium',
+  'age': '10',
   'sort': 'card_id',
-  'order': 'asc',
-  'page': '3',
+  'order': 'desc',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -7228,6 +7497,23 @@ response.json()</code></pre></div>
             &quot;card_id&quot;: 1,
             &quot;gender&quot;: &quot;male&quot;,
             &quot;age&quot;: 18,
+            &quot;limitation_sets&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;A set to limit them all&quot;,
+                    &quot;valid_from&quot;: &quot;2022-08-04 12:00:00&quot;,
+                    &quot;valid_until&quot;: &quot;2022-08-04 12:00:00&quot;,
+                    &quot;created_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+                    &quot;instance_id&quot;: 1,
+                    &quot;pivot&quot;: {
+                        &quot;person_id&quot;: 1,
+                        &quot;limitation_set_id&quot;: 1,
+                        &quot;created_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;
+                    }
+                }
+            ],
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
         },
@@ -7236,6 +7522,23 @@ response.json()</code></pre></div>
             &quot;card_id&quot;: 1,
             &quot;gender&quot;: &quot;female&quot;,
             &quot;age&quot;: 15,
+            &quot;limitation_sets&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;A set to limit them all&quot;,
+                    &quot;valid_from&quot;: &quot;2022-08-04 12:00:00&quot;,
+                    &quot;valid_until&quot;: &quot;2022-08-04 12:00:00&quot;,
+                    &quot;created_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+                    &quot;instance_id&quot;: 1,
+                    &quot;pivot&quot;: {
+                        &quot;person_id&quot;: 2,
+                        &quot;limitation_set_id&quot;: 1,
+                        &quot;created_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;
+                    }
+                }
+            ],
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
         },
@@ -7244,6 +7547,23 @@ response.json()</code></pre></div>
             &quot;card_id&quot;: 49394739894111,
             &quot;gender&quot;: &quot;male&quot;,
             &quot;age&quot;: 23,
+            &quot;limitation_sets&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;A set to limit them all&quot;,
+                    &quot;valid_from&quot;: &quot;2022-08-04 12:00:00&quot;,
+                    &quot;valid_until&quot;: &quot;2022-08-04 12:00:00&quot;,
+                    &quot;created_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+                    &quot;instance_id&quot;: 1,
+                    &quot;pivot&quot;: {
+                        &quot;person_id&quot;: 3,
+                        &quot;limitation_set_id&quot;: 1,
+                        &quot;created_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;
+                    }
+                }
+            ],
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
         }
@@ -7324,7 +7644,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="gender"
                data-endpoint="GETapi-admin-person"
-               value="nemo"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Gender contains.</p>
@@ -7334,7 +7654,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="age"
                data-endpoint="GETapi-admin-person"
-               value="5"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Age is.</p>
@@ -7354,7 +7674,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-person"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -7364,10 +7684,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-person"
-               value="3"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-person"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -7650,6 +7980,23 @@ response.json()</code></pre></div>
     &quot;card_id&quot;: 1,
     &quot;gender&quot;: &quot;female&quot;,
     &quot;age&quot;: 15,
+    &quot;limitation_sets&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;A set to limit them all&quot;,
+            &quot;valid_from&quot;: &quot;2022-08-04 12:00:00&quot;,
+            &quot;valid_until&quot;: &quot;2022-08-04 12:00:00&quot;,
+            &quot;created_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-09-08T13:05:40.000000Z&quot;,
+            &quot;instance_id&quot;: 1,
+            &quot;pivot&quot;: {
+                &quot;person_id&quot;: 2,
+                &quot;limitation_set_id&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-09-08T13:06:41.000000Z&quot;
+            }
+        }
+    ],
     &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
     &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
 }</code>
@@ -7729,7 +8076,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/person/9" \
+    "http://localhost/api/admin/person/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -7746,7 +8093,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/person/9"
+    "http://localhost/api/admin/person/1"
 );
 
 const headers = {
@@ -7774,7 +8121,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/person/9',
+    'http://localhost/api/admin/person/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -7799,7 +8146,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/person/9'
+url = 'http://localhost/api/admin/person/1'
 payload = {
     "card_id": "50080528753334",
     "gender": "male",
@@ -7874,7 +8221,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-person--id-"
-               value="9"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the person.</p>
@@ -7939,7 +8286,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/person/15" \
+    "http://localhost/api/admin/person/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7947,7 +8294,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/person/15"
+    "http://localhost/api/admin/person/1"
 );
 
 const headers = {
@@ -7965,7 +8312,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/person/15',
+    'http://localhost/api/admin/person/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -7982,7 +8329,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/person/15'
+url = 'http://localhost/api/admin/person/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -8058,7 +8405,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-person--id-"
-               value="15"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the person.</p>
@@ -8334,7 +8681,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/schedule/14" \
+    --get "http://localhost/api/schedule/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8342,7 +8689,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/schedule/14"
+    "http://localhost/api/schedule/10"
 );
 
 const headers = {
@@ -8360,7 +8707,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/schedule/14',
+    'http://localhost/api/schedule/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -8377,7 +8724,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/schedule/14'
+url = 'http://localhost/api/schedule/10'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -8498,7 +8845,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-schedule--id-"
-               value="14"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the shop.</p>
@@ -8523,7 +8870,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/limitation/limit?sort=limit&amp;order=desc&amp;page=17" \
+    --get "http://localhost/api/admin/limitation/limit?sort=limitation_set_id&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8535,9 +8882,10 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "sort": "limit",
+    "sort": "limitation_set_id",
     "order": "desc",
-    "page": "17",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -8565,9 +8913,10 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'sort'=&gt; 'limit',
+            'sort'=&gt; 'limitation_set_id',
             'order'=&gt; 'desc',
-            'page'=&gt; '17',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -8581,9 +8930,10 @@ import json
 
 url = 'http://localhost/api/admin/limitation/limit'
 params = {
-  'sort': 'limit',
+  'sort': 'limitation_set_id',
   'order': 'desc',
-  'page': '17',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -8609,6 +8959,13 @@ response.json()</code></pre></div>
             &quot;product_type_id&quot;: 1,
             &quot;limitation_set_id&quot;: 1,
             &quot;limit&quot;: 3,
+            &quot;product_type&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;t-shirt&quot;,
+                &quot;icon&quot;: &quot;t-shirt icon&quot;,
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
         },
@@ -8617,6 +8974,13 @@ response.json()</code></pre></div>
             &quot;product_type_id&quot;: 2,
             &quot;limitation_set_id&quot;: 2,
             &quot;limit&quot;: 5,
+            &quot;product_type&quot;: {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;skirt&quot;,
+                &quot;icon&quot;: &quot;skirt icon&quot;,
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
         },
@@ -8625,6 +8989,13 @@ response.json()</code></pre></div>
             &quot;product_type_id&quot;: 2,
             &quot;limitation_set_id&quot;: 1,
             &quot;limit&quot;: 5,
+            &quot;product_type&quot;: {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;skirt&quot;,
+                &quot;icon&quot;: &quot;skirt icon&quot;,
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
         },
@@ -8633,6 +9004,13 @@ response.json()</code></pre></div>
             &quot;product_type_id&quot;: 3,
             &quot;limitation_set_id&quot;: 1,
             &quot;limit&quot;: 2,
+            &quot;product_type&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;toy&quot;,
+                &quot;icon&quot;: &quot;toy icon&quot;,
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
         }
@@ -8723,7 +9101,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-limitation-limit"
-               value="limit"
+               value="limitation_set_id"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>limitation_set_id</code>, <code>product_type_id</code>, or <code>limit</code>.</p>
@@ -8743,10 +9121,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-limitation-limit"
-               value="17"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-limitation-limit"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -8938,7 +9326,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/limitation/limit/6" \
+    --get "http://localhost/api/admin/limitation/limit/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8946,7 +9334,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/limitation/limit/6"
+    "http://localhost/api/admin/limitation/limit/10"
 );
 
 const headers = {
@@ -8964,7 +9352,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/limitation/limit/6',
+    'http://localhost/api/admin/limitation/limit/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -8981,7 +9369,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/limitation/limit/6'
+url = 'http://localhost/api/admin/limitation/limit/10'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -9004,6 +9392,13 @@ response.json()</code></pre></div>
     &quot;product_type_id&quot;: 1,
     &quot;limitation_set_id&quot;: 1,
     &quot;limit&quot;: 3,
+    &quot;product_type&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;t-shirt&quot;,
+        &quot;icon&quot;: &quot;t-shirt icon&quot;,
+        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+    },
     &quot;created_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;,
     &quot;updated_at&quot;: &quot;2022-08-16T16:32:23.000000Z&quot;
 }</code>
@@ -9062,7 +9457,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-limitation-limit--id-"
-               value="6"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the limitation.</p>
@@ -9083,7 +9478,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/limitation/limit/9" \
+    "http://localhost/api/admin/limitation/limit/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -9097,7 +9492,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/limitation/limit/9"
+    "http://localhost/api/admin/limitation/limit/10"
 );
 
 const headers = {
@@ -9122,7 +9517,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/limitation/limit/9',
+    'http://localhost/api/admin/limitation/limit/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -9144,7 +9539,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/limitation/limit/9'
+url = 'http://localhost/api/admin/limitation/limit/10'
 payload = {
     "product_type_id": "50080528753334",
     "limitation_set_id": "50080528753334",
@@ -9216,7 +9611,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-limitation-limit--id-"
-               value="9"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the limitation.</p>
@@ -9268,7 +9663,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/limitation/limit/6" \
+    "http://localhost/api/admin/limitation/limit/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9276,7 +9671,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/limitation/limit/6"
+    "http://localhost/api/admin/limitation/limit/10"
 );
 
 const headers = {
@@ -9294,7 +9689,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/limitation/limit/6',
+    'http://localhost/api/admin/limitation/limit/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -9311,7 +9706,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/limitation/limit/6'
+url = 'http://localhost/api/admin/limitation/limit/10'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -9387,7 +9782,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-limitation-limit--id-"
-               value="6"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the limitation.</p>
@@ -9412,7 +9807,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/user?name=eos&amp;email=eveniet&amp;sort=email&amp;order=desc&amp;page=12" \
+    --get "http://localhost/api/admin/user?name=laudantium&amp;email=laudantium&amp;sort=organization_id&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9424,11 +9819,12 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "name": "eos",
-    "email": "eveniet",
-    "sort": "email",
+    "name": "laudantium",
+    "email": "laudantium",
+    "sort": "organization_id",
     "order": "desc",
-    "page": "12",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -9456,11 +9852,12 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'name'=&gt; 'eos',
-            'email'=&gt; 'eveniet',
-            'sort'=&gt; 'email',
+            'name'=&gt; 'laudantium',
+            'email'=&gt; 'laudantium',
+            'sort'=&gt; 'organization_id',
             'order'=&gt; 'desc',
-            'page'=&gt; '12',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -9474,11 +9871,12 @@ import json
 
 url = 'http://localhost/api/admin/user'
 params = {
-  'name': 'eos',
-  'email': 'eveniet',
-  'sort': 'email',
+  'name': 'laudantium',
+  'email': 'laudantium',
+  'sort': 'organization_id',
   'order': 'desc',
-  'page': '12',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -9585,7 +9983,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="name"
                data-endpoint="GETapi-admin-user"
-               value="eos"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Name contains.</p>
@@ -9595,7 +9993,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="email"
                data-endpoint="GETapi-admin-user"
-               value="eveniet"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>E-Mail contains.</p>
@@ -9605,7 +10003,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-user"
-               value="email"
+               value="organization_id"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.</p>
@@ -9625,10 +10023,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-user"
-               value="12"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-user"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -9848,7 +10256,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/user/6" \
+    --get "http://localhost/api/admin/user/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9856,7 +10264,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/user/6"
+    "http://localhost/api/admin/user/1"
 );
 
 const headers = {
@@ -9874,7 +10282,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/user/6',
+    'http://localhost/api/admin/user/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -9891,7 +10299,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/user/6'
+url = 'http://localhost/api/admin/user/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -9975,7 +10383,7 @@ vary: Origin
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-user--id-"
-               value="6"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the user.</p>
@@ -9996,23 +10404,23 @@ vary: Origin
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/user/2" \
+    "http://localhost/api/admin/user/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"organization_id\": \"sed\",
-    \"name\": \"facilis\",
-    \"email\": \"clint12@example.org\",
-    \"password\": \"blanditiis\",
-    \"role\": \"organization_manager\"
+    \"organization_id\": \"laudantium\",
+    \"name\": \"laudantium\",
+    \"email\": \"jeffry.mitchell@example.net\",
+    \"password\": \"laudantium\",
+    \"role\": \"external_employee\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/user/2"
+    "http://localhost/api/admin/user/1"
 );
 
 const headers = {
@@ -10022,11 +10430,11 @@ const headers = {
 };
 
 let body = {
-    "organization_id": "sed",
-    "name": "facilis",
-    "email": "clint12@example.org",
-    "password": "blanditiis",
-    "role": "organization_manager"
+    "organization_id": "laudantium",
+    "name": "laudantium",
+    "email": "jeffry.mitchell@example.net",
+    "password": "laudantium",
+    "role": "external_employee"
 };
 
 fetch(url, {
@@ -10039,7 +10447,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/user/2',
+    'http://localhost/api/admin/user/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -10047,11 +10455,11 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'organization_id' =&gt; 'sed',
-            'name' =&gt; 'facilis',
-            'email' =&gt; 'clint12@example.org',
-            'password' =&gt; 'blanditiis',
-            'role' =&gt; 'organization_manager',
+            'organization_id' =&gt; 'laudantium',
+            'name' =&gt; 'laudantium',
+            'email' =&gt; 'jeffry.mitchell@example.net',
+            'password' =&gt; 'laudantium',
+            'role' =&gt; 'external_employee',
         ],
     ]
 );
@@ -10063,13 +10471,13 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/user/2'
+url = 'http://localhost/api/admin/user/1'
 payload = {
-    "organization_id": "sed",
-    "name": "facilis",
-    "email": "clint12@example.org",
-    "password": "blanditiis",
-    "role": "organization_manager"
+    "organization_id": "laudantium",
+    "name": "laudantium",
+    "email": "jeffry.mitchell@example.net",
+    "password": "laudantium",
+    "role": "external_employee"
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -10137,7 +10545,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-user--id-"
-               value="2"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the user.</p>
@@ -10148,7 +10556,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="organization_id"
                data-endpoint="PUTapi-admin-user--id-"
-               value="sed"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>ID of the organization the user is attached to.</p>
@@ -10158,7 +10566,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="name"
                data-endpoint="PUTapi-admin-user--id-"
-               value="facilis"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>Name of the user.</p>
@@ -10168,7 +10576,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="email"
                data-endpoint="PUTapi-admin-user--id-"
-               value="clint12@example.org"
+               value="jeffry.mitchell@example.net"
                data-component="body" hidden>
     <br>
 <p>Email of the user. Must be a valid email address.</p>
@@ -10178,7 +10586,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="password"
                data-endpoint="PUTapi-admin-user--id-"
-               value="blanditiis"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>Password of the user.</p>
@@ -10188,7 +10596,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="role"
                data-endpoint="PUTapi-admin-user--id-"
-               value="organization_manager"
+               value="external_employee"
                data-component="body" hidden>
     <br>
 <p>Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.</p>
@@ -10209,7 +10617,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/user/19" \
+    "http://localhost/api/admin/user/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -10217,7 +10625,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/user/19"
+    "http://localhost/api/admin/user/1"
 );
 
 const headers = {
@@ -10235,7 +10643,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/user/19',
+    'http://localhost/api/admin/user/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -10252,7 +10660,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/user/19'
+url = 'http://localhost/api/admin/user/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -10328,7 +10736,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-user--id-"
-               value="19"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the user.</p>
@@ -10353,7 +10761,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/lineItem?sort=id&amp;order=asc&amp;page=11" \
+    --get "http://localhost/api/admin/lineItem?sort=visit_id&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -10365,9 +10773,10 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "sort": "id",
-    "order": "asc",
-    "page": "11",
+    "sort": "visit_id",
+    "order": "desc",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -10395,9 +10804,10 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'sort'=&gt; 'id',
-            'order'=&gt; 'asc',
-            'page'=&gt; '11',
+            'sort'=&gt; 'visit_id',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -10411,9 +10821,10 @@ import json
 
 url = 'http://localhost/api/admin/lineItem'
 params = {
-  'sort': 'id',
-  'order': 'asc',
-  'page': '11',
+  'sort': 'visit_id',
+  'order': 'desc',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -10546,7 +10957,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-lineItem"
-               value="id"
+               value="visit_id"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>visit_id</code>, <code>person_id</code>, or <code>product_type_id</code>.</p>
@@ -10556,7 +10967,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-lineItem"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -10566,10 +10977,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-lineItem"
-               value="11"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-lineItem"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -10761,7 +11182,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/lineItem/14" \
+    --get "http://localhost/api/admin/lineItem/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -10769,7 +11190,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/lineItem/14"
+    "http://localhost/api/admin/lineItem/1"
 );
 
 const headers = {
@@ -10787,7 +11208,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/lineItem/14',
+    'http://localhost/api/admin/lineItem/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -10804,7 +11225,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/lineItem/14'
+url = 'http://localhost/api/admin/lineItem/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -10885,7 +11306,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-lineItem--id-"
-               value="14"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the lineItem.</p>
@@ -10906,7 +11327,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/lineItem/6" \
+    "http://localhost/api/admin/lineItem/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -10920,7 +11341,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/lineItem/6"
+    "http://localhost/api/admin/lineItem/1"
 );
 
 const headers = {
@@ -10945,7 +11366,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/lineItem/6',
+    'http://localhost/api/admin/lineItem/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -10967,7 +11388,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/lineItem/6'
+url = 'http://localhost/api/admin/lineItem/1'
 payload = {
     "visit_id": "50080528753334",
     "person_id": "50080528753334",
@@ -11039,7 +11460,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-lineItem--id-"
-               value="6"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the lineItem.</p>
@@ -11091,7 +11512,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/lineItem/8" \
+    "http://localhost/api/admin/lineItem/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11099,7 +11520,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/lineItem/8"
+    "http://localhost/api/admin/lineItem/1"
 );
 
 const headers = {
@@ -11117,7 +11538,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/lineItem/8',
+    'http://localhost/api/admin/lineItem/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -11134,7 +11555,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/lineItem/8'
+url = 'http://localhost/api/admin/lineItem/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -11210,7 +11631,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-lineItem--id-"
-               value="8"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the lineItem.</p>
@@ -11235,7 +11656,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/product-type?name=beatae&amp;icon=doloremque&amp;sort=icon&amp;order=asc&amp;page=11" \
+    --get "http://localhost/api/admin/product-type?name=laudantium&amp;icon=laudantium&amp;sort=name&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11247,11 +11668,12 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "name": "beatae",
-    "icon": "doloremque",
-    "sort": "icon",
-    "order": "asc",
-    "page": "11",
+    "name": "laudantium",
+    "icon": "laudantium",
+    "sort": "name",
+    "order": "desc",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -11279,11 +11701,12 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'name'=&gt; 'beatae',
-            'icon'=&gt; 'doloremque',
-            'sort'=&gt; 'icon',
-            'order'=&gt; 'asc',
-            'page'=&gt; '11',
+            'name'=&gt; 'laudantium',
+            'icon'=&gt; 'laudantium',
+            'sort'=&gt; 'name',
+            'order'=&gt; 'desc',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -11297,11 +11720,12 @@ import json
 
 url = 'http://localhost/api/admin/product-type'
 params = {
-  'name': 'beatae',
-  'icon': 'doloremque',
-  'sort': 'icon',
-  'order': 'asc',
-  'page': '11',
+  'name': 'laudantium',
+  'icon': 'laudantium',
+  'sort': 'name',
+  'order': 'desc',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -11408,7 +11832,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="name"
                data-endpoint="GETapi-admin-product-type"
-               value="beatae"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Name contains.</p>
@@ -11418,7 +11842,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="icon"
                data-endpoint="GETapi-admin-product-type"
-               value="doloremque"
+               value="laudantium"
                data-component="query" hidden>
     <br>
 <p>Icon contains.</p>
@@ -11428,7 +11852,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-product-type"
-               value="icon"
+               value="name"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.</p>
@@ -11438,7 +11862,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="order"
                data-endpoint="GETapi-admin-product-type"
-               value="asc"
+               value="desc"
                data-component="query" hidden>
     <br>
 <p>Sort ascending or descending. Must be one of <code>asc</code> or <code>desc</code>.</p>
@@ -11448,10 +11872,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-product-type"
-               value="11"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-product-type"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -11629,7 +12063,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/product-type/2" \
+    --get "http://localhost/api/admin/product-type/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11637,7 +12071,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/product-type/2"
+    "http://localhost/api/admin/product-type/1"
 );
 
 const headers = {
@@ -11655,7 +12089,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/product-type/2',
+    'http://localhost/api/admin/product-type/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -11672,7 +12106,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/product-type/2'
+url = 'http://localhost/api/admin/product-type/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -11752,7 +12186,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-product-type--id-"
-               value="2"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the productType.</p>
@@ -11773,7 +12207,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/product-type/4" \
+    "http://localhost/api/admin/product-type/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -11786,7 +12220,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/product-type/4"
+    "http://localhost/api/admin/product-type/1"
 );
 
 const headers = {
@@ -11810,7 +12244,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/product-type/4',
+    'http://localhost/api/admin/product-type/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -11831,7 +12265,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/product-type/4'
+url = 'http://localhost/api/admin/product-type/1'
 payload = {
     "name": "T-Shirt",
     "icon": "Icon value"
@@ -11902,7 +12336,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-product-type--id-"
-               value="4"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the productType.</p>
@@ -11944,7 +12378,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/admin/product-type/20" \
+    "http://localhost/api/admin/product-type/1" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11952,7 +12386,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/product-type/20"
+    "http://localhost/api/admin/product-type/1"
 );
 
 const headers = {
@@ -11970,7 +12404,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/api/admin/product-type/20',
+    'http://localhost/api/admin/product-type/1',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -11987,7 +12421,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/product-type/20'
+url = 'http://localhost/api/admin/product-type/1'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -12063,7 +12497,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-admin-product-type--id-"
-               value="20"
+               value="1"
                data-component="url" hidden>
     <br>
 <p>The ID of the productType.</p>
@@ -12088,7 +12522,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/reservation?time[]=2022-09-06T11%3A58%3A06&amp;sort=id&amp;order=desc&amp;page=4" \
+    --get "http://localhost/api/admin/reservation?time[]=2022-09-08T15%3A12%3A54&amp;sort=card_id&amp;order=desc&amp;page=10&amp;limit=120" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -12100,10 +12534,11 @@ response.json()</code></pre></div>
 );
 
 const params = {
-    "time[]": "2022-09-06T11:58:06",
-    "sort": "id",
+    "time[]": "2022-09-08T15:12:54",
+    "sort": "card_id",
     "order": "desc",
-    "page": "4",
+    "page": "10",
+    "limit": "120",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -12131,10 +12566,11 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'time[]'=&gt; '2022-09-06T11:58:06',
-            'sort'=&gt; 'id',
+            'time[]'=&gt; '2022-09-08T15:12:54',
+            'sort'=&gt; 'card_id',
             'order'=&gt; 'desc',
-            'page'=&gt; '4',
+            'page'=&gt; '10',
+            'limit'=&gt; '120',
         ],
     ]
 );
@@ -12148,10 +12584,11 @@ import json
 
 url = 'http://localhost/api/admin/reservation'
 params = {
-  'time[]': '2022-09-06T11:58:06',
-  'sort': 'id',
+  'time[]': '2022-09-08T15:12:54',
+  'sort': 'card_id',
   'order': 'desc',
-  'page': '4',
+  'page': '10',
+  'limit': '120',
 }
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
@@ -12176,6 +12613,75 @@ response.json()</code></pre></div>
             &quot;id&quot;: 2,
             &quot;card_id&quot;: 1,
             &quot;shop_id&quot;: 1,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
+            &quot;shop&quot;: {
+                &quot;id&quot;: 1,
+                &quot;organization_id&quot;: 1,
+                &quot;name&quot;: &quot;organization&quot;,
+                &quot;street&quot;: &quot;organizations street&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;organizations city&quot;,
+                &quot;contact&quot;: &quot;organizations contact&quot;,
+                &quot;opening_hours&quot;: {
+                    &quot;monday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;tuesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;wednesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;thursday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;friday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;saturday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;sunday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ]
+                },
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;time&quot;: &quot;2022-08-20T16:30:00.000000Z&quot;,
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
@@ -12184,6 +12690,75 @@ response.json()</code></pre></div>
             &quot;id&quot;: 3,
             &quot;card_id&quot;: 1,
             &quot;shop_id&quot;: 1,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
+            &quot;shop&quot;: {
+                &quot;id&quot;: 1,
+                &quot;organization_id&quot;: 1,
+                &quot;name&quot;: &quot;organization&quot;,
+                &quot;street&quot;: &quot;organizations street&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;organizations city&quot;,
+                &quot;contact&quot;: &quot;organizations contact&quot;,
+                &quot;opening_hours&quot;: {
+                    &quot;monday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;tuesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;wednesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;thursday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;friday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;saturday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;sunday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ]
+                },
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;time&quot;: &quot;2022-08-20T08:00:00.000000Z&quot;,
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
@@ -12192,14 +12767,152 @@ response.json()</code></pre></div>
             &quot;id&quot;: 4,
             &quot;card_id&quot;: 1,
             &quot;shop_id&quot;: 1,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
+            &quot;shop&quot;: {
+                &quot;id&quot;: 1,
+                &quot;organization_id&quot;: 1,
+                &quot;name&quot;: &quot;organization&quot;,
+                &quot;street&quot;: &quot;organizations street&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;organizations city&quot;,
+                &quot;contact&quot;: &quot;organizations contact&quot;,
+                &quot;opening_hours&quot;: {
+                    &quot;monday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;tuesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;wednesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;thursday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;friday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;saturday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;sunday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ]
+                },
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;time&quot;: &quot;2022-08-21T08:00:00.000000Z&quot;,
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
         },
         {
             &quot;id&quot;: 5,
-            &quot;card_id&quot;: 1,
+            &quot;card_id&quot;: 49394739894111,
             &quot;shop_id&quot;: 2,
+            &quot;card&quot;: {
+                &quot;id&quot;: 49394739894111,
+                &quot;last_name&quot;: &quot;Kitsune&quot;,
+                &quot;first_name&quot;: &quot;Yasu&quot;,
+                &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;Teststadt&quot;,
+                &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+                &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+                &quot;creator_id&quot;: 1,
+                &quot;comment&quot;: null,
+                &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+            },
+            &quot;shop&quot;: {
+                &quot;id&quot;: 2,
+                &quot;organization_id&quot;: 1,
+                &quot;name&quot;: &quot;organization&quot;,
+                &quot;street&quot;: &quot;organizations street&quot;,
+                &quot;postcode&quot;: &quot;12345&quot;,
+                &quot;city&quot;: &quot;organizations city&quot;,
+                &quot;contact&quot;: &quot;organizations contact&quot;,
+                &quot;opening_hours&quot;: {
+                    &quot;monday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;tuesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;wednesday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;thursday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;friday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;saturday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ],
+                    &quot;sunday&quot;: [
+                        {
+                            &quot;opens_at&quot;: &quot;08:00&quot;,
+                            &quot;closes_at&quot;: &quot;17:00&quot;
+                        }
+                    ]
+                },
+                &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+            },
             &quot;time&quot;: &quot;2022-08-21T15:00:00.000000Z&quot;,
             &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
             &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
@@ -12301,7 +13014,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="time.0"
                data-endpoint="GETapi-admin-reservation"
-               value="2022-09-06T11:58:06"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Time is after this date. Must be a valid date.</p>
@@ -12311,7 +13024,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="time.1"
                data-endpoint="GETapi-admin-reservation"
-               value="2022-09-06T11:58:06"
+               value="2022-09-08T15:12:54"
                data-component="query" hidden>
     <br>
 <p>Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.</p>
@@ -12321,7 +13034,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="sort"
                data-endpoint="GETapi-admin-reservation"
-               value="id"
+               value="card_id"
                data-component="query" hidden>
     <br>
 <p>Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.</p>
@@ -12341,10 +13054,20 @@ response.json()</code></pre></div>
                 <input type="number"
                name="page"
                data-endpoint="GETapi-admin-reservation"
-               value="4"
+               value="10"
                data-component="query" hidden>
     <br>
 <p>Page to load.</p>
+            </p>
+                    <p>
+                <b><code>limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="limit"
+               data-endpoint="GETapi-admin-reservation"
+               value="120"
+               data-component="query" hidden>
+    <br>
+<p>Items per page. Must be at least 10. Must not be greater than 500.</p>
             </p>
                 </form>
 
@@ -12536,7 +13259,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/admin/reservation/3" \
+    --get "http://localhost/api/admin/reservation/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -12544,7 +13267,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/reservation/3"
+    "http://localhost/api/admin/reservation/10"
 );
 
 const headers = {
@@ -12562,7 +13285,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/api/admin/reservation/3',
+    'http://localhost/api/admin/reservation/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -12579,7 +13302,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/reservation/3'
+url = 'http://localhost/api/admin/reservation/10'
 headers = {
   'Authorization': 'Bearer {YOUR_AUTH_KEY}',
   'Content-Type': 'application/json',
@@ -12599,8 +13322,77 @@ response.json()</code></pre></div>
 
 <code class="language-json">{
     &quot;id&quot;: 2,
-    &quot;card_id&quot;: 1,
+    &quot;card_id&quot;: 49394739894111,
     &quot;shop_id&quot;: 1,
+    &quot;card&quot;: {
+        &quot;id&quot;: 49394739894111,
+        &quot;last_name&quot;: &quot;Kitsune&quot;,
+        &quot;first_name&quot;: &quot;Yasu&quot;,
+        &quot;street&quot;: &quot;Teststra&szlig;e 123&quot;,
+        &quot;postcode&quot;: &quot;12345&quot;,
+        &quot;city&quot;: &quot;Teststadt&quot;,
+        &quot;valid_from&quot;: &quot;2022-01-01T00:00:00.000000Z&quot;,
+        &quot;valid_until&quot;: &quot;2022-03-31T00:00:00.000000Z&quot;,
+        &quot;creator_id&quot;: 1,
+        &quot;comment&quot;: null,
+        &quot;created_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-18T13:47:42.000000Z&quot;
+    },
+    &quot;shop&quot;: {
+        &quot;id&quot;: 1,
+        &quot;organization_id&quot;: 1,
+        &quot;name&quot;: &quot;organization&quot;,
+        &quot;street&quot;: &quot;organizations street&quot;,
+        &quot;postcode&quot;: &quot;12345&quot;,
+        &quot;city&quot;: &quot;organizations city&quot;,
+        &quot;contact&quot;: &quot;organizations contact&quot;,
+        &quot;opening_hours&quot;: {
+            &quot;monday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ],
+            &quot;tuesday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ],
+            &quot;wednesday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ],
+            &quot;thursday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ],
+            &quot;friday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ],
+            &quot;saturday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ],
+            &quot;sunday&quot;: [
+                {
+                    &quot;opens_at&quot;: &quot;08:00&quot;,
+                    &quot;closes_at&quot;: &quot;17:00&quot;
+                }
+            ]
+        },
+        &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
+    },
     &quot;time&quot;: &quot;2022-08-20T16:30:00.000000Z&quot;,
     &quot;created_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;,
     &quot;updated_at&quot;: &quot;2022-08-18T13:48:25.000000Z&quot;
@@ -12660,7 +13452,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="GETapi-admin-reservation--id-"
-               value="3"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the reservation.</p>
@@ -12681,7 +13473,7 @@ response.json()</code></pre></div>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/admin/reservation/9" \
+    "http://localhost/api/admin/reservation/10" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -12695,7 +13487,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/admin/reservation/9"
+    "http://localhost/api/admin/reservation/10"
 );
 
 const headers = {
@@ -12720,7 +13512,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/api/admin/reservation/9',
+    'http://localhost/api/admin/reservation/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
@@ -12742,7 +13534,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/api/admin/reservation/9'
+url = 'http://localhost/api/admin/reservation/10'
 payload = {
     "card_id": "50080528753334",
     "shop_id": "50080528753334",
@@ -12814,7 +13606,7 @@ response.json()</code></pre></div>
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-admin-reservation--id-"
-               value="9"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the reservation.</p>
@@ -13142,8 +13934,8 @@ you can send your Credentials to this endpoint and authenticate your session.</p
     --header "Referer: {URL of your SPA}" \
     --header "X-XSRF-TOKEN: {Your XSRF-Token}" \
     --data "{
-    \"email\": \"rerum\",
-    \"password\": \"voluptatem\"
+    \"email\": \"laudantium\",
+    \"password\": \"laudantium\"
 }"
 </code></pre></div>
 
@@ -13161,8 +13953,8 @@ const headers = {
 };
 
 let body = {
-    "email": "rerum",
-    "password": "voluptatem"
+    "email": "laudantium",
+    "password": "laudantium"
 };
 
 fetch(url, {
@@ -13184,8 +13976,8 @@ $response = $client-&gt;post(
             'X-XSRF-TOKEN' =&gt; '{Your XSRF-Token}',
         ],
         'json' =&gt; [
-            'email' =&gt; 'rerum',
-            'password' =&gt; 'voluptatem',
+            'email' =&gt; 'laudantium',
+            'password' =&gt; 'laudantium',
         ],
     ]
 );
@@ -13199,8 +13991,8 @@ import json
 
 url = 'http://localhost/api/auth/login'
 payload = {
-    "email": "rerum",
-    "password": "voluptatem"
+    "email": "laudantium",
+    "password": "laudantium"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -13322,7 +14114,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-login"
-               value="rerum"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>E-Mail of the user.</p>
@@ -13332,7 +14124,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-login"
-               value="voluptatem"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>Password of the user.</p>
@@ -13361,9 +14153,9 @@ Tokens will be valid for 20 hours before they expire.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"barrows.rodrigo@example.com\",
-    \"password\": \"enim\",
-    \"device_name\": \"et\"
+    \"email\": \"laudantium\",
+    \"password\": \"laudantium\",
+    \"device_name\": \"laudantium\"
 }"
 </code></pre></div>
 
@@ -13379,9 +14171,9 @@ const headers = {
 };
 
 let body = {
-    "email": "barrows.rodrigo@example.com",
-    "password": "enim",
-    "device_name": "et"
+    "email": "laudantium",
+    "password": "laudantium",
+    "device_name": "laudantium"
 };
 
 fetch(url, {
@@ -13401,9 +14193,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'barrows.rodrigo@example.com',
-            'password' =&gt; 'enim',
-            'device_name' =&gt; 'et',
+            'email' =&gt; 'laudantium',
+            'password' =&gt; 'laudantium',
+            'device_name' =&gt; 'laudantium',
         ],
     ]
 );
@@ -13417,9 +14209,9 @@ import json
 
 url = 'http://localhost/api/auth/token'
 payload = {
-    "email": "barrows.rodrigo@example.com",
-    "password": "enim",
-    "device_name": "et"
+    "email": "laudantium",
+    "password": "laudantium",
+    "device_name": "laudantium"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -13540,17 +14332,17 @@ response.json()</code></pre></div>
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-auth-token"
-               value="barrows.rodrigo@example.com"
+               value="laudantium"
                data-component="body" hidden>
     <br>
-<p>E-Mail of the user. Must be a valid email address.</p>
+<p>E-Mail of the user.</p>
         </p>
                 <p>
             <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-auth-token"
-               value="enim"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>Password of the user.</p>
@@ -13560,7 +14352,7 @@ response.json()</code></pre></div>
                 <input type="text"
                name="device_name"
                data-endpoint="POSTapi-auth-token"
-               value="et"
+               value="laudantium"
                data-component="body" hidden>
     <br>
 <p>Name of the device, used for identification of the token.</p>

@@ -187,9 +187,9 @@ class CheckoutController extends Controller
             'user_id' => $request->user()->id
         ]);
 
-        $items = $request->json('lineItems');
+        $lineItems = $request->validated()['lineItems'];
 
-        foreach ($items as $lineItem) {
+        foreach ($lineItems as $lineItem) {
             $amount = $lineItem['amount'];
 
             for ($i = 0; $i < $amount; $i++) {
