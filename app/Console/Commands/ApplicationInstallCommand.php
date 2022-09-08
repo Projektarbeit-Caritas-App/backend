@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use DB;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -29,9 +30,18 @@ class ApplicationInstallCommand extends Command
      */
     public function handle(): int
     {
+        if (DB::table('roles')->count() > 0) {
+            $this->warn('App is already installed');
+            return 1;
+        }
+
+        $this->comment('Step 1/3: Creating Roles...');
         $roles = $this->registerRoles();
+
+        $this->comment('Step 2/3: Creating Permissions...');
         $this->registerPermissions();
 
+        $this->comment('Step 3/3: Creating default permission schema...');
         $roles['external_employee']->givePermissionTo([
             'admin.card.index',
             'admin.card.store',
@@ -202,6 +212,7 @@ class ApplicationInstallCommand extends Command
             'schedule.reservations'
         ]);
 
+        $this->info('App successfully installed');
         return 0;
     }
 

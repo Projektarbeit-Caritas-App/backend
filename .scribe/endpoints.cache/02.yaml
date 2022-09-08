@@ -26,7 +26,7 @@ endpoints:
         name: card_id
         description: 'The ID of the card.'
         required: true
-        example: 4
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -144,18 +144,11 @@ endpoints:
         name: card_id
         description: 'The ID of the card.'
         required: true
-        example: 3
+        example: 10
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
-      comment:
-        name: comment
-        description: 'Additional Comment for the card.'
-        required: false
-        example: 'Took an additional buggy for his newly born child'
-        type: string
-        custom: []
       lineItems:
         name: lineItems
         description: ''
@@ -184,6 +177,41 @@ endpoints:
         required: true
         example: 5
         type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/card/visit/{card_id}/comment'
+    metadata:
+      title: 'Add comment to card'
+      description: |-
+        <small class="badge badge-purple">App authorization available</small>
+
+        Allows the app to add a comment to the given card
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      card_id:
+        name: card_id
+        description: 'The ID of the card.'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      comment:
+        name: comment
+        description: 'Additional Comment for the card.'
+        required: true
+        example: 'Took an additional buggy for his newly born child'
+        type: string
         custom: []
     responses: []
     responseFields: []

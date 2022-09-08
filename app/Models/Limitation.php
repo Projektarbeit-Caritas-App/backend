@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Limitation extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'product_type_id',
         'limitation_set_id',

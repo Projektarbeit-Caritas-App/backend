@@ -46,9 +46,9 @@ class ModelFilterService
         };
     }
 
-    public static function apiPaginate(Builder $query): array
+    public static function apiPaginate(Builder $query, int $limit): array
     {
-        $paginator = $query->paginate(25)->withQueryString();
+        $paginator = $query->paginate($limit)->withQueryString();
 
         return [
             'items' => $paginator->items(),

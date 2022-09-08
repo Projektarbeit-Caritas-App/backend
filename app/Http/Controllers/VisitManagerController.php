@@ -24,18 +24,60 @@ class VisitManagerController extends Controller
      *       "id": 6,
      *       "card_id": 1,
      *       "user_id": 1,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
      *       "created_at": "2022-08-16T16:32:52.000000Z",
      *       "updated_at": "2022-08-16T16:32:52.000000Z"
      *     }, {
      *       "id": 7,
-     *       "card_id": 1,
+     *       "card_id": 49394739894111,
      *       "user_id": 1,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
      *       "created_at": "2022-08-17T13:52:35.000000Z",
      *       "updated_at": "2022-08-17T13:52:35.000000Z"
      *     }, {
      *       "id": 8,
-     *       "card_id": 1,
+     *       "card_id": 49394739894111,
      *       "user_id": 3,
+     *       "card": {
+     *         "id": 49394739894111,
+     *         "last_name": "Kitsune",
+     *         "first_name": "Yasu",
+     *         "street": "Teststraße 123",
+     *         "postcode": "12345",
+     *         "city": "Teststadt",
+     *         "valid_from": "2022-01-01T00:00:00.000000Z",
+     *         "valid_until": "2022-03-31T00:00:00.000000Z",
+     *         "creator_id": 1,
+     *         "comment": null,
+     *         "created_at": "2022-08-18T13:47:42.000000Z",
+     *         "updated_at": "2022-08-18T13:47:42.000000Z"
+     *       },
      *       "created_at": "2022-08-21T11:50:35.000000Z",
      *       "updated_at": "2022-08-21T11:50:35.000000Z"
      *     }
@@ -72,13 +114,23 @@ class VisitManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Visit::where('instance_id', $request->user()->instance_id), [
-            'card_id' => 'match',
-            'user_id' => 'match'
-        ], $filters));
+        return ModelFilterService::apiPaginate(
+            ModelFilterService::filterEntries(
+                Visit::where('instance_id', $request->user()->instance_id)->with('card'),
+                [
+                    'card_id' => 'match',
+                    'user_id' => 'match'
+                ],
+                $filters
+            ),
+            $filters['limit'] ?? 25
+        );
     }
 
     /**
@@ -98,8 +150,22 @@ class VisitManagerController extends Controller
      *
      * @response status=200 {
      *   "id": 6,
-     *   "card_id": 1,
+     *   "card_id": 49394739894111,
      *   "user_id": 1,
+     *   "card": {
+     *     "id": 49394739894111,
+     *     "last_name": "Kitsune",
+     *     "first_name": "Yasu",
+     *     "street": "Teststraße 123",
+     *     "postcode": "12345",
+     *     "city": "Teststadt",
+     *     "valid_from": "2022-01-01T00:00:00.000000Z",
+     *     "valid_until": "2022-03-31T00:00:00.000000Z",
+     *     "creator_id": 1,
+     *     "comment": null,
+     *     "created_at": "2022-08-18T13:47:42.000000Z",
+     *     "updated_at": "2022-08-18T13:47:42.000000Z"
+     *   },
      *   "created_at": "2022-08-16T16:32:52.000000Z",
      *   "updated_at": "2022-08-16T16:32:52.000000Z"
      * }
@@ -109,6 +175,7 @@ class VisitManagerController extends Controller
      */
     public function show(Visit $visit): Visit
     {
+        $visit->load('card');
         return $visit;
     }
 

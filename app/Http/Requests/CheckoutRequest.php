@@ -24,7 +24,6 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'string|nullable',
             'lineItems' => 'array|min:1|required',
             'lineItems.*.person_id' => 'exists:people,id|required',
             'lineItems.*.product_type_id' => 'exists:product_types,id|required',
@@ -35,10 +34,6 @@ class CheckoutRequest extends FormRequest
     public function bodyParameters()
     {
         return [
-            'comment' => [
-                'description' => 'Additional Comment for the card',
-                'example' => 'Took an additional buggy for his newly born child'
-            ],
             'lineItems.*.person_id' => [
                 'description' => 'ID of the person the lineItem is for',
                 'example' => '50080528753334'

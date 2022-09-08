@@ -93,7 +93,10 @@ class OrganizationManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Organization::where('instance_id', $request->user()->instance_id), [
@@ -102,7 +105,7 @@ class OrganizationManagerController extends Controller
             'postcode' => 'contains',
             'city' => 'contains',
             'contact' => 'contains'
-        ], $filters));
+        ], $filters), $filters['limit'] ?? 25);
     }
 
     /**

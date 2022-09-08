@@ -107,7 +107,10 @@ class CardManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(Card::where('instance_id', $request->user()->instance_id), [
@@ -120,7 +123,7 @@ class CardManagerController extends Controller
             'valid_until' => 'range',
             'comment' => 'contains',
             'creator_id' => 'match'
-        ], $filters));
+        ], $filters), $filters['limit'] ?? 25);
     }
 
     /**

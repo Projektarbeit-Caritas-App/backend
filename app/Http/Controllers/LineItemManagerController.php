@@ -71,14 +71,17 @@ class LineItemManagerController extends Controller
             'order' => 'string|in:asc,desc|nullable',
 
             // Page to load
-            'page' => 'integer|nullable'
+            'page' => 'integer|nullable',
+
+            // Items per page
+            'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
         return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LineItem::where('instance_id', $request->user()->instance_id), [
             'visit_id' => 'match',
             'person_id' => 'match',
             'product_type_id' => 'match'
-        ], $filters));
+        ], $filters), $filters['limit'] ?? 25);
     }
 
     /**

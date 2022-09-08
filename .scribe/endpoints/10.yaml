@@ -41,21 +41,21 @@ endpoints:
         name: time.0
         description: 'Time is after this date. Must be a valid date.'
         required: false
-        example: '2022-09-06T11:58:06'
+        example: '2022-09-08T13:11:50'
         type: string
         custom: []
       time.1:
         name: time.1
         description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
         required: false
-        example: '2022-09-06T11:58:06'
+        example: '2022-09-08T13:11:50'
         type: string
         custom: []
       sort:
         name: sort
         description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>shop_id</code>, or <code>time</code>.'
         required: false
-        example: id
+        example: card_id
         type: string
         custom: []
       order:
@@ -69,7 +69,14 @@ endpoints:
         name: page
         description: 'Page to load.'
         required: false
-        example: 4
+        example: 10
+        type: integer
+        custom: []
+      limit:
+        name: limit
+        description: 'Items per page. Must be at least 10. Must not be greater than 500.'
+        required: false
+        example: 120
         type: integer
         custom: []
     bodyParameters: []
@@ -83,6 +90,75 @@ endpoints:
                 "id": 2,
                 "card_id": 1,
                 "shop_id": 1,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
+                "shop": {
+                  "id": 1,
+                  "organization_id": 1,
+                  "name": "organization",
+                  "street": "organizations street",
+                  "postcode": "12345",
+                  "city": "organizations city",
+                  "contact": "organizations contact",
+                  "opening_hours": {
+                    "monday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "tuesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "wednesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "thursday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "friday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "saturday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "sunday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ]
+                  },
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "time": "2022-08-20T16:30:00.000000Z",
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -90,6 +166,75 @@ endpoints:
                 "id": 3,
                 "card_id": 1,
                 "shop_id": 1,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
+                "shop": {
+                  "id": 1,
+                  "organization_id": 1,
+                  "name": "organization",
+                  "street": "organizations street",
+                  "postcode": "12345",
+                  "city": "organizations city",
+                  "contact": "organizations contact",
+                  "opening_hours": {
+                    "monday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "tuesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "wednesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "thursday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "friday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "saturday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "sunday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ]
+                  },
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "time": "2022-08-20T08:00:00.000000Z",
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -97,13 +242,151 @@ endpoints:
                 "id": 4,
                 "card_id": 1,
                 "shop_id": 1,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
+                "shop": {
+                  "id": 1,
+                  "organization_id": 1,
+                  "name": "organization",
+                  "street": "organizations street",
+                  "postcode": "12345",
+                  "city": "organizations city",
+                  "contact": "organizations contact",
+                  "opening_hours": {
+                    "monday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "tuesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "wednesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "thursday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "friday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "saturday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "sunday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ]
+                  },
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "time": "2022-08-21T08:00:00.000000Z",
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
               }, {
                 "id": 5,
-                "card_id": 1,
+                "card_id": 49394739894111,
                 "shop_id": 2,
+                "card": {
+                  "id": 49394739894111,
+                  "last_name": "Kitsune",
+                  "first_name": "Yasu",
+                  "street": "Teststraße 123",
+                  "postcode": "12345",
+                  "city": "Teststadt",
+                  "valid_from": "2022-01-01T00:00:00.000000Z",
+                  "valid_until": "2022-03-31T00:00:00.000000Z",
+                  "creator_id": 1,
+                  "comment": null,
+                  "created_at": "2022-08-18T13:47:42.000000Z",
+                  "updated_at": "2022-08-18T13:47:42.000000Z"
+                },
+                "shop": {
+                  "id": 2,
+                  "organization_id": 1,
+                  "name": "organization",
+                  "street": "organizations street",
+                  "postcode": "12345",
+                  "city": "organizations city",
+                  "contact": "organizations contact",
+                  "opening_hours": {
+                    "monday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "tuesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "wednesday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "thursday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "friday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "saturday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ],
+                    "sunday": [
+                      {
+                        "opens_at": "08:00",
+                        "closes_at": "17:00"
+                      }
+                    ]
+                  },
+                  "created_at": "2022-08-18T13:48:25.000000Z",
+                  "updated_at": "2022-08-18T13:48:25.000000Z"
+                },
                 "time": "2022-08-21T15:00:00.000000Z",
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -180,7 +463,7 @@ endpoints:
         name: id
         description: 'The ID of the reservation.'
         required: true
-        example: 3
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -191,8 +474,77 @@ endpoints:
         content: |-
           {
             "id": 2,
-            "card_id": 1,
+            "card_id": 49394739894111,
             "shop_id": 1,
+            "card": {
+              "id": 49394739894111,
+              "last_name": "Kitsune",
+              "first_name": "Yasu",
+              "street": "Teststraße 123",
+              "postcode": "12345",
+              "city": "Teststadt",
+              "valid_from": "2022-01-01T00:00:00.000000Z",
+              "valid_until": "2022-03-31T00:00:00.000000Z",
+              "creator_id": 1,
+              "comment": null,
+              "created_at": "2022-08-18T13:47:42.000000Z",
+              "updated_at": "2022-08-18T13:47:42.000000Z"
+            },
+            "shop": {
+              "id": 1,
+              "organization_id": 1,
+              "name": "organization",
+              "street": "organizations street",
+              "postcode": "12345",
+              "city": "organizations city",
+              "contact": "organizations contact",
+              "opening_hours": {
+                "monday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ],
+                "tuesday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ],
+                "wednesday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ],
+                "thursday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ],
+                "friday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ],
+                "saturday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ],
+                "sunday": [
+                  {
+                    "opens_at": "08:00",
+                    "closes_at": "17:00"
+                  }
+                ]
+              },
+              "created_at": "2022-08-18T13:48:25.000000Z",
+              "updated_at": "2022-08-18T13:48:25.000000Z"
+            },
             "time": "2022-08-20T16:30:00.000000Z",
             "created_at": "2022-08-18T13:48:25.000000Z",
             "updated_at": "2022-08-18T13:48:25.000000Z"
@@ -218,7 +570,7 @@ endpoints:
         name: id
         description: 'The ID of the reservation.'
         required: true
-        example: 9
+        example: 10
         type: integer
         custom: []
     queryParameters: []
