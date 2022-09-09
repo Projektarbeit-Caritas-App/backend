@@ -1,12 +1,12 @@
-name: Visit
+name: User
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/visit
+    uri: api/admin/user
     metadata:
-      title: 'List all Visits'
+      title: 'List all Users'
       description: ''
       authenticated: true
       custom: []
@@ -16,25 +16,32 @@ endpoints:
       Accept: application/json
     urlParameters: []
     queryParameters:
-      card_id:
-        name: card_id
-        description: Card.
+      organization_id:
+        name: organization_id
+        description: Organization.
         required: false
         example: null
         type: string
         custom: []
-      user_id:
-        name: user_id
-        description: User.
+      name:
+        name: name
+        description: 'Name contains.'
         required: false
-        example: null
+        example: laudantium
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'E-Mail contains.'
+        required: false
+        example: laudantium
         type: string
         custom: []
       sort:
         name: sort
-        description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, or <code>user_id</code>.'
+        description: 'Sort by given field. Must be one of <code>id</code>, <code>organization_id</code>, <code>name</code>, or <code>email</code>.'
         required: false
-        example: card_id
+        example: organization_id
         type: string
         custom: []
       order:
@@ -66,72 +73,20 @@ endpoints:
           {
             "items": [
               {
-                "id": 6,
-                "card_id": 1,
-                "user_id": 1,
-                "card": {
-                  "id": 49394739894111,
-                  "last_name": "Kitsune",
-                  "first_name": "Yasu",
-                  "street": "Teststraße 123",
-                  "postcode": "12345",
-                  "city": "Teststadt",
-                  "valid_from": "2022-01-01T00:00:00.000000Z",
-                  "valid_until": "2022-03-31T00:00:00.000000Z",
-                  "creator_id": 1,
-                  "comment": null,
-                  "created_at": "2022-08-18T13:47:42.000000Z",
-                  "updated_at": "2022-08-18T13:47:42.000000Z"
-                },
-                "created_at": "2022-08-16T16:32:52.000000Z",
-                "updated_at": "2022-08-16T16:32:52.000000Z"
-              }, {
-                "id": 7,
-                "card_id": 49394739894111,
-                "user_id": 1,
-                "card": {
-                  "id": 49394739894111,
-                  "last_name": "Kitsune",
-                  "first_name": "Yasu",
-                  "street": "Teststraße 123",
-                  "postcode": "12345",
-                  "city": "Teststadt",
-                  "valid_from": "2022-01-01T00:00:00.000000Z",
-                  "valid_until": "2022-03-31T00:00:00.000000Z",
-                  "creator_id": 1,
-                  "comment": null,
-                  "created_at": "2022-08-18T13:47:42.000000Z",
-                  "updated_at": "2022-08-18T13:47:42.000000Z"
-                },
-                "created_at": "2022-08-17T13:52:35.000000Z",
-                "updated_at": "2022-08-17T13:52:35.000000Z"
-              }, {
-                "id": 8,
-                "card_id": 49394739894111,
-                "user_id": 3,
-                "card": {
-                  "id": 49394739894111,
-                  "last_name": "Kitsune",
-                  "first_name": "Yasu",
-                  "street": "Teststraße 123",
-                  "postcode": "12345",
-                  "city": "Teststadt",
-                  "valid_from": "2022-01-01T00:00:00.000000Z",
-                  "valid_until": "2022-03-31T00:00:00.000000Z",
-                  "creator_id": 1,
-                  "comment": null,
-                  "created_at": "2022-08-18T13:47:42.000000Z",
-                  "updated_at": "2022-08-18T13:47:42.000000Z"
-                },
-                "created_at": "2022-08-21T11:50:35.000000Z",
-                "updated_at": "2022-08-21T11:50:35.000000Z"
+                "id": 3,
+                "instance_id": 3,
+                "organization_id": 3,
+                "name": "Rene",
+                "email": "rene@web.de",
+                "created_at": "2022-08-21T11:34:55.000000Z",
+                "updated_at": "2022-08-21T11:34:55.000000Z"
               }
             ],
             "meta": {
               "current_page": 1,
               "last_page": 1,
               "per_page": 25,
-              "item_count": 2
+              "item_count": 1
             },
             "links": {
               "prev_page_url": null,
@@ -144,9 +99,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/admin/visit
+    uri: api/admin/user
     metadata:
-      title: 'Create new Visit'
+      title: 'Create new User'
       description: ''
       authenticated: true
       custom: []
@@ -157,18 +112,39 @@ endpoints:
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      card_id:
-        name: card_id
-        description: 'ID of the card the visit is attached to.'
+      organization_id:
+        name: organization_id
+        description: 'ID of the organization the user is attached to.'
         required: true
         example: '50080528753334'
         type: string
         custom: []
-      user_id:
-        name: user_id
-        description: 'ID of the user the visit is attached to.'
+      name:
+        name: name
+        description: 'Name of the user.'
         required: true
-        example: '50080528753334'
+        example: xX_B4d-gUY_08_Xx
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Email of the user. Must be a valid email address.'
+        required: true
+        example: B4d-gUY@web.de
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Password of the user.'
+        required: true
+        example: MyP4zzW0rD
+        type: string
+        custom: []
+      role:
+        name: role
+        description: 'Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.'
+        required: true
+        example: employee
         type: string
         custom: []
     responses: []
@@ -176,9 +152,9 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/visit/{id}'
+    uri: 'api/admin/user/{id}'
     metadata:
-      title: 'Show specified Visit'
+      title: 'Show specified User'
       description: ''
       authenticated: true
       custom: []
@@ -189,7 +165,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the visit.'
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -198,38 +174,20 @@ endpoints:
     bodyParameters: []
     responses:
       -
-        status: 200
-        content: |-
-          {
-            "id": 6,
-            "card_id": 49394739894111,
-            "user_id": 1,
-            "card": {
-              "id": 49394739894111,
-              "last_name": "Kitsune",
-              "first_name": "Yasu",
-              "street": "Teststraße 123",
-              "postcode": "12345",
-              "city": "Teststadt",
-              "valid_from": "2022-01-01T00:00:00.000000Z",
-              "valid_until": "2022-03-31T00:00:00.000000Z",
-              "creator_id": 1,
-              "comment": null,
-              "created_at": "2022-08-18T13:47:42.000000Z",
-              "updated_at": "2022-08-18T13:47:42.000000Z"
-            },
-            "created_at": "2022-08-16T16:32:52.000000Z",
-            "updated_at": "2022-08-16T16:32:52.000000Z"
-          }
-        headers: []
-        description: '200'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
     responseFields: []
   -
     httpMethods:
       - PUT
-    uri: 'api/admin/visit/{id}'
+    uri: 'api/admin/user/{id}'
     metadata:
-      title: 'Update specified Visit'
+      title: 'Update specified User'
       description: ''
       authenticated: true
       custom: []
@@ -240,25 +198,46 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the visit.'
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
-      card_id:
-        name: card_id
-        description: 'ID of the card the visit is attached to.'
+      organization_id:
+        name: organization_id
+        description: 'ID of the organization the user is attached to.'
         required: true
-        example: '50080528753334'
+        example: laudantium
         type: string
         custom: []
-      user_id:
-        name: user_id
-        description: 'ID of the user the visit is attached to.'
+      name:
+        name: name
+        description: 'Name of the user.'
         required: true
-        example: '50080528753334'
+        example: laudantium
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Email of the user. Must be a valid email address.'
+        required: true
+        example: jeffry.mitchell@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Password of the user.'
+        required: false
+        example: laudantium
+        type: string
+        custom: []
+      role:
+        name: role
+        description: 'Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.'
+        required: true
+        example: external_employee
         type: string
         custom: []
     responses: []
@@ -266,9 +245,9 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/visit/{id}'
+    uri: 'api/admin/user/{id}'
     metadata:
-      title: 'Delete specified Visit'
+      title: 'Delete specified User'
       description: ''
       authenticated: true
       custom: []
@@ -279,7 +258,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the visit.'
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer

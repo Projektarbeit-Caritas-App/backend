@@ -1,12 +1,12 @@
-name: 'Product Type'
+name: Person
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/admin/product-type
+    uri: api/admin/person
     metadata:
-      title: 'List all ProductTypes'
+      title: 'List all persons'
       description: ''
       authenticated: true
       custom: []
@@ -16,25 +16,32 @@ endpoints:
       Accept: application/json
     urlParameters: []
     queryParameters:
-      name:
-        name: name
-        description: 'Name contains.'
+      card_id:
+        name: card_id
+        description: Card.
+        required: false
+        example: null
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: 'Gender contains.'
         required: false
         example: laudantium
         type: string
         custom: []
-      icon:
-        name: icon
-        description: 'Icon contains.'
+      age:
+        name: age
+        description: 'Age is.'
         required: false
-        example: laudantium
-        type: string
+        example: 10
+        type: integer
         custom: []
       sort:
         name: sort
-        description: 'Sort by given field. Must be one of <code>id</code>, <code>name</code>, or <code>icon</code>.'
+        description: 'Sort by given field. Must be one of <code>id</code>, <code>card_id</code>, <code>gender</code>, or <code>age</code>.'
         required: false
-        example: name
+        example: card_id
         type: string
         custom: []
       order:
@@ -64,23 +71,77 @@ endpoints:
         status: 200
         content: |-
           {
-            "items: [
+            "items": [
               {
                 "id": 1,
-                "name": "t-shirt",
-                "icon": "t-shirt icon",
+                "card_id": 1,
+                "gender": "male",
+                "age": 18,
+                "limitation_sets": [
+                  {
+                    "id": 1,
+                    "name": "A set to limit them all",
+                    "valid_from": "2022-08-04 12:00:00",
+                    "valid_until": "2022-08-04 12:00:00",
+                    "created_at": "2022-09-08T13:05:40.000000Z",
+                    "updated_at": "2022-09-08T13:05:40.000000Z",
+                    "instance_id": 1,
+                    "pivot": {
+                      "person_id": 1,
+                      "limitation_set_id": 1,
+                      "created_at": "2022-09-08T13:06:41.000000Z",
+                      "updated_at": "2022-09-08T13:06:41.000000Z"
+                    }
+                  }
+                ],
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
               }, {
                 "id": 2,
-                "name": "shoe",
-                "icon": "shoe icon",
+                "card_id": 1,
+                "gender": "female",
+                "age": 15,
+                "limitation_sets": [
+                  {
+                    "id": 1,
+                    "name": "A set to limit them all",
+                    "valid_from": "2022-08-04 12:00:00",
+                    "valid_until": "2022-08-04 12:00:00",
+                    "created_at": "2022-09-08T13:05:40.000000Z",
+                    "updated_at": "2022-09-08T13:05:40.000000Z",
+                    "instance_id": 1,
+                    "pivot": {
+                      "person_id": 2,
+                      "limitation_set_id": 1,
+                      "created_at": "2022-09-08T13:06:41.000000Z",
+                      "updated_at": "2022-09-08T13:06:41.000000Z"
+                    }
+                  }
+                ],
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
               }, {
                 "id": 3,
-                "name": "sock",
-                "icon": "sock icon",
+                "card_id": 49394739894111,
+                "gender": "male",
+                "age": 23,
+                "limitation_sets": [
+                  {
+                    "id": 1,
+                    "name": "A set to limit them all",
+                    "valid_from": "2022-08-04 12:00:00",
+                    "valid_until": "2022-08-04 12:00:00",
+                    "created_at": "2022-09-08T13:05:40.000000Z",
+                    "updated_at": "2022-09-08T13:05:40.000000Z",
+                    "instance_id": 1,
+                    "pivot": {
+                      "person_id": 3,
+                      "limitation_set_id": 1,
+                      "created_at": "2022-09-08T13:06:41.000000Z",
+                      "updated_at": "2022-09-08T13:06:41.000000Z"
+                    }
+                  }
+                ],
                 "created_at": "2022-08-18T13:48:25.000000Z",
                 "updated_at": "2022-08-18T13:48:25.000000Z"
               }
@@ -102,9 +163,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/admin/product-type
+    uri: api/admin/person
     metadata:
-      title: 'Create new ProductType'
+      title: 'Create new Person'
       description: ''
       authenticated: true
       custom: []
@@ -115,28 +176,43 @@ endpoints:
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Name of the product type.'
+      card_id:
+        name: card_id
+        description: 'ID of the card the person is attached to.'
         required: true
-        example: T-Shirt
+        example: '50080528753334'
         type: string
         custom: []
-      icon:
-        name: icon
-        description: 'Icon of the product type.'
-        required: false
-        example: 'Icon value'
+      gender:
+        name: gender
+        description: 'Gender of the person.'
+        required: true
+        example: male
         type: string
+        custom: []
+      age:
+        name: age
+        description: 'Age of the Person.'
+        required: true
+        example: 20
+        type: integer
+        custom: []
+      limitation_sets:
+        name: limitation_sets
+        description: 'IDs of the limitation_sets.'
+        required: true
+        example:
+          - '49394739894111'
+        type: 'string[]'
         custom: []
     responses: []
     responseFields: []
   -
     httpMethods:
       - GET
-    uri: 'api/admin/product-type/{id}'
+    uri: 'api/admin/person/{id}'
     metadata:
-      title: 'Show specified ProductType'
+      title: 'Show specified Person'
       description: ''
       authenticated: true
       custom: []
@@ -147,7 +223,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the productType.'
+        description: 'The ID of the person.'
         required: true
         example: 1
         type: integer
@@ -159,9 +235,27 @@ endpoints:
         status: 200
         content: |-
           {
-            "id": 1,
-            "name": "t-shirt",
-            "icon": "t-shirt icon",
+            "id": 2,
+            "card_id": 1,
+            "gender": "female",
+            "age": 15,
+            "limitation_sets": [
+              {
+                "id": 1,
+                "name": "A set to limit them all",
+                "valid_from": "2022-08-04 12:00:00",
+                "valid_until": "2022-08-04 12:00:00",
+                "created_at": "2022-09-08T13:05:40.000000Z",
+                "updated_at": "2022-09-08T13:05:40.000000Z",
+                "instance_id": 1,
+                "pivot": {
+                  "person_id": 2,
+                  "limitation_set_id": 1,
+                  "created_at": "2022-09-08T13:06:41.000000Z",
+                  "updated_at": "2022-09-08T13:06:41.000000Z"
+                }
+              }
+            ],
             "created_at": "2022-08-18T13:48:25.000000Z",
             "updated_at": "2022-08-18T13:48:25.000000Z"
           }
@@ -171,9 +265,9 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/admin/product-type/{id}'
+    uri: 'api/admin/person/{id}'
     metadata:
-      title: 'Update specified ProductType'
+      title: 'Update specified Person'
       description: ''
       authenticated: true
       custom: []
@@ -184,35 +278,50 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the productType.'
+        description: 'The ID of the person.'
         required: true
         example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Name of the product type.'
+      card_id:
+        name: card_id
+        description: 'ID of the card the person is attached to.'
         required: true
-        example: T-Shirt
+        example: '50080528753334'
         type: string
         custom: []
-      icon:
-        name: icon
-        description: 'Icon of the product type.'
-        required: false
-        example: 'Icon value'
+      gender:
+        name: gender
+        description: 'Gender of the person.'
+        required: true
+        example: male
         type: string
+        custom: []
+      age:
+        name: age
+        description: 'Age of the Person.'
+        required: true
+        example: 20
+        type: integer
+        custom: []
+      limitation_sets:
+        name: limitation_sets
+        description: 'IDs of the limitation_sets.'
+        required: true
+        example:
+          - '49394739894111'
+        type: 'string[]'
         custom: []
     responses: []
     responseFields: []
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/product-type/{id}'
+    uri: 'api/admin/person/{id}'
     metadata:
-      title: 'Delete specified ProductType'
+      title: 'Delete specified Person'
       description: ''
       authenticated: true
       custom: []
@@ -223,7 +332,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the productType.'
+        description: 'The ID of the person.'
         required: true
         example: 1
         type: integer
