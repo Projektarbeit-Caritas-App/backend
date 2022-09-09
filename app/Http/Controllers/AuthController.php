@@ -128,6 +128,8 @@ class AuthController extends Controller
                 ->find(Auth::user()->id)
                 ->first();
 
+            $this->upgradePassword($user, $credentials['password']);
+
             return response([
                 'success' => true,
                 'user' => $this->getUserData($user)
@@ -229,6 +231,8 @@ class AuthController extends Controller
                 'success' => false
             ], 401);
         } else {
+            $this->upgradePassword($user, $credentials['password']);
+
             return response([
                 'success' => true,
                 'token' => $user->createToken($credentials['device_name'], ['app'])->plainTextToken,
@@ -355,5 +359,13 @@ class AuthController extends Controller
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at
         ];
+    }
+
+    private function upgradePassword(User $user, string $password)
+    {
+        if (Hash::needsRehash($user->password)) {
+            $user->password = Hash::make($password);
+            $user->save();
+        }
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\LimitationManagerController;
 use App\Http\Controllers\LimitationSetManagerController;
 use App\Http\Controllers\LineItemManagerController;
 use App\Http\Controllers\OrganizationManagerController;
+use App\Http\Controllers\PasswordForgottenController;
 use App\Http\Controllers\PdfGenerationController;
 use App\Http\Controllers\PersonManagerController;
 use App\Http\Controllers\ProductTypeManagerController;
@@ -32,6 +33,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/handshake', [AuthController::class, 'handshake'])
     ->name('auth.handshake')
     ->middleware('web');
+//endregion
+
+//region Password forgotten
+Route::controller(PasswordForgottenController::class)
+    ->prefix('password')
+    ->name('password.')
+    ->group(function () {
+        Route::post('/forgot', 'forgot')->name('forgot');
+        Route::post('/reset', 'reset')->name('reset');
+    });
 //endregion
 
 //region Authentication
