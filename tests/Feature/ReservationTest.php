@@ -144,7 +144,7 @@ class ReservationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show reservation
      *
      * @return void
      */
@@ -164,7 +164,7 @@ class ReservationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index reservation
      *
      * @return void
      */
@@ -197,7 +197,7 @@ class ReservationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create reservation
      *
      * @return void
      */
@@ -217,7 +217,7 @@ class ReservationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update reservation
      *
      * @return void
      */
@@ -240,7 +240,7 @@ class ReservationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete reservation
      *
      * @return void
      */

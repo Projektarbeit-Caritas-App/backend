@@ -59,7 +59,7 @@ class LimitationSetTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show limitationSet
      *
      * @return void
      */
@@ -79,7 +79,7 @@ class LimitationSetTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index limitationSet
      *
      * @return void
      */
@@ -112,7 +112,7 @@ class LimitationSetTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create limitationSet
      *
      * @return void
      */
@@ -132,7 +132,7 @@ class LimitationSetTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update limitationSet
      *
      * @return void
      */
@@ -159,7 +159,7 @@ class LimitationSetTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete limitationSet
      *
      * @return void
      */

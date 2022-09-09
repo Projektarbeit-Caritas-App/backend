@@ -158,7 +158,7 @@ class CheckoutTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show checkout
      *
      * @return void
      */
@@ -206,7 +206,7 @@ class CheckoutTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show checkout if expired
      *
      * @return void
      */
@@ -218,7 +218,7 @@ class CheckoutTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show checkout if not valid
      *
      * @return void
      */
@@ -230,7 +230,7 @@ class CheckoutTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create checkout
      *
      * @return void
      */

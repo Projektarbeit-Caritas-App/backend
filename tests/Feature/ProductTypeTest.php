@@ -58,7 +58,7 @@ class ProductTypeTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show productType
      *
      * @return void
      */
@@ -77,7 +77,7 @@ class ProductTypeTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index productType
      *
      * @return void
      */
@@ -109,7 +109,7 @@ class ProductTypeTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create productType
      *
      * @return void
      */
@@ -128,7 +128,7 @@ class ProductTypeTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update productType
      *
      * @return void
      */
@@ -152,7 +152,7 @@ class ProductTypeTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete productType
      *
      * @return void
      */

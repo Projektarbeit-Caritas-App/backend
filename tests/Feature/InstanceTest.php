@@ -14,7 +14,7 @@ class InstanceTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create instance
      *
      * @return void
      */
@@ -39,11 +39,11 @@ class InstanceTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete instance
      *
      * @return void
      */
-    public function test_delete_instance_command() //FIXME Not enough arguments (missing: "instance")
+    public function test_delete_instance_command()
     {
         $instance             = new Instance;
         $instance->name       = "Instance Name";

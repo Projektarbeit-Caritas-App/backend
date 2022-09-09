@@ -65,7 +65,7 @@ class CardTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show card
      *
      * @return void
      */
@@ -91,7 +91,7 @@ class CardTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index card
      *
      * @return void
      */
@@ -131,7 +131,7 @@ class CardTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create card
      *
      * @return void
      */
@@ -155,7 +155,7 @@ class CardTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update card
      *
      * @return void
      */
@@ -194,7 +194,7 @@ class CardTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete card
      *
      * @return void
      */

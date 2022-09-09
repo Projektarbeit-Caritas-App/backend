@@ -50,7 +50,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show user
      *
      * @return void
      */
@@ -70,7 +70,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index user
      *
      * @return void
      */
@@ -112,7 +112,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create user
      *
      * @return void
      */
@@ -135,7 +135,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update user
      *
      * @return void
      */
@@ -166,7 +166,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete user
      *
      * @return void
      */

@@ -141,11 +141,11 @@ class ScheduleTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of list_available_shops
      *
      * @return void
      */
-    public function test_list_available_shops() //FIXME The test shows that the response is different from what is stated in the documentation
+    public function test_list_available_shops()
     {
         $response = $this->actingAs($this->user)
             ->get('/api/schedule/')
@@ -215,7 +215,7 @@ class ScheduleTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of list today´s reservations
      *
      * @return void
      */

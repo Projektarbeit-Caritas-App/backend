@@ -72,7 +72,7 @@ class VisitTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show visit
      *
      * @return void
      */
@@ -91,7 +91,7 @@ class VisitTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index visit
      *
      * @return void
      */
@@ -123,7 +123,7 @@ class VisitTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create visit
      *
      * @return void
      */
@@ -142,7 +142,7 @@ class VisitTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update visit
      *
      * @return void
      */
@@ -166,7 +166,7 @@ class VisitTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete visit
      *
      * @return void
      */

@@ -120,7 +120,7 @@ class ShopTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show shop
      *
      * @return void
      */
@@ -192,7 +192,7 @@ class ShopTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index shop
      *
      * @return void
      */
@@ -280,7 +280,7 @@ class ShopTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create shop
      *
      * @return void
      */
@@ -355,7 +355,7 @@ class ShopTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update shop
      *
      * @return void
      */
@@ -443,7 +443,7 @@ class ShopTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete shop
      *
      * @return void
      */

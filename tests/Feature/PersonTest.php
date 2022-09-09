@@ -74,7 +74,7 @@ class PersonTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show person
      *
      * @return void
      */
@@ -94,7 +94,7 @@ class PersonTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index person
      *
      * @return void
      */
@@ -127,7 +127,7 @@ class PersonTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create person
      *
      * @return void
      */
@@ -147,7 +147,7 @@ class PersonTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update person
      *
      * @return void
      */
@@ -172,7 +172,7 @@ class PersonTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete person
      *
      * @return void
      */

@@ -50,7 +50,7 @@ class OrganizationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show organization
      *
      * @return void
      */
@@ -73,7 +73,7 @@ class OrganizationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index organization
      *
      * @return void
      */
@@ -117,7 +117,7 @@ class OrganizationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create organization
      *
      * @return void
      */
@@ -139,7 +139,7 @@ class OrganizationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update organization
      *
      * @return void
      */
@@ -172,7 +172,7 @@ class OrganizationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete organization
      *
      * @return void
      */

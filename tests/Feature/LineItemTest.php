@@ -98,7 +98,7 @@ class LineItemTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of show lineItem
      *
      * @return void
      */
@@ -118,7 +118,7 @@ class LineItemTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of index lineItem
      *
      * @return void
      */
@@ -151,7 +151,7 @@ class LineItemTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of create lineItem
      *
      * @return void
      */
@@ -171,7 +171,7 @@ class LineItemTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of update lineItem
      *
      * @return void
      */
@@ -198,7 +198,7 @@ class LineItemTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of delete lineItem
      *
      * @return void
      */

@@ -62,7 +62,7 @@ class PdfGenerationTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * Test positive behavior of default print card
      *
      * @return void
      */
