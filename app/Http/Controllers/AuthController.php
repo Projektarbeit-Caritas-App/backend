@@ -124,9 +124,10 @@ class AuthController extends Controller
             return $user->hasPermissionTo('auth.admin');
         })) {
             $request->session()->regenerate();
+
+            /** @var User $user */
             $user = User::with(['permissions', 'roles', 'instance', 'organization'])
-                ->find(Auth::user()->id)
-                ->first();
+                ->find(Auth::user()->id);
 
             $this->upgradePassword($user, $credentials['password']);
 
