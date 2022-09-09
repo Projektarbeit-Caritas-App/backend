@@ -131,7 +131,7 @@ class PersonTest extends TestCase
      *
      * @return void
      */
-    public function test_create_Person()
+    public function test_create_person()
     {
         $payload = [
             "card_id" => $this->card->id,
@@ -151,7 +151,7 @@ class PersonTest extends TestCase
      *
      * @return void
      */
-    public function test_update_organization()
+    public function test_update_person()
     {
         $payload = [
             "card_id" => $this->person->card_id,

@@ -284,7 +284,7 @@ class ShopTest extends TestCase
      *
      * @return void
      */
-    public function test_create_organization()
+    public function test_create_shop()
     {
         $payload = [
             "organization_id" => $this->organization->id,
