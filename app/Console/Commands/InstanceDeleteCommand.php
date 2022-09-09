@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Instance;
+use App\Service\InstanceManagerService;
 use Illuminate\Console\Command;
 
 class InstanceDeleteCommand extends Command
@@ -26,24 +27,12 @@ class InstanceDeleteCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        $instance = Instance::withCount(['organizations', 'users'])->find($this->argument('instance'));
-
-        $this->info('ID: ' . $instance->id);
-        $this->info('Name: ' . $instance->name);
-        $this->info('Street: ' . $instance->street);
-        $this->info('Postcode: ' . $instance->postcode);
-        $this->info('City: ' . $instance->city);
-        $this->info('Contact: ' . $instance->contact);
-        $this->info('Created: ' . $instance->created_at->format('G:i \o\n l jS F Y'));
-        $this->info('Updated: ' . $instance->updated_at->format('G:i \o\n l jS F Y'));
+        $instance = InstanceManagerService::printSingleInstanceToConsole($this, $this->argument('instance'));
         $this->newline();
-        $this->warn(sprintf(
-            'This action will delete %s organizations with %s users.',
-            $instance->organizations_count,
-            $instance->users_count
-        ));
+
+        $this->warn('All data connected to this instance will be deleted permanently and cannot be restored!');
         $this->newLine();
 
         if ($this->confirm('Do you really want to delete the instance?')) {
