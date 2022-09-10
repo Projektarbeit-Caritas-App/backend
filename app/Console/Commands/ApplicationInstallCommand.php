@@ -14,7 +14,7 @@ class ApplicationInstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:install';
+    protected $signature = 'app:install {--skip-default-permission-schema}';
 
     /**
      * The console command description.
@@ -30,187 +30,18 @@ class ApplicationInstallCommand extends Command
      */
     public function handle(): int
     {
-        if (DB::table('roles')->count() > 0) {
-            $this->warn('App is already installed');
-            return 1;
-        }
+        $steps = $this->option('skip-default-permission-schema') ? 2 : 3;
 
-        $this->comment('Step 1/3: Creating Roles...');
+        $this->comment("Step 1/$steps: Creating Roles...");
         $roles = $this->registerRoles();
 
-        $this->comment('Step 2/3: Creating Permissions...');
+        $this->comment("Step 2/$steps: Creating Permissions...");
         $this->registerPermissions();
 
-        $this->comment('Step 3/3: Creating default permission schema...');
-        $roles['external_employee']->givePermissionTo([
-            'admin.card.index',
-            'admin.card.store',
-            'admin.card.show',
-            'admin.card.update',
-            'admin.person.index',
-            'admin.person.store',
-            'admin.person.show',
-            'admin.person.update',
-            'admin.person.destroy',
-            'auth.admin',
-            'pdf.card',
-        ]);
-
-        $roles['external_manager']->givePermissionTo([
-            'admin.card.index',
-            'admin.card.store',
-            'admin.card.show',
-            'admin.card.update',
-            'admin.card.destroy',
-            'admin.organization.update.own',
-            'admin.person.index',
-            'admin.person.store',
-            'admin.person.show',
-            'admin.person.update',
-            'admin.person.destroy',
-            'admin.user.index.own',
-            'admin.user.store.own',
-            'admin.user.show.own',
-            'admin.user.update.own',
-            'admin.user.destroy.own',
-            'auth.admin',
-            'pdf.card',
-        ]);
-
-        $roles['employee']->givePermissionTo([
-            'auth.app',
-            'card.visit.show',
-            'card.visit.store',
-            'pdf.card',
-            'schedule.shops',
-            'schedule.reservations'
-        ]);
-
-        $roles['organization_manager']->givePermissionTo([
-            'admin.card.index',
-            'admin.card.store',
-            'admin.card.show',
-            'admin.card.update',
-            'admin.card.destroy',
-            'admin.limitation.limit.index',
-            'admin.limitation.limit.store',
-            'admin.limitation.limit.show',
-            'admin.limitation.limit.update',
-            'admin.limitation.limit.destroy',
-            'admin.limitation.set.index',
-            'admin.limitation.set.store',
-            'admin.limitation.set.show',
-            'admin.limitation.set.update',
-            'admin.limitation.set.destroy',
-            'admin.lineItem.index',
-            'admin.lineItem.store',
-            'admin.lineItem.show',
-            'admin.lineItem.update',
-            'admin.lineItem.destroy',
-            'admin.organization.update.own',
-            'admin.person.index',
-            'admin.person.store',
-            'admin.person.show',
-            'admin.person.update',
-            'admin.person.destroy',
-            'admin.product-type.index',
-            'admin.product-type.store',
-            'admin.product-type.show',
-            'admin.product-type.update',
-            'admin.product-type.destroy',
-            'admin.reservation.index.own',
-            'admin.reservation.store.own',
-            'admin.reservation.show.own',
-            'admin.reservation.update.own',
-            'admin.reservation.destroy.own',
-            'admin.shop.index.own',
-            'admin.shop.store.own',
-            'admin.shop.show.own',
-            'admin.shop.update.own',
-            'admin.shop.destroy.own',
-            'admin.user.index.own',
-            'admin.user.store.own',
-            'admin.user.show.own',
-            'admin.user.update.own',
-            'admin.user.destroy.own',
-            'admin.visit.index',
-            'admin.visit.store',
-            'admin.visit.show',
-            'admin.visit.update',
-            'admin.visit.destroy',
-            'auth.app',
-            'auth.admin',
-            'card.visit.show',
-            'card.visit.store',
-            'pdf.card',
-            'schedule.shops',
-            'schedule.reservations'
-        ]);
-
-        $roles['instance_manager']->givePermissionTo([
-            'admin.card.index',
-            'admin.card.store',
-            'admin.card.show',
-            'admin.card.update',
-            'admin.card.destroy',
-            'admin.limitation.limit.index',
-            'admin.limitation.limit.store',
-            'admin.limitation.limit.show',
-            'admin.limitation.limit.update',
-            'admin.limitation.limit.destroy',
-            'admin.limitation.set.index',
-            'admin.limitation.set.store',
-            'admin.limitation.set.show',
-            'admin.limitation.set.update',
-            'admin.limitation.set.destroy',
-            'admin.lineItem.index',
-            'admin.lineItem.store',
-            'admin.lineItem.show',
-            'admin.lineItem.update',
-            'admin.lineItem.destroy',
-            'admin.organization.index',
-            'admin.organization.store',
-            'admin.organization.show',
-            'admin.organization.update',
-            'admin.organization.destroy',
-            'admin.person.index',
-            'admin.person.store',
-            'admin.person.show',
-            'admin.person.update',
-            'admin.person.destroy',
-            'admin.product-type.index',
-            'admin.product-type.store',
-            'admin.product-type.show',
-            'admin.product-type.update',
-            'admin.product-type.destroy',
-            'admin.reservation.index',
-            'admin.reservation.store',
-            'admin.reservation.show',
-            'admin.reservation.update',
-            'admin.reservation.destroy',
-            'admin.shop.index',
-            'admin.shop.store',
-            'admin.shop.show',
-            'admin.shop.update',
-            'admin.shop.destroy',
-            'admin.user.index',
-            'admin.user.store',
-            'admin.user.show',
-            'admin.user.update',
-            'admin.user.destroy',
-            'admin.visit.index',
-            'admin.visit.store',
-            'admin.visit.show',
-            'admin.visit.update',
-            'admin.visit.destroy',
-            'auth.app',
-            'auth.admin',
-            'card.visit.show',
-            'card.visit.store',
-            'pdf.card',
-            'schedule.shops',
-            'schedule.reservations'
-        ]);
+        if (!$this->option('skip-default-permission-schema')) {
+            $this->comment("Step 3/$steps: Creating default permission schema...");
+            $this->registerDefaultPermissionSchema($roles);
+        }
 
         $this->info('App successfully installed');
         return 0;
@@ -222,12 +53,12 @@ class ApplicationInstallCommand extends Command
     private function registerRoles(): array
     {
         return [
-            'inactive' => Role::create(['name' => 'inactive']),
-            'external_employee' => Role::create(['name' => 'external_employees']),
-            'external_manager' => Role::create(['name' => 'external_manager']),
-            'employee' => Role::create(['name' => 'employee']),
-            'organization_manager' => Role::create(['name' => 'organization_manager']),
-            'instance_manager' => Role::create(['name' => 'instance_manager']),
+            'inactive' => Role::findOrCreate('inactive'),
+            'external_employee' => Role::findOrCreate('external_employees'),
+            'external_manager' => Role::findOrCreate('external_manager'),
+            'employee' => Role::findOrCreate('employee'),
+            'organization_manager' => Role::findOrCreate('organization_manager'),
+            'instance_manager' => Role::findOrCreate('instance_manager'),
         ];
     }
 
@@ -320,6 +151,14 @@ class ApplicationInstallCommand extends Command
             'admin.user.destroy',
             'admin.user.destroy.own',
 
+            // User-Role assignment permissions
+            'admin.user.assign.role.inactive',
+            'admin.user.assign.role.external_employee',
+            'admin.user.assign.role.external_manager',
+            'admin.user.assign.role.employee',
+            'admin.user.assign.role.organization_manager',
+            'admin.user.assign.role.instance_manager',
+
             // Visit permissions
             'admin.visit.index',
             'admin.visit.store',
@@ -344,7 +183,198 @@ class ApplicationInstallCommand extends Command
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::findOrCreate($permission);
         }
+    }
+
+    /**
+     * @param array $roles
+     * @return void
+     */
+    private function registerDefaultPermissionSchema(array $roles): void
+    {
+        $roles['external_employee']->syncPermissions(
+            'admin.card.index',
+            'admin.card.store',
+            'admin.card.show',
+            'admin.card.update',
+            'admin.person.index',
+            'admin.person.store',
+            'admin.person.show',
+            'admin.person.update',
+            'admin.person.destroy',
+            'auth.admin',
+            'pdf.card'
+        );
+
+        $roles['external_manager']->syncPermissions(
+            'admin.card.index',
+            'admin.card.store',
+            'admin.card.show',
+            'admin.card.update',
+            'admin.card.destroy',
+            'admin.organization.update.own',
+            'admin.person.index',
+            'admin.person.store',
+            'admin.person.show',
+            'admin.person.update',
+            'admin.person.destroy',
+            'admin.user.index.own',
+            'admin.user.store.own',
+            'admin.user.show.own',
+            'admin.user.update.own',
+            'admin.user.destroy.own',
+            'admin.user.assign.role.inactive',
+            'admin.user.assign.role.external_employee',
+            'admin.user.assign.role.external_manager',
+            'auth.admin',
+            'pdf.card'
+        );
+
+        $roles['employee']->syncPermissions(
+            'auth.app',
+            'card.visit.show',
+            'card.visit.store',
+            'pdf.card',
+            'schedule.shops',
+            'schedule.reservations'
+        );
+
+        $roles['organization_manager']->syncPermissions(
+            'admin.card.index',
+            'admin.card.store',
+            'admin.card.show',
+            'admin.card.update',
+            'admin.card.destroy',
+            'admin.limitation.limit.index',
+            'admin.limitation.limit.store',
+            'admin.limitation.limit.show',
+            'admin.limitation.limit.update',
+            'admin.limitation.limit.destroy',
+            'admin.limitation.set.index',
+            'admin.limitation.set.store',
+            'admin.limitation.set.show',
+            'admin.limitation.set.update',
+            'admin.limitation.set.destroy',
+            'admin.lineItem.index',
+            'admin.lineItem.store',
+            'admin.lineItem.show',
+            'admin.lineItem.update',
+            'admin.lineItem.destroy',
+            'admin.organization.update.own',
+            'admin.person.index',
+            'admin.person.store',
+            'admin.person.show',
+            'admin.person.update',
+            'admin.person.destroy',
+            'admin.product-type.index',
+            'admin.product-type.store',
+            'admin.product-type.show',
+            'admin.product-type.update',
+            'admin.product-type.destroy',
+            'admin.reservation.index.own',
+            'admin.reservation.store.own',
+            'admin.reservation.show.own',
+            'admin.reservation.update.own',
+            'admin.reservation.destroy.own',
+            'admin.shop.index.own',
+            'admin.shop.store.own',
+            'admin.shop.show.own',
+            'admin.shop.update.own',
+            'admin.shop.destroy.own',
+            'admin.user.index.own',
+            'admin.user.store.own',
+            'admin.user.show.own',
+            'admin.user.update.own',
+            'admin.user.destroy.own',
+            'admin.user.assign.role.inactive',
+            'admin.user.assign.role.external_employee',
+            'admin.user.assign.role.external_manager',
+            'admin.user.assign.role.employee',
+            'admin.user.assign.role.organization_manager',
+            'admin.visit.index',
+            'admin.visit.store',
+            'admin.visit.show',
+            'admin.visit.update',
+            'admin.visit.destroy',
+            'auth.app',
+            'auth.admin',
+            'card.visit.show',
+            'card.visit.store',
+            'pdf.card',
+            'schedule.shops',
+            'schedule.reservations'
+        );
+
+        $roles['instance_manager']->syncPermissions(
+            'admin.card.index',
+            'admin.card.store',
+            'admin.card.show',
+            'admin.card.update',
+            'admin.card.destroy',
+            'admin.limitation.limit.index',
+            'admin.limitation.limit.store',
+            'admin.limitation.limit.show',
+            'admin.limitation.limit.update',
+            'admin.limitation.limit.destroy',
+            'admin.limitation.set.index',
+            'admin.limitation.set.store',
+            'admin.limitation.set.show',
+            'admin.limitation.set.update',
+            'admin.limitation.set.destroy',
+            'admin.lineItem.index',
+            'admin.lineItem.store',
+            'admin.lineItem.show',
+            'admin.lineItem.update',
+            'admin.lineItem.destroy',
+            'admin.organization.index',
+            'admin.organization.store',
+            'admin.organization.show',
+            'admin.organization.update',
+            'admin.organization.destroy',
+            'admin.person.index',
+            'admin.person.store',
+            'admin.person.show',
+            'admin.person.update',
+            'admin.person.destroy',
+            'admin.product-type.index',
+            'admin.product-type.store',
+            'admin.product-type.show',
+            'admin.product-type.update',
+            'admin.product-type.destroy',
+            'admin.reservation.index',
+            'admin.reservation.store',
+            'admin.reservation.show',
+            'admin.reservation.update',
+            'admin.reservation.destroy',
+            'admin.shop.index',
+            'admin.shop.store',
+            'admin.shop.show',
+            'admin.shop.update',
+            'admin.shop.destroy',
+            'admin.user.index',
+            'admin.user.store',
+            'admin.user.show',
+            'admin.user.update',
+            'admin.user.destroy',
+            'admin.user.assign.role.inactive',
+            'admin.user.assign.role.external_employee',
+            'admin.user.assign.role.external_manager',
+            'admin.user.assign.role.employee',
+            'admin.user.assign.role.organization_manager',
+            'admin.user.assign.role.instance_manager',
+            'admin.visit.index',
+            'admin.visit.store',
+            'admin.visit.show',
+            'admin.visit.update',
+            'admin.visit.destroy',
+            'auth.app',
+            'auth.admin',
+            'card.visit.show',
+            'card.visit.store',
+            'pdf.card',
+            'schedule.shops',
+            'schedule.reservations'
+        );
     }
 }
