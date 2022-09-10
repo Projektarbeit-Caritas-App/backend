@@ -37,7 +37,7 @@ class ReservationManagerPolicy
             (
                 $user->hasPermissionTo('admin.reservation.show') ||
                 (
-                    $user->organization_id === $reservation->shop()->organization_id &&
+                    $user->organization_id === $reservation->shop->organization_id &&
                     $user->hasPermissionTo('admin.reservation.show.own')
                 )
             ) &&
@@ -70,7 +70,7 @@ class ReservationManagerPolicy
             (
                 $user->hasPermissionTo('admin.reservation.update') ||
                 (
-                    $user->organization_id === $reservation->shop()->organization_id &&
+                    $user->organization_id === $reservation->shop->organization_id &&
                     $user->hasPermissionTo('admin.reservation.update.own')
                 )
             ) &&
@@ -89,7 +89,7 @@ class ReservationManagerPolicy
             (
                 $user->hasPermissionTo('admin.reservation.destroy') ||
                 (
-                    $user->organization_id === $reservation->shop()->organization_id &&
+                    $user->organization_id === $reservation->shop->organization_id &&
                     $user->hasPermissionTo('admin.reservation.destroy.own')
                 )
             ) &&
