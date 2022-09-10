@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreignId('person_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('limitation_set_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+
+            $table->primary(['person_id', 'limitation_set_id']);
         });
     }
 

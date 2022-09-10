@@ -67,7 +67,7 @@ class CardManagerPolicy
     public function delete(User $user, Card $card): Response|bool
     {
         return
-            $user->instance_id && $card->instance_id &&
+            $user->instance_id === $card->instance_id &&
             $user->hasPermissionTo('admin.card.destroy') &&
             $user->tokenCan('admin');
     }
