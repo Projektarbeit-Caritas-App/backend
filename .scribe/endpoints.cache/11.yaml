@@ -43,14 +43,14 @@ endpoints:
         name: time.0
         description: 'Time is after this date. Must be a valid date.'
         required: false
-        example: '2022-09-10T11:11:03'
+        example: '2022-09-10T11:17:26'
         type: string
         custom: []
       time.1:
         name: time.1
         description: 'Time is before this date. Must be a valid date. This field is required when <code>time.0</code> is present.'
         required: false
-        example: '2022-09-10T11:11:03'
+        example: '2022-09-10T11:17:26'
         type: string
         custom: []
       sort:

@@ -31,21 +31,10 @@ endpoints:
         custom: []
     responses:
       -
-        status: 200
-        content: |-
-          {
-            "success": true
-          }
+        status: 204
+        content: ''
         headers: []
-        description: '200, success'
-      -
-        status: 400
-        content: |-
-          {
-            "success": false
-          }
-        headers: []
-        description: '400, failure'
+        description: '204'
     responseFields: []
   -
     httpMethods:

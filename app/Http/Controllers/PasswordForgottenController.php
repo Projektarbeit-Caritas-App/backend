@@ -26,12 +26,7 @@ class PasswordForgottenController extends Controller
      * Allow a user to request a reset of his password.
      * An E-Mail with the Token will be sent, if we can find a user with the given E-Mail-Address.
      *
-     * @response scenario=success status=200 {
-     *   "success": true
-     * }
-     * @response scenario=failure status=400 {
-     *   "success": false
-     * }
+     * @response status=204
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
