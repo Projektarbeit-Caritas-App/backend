@@ -12,6 +12,8 @@ class CardOrganizationManagerTest extends CardTest
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->user->syncRoles('organization_manager');
     }
 
     /**
