@@ -32,8 +32,7 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "We have emailed your password reset link!"
+            "success": true
           }
         headers: []
         description: '200, success'
@@ -41,8 +40,7 @@ endpoints:
         status: 400
         content: |-
           {
-            "success": false,
-            "message": "We can't find a user with that email address."
+            "success": false
           }
         headers: []
         description: '400, failure'
