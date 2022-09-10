@@ -6,7 +6,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/card/visit/{card_id}'
+    uri: 'api/card/visit/{id}'
     metadata:
       title: 'Show specified Card and related Persons'
       description: |-
@@ -22,8 +22,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      card_id:
-        name: card_id
+      id:
+        name: id
         description: 'The ID of the card.'
         required: true
         example: 1
@@ -126,7 +126,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/card/visit/{card_id}'
+    uri: 'api/card/visit/{id}'
     metadata:
       title: 'Create new Visit, LineItems'
       description: |-
@@ -140,8 +140,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      card_id:
-        name: card_id
+      id:
+        name: id
         description: 'The ID of the card.'
         required: true
         example: 1
@@ -183,7 +183,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/card/visit/{card_id}/comment'
+    uri: 'api/card/visit/{id}/comment'
     metadata:
       title: 'Add comment to card'
       description: |-
@@ -197,8 +197,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      card_id:
-        name: card_id
+      id:
+        name: id
         description: 'The ID of the card.'
         required: true
         example: 1

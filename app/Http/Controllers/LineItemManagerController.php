@@ -25,6 +25,23 @@ class LineItemManagerController extends Controller
      *       "visit_id": 5,
      *       "person_id": 1,
      *       "product_type_id": 1,
+     *       "person": {
+     *         "id": 1,
+     *         "card_id": 56815898664224,
+     *         "gender": "male",
+     *         "age": 20,
+     *         "created_at": "2022-09-08T13:05:07.000000Z",
+     *         "updated_at": "2022-09-08T13:05:07.000000Z",
+     *         "instance_id": 1
+     *       },
+     *       "product_type": {
+     *         "id": 1,
+     *         "name": "fugiat",
+     *         "icon": "quo_icon",
+     *         "created_at": "2022-09-08T15:01:01.000000Z",
+     *         "updated_at": "2022-09-08T15:01:01.000000Z",
+     *         "instance_id": 1
+     *       },
      *       "created_at": "2022-08-16T16:32:23.000000Z",
      *       "updated_at": "2022-08-16T16:32:23.000000Z"
      *     }, {
@@ -32,6 +49,23 @@ class LineItemManagerController extends Controller
      *       "visit_id": 6,
      *       "person_id": 1,
      *       "product_type_id": 1,
+     *       "person": {
+     *         "id": 1,
+     *         "card_id": 56815898664224,
+     *         "gender": "male",
+     *         "age": 20,
+     *         "created_at": "2022-09-08T13:05:07.000000Z",
+     *         "updated_at": "2022-09-08T13:05:07.000000Z",
+     *         "instance_id": 1
+     *       },
+     *       "product_type": {
+     *         "id": 1,
+     *         "name": "fugiat",
+     *         "icon": "quo_icon",
+     *         "created_at": "2022-09-08T15:01:01.000000Z",
+     *         "updated_at": "2022-09-08T15:01:01.000000Z",
+     *         "instance_id": 1
+     *       },
      *       "created_at": "2022-08-16T16:32:52.000000Z",
      *       "updated_at": "2022-08-16T16:32:52.000000Z"
      *     },
@@ -77,11 +111,18 @@ class LineItemManagerController extends Controller
             'limit' => 'integer|min:10|max:500|nullable'
         ]);
 
-        return ModelFilterService::apiPaginate(ModelFilterService::filterEntries(LineItem::where('instance_id', $request->user()->instance_id), [
-            'visit_id' => 'match',
-            'person_id' => 'match',
-            'product_type_id' => 'match'
-        ], $filters), $filters['limit'] ?? 25);
+        return ModelFilterService::apiPaginate(
+            ModelFilterService::filterEntries(
+                LineItem::where('instance_id', $request->user()->instance_id)->with(['person', 'productType']),
+                [
+                    'visit_id' => 'match',
+                    'person_id' => 'match',
+                    'product_type_id' => 'match'
+                ],
+                $filters
+            ),
+            $filters['limit'] ?? 25
+        );
     }
 
     /**
@@ -104,6 +145,23 @@ class LineItemManagerController extends Controller
      *   "visit_id": 5,
      *   "person_id": 1,
      *   "product_type_id": 1,
+     *   "person": {
+     *     "id": 1,
+     *     "card_id": 56815898664224,
+     *     "gender": "male",
+     *     "age": 20,
+     *     "created_at": "2022-09-08T13:05:07.000000Z",
+     *     "updated_at": "2022-09-08T13:05:07.000000Z",
+     *     "instance_id": 1
+     *   },
+     *   "product_type": {
+     *     "id": 1,
+     *     "name": "fugiat",
+     *     "icon": "quo_icon",
+     *     "created_at": "2022-09-08T15:01:01.000000Z",
+     *     "updated_at": "2022-09-08T15:01:01.000000Z",
+     *     "instance_id": 1
+     *   },
      *   "created_at": "2022-08-16T16:32:23.000000Z",
      *   "updated_at": "2022-08-16T16:32:23.000000Z"
      * }
@@ -113,6 +171,7 @@ class LineItemManagerController extends Controller
      */
     public function show(LineItem $lineItem): LineItem
     {
+        $lineItem->load(['person', 'productType']);
         return $lineItem;
     }
 
