@@ -114,8 +114,12 @@ class UserManagerController extends Controller
 
         if (
             !$request->user()->hasPermissionTo('admin.user.store') &&
-            $validated['organization_id'] !== $request->user()->organization_id
+            $validated['organization_id'] != $request->user()->organization_id
         ) {
+            abort(403);
+        }
+
+        if (!$request->user()->hasPermissionTo('admin.user.assign.role.' . $validated['role'])) {
             abort(403);
         }
 
@@ -128,7 +132,7 @@ class UserManagerController extends Controller
         ]);
 
         if ($request->user()->id !== $user->id) {
-            $user->syncRoles([$validated['role']]);
+            $user->syncRoles($validated['role']);
         }
 
         return $user;
@@ -164,6 +168,10 @@ class UserManagerController extends Controller
     public function update(ManageUserUpdateRequest $request, User $user): User
     {
         $validated = $request->validated();
+
+        if (!$request->user()->hasPermissionTo('admin.user.assign.role.' . $validated['role'])) {
+            abort(403);
+        }
 
         $data = [
             'name' => $validated['name'],

@@ -222,7 +222,7 @@ class ShopManagerController extends Controller
 
         if (
             !$request->user()->hasPermissionTo('admin.shop.store') &&
-            $validated['organization_id'] !== $request->user()->organization_id
+            $validated['organization_id'] != $request->user()->organization_id
         ) {
             abort(403);
         }
