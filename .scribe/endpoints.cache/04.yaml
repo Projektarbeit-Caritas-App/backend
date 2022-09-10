@@ -36,14 +36,14 @@ endpoints:
         name: valid_from.0
         description: 'Valid from is after this date. Must be a valid date.'
         required: false
-        example: '2022-09-10T11:17:26'
+        example: '2022-09-10T17:38:02'
         type: string
         custom: []
       valid_from.1:
         name: valid_from.1
         description: 'Valid from is before this date. Must be a valid date. This field is required when <code>valid_from.0</code> is present.'
         required: false
-        example: '2022-09-10T11:17:26'
+        example: '2022-09-10T17:38:02'
         type: string
         custom: []
       valid_until:
@@ -57,14 +57,14 @@ endpoints:
         name: valid_until.0
         description: 'Valid until is after this date. Must be a valid date.'
         required: false
-        example: '2022-09-10T11:17:26'
+        example: '2022-09-10T17:38:02'
         type: string
         custom: []
       valid_until.1:
         name: valid_until.1
         description: 'Valid until is before this date. Must be a valid date. This field is required when <code>valid_until.0</code> is present.'
         required: false
-        example: '2022-09-10T11:17:26'
+        example: '2022-09-10T17:38:02'
         type: string
         custom: []
       sort:
@@ -174,7 +174,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/limitation/set/{limitationSet_id}'
+    uri: 'api/admin/limitation/set/{id}'
     metadata:
       title: 'Show specified LimitationSet'
       description: ''
@@ -185,8 +185,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      limitationSet_id:
-        name: limitationSet_id
+      id:
+        name: id
         description: 'The ID of the limitationSet.'
         required: true
         example: 1
@@ -212,7 +212,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/admin/limitation/set/{limitationSet_id}'
+    uri: 'api/admin/limitation/set/{id}'
     metadata:
       title: 'Update specified LimitationSet'
       description: ''
@@ -223,8 +223,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      limitationSet_id:
-        name: limitationSet_id
+      id:
+        name: id
         description: 'The ID of the limitationSet.'
         required: true
         example: 1
@@ -258,7 +258,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/limitation/set/{limitationSet_id}'
+    uri: 'api/admin/limitation/set/{id}'
     metadata:
       title: 'Delete specified LimitationSet'
       description: ''
@@ -269,8 +269,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      limitationSet_id:
-        name: limitationSet_id
+      id:
+        name: id
         description: 'The ID of the limitationSet.'
         required: true
         example: 1

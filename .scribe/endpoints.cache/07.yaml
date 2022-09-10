@@ -6,7 +6,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/pdf/card/{card_id}'
+    uri: 'api/pdf/card/{id}'
     metadata:
       title: 'Print specified Card'
       description: |-
@@ -21,8 +21,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      card_id:
-        name: card_id
+      id:
+        name: id
         description: 'The ID of the card.'
         required: true
         example: 56815898664224

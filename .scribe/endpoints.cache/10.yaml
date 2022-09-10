@@ -136,7 +136,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/product-type/{productType_id}'
+    uri: 'api/admin/product-type/{id}'
     metadata:
       title: 'Show specified ProductType'
       description: ''
@@ -147,8 +147,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      productType_id:
-        name: productType_id
+      id:
+        name: id
         description: 'The ID of the productType.'
         required: true
         example: 1
@@ -173,7 +173,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/admin/product-type/{productType_id}'
+    uri: 'api/admin/product-type/{id}'
     metadata:
       title: 'Update specified ProductType'
       description: ''
@@ -184,8 +184,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      productType_id:
-        name: productType_id
+      id:
+        name: id
         description: 'The ID of the productType.'
         required: true
         example: 1
@@ -212,7 +212,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/product-type/{productType_id}'
+    uri: 'api/admin/product-type/{id}'
     metadata:
       title: 'Delete specified ProductType'
       description: ''
@@ -223,8 +223,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      productType_id:
-        name: productType_id
+      id:
+        name: id
         description: 'The ID of the productType.'
         required: true
         example: 1

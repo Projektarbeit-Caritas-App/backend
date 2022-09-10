@@ -181,7 +181,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/limitation/limit/{limitation_id}'
+    uri: 'api/admin/limitation/limit/{id}'
     metadata:
       title: 'Show specified Limitation'
       description: ''
@@ -192,8 +192,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      limitation_id:
-        name: limitation_id
+      id:
+        name: id
         description: 'The ID of the limitation.'
         required: true
         example: 10
@@ -226,7 +226,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/admin/limitation/limit/{limitation_id}'
+    uri: 'api/admin/limitation/limit/{id}'
     metadata:
       title: 'Update specified Limitation'
       description: ''
@@ -237,8 +237,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      limitation_id:
-        name: limitation_id
+      id:
+        name: id
         description: 'The ID of the limitation.'
         required: true
         example: 10
@@ -272,7 +272,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/limitation/limit/{limitation_id}'
+    uri: 'api/admin/limitation/limit/{id}'
     metadata:
       title: 'Delete specified Limitation'
       description: ''
@@ -283,8 +283,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      limitation_id:
-        name: limitation_id
+      id:
+        name: id
         description: 'The ID of the limitation.'
         required: true
         example: 10
