@@ -6,13 +6,13 @@ use App\Models\Card;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertNotEquals;
 
-class CardInactiveTest extends CardTest
+class CardEmployeeTest extends CardTest
 {
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->user->syncRoles('inactive');
+        $this->user->syncRoles('employee');
     }
 
     /**

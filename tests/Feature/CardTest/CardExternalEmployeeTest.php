@@ -6,13 +6,13 @@ use App\Models\Card;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertNotEquals;
 
-class CardInactiveTest extends CardTest
+class CardExternalEmployeeTest extends CardTest
 {
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->user->syncRoles('inactive');
+        $this->user->syncRoles('external_employee');
     }
 
     /**
@@ -24,7 +24,21 @@ class CardInactiveTest extends CardTest
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/card/' . $this->card->id)
-            ->assertForbidden();
+            ->assertJsonStructure([
+                "id",
+                "last_name",
+                "first_name",
+                "street",
+                "postcode",
+                "city",
+                "valid_from",
+                "valid_until",
+                "creator_id",
+                "comment",
+                "created_at",
+                "updated_at"
+            ])
+            ->assertSuccessful();
     }
 
     /**
@@ -36,7 +50,35 @@ class CardInactiveTest extends CardTest
     {
         $response = $this->actingAs($this->user)
             ->get('/api/admin/card/')
-            ->assertForbidden();
+            ->assertJsonStructure([
+                "items" => [
+                    [
+                        "id",
+                        "last_name",
+                        "first_name",
+                        "street",
+                        "postcode",
+                        "city",
+                        "valid_from",
+                        "valid_until",
+                        "creator_id",
+                        "comment",
+                        "created_at",
+                        "updated_at"
+                    ]
+                ],
+                "meta" => [
+                    "current_page",
+                    "last_page",
+                    "per_page",
+                    "item_count"
+                ],
+                "links" => [
+                    "prev_page_url",
+                    "next_page_url"
+                ]
+            ])
+            ->assertSuccessful();
     }
 
     /**
@@ -58,9 +100,9 @@ class CardInactiveTest extends CardTest
 
         $response = $this->actingAs($this->user)
             ->post('/api/admin/card/', $payload)
-            ->assertForbidden();
+            ->assertSuccessful();
 
-        assertEquals(1, Card::count());
+        assertEquals(2, Card::count());
     }
 
     /**
@@ -90,16 +132,16 @@ class CardInactiveTest extends CardTest
 
         $response = $this->actingAs($this->user)
             ->put('/api/admin/card/' . $this->card->id, $payload)
-            ->assertForbidden();
+            ->assertSuccessful();
 
         $this->card = $this->card->refresh();
-        assertNotEquals($payload['last_name'], $this->card->last_name);
-        assertNotEquals($payload['first_name'], $this->card->first_name);
-        assertNotEquals($payload['street'], $this->card->street);
-        assertNotEquals($payload['postcode'], $this->card->postcode);
-        assertNotEquals($payload['city'], $this->card->city);
-        assertNotEquals($payload['valid_from'], $this->card->valid_from);
-        assertNotEquals($payload['valid_until'], $this->card->valid_until);
+        assertEquals($payload['last_name'], $this->card->last_name);
+        assertEquals($payload['first_name'], $this->card->first_name);
+        assertEquals($payload['street'], $this->card->street);
+        assertEquals($payload['postcode'], $this->card->postcode);
+        assertEquals($payload['city'], $this->card->city);
+        assertEquals($payload['valid_from'], $this->card->valid_from);
+        assertEquals($payload['valid_until'], $this->card->valid_until);
     }
 
     /**
@@ -112,7 +154,5 @@ class CardInactiveTest extends CardTest
         $response = $this->actingAs($this->user)
             ->delete('/api/admin/card/' . $this->card->id)
             ->assertForbidden();
-
-        $this->assertModelExists($this->card);
     }
 }
