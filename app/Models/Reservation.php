@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Kra8\Snowflake\HasShortflakePrimary;
 
 class Reservation extends Model
 {
-    use HasFactory;
+    use HasShortflakePrimary, HasFactory;
 
     protected $fillable = [
         'card_id',
