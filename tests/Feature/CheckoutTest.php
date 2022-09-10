@@ -23,18 +23,18 @@ class CheckoutTest extends TestCase
     private $organization;
     private $user;
     private $limitationSet;
-    private $limitationSet2;
-    private $limitationSet3;
+    private $limitationSetExpired;
+    private $limitationSetNotValid;
     private $productType;
     private $limitation;
     private $person;
+    private $personExpired;
+    private $personNotValid;
     private $card;
-    private $person2;
-    private $card2;
-    private $person3;
-    private $card3;
+    private $cardExpired;
+    private $cardNotValid;
 
-    protected function setUp(): void // TODO clean up
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -89,59 +89,59 @@ class CheckoutTest extends TestCase
         $this->limitationSet->valid_until = "2022-08-04 12:00:00";
         $this->person->limitationSets()->save($this->limitationSet);
 
-        $this->card2              = new Card;
-        $this->card2->instance_id = $this->instance->id;
-        $this->card2->creator_id  = $this->user->id;
-        $this->card2->last_name   = "Kitsune";
-        $this->card2->first_name  = "Yasu";
-        $this->card2->street      = "Foxstreet 10";
-        $this->card2->postcode    = "12345";
-        $this->card2->city        = "Foxhole";
-        $this->card2->comment     = "Comment";
-        $this->card2->valid_from  = "2022-07-04 12:00:00";
-        $this->card2->valid_until = "2022-07-04 12:00:00";
-        $this->card2->save();
+        $this->cardExpired              = new Card;
+        $this->cardExpired->instance_id = $this->instance->id;
+        $this->cardExpired->creator_id  = $this->user->id;
+        $this->cardExpired->last_name   = "Kitsune";
+        $this->cardExpired->first_name  = "Yasu";
+        $this->cardExpired->street      = "Foxstreet 10";
+        $this->cardExpired->postcode    = "12345";
+        $this->cardExpired->city        = "Foxhole";
+        $this->cardExpired->comment     = "Comment";
+        $this->cardExpired->valid_from  = "2022-07-04 12:00:00";
+        $this->cardExpired->valid_until = "2022-07-04 12:00:00";
+        $this->cardExpired->save();
 
-        $this->person2              = new Person();
-        $this->person2->instance_id = $this->instance->id;
-        $this->person2->card_id     = $this->card->id;
-        $this->person2->gender      = "male";
-        $this->person2->age         = 18;
-        $this->person2->save();
+        $this->personExpired              = new Person();
+        $this->personExpired->instance_id = $this->instance->id;
+        $this->personExpired->card_id     = $this->card->id;
+        $this->personExpired->gender      = "male";
+        $this->personExpired->age         = 18;
+        $this->personExpired->save();
 
-        $this->limitationSet2              = new LimitationSet();
-        $this->limitationSet2->instance_id = $this->instance->id;
-        $this->limitationSet2->name        = "A set to limit them all ~ Tolkien II";
-        $this->limitationSet2->valid_from  = "2022-08-04 12:00:00";
-        $this->limitationSet2->valid_until = "2022-08-04 12:00:00";
-        $this->person2->limitationSets()->save($this->limitationSet2);
+        $this->limitationSetExpired              = new LimitationSet();
+        $this->limitationSetExpired->instance_id = $this->instance->id;
+        $this->limitationSetExpired->name        = "A set to limit them all ~ Tolkien II";
+        $this->limitationSetExpired->valid_from  = "2022-08-04 12:00:00";
+        $this->limitationSetExpired->valid_until = "2022-08-04 12:00:00";
+        $this->personExpired->limitationSets()->save($this->limitationSetExpired);
 
-        $this->card3              = new Card;
-        $this->card3->instance_id = $this->instance->id;
-        $this->card3->creator_id  = $this->user->id;
-        $this->card3->last_name   = "Kitsune";
-        $this->card3->first_name  = "Yasu";
-        $this->card3->street      = "Foxstreet 10";
-        $this->card3->postcode    = "12345";
-        $this->card3->city        = "Foxhole";
-        $this->card3->comment     = "Comment";
-        $this->card3->valid_from  = Carbon::tomorrow();
-        $this->card3->valid_until = Carbon::tomorrow();
-        $this->card3->save();
+        $this->cardNotValid              = new Card;
+        $this->cardNotValid->instance_id = $this->instance->id;
+        $this->cardNotValid->creator_id  = $this->user->id;
+        $this->cardNotValid->last_name   = "Kitsune";
+        $this->cardNotValid->first_name  = "Yasu";
+        $this->cardNotValid->street      = "Foxstreet 10";
+        $this->cardNotValid->postcode    = "12345";
+        $this->cardNotValid->city        = "Foxhole";
+        $this->cardNotValid->comment     = "Comment";
+        $this->cardNotValid->valid_from  = Carbon::tomorrow();
+        $this->cardNotValid->valid_until = Carbon::tomorrow();
+        $this->cardNotValid->save();
 
-        $this->person3              = new Person();
-        $this->person3->instance_id = $this->instance->id;
-        $this->person3->card_id     = $this->card->id;
-        $this->person3->gender      = "male";
-        $this->person3->age         = 18;
-        $this->person3->save();
+        $this->personNotValid              = new Person();
+        $this->personNotValid->instance_id = $this->instance->id;
+        $this->personNotValid->card_id     = $this->card->id;
+        $this->personNotValid->gender      = "male";
+        $this->personNotValid->age         = 18;
+        $this->personNotValid->save();
 
-        $this->limitationSet3              = new LimitationSet();
-        $this->limitationSet3->instance_id = $this->instance->id;
-        $this->limitationSet3->name        = "A set to limit them all ~ Tolkien II";
-        $this->limitationSet3->valid_from  = "2022-08-04 12:00:00";
-        $this->limitationSet3->valid_until = "2022-08-04 12:00:00";
-        $this->person3->limitationSets()->save($this->limitationSet3);
+        $this->limitationSetNotValid              = new LimitationSet();
+        $this->limitationSetNotValid->instance_id = $this->instance->id;
+        $this->limitationSetNotValid->name        = "A set to limit them all ~ Tolkien II";
+        $this->limitationSetNotValid->valid_from  = "2022-08-04 12:00:00";
+        $this->limitationSetNotValid->valid_until = "2022-08-04 12:00:00";
+        $this->personNotValid->limitationSets()->save($this->limitationSetNotValid);
 
         $this->productType              = new ProductType();
         $this->productType->instance_id = $this->instance->id;
@@ -213,7 +213,7 @@ class CheckoutTest extends TestCase
     public function test_show_checkout_expired()
     {
         $response = $this->actingAs($this->user)
-            ->get('api/card/visit/' . $this->card2->id)
+            ->get('api/card/visit/' . $this->cardExpired->id)
             ->assertStatus(410);
     }
 
@@ -225,7 +225,7 @@ class CheckoutTest extends TestCase
     public function test_show_checkout_not_valid()
     {
         $response = $this->actingAs($this->user)
-            ->get('api/card/visit/' . $this->card3->id)
+            ->get('api/card/visit/' . $this->cardNotValid->id)
             ->assertStatus(423);
     }
 
