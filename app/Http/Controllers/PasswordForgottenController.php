@@ -27,12 +27,10 @@ class PasswordForgottenController extends Controller
      * An E-Mail with the Token will be sent, if we can find a user with the given E-Mail-Address.
      *
      * @response scenario=success status=200 {
-     *   "success": true,
-     *   "message": "We have emailed your password reset link!"
+     *   "success": true
      * }
      * @response scenario=failure status=400 {
-     *   "success": false,
-     *   "message": "We can't find a user with that email address."
+     *   "success": false
      * }
      *
      * @param \Illuminate\Http\Request $request
@@ -44,12 +42,9 @@ class PasswordForgottenController extends Controller
             // Registered E-Mail-Address of the user who forgot the password
             'email' => 'email:rfc,dns|required'
         ]);
-        $status    = Password::sendResetLink(['email' => $validated['email']]);
 
-        return response([
-            'success' => $status === Password::RESET_LINK_SENT,
-            'message' => __($status)
-        ], $status === Password::RESET_LINK_SENT ? 200 : 400);
+        Password::sendResetLink(['email' => $validated['email']]);
+        return response(null, 204);
     }
 
     /**
