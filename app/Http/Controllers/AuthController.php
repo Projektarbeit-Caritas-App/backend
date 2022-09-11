@@ -219,7 +219,7 @@ class AuthController extends Controller
             'password' => 'required|string',
 
             // Name of the device, used for identification of the token.
-            'device_name' => 'required|string'
+            'device_name' => 'required|string|max:125'
         ]);
 
         $user = User::with(['permissions', 'roles', 'instance', 'organization'])

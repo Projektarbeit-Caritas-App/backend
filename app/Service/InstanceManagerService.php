@@ -59,10 +59,10 @@ class InstanceManagerService
             'city' => $data['city'],
             'contact' => $data['contact']
         ], [
-            'name' => 'string|required',
-            'street' => 'string|required',
-            'postcode' => 'string|required',
-            'city' => 'string|required',
+            'name' => 'string|max:125|required',
+            'street' => 'string|max:125|required',
+            'postcode' => 'string|max:125|required',
+            'city' => 'string|max:125|required',
             'contact' => 'string|required'
         ]);
 
@@ -84,8 +84,8 @@ class InstanceManagerService
             'password' => $data['password'],
             'password_confirmation' => $data['password_confirm']
         ], [
-            'username' => 'string|required',
-            'email' => 'email:rfc,dns|required',
+            'username' => 'string|max:125|required',
+            'email' => 'email:rfc,dns|max:125|required',
             'password' => ['string', 'confirmed', 'required', Password::defaults()],
         ]);
 

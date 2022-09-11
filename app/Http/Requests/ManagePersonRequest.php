@@ -25,7 +25,7 @@ class ManagePersonRequest extends FormRequest
     {
         return [
             'card_id' => 'exists:cards,id|required',
-            'gender' => 'string|required',
+            'gender' => 'string|max:125|required',
             'age' => 'int|required',
             'limitation_sets' => 'array|nullable',
             'limitation_sets.*' => 'exists:limitation_sets,id|required'

@@ -26,8 +26,8 @@ class ManageUserStoreRequest extends FormRequest
     {
         return [
             'organization_id' => 'exists:organizations,id|required',
-            'name' => 'string|required',
-            'email' => 'email:rfc,dns|required',
+            'name' => 'string|max:125|required',
+            'email' => 'email:rfc,dns|max:125|required',
             'password' => ['string', 'confirmed', 'required', Password::defaults()],
             'role' => 'string|in:inactive,external_employee,external_manager,employee,organization_manager,instance_manager|required'
         ];
