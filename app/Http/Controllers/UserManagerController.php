@@ -179,7 +179,7 @@ class UserManagerController extends Controller
             'organization_id' => $validated['organization_id']
         ];
 
-        if ($validated['password'] !== null) {
+        if (!empty($validated['password'])) {
             $data['password'] = Hash::make($validated['password']);
         }
 
