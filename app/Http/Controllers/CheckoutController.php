@@ -268,6 +268,10 @@ class CheckoutController extends Controller
             $states[$lineItem->product_type_id]['used'] += 1;
         }
 
+        uasort($states, function ($a, $b) {
+            return strcmp($a['product_type']['name'], $b['product_type']['name']);
+        });
+
         return array_values($states);
     }
 }

@@ -44,11 +44,11 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Password Reset Token')
+                    ->subject('Password Reset')
                     ->greeting('Hello ' . $this->name)
                     ->line('You are receiving this email because we received a password reset request for your account.')
-                    ->line('Your Reset-Token: ' . $this->token)
-                    ->line('This password reset token will expire in 60 minutes.')
+                    ->action('Reset Password', config('caritas.frontend_url') . '/reset/' . $this->token)
+                    ->line('This link will expire in 60 minutes.')
                     ->line('If you did not request a password reset, no further action is required.');
     }
 

@@ -73,10 +73,14 @@ class ScheduleController extends Controller
      */
     public function today(Shop $shop): Collection
     {
-        return Reservation::with('card')->whereBetween('time', [
-            date('Y-m-d') . ' 00:00:00',
-            date('Y-m-d') . ' 23:59:59'
-        ])->where('shop_id', $shop->id)->get();
+        return Reservation::with('card')
+            ->whereBetween('time', [
+                date('Y-m-d') . ' 00:00:00',
+                date('Y-m-d') . ' 23:59:59'
+            ])
+            ->where('shop_id', $shop->id)
+            ->orderBy('time')
+            ->get();
     }
 
     /**
@@ -215,6 +219,8 @@ class ScheduleController extends Controller
      */
     public function shops(Request $request): \Illuminate\Database\Eloquent\Collection|array
     {
-        return Shop::where('organization_id', $request->user()->organization_id)->get();
+        return Shop::where('organization_id', $request->user()->organization_id)
+            ->orderBy('name')
+            ->get();
     }
 }
