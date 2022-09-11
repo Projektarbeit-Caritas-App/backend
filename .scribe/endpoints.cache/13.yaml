@@ -258,28 +258,28 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Name of the shop.'
+        description: 'Name of the shop. Must not be greater than 125 characters.'
         required: true
         example: 'The friendly shop around the corner'
         type: string
         custom: []
       street:
         name: street
-        description: 'Street where the shop is located.'
+        description: 'Street where the shop is located. Must not be greater than 125 characters.'
         required: true
         example: 'Around the corner'
         type: string
         custom: []
       postcode:
         name: postcode
-        description: 'Postcode where the shop is located.'
+        description: 'Postcode where the shop is located. Must not be greater than 125 characters.'
         required: true
         example: '50080'
         type: string
         custom: []
       city:
         name: city
-        description: 'City where the shop is located.'
+        description: 'City where the shop is located. Must not be greater than 125 characters.'
         required: true
         example: Cornville
         type: string
@@ -620,28 +620,28 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Name of the shop.'
+        description: 'Name of the shop. Must not be greater than 125 characters.'
         required: true
         example: 'The friendly shop around the corner'
         type: string
         custom: []
       street:
         name: street
-        description: 'Street where the shop is located.'
+        description: 'Street where the shop is located. Must not be greater than 125 characters.'
         required: true
         example: 'Around the corner'
         type: string
         custom: []
       postcode:
         name: postcode
-        description: 'Postcode where the shop is located.'
+        description: 'Postcode where the shop is located. Must not be greater than 125 characters.'
         required: true
         example: '50080'
         type: string
         custom: []
       city:
         name: city
-        description: 'City where the shop is located.'
+        description: 'City where the shop is located. Must not be greater than 125 characters.'
         required: true
         example: Cornville
         type: string

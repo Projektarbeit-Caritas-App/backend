@@ -117,14 +117,14 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Name of the product type.'
+        description: 'Name of the product type. Must not be greater than 125 characters.'
         required: true
         example: T-Shirt
         type: string
         custom: []
       icon:
         name: icon
-        description: 'Icon of the product type.'
+        description: 'Icon of the product type. Must not be greater than 125 characters.'
         required: false
         example: 'Icon value'
         type: string
@@ -149,7 +149,7 @@ endpoints:
         name: id
         description: 'The ID of the productType.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -186,21 +186,21 @@ endpoints:
         name: id
         description: 'The ID of the productType.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
       name:
         name: name
-        description: 'Name of the product type.'
+        description: 'Name of the product type. Must not be greater than 125 characters.'
         required: true
         example: T-Shirt
         type: string
         custom: []
       icon:
         name: icon
-        description: 'Icon of the product type.'
+        description: 'Icon of the product type. Must not be greater than 125 characters.'
         required: false
         example: 'Icon value'
         type: string
@@ -225,7 +225,7 @@ endpoints:
         name: id
         description: 'The ID of the productType.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []

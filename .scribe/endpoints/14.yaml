@@ -121,14 +121,14 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Name of the user.'
+        description: 'Name of the user. Must not be greater than 125 characters.'
         required: true
         example: xX_B4d-gUY_08_Xx
         type: string
         custom: []
       email:
         name: email
-        description: 'Email of the user. Must be a valid email address.'
+        description: 'Email of the user. Must be a valid email address. Must not be greater than 125 characters.'
         required: true
         example: B4d-gUY@web.de
         type: string
@@ -144,7 +144,7 @@ endpoints:
         name: role
         description: 'Must be one of <code>inactive</code>, <code>external_employee</code>, <code>external_manager</code>, <code>employee</code>, <code>organization_manager</code>, or <code>instance_manager</code>.'
         required: true
-        example: employee
+        example: external_employee
         type: string
         custom: []
     responses: []
@@ -167,7 +167,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -200,7 +200,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -214,16 +214,16 @@ endpoints:
         custom: []
       name:
         name: name
-        description: 'Name of the user.'
+        description: 'Name of the user. Must not be greater than 125 characters.'
         required: true
-        example: laudantium
+        example: gnpvoahjpxfnvoeetmtfqumygmyxaxnluacrxfsujgdqrujyxgirkkndke
         type: string
         custom: []
       email:
         name: email
-        description: 'Email of the user. Must be a valid email address.'
+        description: 'Email of the user. Must be a valid email address. Must not be greater than 125 characters.'
         required: true
-        example: jeffry.mitchell@example.net
+        example: qbpozzmbeloiizfbptdjzqfjlwkpteisdwcgpxuyfnecrhpxrycgvrganz
         type: string
         custom: []
       password:
@@ -260,7 +260,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []

@@ -193,7 +193,7 @@ endpoints:
         name: id
         description: 'The ID of the lineItem.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -248,7 +248,7 @@ endpoints:
         name: id
         description: 'The ID of the lineItem.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -294,7 +294,7 @@ endpoints:
         name: id
         description: 'The ID of the lineItem.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
