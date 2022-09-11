@@ -24,10 +24,10 @@ class ManageOrganizationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
-            'street' => 'string|required',
-            'postcode' => 'string|required',
-            'city' => 'string|required',
+            'name' => 'string|max:125|required',
+            'street' => 'string|max:125|required',
+            'postcode' => 'string|max:125|required',
+            'city' => 'string|max:125|required',
             'contact' => 'string|required'
         ];
     }

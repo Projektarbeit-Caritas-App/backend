@@ -25,10 +25,10 @@ class ManageShopRequest extends FormRequest
     {
         return [
             'organization_id' => 'exists:organizations,id|required',
-            'name' => 'string|required',
-            'street' => 'string|required',
-            'postcode' => 'string|required',
-            'city' => 'string|required',
+            'name' => 'string|max:125|required',
+            'street' => 'string|max:125|required',
+            'postcode' => 'string|max:125|required',
+            'city' => 'string|max:125|required',
             'contact' => 'string|required',
             'opening_hours.monday' => 'array|nullable',
             'opening_hours.monday.*.opens_at' => ['string', 'regex:/^([0-1][0-9]|2[0-4]):[0-5][0-9]$/', 'required'],

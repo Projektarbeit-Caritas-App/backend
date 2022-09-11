@@ -24,7 +24,7 @@ class ManageLimitationSetRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
+            'name' => 'string|max:125|required',
             'valid_from' => 'date|required',
             'valid_until' => 'date|nullable'
         ];

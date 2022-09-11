@@ -24,8 +24,8 @@ class ManageProductTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
-            'icon' => 'string|nullable'
+            'name' => 'string|max:125|required',
+            'icon' => 'string|max:125|nullable'
         ];
     }
 
