@@ -33,12 +33,17 @@ class InstanceUpdateCommand extends Command
         $instance = Instance::find($this->argument('instance'));
 
         try {
-            InstanceManagerService::askForInstanceDetails($this, $instance);
+            $instanceData = InstanceManagerService::askForInstanceDetails($this, $instance);
             $this->newLine();
         } catch (ValueError) {
             return 1;
         }
 
+        $instance->name     = $instanceData['name'];
+        $instance->street   = $instanceData['street'];
+        $instance->postcode = $instanceData['postcode'];
+        $instance->city     = $instanceData['city'];
+        $instance->contact  = $instanceData['contact'];
         $instance->save();
         $this->info('Instance updated');
 
