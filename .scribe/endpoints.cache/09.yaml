@@ -227,7 +227,7 @@ endpoints:
         name: id
         description: 'The ID of the person.'
         required: true
-        example: 10
+        example: 57959838684647
         type: integer
         custom: []
     queryParameters: []
@@ -282,7 +282,7 @@ endpoints:
         name: id
         description: 'The ID of the person.'
         required: true
-        example: 10
+        example: 57959838684647
         type: integer
         custom: []
     queryParameters: []
@@ -336,7 +336,7 @@ endpoints:
         name: id
         description: 'The ID of the person.'
         required: true
-        example: 10
+        example: 57959838684647
         type: integer
         custom: []
     queryParameters: []

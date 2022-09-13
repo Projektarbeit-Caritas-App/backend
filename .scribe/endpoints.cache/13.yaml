@@ -521,7 +521,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 10
+        example: 57960114483871
         type: integer
         custom: []
     queryParameters: []
@@ -606,7 +606,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 10
+        example: 57960114483871
         type: integer
         custom: []
     queryParameters: []
@@ -883,7 +883,7 @@ endpoints:
         name: id
         description: 'The ID of the shop.'
         required: true
-        example: 10
+        example: 57960114483871
         type: integer
         custom: []
     queryParameters: []

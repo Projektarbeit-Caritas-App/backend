@@ -205,7 +205,7 @@ endpoints:
         name: id
         description: 'The ID of the organization.'
         required: true
-        example: 10
+        example: 57911074739244
         type: integer
         custom: []
     queryParameters: []
@@ -246,7 +246,7 @@ endpoints:
         name: id
         description: 'The ID of the organization.'
         required: true
-        example: 10
+        example: 57911074739244
         type: integer
         custom: []
     queryParameters: []
@@ -306,7 +306,7 @@ endpoints:
         name: id
         description: 'The ID of the organization.'
         required: true
-        example: 10
+        example: 57911074739244
         type: integer
         custom: []
     queryParameters: []

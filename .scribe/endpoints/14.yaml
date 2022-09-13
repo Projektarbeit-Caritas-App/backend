@@ -167,7 +167,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 10
+        example: 57911074968077
         type: integer
         custom: []
     queryParameters: []
@@ -200,7 +200,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 10
+        example: 57911074968077
         type: integer
         custom: []
     queryParameters: []
@@ -260,7 +260,7 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 10
+        example: 57911074968077
         type: integer
         custom: []
     queryParameters: []
