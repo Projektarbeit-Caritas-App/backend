@@ -152,28 +152,28 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Name of the organization.'
+        description: 'Name of the organization. Must not be greater than 125 characters.'
         required: true
         example: Caritas
         type: string
         custom: []
       street:
         name: street
-        description: 'Street where the organization is located.'
+        description: 'Street where the organization is located. Must not be greater than 125 characters.'
         required: true
         example: 'Franziskanergasse 3'
         type: string
         custom: []
       postcode:
         name: postcode
-        description: 'Postcode where the organization is located.'
+        description: 'Postcode where the organization is located. Must not be greater than 125 characters.'
         required: true
         example: ' 97070'
         type: string
         custom: []
       city:
         name: city
-        description: 'City where the organization is located.'
+        description: 'City where the organization is located. Must not be greater than 125 characters.'
         required: true
         example: Wuerzburg
         type: string
@@ -205,7 +205,7 @@ endpoints:
         name: id
         description: 'The ID of the organization.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -246,35 +246,35 @@ endpoints:
         name: id
         description: 'The ID of the organization.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
       name:
         name: name
-        description: 'Name of the organization.'
+        description: 'Name of the organization. Must not be greater than 125 characters.'
         required: true
         example: Caritas
         type: string
         custom: []
       street:
         name: street
-        description: 'Street where the organization is located.'
+        description: 'Street where the organization is located. Must not be greater than 125 characters.'
         required: true
         example: 'Franziskanergasse 3'
         type: string
         custom: []
       postcode:
         name: postcode
-        description: 'Postcode where the organization is located.'
+        description: 'Postcode where the organization is located. Must not be greater than 125 characters.'
         required: true
         example: ' 97070'
         type: string
         custom: []
       city:
         name: city
-        description: 'City where the organization is located.'
+        description: 'City where the organization is located. Must not be greater than 125 characters.'
         required: true
         example: Wuerzburg
         type: string
@@ -306,7 +306,7 @@ endpoints:
         name: id
         description: 'The ID of the organization.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []

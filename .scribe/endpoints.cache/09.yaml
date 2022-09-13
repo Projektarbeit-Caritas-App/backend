@@ -187,7 +187,7 @@ endpoints:
         custom: []
       gender:
         name: gender
-        description: 'Gender of the person.'
+        description: 'Gender of the person. Must not be greater than 125 characters.'
         required: true
         example: male
         type: string
@@ -227,7 +227,7 @@ endpoints:
         name: id
         description: 'The ID of the person.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -282,7 +282,7 @@ endpoints:
         name: id
         description: 'The ID of the person.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -296,7 +296,7 @@ endpoints:
         custom: []
       gender:
         name: gender
-        description: 'Gender of the person.'
+        description: 'Gender of the person. Must not be greater than 125 characters.'
         required: true
         example: male
         type: string
@@ -336,7 +336,7 @@ endpoints:
         name: id
         description: 'The ID of the person.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []

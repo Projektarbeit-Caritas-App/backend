@@ -155,7 +155,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/schedule/{id}'
+    uri: 'api/schedule/{shop_id}'
     metadata:
       title: 'List today´s reservations'
       description: |-
@@ -169,8 +169,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
+      shop_id:
+        name: shop_id
         description: 'The ID of the shop.'
         required: true
         example: 10

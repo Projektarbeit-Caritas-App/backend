@@ -54,7 +54,7 @@ class ApplicationInstallCommand extends Command
     {
         return [
             'inactive' => Role::findOrCreate('inactive'),
-            'external_employee' => Role::findOrCreate('external_employees'),
+            'external_employee' => Role::findOrCreate('external_employee'),
             'external_manager' => Role::findOrCreate('external_manager'),
             'employee' => Role::findOrCreate('employee'),
             'organization_manager' => Role::findOrCreate('organization_manager'),

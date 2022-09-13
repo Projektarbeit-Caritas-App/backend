@@ -119,14 +119,14 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Name of the product type.'
+        description: 'Name of the product type. Must not be greater than 125 characters.'
         required: true
         example: T-Shirt
         type: string
         custom: []
       icon:
         name: icon
-        description: 'Icon of the product type.'
+        description: 'Icon of the product type. Must not be greater than 125 characters.'
         required: false
         example: 'Icon value'
         type: string
@@ -136,7 +136,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/admin/product-type/{id}'
+    uri: 'api/admin/product-type/{productType_id}'
     metadata:
       title: 'Show specified ProductType'
       description: ''
@@ -147,11 +147,11 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
+      productType_id:
+        name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -173,7 +173,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/admin/product-type/{id}'
+    uri: 'api/admin/product-type/{productType_id}'
     metadata:
       title: 'Update specified ProductType'
       description: ''
@@ -184,25 +184,25 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
+      productType_id:
+        name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
     bodyParameters:
       name:
         name: name
-        description: 'Name of the product type.'
+        description: 'Name of the product type. Must not be greater than 125 characters.'
         required: true
         example: T-Shirt
         type: string
         custom: []
       icon:
         name: icon
-        description: 'Icon of the product type.'
+        description: 'Icon of the product type. Must not be greater than 125 characters.'
         required: false
         example: 'Icon value'
         type: string
@@ -212,7 +212,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/admin/product-type/{id}'
+    uri: 'api/admin/product-type/{productType_id}'
     metadata:
       title: 'Delete specified ProductType'
       description: ''
@@ -223,11 +223,11 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
+      productType_id:
+        name: productType_id
         description: 'The ID of the productType.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
