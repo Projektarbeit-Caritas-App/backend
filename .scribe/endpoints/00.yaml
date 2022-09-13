@@ -169,9 +169,9 @@ endpoints:
         custom: []
       device_name:
         name: device_name
-        description: 'Name of the device, used for identification of the token.'
+        description: 'Name of the device, used for identification of the token. Must not be greater than 125 characters.'
         required: true
-        example: laudantium
+        example: gnpvoahjpxfnvoeetmtfqumygmyxaxnluacrxfsujgdqrujyxgirkkndke
         type: string
         custom: []
     responses:
